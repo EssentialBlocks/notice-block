@@ -51,10 +51,20 @@ function create_block_notice_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
+
+	$frontend_js = "src/frontend.js";
+	wp_enqueue_script(
+		'essential-blocks-notice-frontend',
+		plugins_url( $frontend_js, __FILE__),
+		array("jquery","wp-editor"),
+		true
+	);
+
 	register_block_type( 'create-block/notice', array(
 		'editor_script' => 'create-block-notice-block-editor',
 		'editor_style'  => 'create-block-notice-block-editor',
 		'style'         => 'create-block-notice-block',
+		'frontend_js'   => 'essential-blocks-notice-frontend',
 	) );
 }
 add_action( 'init', 'create_block_notice_block_init' );
