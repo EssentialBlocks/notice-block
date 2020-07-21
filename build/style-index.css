@@ -1,13 +1,13 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-create-block-notice {
-  background-color: var(--wp-admin-theme-color);
-  color: #fff;
-  padding: 2px; }
+.eb-notice-dismiss {
+  top: 0px;
+  right: 0px;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  justify-content: center; }
+
+.eb-notice-dismiss:after {
+  content: "\00d7"; }
 
 
 /*# sourceMappingURL=style-index.css.map*/

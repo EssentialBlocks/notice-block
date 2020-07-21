@@ -170,6 +170,140 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/attributes.js":
+/*!***************************!*\
+  !*** ./src/attributes.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var attributes = {
+  dismissible: {
+    type: "boolean",
+    default: false
+  },
+  noticeType: {
+    type: "string",
+    default: "default"
+  },
+  titleFontSize: {
+    type: "number"
+  },
+  textFontSize: {
+    type: "number"
+  },
+  title: {
+    type: "string",
+    source: "text",
+    selector: ".eb-notice-title",
+    default: "Save 20%"
+  },
+  text: {
+    type: "string",
+    source: "text",
+    selector: ".eb-notice-text",
+    default: "Free shipping on all orders"
+  },
+  backgroundColor: {
+    type: "string"
+  },
+  titleColor: {
+    type: "string"
+  },
+  textColor: {
+    type: "string"
+  },
+  noticeId: {
+    type: "string"
+  },
+  showAfterDismiss: {
+    type: "boolean",
+    default: false
+  },
+  shadowColor: {
+    type: "string"
+  },
+  shadowHOffset: {
+    type: "number"
+  },
+  shadowVOffset: {
+    type: "number"
+  },
+  shadowSpread: {
+    type: "number"
+  },
+  shadowBlur: {
+    type: "number"
+  },
+  titleSizeUnit: {
+    type: "string",
+    default: "px"
+  },
+  textSizeUnit: {
+    type: "string",
+    default: "px"
+  },
+  titleFontFamily: {
+    type: "string"
+  },
+  titleFontWeight: {
+    type: "string",
+    default: "normal"
+  },
+  titleTextTransform: {
+    type: "string"
+  },
+  titleTextDecoration: {
+    type: "string"
+  },
+  titleLetterSpacing: {
+    type: "number"
+  },
+  titleLetterSpacingUnit: {
+    type: "string",
+    default: "px"
+  },
+  titleLineHeight: {
+    type: "number"
+  },
+  titleLineHeightUnit: {
+    type: "string",
+    default: "px"
+  },
+  textFontFamily: {
+    type: "string"
+  },
+  textFontWeight: {
+    type: "string",
+    default: "normal"
+  },
+  textTextTransform: {
+    type: "string"
+  },
+  textTextDecoration: {
+    type: "string"
+  },
+  textLetterSpacing: {
+    type: "number"
+  },
+  textLetterSpacingUnit: {
+    type: "string",
+    default: "px"
+  },
+  textLineHeight: {
+    type: "number"
+  },
+  textLineHeightUnit: {
+    type: "string",
+    default: "px"
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (attributes);
+
+/***/ }),
+
 /***/ "./src/edit.js":
 /*!*********************!*\
   !*** ./src/edit.js ***!
@@ -298,6 +432,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/save.js");
 /* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./icon */ "./src/icon.js");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/attributes.js");
+
 
 
 
@@ -309,6 +445,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])("ess
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("", "essential-blocks"),
   category: "widgets",
   icon: _icon__WEBPACK_IMPORTED_MODULE_5__["default"],
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
