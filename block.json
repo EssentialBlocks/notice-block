@@ -1,10 +1,9 @@
 {
-	"name": "essential-blocks/notice",
+	"name": "block/notice",
 	"title": "Notice",
 	"category": "widgets",
 	"description": "",
-	"textdomain": "essential-blocks",
+	"textdomain": "notice",
 	"editorScript": "file:./build/index.js",
-	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
 }

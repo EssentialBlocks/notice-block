@@ -8,9 +8,9 @@ import save from "./save";
 import icon from "./icon";
 import attributes from "./attributes";
 
-registerBlockType("essential-blocks/notice", {
-	title: __("Notice", "essential-blocks"),
-	description: __("", "essential-blocks"),
+registerBlockType("block/notice", {
+	title: __("Notice", "block"),
+	description: __("", "block"),
 	category: "widgets",
 	icon,
 	attributes,
