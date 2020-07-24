@@ -2,10 +2,10 @@
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, alam789
 Tags: block, blocks, notice, notice box, alert box, warning, highlight, announcement, alert, gutenberg, gutenberg blocks
 Requires at least: 5.0
-Tested up to: 5.4
+Tested up to: 5.5
 Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Put Spotlight On News, Announcements & Let The Visitors Find It Easily
 
@@ -14,7 +14,9 @@ Put Spotlight On News, Announcements & Let The Visitors Find It Easily
 Using this **Notice** plugin, you can highlight your news, announcement etc. & grab the attention of your audience. Now with this, you can create a Notice within the Gutenberg Block Editor & improve user engagement.
 
 **Completely Customizable:** You can customize the content, colors, etc to make it just the way you need.
+
 **Super Light-weight:** No extra resources used and it's highly optimized for super fast loading & instant Live editing.
+
 **Dedicated Support:** We’ve an extraordinary support team ready to help you. Ask your questions in the support forum, we’ll get back to you immediately.
 
 
@@ -31,8 +33,9 @@ This Block is brought to you by [WPDeveloper](https://wpdeveloper.net), the team
 
 ## 🙌 JOIN THE COMMUNITY ##
 
-- 🎦 Subscribe to our [Youtube Channel](https://www.youtube.com/wpdevelopernet/?sub_confirmation=1) to watch video tutorials on WordPress.
-- 🤝 Join our [Facebook Community](https://www.facebook.com/groups/wpdeveloper.net/) & get connected with expert web creators like yourself.
+🎦 Subscribe to our [Youtube Channel](https://www.youtube.com/wpdevelopernet/?sub_confirmation=1) to watch video tutorials on WordPress.
+
+🤝 Join our [Facebook Community](https://www.facebook.com/groups/wpdeveloper.net/) & get connected with expert web creators like yourself.
 
 🧡 LOVED Countdown Block? Rate us on [WordPress Repository](https://wordpress.org/support/plugin/notice-block/reviews/#new-post)
 
