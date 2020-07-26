@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     Notice
- * Description:     Example block written with ESNext standard and JSX support – build step required.
+ * Description:     Put Spotlight On News, Announcements & Let The Visitors Find It Easily 
  * Version:         0.1.0
  * Author:          The WordPress Contributors
  * License:         GPL-2.0-or-later

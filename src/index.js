@@ -10,7 +10,10 @@ import attributes from "./attributes";
 
 registerBlockType("block/notice", {
 	title: __("Notice", "block"),
-	description: __("", "block"),
+	description: __(
+		"Put Spotlight On News, Announcements & Let The Visitors Find It Easily",
+		"block"
+	),
 	category: "widgets",
 	icon,
 	attributes,
