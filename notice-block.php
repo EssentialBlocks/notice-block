@@ -60,8 +60,8 @@ function create_block_notice_block_init() {
 		true
 	);
 
-		if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/accordion' ) ) {
-			register_block_type( 'create-block/notice', array(
+		if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/notice' ) ) {
+			register_block_type( 'create-block/notice-block', array(
 			'editor_script' => 'create-block-notice-block-editor',
 			'style'         => 'create-block-notice-block',
 			'frontend_js'   => 'essential-blocks-notice-frontend',

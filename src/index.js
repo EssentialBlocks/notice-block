@@ -8,7 +8,7 @@ import save from "./save";
 import icon from "./icon";
 import attributes from "./attributes";
 
-registerBlockType("block/notice", {
+registerBlockType("block/notice-block", {
 	title: __("Notice", "block"),
 	description: __(
 		"Put Spotlight On News, Announcements & Let The Visitors Find It Easily",
