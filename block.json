@@ -1,9 +1,9 @@
 {
-	"name": "block/notice",
+	"name": "block/notice-block",
 	"title": "Notice",
 	"category": "widgets",
-	"description": " Put Spotlight On News, Announcements & Let The Visitors Find It Easily",
-	"textdomain": "notice",
+	"description": "Put Spotlight On News, Announcements & Let The Visitors Find It Easily",
+	"textdomain": "notice-block",
 	"editorScript": "file:./build/index.js",
 	"style": "file:./build/style-index.css"
 }
