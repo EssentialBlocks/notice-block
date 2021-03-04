@@ -104,6 +104,13 @@ class Edit extends Component {
 			color: textColor || "#fff",
 			display: dismissible ? "flex" : "none",
 		};
+		const meta = wp.data.select("core/editor").getEditedPostAttribute("meta");
+		console.log("Meta:", meta);
+		wp.data.dispatch("core/editor").editPost({
+			meta: {
+				_eb_css_11: JSON.stringify(attributes)
+			}
+		});
 
 		return [
 			isSelected && <Inspector {...this.props} />,
