@@ -58,12 +58,37 @@ function create_block_notice_block_init() {
 		true
 	);
 
-		if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/notice' ) ) {
-			register_block_type( 'create-block/notice-block', array(
-			'editor_script' => 'create-block-notice-block-editor',
-			'style'         => 'create-block-notice-block',
-			'frontend_js'   => 'essential-blocks-notice-frontend',
-			) );
-		}
+	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/notice' ) ) {
+		register_block_type( 'create-block/notice-block', array(
+		'editor_script' => 'create-block-notice-block-editor',
+		'style'         => 'create-block-notice-block',
+		'frontend_js'   => 'essential-blocks-notice-frontend',
+		) );
+	}
 }
 add_action( 'init', 'create_block_notice_block_init' );
+
+/**
+ * Enqueue a script in the WordPress admin on edit.php.
+ *
+ * @param int $hook Hook suffix for the current admin page.
+ */
+function essential_blocks_edit_post( $hook ) {
+    global $post;
+    if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
+		$frontend_js = "util/meta_handler.js";
+		wp_enqueue_script('essential-blocks-edit-post', plugins_url($frontend_js, __FILE__), array("jquery","wp-editor"), true);
+	}
+}
+add_action( 'admin_enqueue_scripts', 'essential_blocks_edit_post' );
+
+
+//Ajax Function
+add_action('wp_ajax_update_style_meta', 'update_style_meta_ajax');
+function update_style_meta_ajax() {
+    $post_id = $_POST['id'];
+	var_dump($post_id, $_POST['data']);
+    //Update the database with the increased bid value
+    update_post_meta($post_id,'eb_css', $_POST['data']);
+    die();
+}

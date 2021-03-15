@@ -1281,6 +1281,14 @@ if (false) {} else {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var attributes = {
+  blockId: {
+    type: "string"
+  },
+  blockMeta: {
+    type: 'string',
+    source: 'meta',
+    meta: 'eb_css'
+  },
   dismissible: {
     type: "boolean",
     "default": false
@@ -1539,10 +1547,30 @@ var Edit = /*#__PURE__*/function (_Component) {
   _createClass(Edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var noticeId = Object(_util_uuid__WEBPACK_IMPORTED_MODULE_1__["default"])().substr(0, 5);
-      this.props.setAttributes({
-        noticeId: noticeId
-      });
+      var BLOCK_PREFIX = "eb-notice";
+      var unique_id = BLOCK_PREFIX + "-" + Object(_util_uuid__WEBPACK_IMPORTED_MODULE_1__["default"])().substr(0, 5);
+      var current_block_id = this.props.attributes.blockId;
+      var meta = this.props.attributes.blockMeta;
+      this.meta_styles = meta ? JSON.parse(meta) : {};
+
+      if (!current_block_id) {
+        this.props.setAttributes({
+          blockId: unique_id
+        });
+      }
+
+      var all_blocks = wp.data.select("core/editor").getBlocks(); // const current_block = wp.data.select("core/editor").getBlock(this.props.clientId);
+      // let this_block_count = 0;
+      // all_blocks.forEach((item) => {
+      // 	if (item.name == current_block.name && item.attributes.blockId == current_block_id ) {
+      // 		this_block_count++;
+      // 		if (this_block_count > 1) {
+      // 			this.props.setAttributes({ blockId: unique_id });
+      // 		}
+      // 	}
+      // });
+      // console.log("Current Block ID:", current_block_id);
+      // console.log("Block Meta: ", meta);
     }
   }, {
     key: "render",
@@ -1551,7 +1579,9 @@ var Edit = /*#__PURE__*/function (_Component) {
           attributes = _this$props.attributes,
           setAttributes = _this$props.setAttributes,
           isSelected = _this$props.isSelected;
-      var dismissible = attributes.dismissible,
+      var blockId = attributes.blockId,
+          blockMeta = attributes.blockMeta,
+          dismissible = attributes.dismissible,
           titleFontSize = attributes.titleFontSize,
           textFontSize = attributes.textFontSize,
           title = attributes.title,
@@ -1559,7 +1589,6 @@ var Edit = /*#__PURE__*/function (_Component) {
           backgroundColor = attributes.backgroundColor,
           titleColor = attributes.titleColor,
           textColor = attributes.textColor,
-          noticeId = attributes.noticeId,
           shadowColor = attributes.shadowColor,
           shadowHOffset = attributes.shadowHOffset,
           shadowVOffset = attributes.shadowVOffset,
@@ -1619,20 +1648,14 @@ var Edit = /*#__PURE__*/function (_Component) {
         color: textColor || "#fff",
         display: dismissible ? "flex" : "none"
       };
-      var meta = wp.data.select("core/editor").getEditedPostAttribute("meta");
-      console.log("Meta:", meta);
-      wp.data.dispatch("core/editor").editPost({
-        meta: {
-          _eb_css_11: JSON.stringify(attributes)
-        }
-      });
       return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_0__["default"], this.props),
       /*#__PURE__*/
       //Edit view here
       React.createElement("div", {
+        id: blockId,
         className: "eb-notice-wrapper",
         style: wrapperStyles,
-        "data-id": noticeId
+        "data-id": blockId
       }, /*#__PURE__*/React.createElement("div", {
         className: "eb-notice-title-wrapper",
         style: titleWrapperStyles
@@ -2339,7 +2362,8 @@ var RichText = wp.blockEditor.RichText;
 
 var save = function save(_ref) {
   var attributes = _ref.attributes;
-  var dismissible = attributes.dismissible,
+  var blockId = attributes.blockId,
+      dismissible = attributes.dismissible,
       titleFontSize = attributes.titleFontSize,
       textFontSize = attributes.textFontSize,
       title = attributes.title,
@@ -2414,9 +2438,10 @@ var save = function save(_ref) {
     alignItems: "center"
   };
   return /*#__PURE__*/React.createElement("div", {
+    id: blockId,
     className: "eb-notice-wrapper",
     style: wrapperStyles,
-    "data-id": noticeId,
+    "data-id": blockId,
     "data-show-again": showAfterDismiss
   }, /*#__PURE__*/React.createElement("div", {
     className: "eb-notice-title-wrapper",

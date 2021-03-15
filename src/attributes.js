@@ -1,4 +1,12 @@
 const attributes = {
+	blockId: {
+		type: "string"
+	},
+	blockMeta: {
+		type: 'string',
+        source: 'meta',
+        meta: 'eb_css'
+	},
 	dismissible: {
 		type: "boolean",
 		default: false,

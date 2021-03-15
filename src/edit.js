@@ -11,14 +11,40 @@ import Inspector from "./inspector";
 import uuid from "../util/uuid";
 
 class Edit extends Component {
+
 	componentDidMount() {
-		let noticeId = uuid().substr(0, 5);
-		this.props.setAttributes({ noticeId });
+		const BLOCK_PREFIX = "eb-notice";
+		const unique_id = BLOCK_PREFIX+ "-" + uuid().substr(0, 5);
+		const current_block_id = this.props.attributes.blockId;
+
+		const meta = this.props.attributes.blockMeta;
+		this.meta_styles = meta ? JSON.parse(meta) : {};
+
+		if ( !current_block_id) {
+			this.props.setAttributes({ blockId: unique_id });
+		}
+
+		const all_blocks = wp.data.select("core/editor").getBlocks();
+		// const current_block = wp.data.select("core/editor").getBlock(this.props.clientId);
+		// let this_block_count = 0;
+		// all_blocks.forEach((item) => {
+		// 	if (item.name == current_block.name && item.attributes.blockId == current_block_id ) {
+		// 		this_block_count++;
+		// 		if (this_block_count > 1) {
+		// 			this.props.setAttributes({ blockId: unique_id });
+		// 		}
+		// 	}
+		// });
+		// console.log("Current Block ID:", current_block_id);
+		// console.log("Block Meta: ", meta);
+
 	}
 
 	render() {
 		const { attributes, setAttributes, isSelected } = this.props;
 		const {
+			blockId,
+			blockMeta,
 			dismissible,
 			titleFontSize,
 			textFontSize,
@@ -27,7 +53,6 @@ class Edit extends Component {
 			backgroundColor,
 			titleColor,
 			textColor,
-			noticeId,
 			shadowColor,
 			shadowHOffset,
 			shadowVOffset,
@@ -104,22 +129,16 @@ class Edit extends Component {
 			color: textColor || "#fff",
 			display: dismissible ? "flex" : "none",
 		};
-		const meta = wp.data.select("core/editor").getEditedPostAttribute("meta");
-		console.log("Meta:", meta);
-		wp.data.dispatch("core/editor").editPost({
-			meta: {
-				_eb_css_11: JSON.stringify(attributes)
-			}
-		});
 
 		return [
 			isSelected && <Inspector {...this.props} />,
 
 			//Edit view here
 			<div
+				id={blockId}
 				className="eb-notice-wrapper"
 				style={wrapperStyles}
-				data-id={noticeId}
+				data-id={blockId}
 			>
 				<div className="eb-notice-title-wrapper" style={titleWrapperStyles}>
 					<RichText

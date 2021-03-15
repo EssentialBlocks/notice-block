@@ -28,9 +28,10 @@ class Notice_Post_Meta
         );
         register_meta(
             'post',
-            '_eb_css_11',
+            'eb_css',
             array(
                 'show_in_rest' => true,
+                'type' => 'string',
                 'single' => true,
                 'auth_callback' => [$this, 'auth_callback'],
             )
