@@ -1284,10 +1284,13 @@ var attributes = {
   blockId: {
     type: "string"
   },
+  blockRoot: {
+    type: 'string',
+    "default": 'essential_block'
+  },
   blockMeta: {
     type: 'string',
-    source: 'meta',
-    meta: 'eb_css'
+    "default": ''
   },
   dismissible: {
     type: "boolean",
@@ -1501,6 +1504,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_uuid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/uuid */ "./util/uuid.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1526,6 +1531,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
  */
 var RichText = wp.blockEditor.RichText;
 var Component = wp.element.Component;
+var withSelect = wp.data.withSelect;
 /**
  * Internal depenencies
  */
@@ -1547,34 +1553,57 @@ var Edit = /*#__PURE__*/function (_Component) {
   _createClass(Edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this = this;
+
       var BLOCK_PREFIX = "eb-notice";
       var unique_id = BLOCK_PREFIX + "-" + Object(_util_uuid__WEBPACK_IMPORTED_MODULE_1__["default"])().substr(0, 5);
       var current_block_id = this.props.attributes.blockId;
-      var meta = this.props.attributes.blockMeta;
-      this.meta_styles = meta ? JSON.parse(meta) : {};
+      /**
+       * If No BlockId found in props, Unique ID set 
+      */
 
       if (!current_block_id) {
         this.props.setAttributes({
           blockId: unique_id
         });
       }
+      /**
+       * Assign New Unique ID when duplicate BlockId found
+       * Mostly happens when User Duplicate a Block
+      */
 
-      var all_blocks = wp.data.select("core/editor").getBlocks(); // const current_block = wp.data.select("core/editor").getBlock(this.props.clientId);
-      // let this_block_count = 0;
-      // all_blocks.forEach((item) => {
-      // 	if (item.name == current_block.name && item.attributes.blockId == current_block_id ) {
-      // 		this_block_count++;
-      // 		if (this_block_count > 1) {
-      // 			this.props.setAttributes({ blockId: unique_id });
-      // 		}
-      // 	}
-      // });
-      // console.log("Current Block ID:", current_block_id);
-      // console.log("Block Meta: ", meta);
+
+      var all_blocks = wp.data.select("core/block-editor").getBlocks();
+      var blockIdCount = 0;
+      all_blocks.forEach(function (item) {
+        if (item.attributes.blockId === current_block_id && item.attributes.blockRoot === 'essential_block' && item.name === 'block/notice-block') {
+          blockIdCount++;
+
+          if (blockIdCount > 1) {
+            _this.props.setAttributes({
+              blockId: unique_id
+            });
+          }
+        }
+      });
+      console.log("All Blocks", all_blocks);
+
+      var reusableBlock = wp.data.select('core/block-editor').__experimentalGetParsedReusableBlock(191);
+
+      console.log("Reusable Block", reusableBlock);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (this.props.isSavingPost && !this.props.isAutosavingPost) {
+        console.log("Savings", this.props.isAutosavingPost, this.props.isAutosavingPost);
+      }
     }
   }, {
     key: "render",
     value: function render() {
+      var _styleObject;
+
       var _this$props = this.props,
           attributes = _this$props.attributes,
           setAttributes = _this$props.setAttributes,
@@ -1647,7 +1676,19 @@ var Edit = /*#__PURE__*/function (_Component) {
       var dismissStyles = {
         color: textColor || "#fff",
         display: dismissible ? "flex" : "none"
-      };
+      }; //Set All Style in "blockMeta" Attribute
+
+      var styleObject = (_styleObject = {}, _defineProperty(_styleObject, blockId, wrapperStyles), _defineProperty(_styleObject, blockId + " .eb-notice-title-wrapper", titleWrapperStyles), _defineProperty(_styleObject, blockId + " .eb-notice-title", titleStyles), _defineProperty(_styleObject, blockId + " .eb-notice-dismiss", dismissStyles), _defineProperty(_styleObject, blockId + " .eb-notice-text-wrapper", textWrapperStyles), _defineProperty(_styleObject, blockId + " .eb-notice-text", textStyles), _styleObject);
+      var styleParsed = JSON.stringify(styleObject);
+
+      if (blockMeta !== styleParsed) {
+        setAttributes({
+          blockMeta: styleParsed
+        });
+      }
+
+      console.log("Current Block ID", blockId);
+      console.log(this.props.isSavingPost);
       return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_0__["default"], this.props),
       /*#__PURE__*/
       //Edit view here
@@ -1674,6 +1715,7 @@ var Edit = /*#__PURE__*/function (_Component) {
         className: "eb-notice-dismiss",
         style: dismissStyles
       })), /*#__PURE__*/React.createElement("div", {
+        className: "eb-notice-text-wrapper",
         style: textWrapperStyles
       }, /*#__PURE__*/React.createElement(RichText, {
         className: "eb-notice-text",
@@ -1693,7 +1735,14 @@ var Edit = /*#__PURE__*/function (_Component) {
   return Edit;
 }(Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Edit);
+/* harmony default export */ __webpack_exports__["default"] = (withSelect(function (select) {
+  var isSavingPost = select('core/editor').isSavingPost();
+  var isAutosavingPost = select('core/editor').isAutosavingPost();
+  return {
+    isSavingPost: isSavingPost,
+    isAutosavingPost: isAutosavingPost
+  };
+})(Edit));
 
 /***/ }),
 

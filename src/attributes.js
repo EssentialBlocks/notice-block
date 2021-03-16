@@ -2,10 +2,13 @@ const attributes = {
 	blockId: {
 		type: "string"
 	},
+	blockRoot: {
+		type: 'string',
+		default: 'essential_block'
+	},
 	blockMeta: {
 		type: 'string',
-        source: 'meta',
-        meta: 'eb_css'
+		default: '',
 	},
 	dismissible: {
 		type: "boolean",

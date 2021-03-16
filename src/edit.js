@@ -3,6 +3,7 @@
  */
 const { RichText } = wp.blockEditor;
 const { Component } = wp.element;
+const { withSelect } = wp.data;
 
 /**
  * Internal depenencies
@@ -17,27 +18,36 @@ class Edit extends Component {
 		const unique_id = BLOCK_PREFIX+ "-" + uuid().substr(0, 5);
 		const current_block_id = this.props.attributes.blockId;
 
-		const meta = this.props.attributes.blockMeta;
-		this.meta_styles = meta ? JSON.parse(meta) : {};
-
+		/**
+		 * If No BlockId found in props, Unique ID set 
+		*/
 		if ( !current_block_id) {
 			this.props.setAttributes({ blockId: unique_id });
 		}
 
-		const all_blocks = wp.data.select("core/editor").getBlocks();
-		// const current_block = wp.data.select("core/editor").getBlock(this.props.clientId);
-		// let this_block_count = 0;
-		// all_blocks.forEach((item) => {
-		// 	if (item.name == current_block.name && item.attributes.blockId == current_block_id ) {
-		// 		this_block_count++;
-		// 		if (this_block_count > 1) {
-		// 			this.props.setAttributes({ blockId: unique_id });
-		// 		}
-		// 	}
-		// });
-		// console.log("Current Block ID:", current_block_id);
-		// console.log("Block Meta: ", meta);
+		/**
+		 * Assign New Unique ID when duplicate BlockId found
+		 * Mostly happens when User Duplicate a Block
+		*/
+		const all_blocks = wp.data.select("core/block-editor").getBlocks();
+        let blockIdCount = 0;
+        all_blocks.forEach((item) => {
+			if (item.attributes.blockId === current_block_id && item.attributes.blockRoot === 'essential_block' && item.name === 'block/notice-block' ) {
+				blockIdCount++;
+				if (blockIdCount > 1) {
+					this.props.setAttributes({ blockId: unique_id });
+				}
+			}
+        });
+		console.log("All Blocks", all_blocks)
+		const reusableBlock = wp.data.select('core/block-editor').__experimentalGetParsedReusableBlock(191);
+		console.log("Reusable Block", reusableBlock);
+	}
 
+	componentDidUpdate() {
+		if (this.props.isSavingPost && !this.props.isAutosavingPost) {
+			console.log("Savings", this.props.isAutosavingPost, this.props.isAutosavingPost);
+		}
 	}
 
 	render() {
@@ -130,6 +140,23 @@ class Edit extends Component {
 			display: dismissible ? "flex" : "none",
 		};
 
+		//Set All Style in "blockMeta" Attribute
+		const styleObject = {
+			[blockId]: wrapperStyles,
+			[blockId + " .eb-notice-title-wrapper"]: titleWrapperStyles,
+			[blockId + " .eb-notice-title"]: titleStyles,
+			[blockId + " .eb-notice-dismiss"]: dismissStyles,
+			[blockId + " .eb-notice-text-wrapper"]: textWrapperStyles,
+			[blockId + " .eb-notice-text"]: textStyles,
+		};
+		const styleParsed = JSON.stringify(styleObject);
+		if (blockMeta !== styleParsed) {
+			setAttributes({ blockMeta: styleParsed });
+		}
+
+		console.log("Current Block ID", blockId);
+		console.log( this.props.isSavingPost )
+
 		return [
 			isSelected && <Inspector {...this.props} />,
 
@@ -152,7 +179,7 @@ class Edit extends Component {
 					<span className="eb-notice-dismiss" style={dismissStyles} />
 				</div>
 
-				<div style={textWrapperStyles}>
+				<div className="eb-notice-text-wrapper" style={textWrapperStyles}>
 					<RichText
 						className="eb-notice-text"
 						style={textStyles}
@@ -167,4 +194,11 @@ class Edit extends Component {
 	}
 }
 
-export default Edit;
+export default withSelect((select) => {
+	var isSavingPost = select('core/editor').isSavingPost();
+	var isAutosavingPost = select('core/editor').isAutosavingPost();
+	return {
+		isSavingPost,
+		isAutosavingPost
+	}
+})(Edit);
