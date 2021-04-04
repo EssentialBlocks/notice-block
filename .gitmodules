@@ -11,5 +11,5 @@
 	path = util/unit-control
 	url = git@github.com:EssentialBlocks/unit-control.git
 [submodule "util/style-handler"]
-  	path = util/style-handler
-  	url = git@github.com:EssentialBlocks/style-handler.git
+	path = util/style-handler
+	url = git@github.com:EssentialBlocks/style-handler.git
