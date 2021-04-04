@@ -1,7 +1,9 @@
 const { RichText } = wp.blockEditor;
 
 const save = ({ attributes }) => {
+
 	const {
+		blockId,
 		dismissible,
 		titleFontSize,
 		textFontSize,
@@ -94,11 +96,13 @@ const save = ({ attributes }) => {
 		alignItems: "center",
 	};
 
+
 	return (
 		<div
+			id={blockId}
 			className="eb-notice-wrapper"
 			style={wrapperStyles}
-			data-id={noticeId}
+			data-id={blockId}
 			data-show-again={showAfterDismiss}
 		>
 			<div className="eb-notice-title-wrapper" style={titleWrapperStyles}>

@@ -1,4 +1,15 @@
 const attributes = {
+	blockId: {
+		type: "string"
+	},
+	blockRoot: {
+		type: 'string',
+		default: 'essential_block'
+	},
+	blockMeta: {
+		type: 'string',
+		default: '',
+	},
 	dismissible: {
 		type: "boolean",
 		default: false,

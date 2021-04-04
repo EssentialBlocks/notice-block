@@ -26,6 +26,16 @@ class Notice_Post_Meta
                 'auth_callback' => [$this, 'auth_callback'],
             )
         );
+        register_meta(
+            'post',
+            'eb_css',
+            array(
+                'show_in_rest' => true,
+                'type' => 'string',
+                'single' => true,
+                'auth_callback' => [$this, 'auth_callback'],
+            )
+        );
     }
 
     /**

@@ -18,5 +18,5 @@ registerBlockType("block/notice-block", {
 	icon,
 	attributes,
 	edit: Edit,
-	save,
+	save
 });

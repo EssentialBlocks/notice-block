@@ -22,6 +22,7 @@
 
 require_once __DIR__ . '/includes/font-loader.php';
 require_once __DIR__ . '/includes/post-meta.php';
+require_once __DIR__ . '/util/style-saver/meta-style.php';
 
 function create_block_notice_block_init() {
 	$dir = dirname( __FILE__ );
@@ -58,12 +59,12 @@ function create_block_notice_block_init() {
 		true
 	);
 
-		if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/notice' ) ) {
-			register_block_type( 'create-block/notice-block', array(
-			'editor_script' => 'create-block-notice-block-editor',
-			'style'         => 'create-block-notice-block',
-			'frontend_js'   => 'essential-blocks-notice-frontend',
-			) );
-		}
+	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/notice' ) ) {
+		register_block_type( 'create-block/notice-block', array(
+		'editor_script' => 'create-block-notice-block-editor',
+		'style'         => 'create-block-notice-block',
+		'frontend_js'   => 'essential-blocks-notice-frontend',
+		) );
+	}
 }
 add_action( 'init', 'create_block_notice_block_init' );
