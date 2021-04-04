@@ -1586,18 +1586,6 @@ var Edit = /*#__PURE__*/function (_Component) {
           }
         }
       });
-      console.log("All Blocks", all_blocks);
-
-      var reusableBlock = wp.data.select('core/block-editor').__experimentalGetParsedReusableBlock(191);
-
-      console.log("Reusable Block", reusableBlock);
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      if (this.props.isSavingPost && !this.props.isAutosavingPost) {
-        console.log("Savings", this.props.isAutosavingPost, this.props.isAutosavingPost);
-      }
     }
   }, {
     key: "render",
@@ -1679,16 +1667,14 @@ var Edit = /*#__PURE__*/function (_Component) {
       }; //Set All Style in "blockMeta" Attribute
 
       var styleObject = (_styleObject = {}, _defineProperty(_styleObject, blockId, wrapperStyles), _defineProperty(_styleObject, blockId + " .eb-notice-title-wrapper", titleWrapperStyles), _defineProperty(_styleObject, blockId + " .eb-notice-title", titleStyles), _defineProperty(_styleObject, blockId + " .eb-notice-dismiss", dismissStyles), _defineProperty(_styleObject, blockId + " .eb-notice-text-wrapper", textWrapperStyles), _defineProperty(_styleObject, blockId + " .eb-notice-text", textStyles), _styleObject);
-      var styleParsed = JSON.stringify(styleObject);
+      var parsedStyles = JSON.stringify(styleObject);
 
-      if (blockMeta !== styleParsed) {
+      if (blockMeta !== parsedStyles) {
         setAttributes({
-          blockMeta: styleParsed
+          blockMeta: parsedStyles
         });
       }
 
-      console.log("Current Block ID", blockId);
-      console.log(this.props.isSavingPost);
       return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_0__["default"], this.props),
       /*#__PURE__*/
       //Edit view here
@@ -1735,14 +1721,7 @@ var Edit = /*#__PURE__*/function (_Component) {
   return Edit;
 }(Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (withSelect(function (select) {
-  var isSavingPost = select('core/editor').isSavingPost();
-  var isAutosavingPost = select('core/editor').isAutosavingPost();
-  return {
-    isSavingPost: isSavingPost,
-    isAutosavingPost: isAutosavingPost
-  };
-})(Edit));
+/* harmony default export */ __webpack_exports__["default"] = (Edit);
 
 /***/ }),
 

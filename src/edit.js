@@ -39,15 +39,6 @@ class Edit extends Component {
 				}
 			}
         });
-		console.log("All Blocks", all_blocks)
-		const reusableBlock = wp.data.select('core/block-editor').__experimentalGetParsedReusableBlock(191);
-		console.log("Reusable Block", reusableBlock);
-	}
-
-	componentDidUpdate() {
-		if (this.props.isSavingPost && !this.props.isAutosavingPost) {
-			console.log("Savings", this.props.isAutosavingPost, this.props.isAutosavingPost);
-		}
 	}
 
 	render() {
@@ -149,13 +140,10 @@ class Edit extends Component {
 			[blockId + " .eb-notice-text-wrapper"]: textWrapperStyles,
 			[blockId + " .eb-notice-text"]: textStyles,
 		};
-		const styleParsed = JSON.stringify(styleObject);
-		if (blockMeta !== styleParsed) {
-			setAttributes({ blockMeta: styleParsed });
+		const parsedStyles = JSON.stringify(styleObject);
+		if (blockMeta !== parsedStyles) {
+			setAttributes({ blockMeta: parsedStyles });
 		}
-
-		console.log("Current Block ID", blockId);
-		console.log( this.props.isSavingPost )
 
 		return [
 			isSelected && <Inspector {...this.props} />,
@@ -194,11 +182,4 @@ class Edit extends Component {
 	}
 }
 
-export default withSelect((select) => {
-	var isSavingPost = select('core/editor').isSavingPost();
-	var isAutosavingPost = select('core/editor').isAutosavingPost();
-	return {
-		isSavingPost,
-		isAutosavingPost
-	}
-})(Edit);
+export default Edit;
