@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Notice
  * Plugin URI: 		https://essential-blocks.com
- * Description:     Put Spotlight On News, Announcements & Let The Visitors Find It Easily 
+ * Description:     Put Spotlight On News, Announcements & Let The Visitors Find It Easily
  * Version:         1.0.1
  * Author:          WPDeveloper
  * Author URI: 		https://wpdeveloper.net
@@ -22,7 +22,7 @@
 
 require_once __DIR__ . '/includes/font-loader.php';
 require_once __DIR__ . '/includes/post-meta.php';
-require_once __DIR__ . '/util/style-saver/meta-style.php';
+require_once __DIR__ . '/util/style-handler/style-handler.php';
 
 function create_block_notice_block_init() {
 	$dir = dirname( __FILE__ );

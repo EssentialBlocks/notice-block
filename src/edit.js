@@ -19,7 +19,7 @@ class Edit extends Component {
 		const current_block_id = this.props.attributes.blockId;
 
 		/**
-		 * If No BlockId found in props, Unique ID set 
+		 * If No BlockId found in props, Unique ID set
 		*/
 		if ( !current_block_id) {
 			this.props.setAttributes({ blockId: unique_id });
@@ -140,7 +140,7 @@ class Edit extends Component {
 			[blockId + " .eb-notice-text-wrapper"]: textWrapperStyles,
 			[blockId + " .eb-notice-text"]: textStyles,
 		};
-		const parsedStyles = JSON.stringify(styleObject);
+		const parsedStyles = styleObject;//JSON.stringify(styleObject);
 		if (blockMeta !== parsedStyles) {
 			setAttributes({ blockMeta: parsedStyles });
 		}
