@@ -3,7 +3,7 @@
  * Plugin Name:     Notice
  * Plugin URI: 		https://essential-blocks.com
  * Description:     Put Spotlight On News, Announcements & Let The Visitors Find It Easily
- * Version:         1.0.1
+ * Version:         1.0.2
  * Author:          WPDeveloper
  * Author URI: 		https://wpdeveloper.net
  * License:         GPL-2.0-or-later
@@ -23,6 +23,8 @@
 require_once __DIR__ . '/includes/font-loader.php';
 require_once __DIR__ . '/includes/post-meta.php';
 require_once __DIR__ . '/util/style-handler/style-handler.php';
+
+define('EB_NOTICE_BLOCK_VERSION','1.0.2');
 
 function create_block_notice_block_init() {
 	$dir = dirname( __FILE__ );
