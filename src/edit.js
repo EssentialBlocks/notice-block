@@ -132,17 +132,17 @@ class Edit extends Component {
 		};
 
 		//Set All Style in "blockMeta" Attribute
+		const rootClass = "."+ blockId;
 		const styleObject = {
-			[blockId]: wrapperStyles,
-			[blockId + " .eb-notice-title-wrapper"]: titleWrapperStyles,
-			[blockId + " .eb-notice-title"]: titleStyles,
-			[blockId + " .eb-notice-dismiss"]: dismissStyles,
-			[blockId + " .eb-notice-text-wrapper"]: textWrapperStyles,
-			[blockId + " .eb-notice-text"]: textStyles,
+			[rootClass]: wrapperStyles,
+			[rootClass + " .eb-notice-title-wrapper"]: titleWrapperStyles,
+			[rootClass + " .eb-notice-title"]: titleStyles,
+			[rootClass + " .eb-notice-dismiss"]: dismissStyles,
+			[rootClass + " .eb-notice-text-wrapper"]: textWrapperStyles,
+			[rootClass + " .eb-notice-text"]: textStyles,
 		};
-		const parsedStyles = styleObject;//JSON.stringify(styleObject);
-		if (blockMeta !== parsedStyles) {
-			setAttributes({ blockMeta: parsedStyles });
+		if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
+			setAttributes({ blockMeta: styleObject });
 		}
 
 		return [
@@ -150,8 +150,7 @@ class Edit extends Component {
 
 			//Edit view here
 			<div
-				id={blockId}
-				className="eb-notice-wrapper"
+				className= {blockId + " eb-notice-wrapper"}
 				style={wrapperStyles}
 				data-id={blockId}
 			>

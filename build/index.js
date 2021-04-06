@@ -1559,7 +1559,7 @@ var Edit = /*#__PURE__*/function (_Component) {
       var unique_id = BLOCK_PREFIX + "-" + Object(_util_uuid__WEBPACK_IMPORTED_MODULE_1__["default"])().substr(0, 5);
       var current_block_id = this.props.attributes.blockId;
       /**
-       * If No BlockId found in props, Unique ID set 
+       * If No BlockId found in props, Unique ID set
       */
 
       if (!current_block_id) {
@@ -1666,12 +1666,12 @@ var Edit = /*#__PURE__*/function (_Component) {
         display: dismissible ? "flex" : "none"
       }; //Set All Style in "blockMeta" Attribute
 
-      var styleObject = (_styleObject = {}, _defineProperty(_styleObject, blockId, wrapperStyles), _defineProperty(_styleObject, blockId + " .eb-notice-title-wrapper", titleWrapperStyles), _defineProperty(_styleObject, blockId + " .eb-notice-title", titleStyles), _defineProperty(_styleObject, blockId + " .eb-notice-dismiss", dismissStyles), _defineProperty(_styleObject, blockId + " .eb-notice-text-wrapper", textWrapperStyles), _defineProperty(_styleObject, blockId + " .eb-notice-text", textStyles), _styleObject);
-      var parsedStyles = JSON.stringify(styleObject);
+      var rootClass = "." + blockId;
+      var styleObject = (_styleObject = {}, _defineProperty(_styleObject, rootClass, wrapperStyles), _defineProperty(_styleObject, rootClass + " .eb-notice-title-wrapper", titleWrapperStyles), _defineProperty(_styleObject, rootClass + " .eb-notice-title", titleStyles), _defineProperty(_styleObject, rootClass + " .eb-notice-dismiss", dismissStyles), _defineProperty(_styleObject, rootClass + " .eb-notice-text-wrapper", textWrapperStyles), _defineProperty(_styleObject, rootClass + " .eb-notice-text", textStyles), _styleObject);
 
-      if (blockMeta !== parsedStyles) {
+      if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
         setAttributes({
-          blockMeta: parsedStyles
+          blockMeta: styleObject
         });
       }
 
@@ -1679,8 +1679,7 @@ var Edit = /*#__PURE__*/function (_Component) {
       /*#__PURE__*/
       //Edit view here
       React.createElement("div", {
-        id: blockId,
-        className: "eb-notice-wrapper",
+        className: blockId + " eb-notice-wrapper",
         style: wrapperStyles,
         "data-id": blockId
       }, /*#__PURE__*/React.createElement("div", {
@@ -2424,71 +2423,23 @@ var save = function save(_ref) {
       textLineHeightUnit = attributes.textLineHeightUnit,
       textLetterSpacing = attributes.textLetterSpacing,
       textLetterSpacingUnit = attributes.textLetterSpacingUnit;
-  var wrapperStyles = {
-    background: backgroundColor ? backgroundColor : "#3074ff",
-    padding: "65px 60px",
-    boxShadow: "".concat(shadowHOffset || 0, "px ").concat(shadowVOffset || 0, "px ").concat(shadowBlur || 0, "px ").concat(shadowSpread || 0, "px ").concat(shadowColor || "#000000"),
-    borderRadius: "5px"
-  };
-  var titleWrapperStyles = {
-    display: "flex",
-    justifyContent: "space-between",
-    lineHeight: titleLineHeight ? "".concat(titleLineHeight).concat(titleLineHeightUnit) : undefined
-  };
-  var titleStyles = {
-    fontSize: "".concat(titleFontSize || 32).concat(titleSizeUnit),
-    fontFamily: titleFontFamily,
-    fontWeight: titleFontWeight,
-    textDecoration: titleTextDecoration,
-    textTransform: titleTextTransform,
-    letterSpacing: titleLetterSpacing ? "".concat(titleLetterSpacing).concat(titleLetterSpacingUnit) : undefined,
-    color: titleColor || "#fff"
-  };
-  var textWrapperStyles = {
-    lineHeight: textLineHeight ? "".concat(textLineHeight).concat(textLineHeightUnit) : undefined
-  };
-  var textStyles = {
-    fontSize: "".concat(textFontSize || 18).concat(textSizeUnit),
-    fontFamily: textFontFamily,
-    fontWeight: textFontWeight,
-    textDecoration: textTextDecoration,
-    textTransform: textTextTransform,
-    letterSpacing: textLetterSpacing ? "".concat(textLetterSpacing).concat(textLetterSpacingUnit) : undefined,
-    color: textColor || "#edf1f7"
-  };
-  var dismissStyles = {
-    color: textColor || "#fff",
-    display: dismissible ? "flex" : "none",
-    justifyContent: "center",
-    width: 24,
-    height: 24,
-    cursor: "pointer",
-    alignItems: "center"
-  };
   return /*#__PURE__*/React.createElement("div", {
-    id: blockId,
-    className: "eb-notice-wrapper",
-    style: wrapperStyles,
+    className: blockId + " eb-notice-wrapper",
     "data-id": blockId,
     "data-show-again": showAfterDismiss
   }, /*#__PURE__*/React.createElement("div", {
-    className: "eb-notice-title-wrapper",
-    style: titleWrapperStyles
+    className: "eb-notice-title-wrapper"
   }, /*#__PURE__*/React.createElement(RichText.Content, {
     tagName: "div",
     className: "eb-notice-title",
-    value: title,
-    style: titleStyles
+    value: title // style={titleStyles}
+
   }), /*#__PURE__*/React.createElement("span", {
-    className: "eb-notice-dismiss",
-    style: dismissStyles
-  })), /*#__PURE__*/React.createElement("div", {
-    style: textWrapperStyles
-  }, /*#__PURE__*/React.createElement(RichText.Content, {
+    className: "eb-notice-dismiss"
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(RichText.Content, {
     tagName: "div",
     className: "eb-notice-text",
-    value: text,
-    style: textStyles
+    value: text
   })));
 };
 
