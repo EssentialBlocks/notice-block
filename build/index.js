@@ -1280,7 +1280,28 @@ if (false) {} else {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var attributes = {
+/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+/* harmony import */ var _myUtil_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./myUtil/helpers */ "./src/myUtil/helpers.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var attributes = _objectSpread(_objectSpread({
+  // responsive control attributes ⬇
+  resOption: {
+    type: "string",
+    "default": "desktop"
+  },
+  // uniqueIdNumber attribute for making unique className
+  uniqueIdNumber: {
+    type: "number"
+  }
+}, Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_1__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), {}, {
   dismissible: {
     type: "boolean",
     "default": false
@@ -1337,70 +1358,9 @@ var attributes = {
   },
   shadowBlur: {
     type: "number"
-  },
-  titleSizeUnit: {
-    type: "string",
-    "default": "px"
-  },
-  textSizeUnit: {
-    type: "string",
-    "default": "px"
-  },
-  titleFontFamily: {
-    type: "string"
-  },
-  titleFontWeight: {
-    type: "string",
-    "default": "normal"
-  },
-  titleTextTransform: {
-    type: "string"
-  },
-  titleTextDecoration: {
-    type: "string"
-  },
-  titleLetterSpacing: {
-    type: "number"
-  },
-  titleLetterSpacingUnit: {
-    type: "string",
-    "default": "px"
-  },
-  titleLineHeight: {
-    type: "number"
-  },
-  titleLineHeightUnit: {
-    type: "string",
-    "default": "px"
-  },
-  textFontFamily: {
-    type: "string"
-  },
-  textFontWeight: {
-    type: "string",
-    "default": "normal"
-  },
-  textTextTransform: {
-    type: "string"
-  },
-  textTextDecoration: {
-    type: "string"
-  },
-  textLetterSpacing: {
-    type: "number"
-  },
-  textLetterSpacingUnit: {
-    type: "string",
-    "default": "px"
-  },
-  textLineHeight: {
-    type: "number"
-  },
-  textLineHeightUnit: {
-    type: "string",
-    "default": "px"
   }
-};
+});
+
 /* harmony default export */ __webpack_exports__["default"] = (attributes);
 
 /***/ }),
@@ -1480,6 +1440,22 @@ var TEXT_DECORATION = [{
 
 /***/ }),
 
+/***/ "./src/constants/typographyPrefixConstants.js":
+/*!****************************************************!*\
+  !*** ./src/constants/typographyPrefixConstants.js ***!
+  \****************************************************/
+/*! exports provided: title, text */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "title", function() { return title; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "text", function() { return text; });
+var title = "title";
+var text = "text";
+
+/***/ }),
+
 /***/ "./src/edit.js":
 /*!*********************!*\
   !*** ./src/edit.js ***!
@@ -1494,15 +1470,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _inspector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inspector */ "./src/inspector.js");
-/* harmony import */ var _util_uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/uuid */ "./util/uuid.js");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _inspector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inspector */ "./src/inspector.js");
+/* harmony import */ var _util_uuid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/uuid */ "./util/uuid.js");
+/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+/* harmony import */ var _myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./myUtil/helpers */ "./src/myUtil/helpers.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 /**
  * WordPress dependencies
  */
+
 
 
 /**
@@ -1512,13 +1491,15 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
+
 function Edit(props) {
+  var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"])({
+    className: "eb-guten-block-main-parrent-wrapper eb-notice-wrapper"
+  });
   var attributes = props.attributes,
       setAttributes = props.setAttributes,
       isSelected = props.isSelected;
   var dismissible = attributes.dismissible,
-      titleFontSize = attributes.titleFontSize,
-      textFontSize = attributes.textFontSize,
       title = attributes.title,
       text = attributes.text,
       backgroundColor = attributes.backgroundColor,
@@ -1529,34 +1510,110 @@ function Edit(props) {
       shadowHOffset = attributes.shadowHOffset,
       shadowVOffset = attributes.shadowVOffset,
       shadowBlur = attributes.shadowBlur,
-      shadowSpread = attributes.shadowSpread,
-      titleSizeUnit = attributes.titleSizeUnit,
-      textSizeUnit = attributes.textSizeUnit,
-      titleFontFamily = attributes.titleFontFamily,
-      titleFontWeight = attributes.titleFontWeight,
-      titleTextTransform = attributes.titleTextTransform,
-      titleTextDecoration = attributes.titleTextDecoration,
-      titleLineHeight = attributes.titleLineHeight,
-      titleLineHeightUnit = attributes.titleLineHeightUnit,
-      titleLetterSpacing = attributes.titleLetterSpacing,
-      titleLetterSpacingUnit = attributes.titleLetterSpacingUnit,
-      textFontFamily = attributes.textFontFamily,
-      textFontWeight = attributes.textFontWeight,
-      textTextTransform = attributes.textTextTransform,
-      textTextDecoration = attributes.textTextDecoration,
-      textLineHeight = attributes.textLineHeight,
-      textLineHeightUnit = attributes.textLineHeightUnit,
-      textLetterSpacing = attributes.textLetterSpacing,
-      textLetterSpacingUnit = attributes.textLetterSpacingUnit;
-  var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"])({
-    className: "eb-guten-block-main-parrent-wrapper eb-notice-wrapper"
-  });
+      shadowSpread = attributes.shadowSpread;
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    var noticeId = Object(_util_uuid__WEBPACK_IMPORTED_MODULE_3__["default"])().substr(0, 5);
+    var noticeId = Object(_util_uuid__WEBPACK_IMPORTED_MODULE_4__["default"])().substr(0, 5);
     setAttributes({
       noticeId: noticeId
     });
-  }, []);
+  }, []); // this useEffect is for creating a unique id for each block's unique className by a random unique number
+
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var genRandomNumber = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["generateRandomNumber"])();
+    var anotherSameClassElements = document.querySelectorAll(".eb-counter-wrapper-".concat(uniqueIdNumber));
+
+    if (!uniqueIdNumber || anotherSameClassElements[1]) {
+      setAttributes({
+        uniqueIdNumber: genRandomNumber
+      });
+    }
+  }, []); // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
+
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var bodyClasses = document.body.className;
+
+    if (!/eb\-res\-option\-/i.test(bodyClasses)) {
+      document.body.classList.add("eb-res-option-desktop");
+      setAttributes({
+        resOption: "desktop"
+      });
+    } else {
+      var _resOption = bodyClasses.match(/eb-res-option-[^\s]+/g)[0].split("-")[3];
+      setAttributes({
+        resOption: _resOption
+      });
+    }
+  }, []); //
+  // CSS/styling Codes Starts from Here
+  //
+  // function to generate typography styles for an element based on it's prefix
+
+  var generateTypographyStylesForEdit = function generateTypographyStylesForEdit(prefixConstant) {
+    var defaultFontSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var fontFamily = attributes["".concat(prefixConstant, "FontFamily")],
+        fontWeight = attributes["".concat(prefixConstant, "FontWeight")],
+        textTransform = attributes["".concat(prefixConstant, "TextTransform")],
+        textDecoration = attributes["".concat(prefixConstant, "TextDecoration")],
+        _attributes$ = attributes["".concat(prefixConstant, "FontSize")],
+        fontSize = _attributes$ === void 0 ? fontSize || defaultFontSize : _attributes$,
+        sizeUnit = attributes["".concat(prefixConstant, "SizeUnit")],
+        letterSpacing = attributes["".concat(prefixConstant, "LetterSpacing")],
+        letterSpacingUnit = attributes["".concat(prefixConstant, "LetterSpacingUnit")],
+        lineHeight = attributes["".concat(prefixConstant, "LineHeight")],
+        lineHeightUnit = attributes["".concat(prefixConstant, "LineHeightUnit")],
+        TABfontFamily = attributes["TAB".concat(prefixConstant, "FontFamily")],
+        TABfontWeight = attributes["TAB".concat(prefixConstant, "FontWeight")],
+        TABtextTransform = attributes["TAB".concat(prefixConstant, "TextTransform")],
+        TABtextDecoration = attributes["TAB".concat(prefixConstant, "TextDecoration")],
+        TABfontSize = attributes["TAB".concat(prefixConstant, "FontSize")],
+        _attributes$2 = attributes["TAB".concat(prefixConstant, "SizeUnit")],
+        TABsizeUnit = _attributes$2 === void 0 ? TABsizeUnit || sizeUnit : _attributes$2,
+        _attributes$3 = attributes["TAB".concat(prefixConstant, "LetterSpacingUnit")],
+        TABletterSpacingUnit = _attributes$3 === void 0 ? TABletterSpacingUnit || letterSpacingUnit : _attributes$3,
+        TABletterSpacing = attributes["TAB".concat(prefixConstant, "LetterSpacing")],
+        TABlineHeight = attributes["TAB".concat(prefixConstant, "LineHeight")],
+        _attributes$4 = attributes["TAB".concat(prefixConstant, "LineHeightUnit")],
+        TABlineHeightUnit = _attributes$4 === void 0 ? TABlineHeightUnit || lineHeightUnit : _attributes$4,
+        _attributes$5 = attributes["MOB".concat(prefixConstant, "FontFamily")],
+        MOBfontFamily = _attributes$5 === void 0 ? MOBfontFamily || TABfontFamily : _attributes$5,
+        _attributes$6 = attributes["MOB".concat(prefixConstant, "FontWeight")],
+        MOBfontWeight = _attributes$6 === void 0 ? MOBfontWeight || TABfontWeight : _attributes$6,
+        _attributes$7 = attributes["MOB".concat(prefixConstant, "TextTransform")],
+        MOBtextTransform = _attributes$7 === void 0 ? MOBtextTransform || TABtextTransform : _attributes$7,
+        _attributes$8 = attributes["MOB".concat(prefixConstant, "TextDecoration")],
+        MOBtextDecoration = _attributes$8 === void 0 ? MOBtextDecoration || TABtextDecoration : _attributes$8,
+        _attributes$9 = attributes["MOB".concat(prefixConstant, "FontSize")],
+        MOBfontSize = _attributes$9 === void 0 ? MOBfontSize || TABfontSize : _attributes$9,
+        _attributes$10 = attributes["MOB".concat(prefixConstant, "SizeUnit")],
+        MOBsizeUnit = _attributes$10 === void 0 ? MOBsizeUnit || TABsizeUnit : _attributes$10,
+        _attributes$11 = attributes["MOB".concat(prefixConstant, "LetterSpacing")],
+        MOBletterSpacing = _attributes$11 === void 0 ? MOBletterSpacing || TABletterSpacing : _attributes$11,
+        _attributes$12 = attributes["MOB".concat(prefixConstant, "LetterSpacingUnit")],
+        MOBletterSpacingUnit = _attributes$12 === void 0 ? MOBletterSpacingUnit || TABletterSpacingUnit : _attributes$12,
+        _attributes$13 = attributes["MOB".concat(prefixConstant, "LineHeight")],
+        MOBlineHeight = _attributes$13 === void 0 ? MOBlineHeight || TABlineHeight : _attributes$13,
+        _attributes$14 = attributes["MOB".concat(prefixConstant, "LineHeightUnit")],
+        MOBlineHeightUnit = _attributes$14 === void 0 ? MOBlineHeightUnit || TABlineHeightUnit : _attributes$14;
+    var typoStylesDesktop = "\n\t\t\t".concat(fontFamily ? "font-family: ".concat(fontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(fontSize) ? "font-size: ".concat(fontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(lineHeight) ? "line-height: ".concat(lineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(fontWeight ? "font-weight: ".concat(fontWeight, ";") : " ", "\n\t\t\t").concat(textDecoration ? "text-decoration: ".concat(textDecoration, ";") : " ", "\n\t\t\t").concat(textTransform ? "text-transform: ".concat(textTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(letterSpacing) ? "letter-spacing: ".concat(letterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
+    var typoStylesTab = "\n\t\t\t".concat(TABfontFamily ? "font-family: ".concat(TABfontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(TABfontSize) ? "font-size: ".concat(TABfontSize).concat(TABsizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(TABlineHeight) ? "line-height: ".concat(TABlineHeight).concat(TABlineHeightUnit, ";") : " ", "\n\t\t\t").concat(TABfontWeight ? "font-weight: ".concat(TABfontWeight, ";") : " ", "\n\t\t\t").concat(TABtextDecoration ? "text-decoration: ".concat(TABtextDecoration, ";") : " ", "\n\t\t\t").concat(TABtextTransform ? "text-transform: ".concat(TABtextTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(TABletterSpacing) ? "letter-spacing: ".concat(TABletterSpacing).concat(TABletterSpacingUnit, ";") : " ", "\n\t\t");
+    var typoStylesMobile = "\n\t\t\t".concat(MOBfontFamily ? "font-family: ".concat(MOBfontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(MOBfontSize) ? "font-size: ".concat(MOBfontSize).concat(MOBsizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(MOBlineHeight) ? "line-height: ".concat(MOBlineHeight).concat(MOBlineHeightUnit, ";") : " ", "\n\t\t\t").concat(MOBfontWeight ? "font-weight: ".concat(MOBfontWeight, ";") : " ", "\n\t\t\t").concat(MOBtextDecoration ? "text-decoration: ".concat(MOBtextDecoration, ";") : " ", "\n\t\t\t").concat(MOBtextTransform ? "text-transform: ".concat(MOBtextTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(MOBletterSpacing) ? "letter-spacing: ".concat(MOBletterSpacing).concat(MOBletterSpacingUnit, ";") : " ", "\n\t\t");
+    return {
+      typoStylesDesktop: typoStylesDesktop,
+      typoStylesTab: typoStylesTab,
+      typoStylesMobile: typoStylesMobile
+    };
+  };
+
+  var _generateTypographySt = generateTypographyStylesForEdit(title, 32),
+      titleTypoStylesDesktop = _generateTypographySt.typoStylesDesktop,
+      titleTypoStylesTab = _generateTypographySt.typoStylesTab,
+      titleTypoStylesMobile = _generateTypographySt.typoStylesMobile;
+
+  var _generateTypographySt2 = generateTypographyStylesForEdit(text, 18),
+      textTypoStylesDesktop = _generateTypographySt2.typoStylesDesktop,
+      textTypoStylesTab = _generateTypographySt2.typoStylesTab,
+      textTypoStylesMobile = _generateTypographySt2.typoStylesMobile;
+
   var wrapperStyles = {
     background: backgroundColor ? backgroundColor : "#3074ff",
     padding: "65px 60px",
@@ -1592,14 +1649,29 @@ function Edit(props) {
   var dismissStyles = {
     color: textColor || "#fff",
     display: dismissible ? "flex" : "none"
-  };
-  return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_2__["default"], props),
+  }; //
+  // Desktop styles in strings ⬇
+
+  var titleStylesDesktop = "\n\t\n\t";
+  var textStylesDesktop = "\n\t\n\t"; //
+  // Tab styles in strings ⬇
+
+  var titleStylesTab = "\n\t\n\t";
+  var textStylesTab = "\n\t\n\t"; //
+  // Mobile styles in strings ⬇
+
+  var titleStylesMobile = "\n\t\n\t";
+  var textStylesMobile = "\n\t\n\t";
+  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t");
+  var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t");
+  var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t");
+  return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_3__["default"], props),
   /*#__PURE__*/
   //Edit view here
   React.createElement("div", _extends({}, blockProps, {
     style: wrapperStyles,
     "data-id": noticeId
-  }), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(desktopAllStyles), "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_start\n\t\t\t\t*/\n\n\t\t\t\t").concat(resOption === "tab" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(tabAllStyles) : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(mobileAllStyles) : " ", "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_end\n\t\t\t\t*/\n\n\t\t\t\t@media all and (max-width: 1030px) {\t\t\t\t\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t}\n\n\t\t\t\t@media all and (max-width: 680px) {\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
     className: "eb-notice-title-wrapper",
     style: titleWrapperStyles
   }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"], {
@@ -1767,8 +1839,6 @@ function Inspector(props) {
       setAttributes = props.setAttributes;
   var dismissible = attributes.dismissible,
       noticeType = attributes.noticeType,
-      titleFontSize = attributes.titleFontSize,
-      textFontSize = attributes.textFontSize,
       backgroundColor = attributes.backgroundColor,
       titleColor = attributes.titleColor,
       textColor = attributes.textColor,
@@ -1777,25 +1847,7 @@ function Inspector(props) {
       shadowHOffset = attributes.shadowHOffset,
       shadowVOffset = attributes.shadowVOffset,
       shadowBlur = attributes.shadowBlur,
-      shadowSpread = attributes.shadowSpread,
-      titleSizeUnit = attributes.titleSizeUnit,
-      textSizeUnit = attributes.textSizeUnit,
-      titleFontFamily = attributes.titleFontFamily,
-      titleFontWeight = attributes.titleFontWeight,
-      titleTextTransform = attributes.titleTextTransform,
-      titleTextDecoration = attributes.titleTextDecoration,
-      titleLineHeight = attributes.titleLineHeight,
-      titleLineHeightUnit = attributes.titleLineHeightUnit,
-      titleLetterSpacing = attributes.titleLetterSpacing,
-      titleLetterSpacingUnit = attributes.titleLetterSpacingUnit,
-      textFontFamily = attributes.textFontFamily,
-      textFontWeight = attributes.textFontWeight,
-      textTextTransform = attributes.textTextTransform,
-      textTextDecoration = attributes.textTextDecoration,
-      textLineHeight = attributes.textLineHeight,
-      textLineHeightUnit = attributes.textLineHeightUnit,
-      textLetterSpacing = attributes.textLetterSpacing,
-      textLetterSpacingUnit = attributes.textLetterSpacingUnit;
+      shadowSpread = attributes.shadowSpread;
 
   var onTypeChange = function onTypeChange(type) {
     switch (type) {
@@ -2249,6 +2301,68 @@ function Inspector(props) {
 
 /***/ }),
 
+/***/ "./src/myUtil/helpers.js":
+/*!*******************************!*\
+  !*** ./src/myUtil/helpers.js ***!
+  \*******************************/
+/*! exports provided: generateTypographyAttributes, textInsideForEdit, generateRandomNumber, hardMinifyCssStrings, softMinifyCssStrings, isCssExists, hasVal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateTypographyAttributes", function() { return generateTypographyAttributes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "textInsideForEdit", function() { return textInsideForEdit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateRandomNumber", function() { return generateRandomNumber; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hardMinifyCssStrings", function() { return hardMinifyCssStrings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "softMinifyCssStrings", function() { return softMinifyCssStrings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCssExists", function() { return isCssExists; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasVal", function() { return hasVal; });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// function to generate typography attributes for multiple typography control based on the array of prefix
+var generateTypographyAttributes = function generateTypographyAttributes(prefixArray) {
+  var templateForTypographyAttributes = "{\n\t\t\"_prefix_FontFamily\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"_prefix_SizeUnit\":{\n\t\t\t\"type\":\"string\",\n\t\t\t\"default\":\"px\"\n\t\t},\n\t\t\"_prefix_FontSize\":{\n\t\t\t\"type\":\"number\"\n\t\t},\n\t\t\"_prefix_FontWeight\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"_prefix_TextTransform\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"_prefix_TextDecoration\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"_prefix_LetterSpacingUnit\":{\n\t\t\t\"type\":\"string\",\n\t\t\t\"default\":\"px\"\n\t\t},\n\t\t\"_prefix_LetterSpacing\":{\n\t\t\t\"type\":\"number\"\n\t\t},\n\t\t\"_prefix_LineHeightUnit\":{\n\t\t\t\"type\":\"string\",\n\t\t\t\"default\":\"em\"\n\t\t},\n\t\t\"_prefix_LineHeight\":{\n\t\t\t\"type\":\"number\"\n\t\t},\n\t\t\"TAB_prefix_FontFamily\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"TAB_prefix_SizeUnit\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"TAB_prefix_FontSize\":{\n\t\t\t\"type\":\"number\"\n\t\t},\n\t\t\"TAB_prefix_FontWeight\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"TAB_prefix_TextTransform\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"TAB_prefix_TextDecoration\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"TAB_prefix_LetterSpacingUnit\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"TAB_prefix_LetterSpacing\":{\n\t\t\t\"type\":\"number\"\n\t\t},\n\t\t\"TAB_prefix_LineHeightUnit\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"TAB_prefix_LineHeight\":{\n\t\t\t\"type\":\"number\"\n\t\t},\n\t\t\"MOB_prefix_FontFamily\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"MOB_prefix_SizeUnit\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"MOB_prefix_FontSize\":{\n\t\t\t\"type\":\"number\"\n\t\t},\n\t\t\"MOB_prefix_FontWeight\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"MOB_prefix_TextTransform\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"MOB_prefix_TextDecoration\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"MOB_prefix_LetterSpacingUnit\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"MOB_prefix_LetterSpacing\":{\n\t\t\t\"type\":\"number\"\n\t\t},\n\t\t\"MOB_prefix_LineHeightUnit\":{\n\t\t\t\"type\":\"string\"\n\t\t},\n\t\t\"MOB_prefix_LineHeight\":{\n\t\t\t\"type\":\"number\"\n\t\t}\n\t\t\n\t}";
+  return prefixArray.reduce(function (total, current) {
+    var result = templateForTypographyAttributes.replace(/_prefix_/g, current);
+    return _objectSpread(_objectSpread({}, total), JSON.parse(result));
+  }, {});
+}; // helper Functions: function 'textInsideForEdit' is for setting the innertext depending on whether separator should be shown and which separator should be shown
+
+var textInsideForEdit = function textInsideForEdit(value, isShowSeparator, separator) {
+  return isShowSeparator ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator) : value.toString();
+}; // generateRandomNumber function is for generating a random number
+
+var generateRandomNumber = function generateRandomNumber() {
+  return Math.floor(Math.random() * 1000000000);
+}; // hardMinifyCssStrings is for minifying the css which is in the style tag as a string  for view.js
+
+var hardMinifyCssStrings = function hardMinifyCssStrings(cssString) {
+  // console.log({ cssString });
+  return cssString.replace(/\s+/g, " ").replace(/(?<=\:).+(?=\;)/g, function (match) {
+    // console.log({ match, g1, offset, string });
+    return match.trim().replace(/\s+/g, "__s_p_a_c_e__");
+  }) // .replace(/\s+(?!(?:[\w\d\.\-\#]+\{))/g, "")
+  .replace(/\s+(?![\w\d\.\-\#]+\{)/g, "").replace(/\s+/g, " ").replace(/__s_p_a_c_e__/g, " ");
+}; // softMinifyCssStrings is for minifying the css which is in the style tag as a string  for view.js
+
+var softMinifyCssStrings = function softMinifyCssStrings(cssString) {
+  return cssString.replace(/\s+/g, " ");
+}; // check if css string is empty or not.
+
+var isCssExists = function isCssExists(cssString) {
+  return /.+(?=\:(?!hover)(?!focus))/.test(cssString);
+}; // check if range controller input numbers  has value
+
+var hasVal = function hasVal(val) {
+  return val || val === 0;
+};
+
+/***/ }),
+
 /***/ "./src/save.js":
 /*!*********************!*\
   !*** ./src/save.js ***!
@@ -2265,8 +2379,6 @@ __webpack_require__.r(__webpack_exports__);
 var save = function save(_ref) {
   var attributes = _ref.attributes;
   var dismissible = attributes.dismissible,
-      titleFontSize = attributes.titleFontSize,
-      textFontSize = attributes.textFontSize,
       title = attributes.title,
       text = attributes.text,
       backgroundColor = attributes.backgroundColor,
@@ -2278,25 +2390,7 @@ var save = function save(_ref) {
       shadowHOffset = attributes.shadowHOffset,
       shadowVOffset = attributes.shadowVOffset,
       shadowBlur = attributes.shadowBlur,
-      shadowSpread = attributes.shadowSpread,
-      titleSizeUnit = attributes.titleSizeUnit,
-      textSizeUnit = attributes.textSizeUnit,
-      titleFontFamily = attributes.titleFontFamily,
-      titleFontWeight = attributes.titleFontWeight,
-      titleTextTransform = attributes.titleTextTransform,
-      titleTextDecoration = attributes.titleTextDecoration,
-      titleLineHeight = attributes.titleLineHeight,
-      titleLineHeightUnit = attributes.titleLineHeightUnit,
-      titleLetterSpacing = attributes.titleLetterSpacing,
-      titleLetterSpacingUnit = attributes.titleLetterSpacingUnit,
-      textFontFamily = attributes.textFontFamily,
-      textFontWeight = attributes.textFontWeight,
-      textTextTransform = attributes.textTextTransform,
-      textTextDecoration = attributes.textTextDecoration,
-      textLineHeight = attributes.textLineHeight,
-      textLineHeightUnit = attributes.textLineHeightUnit,
-      textLetterSpacing = attributes.textLetterSpacing,
-      textLetterSpacingUnit = attributes.textLetterSpacingUnit;
+      shadowSpread = attributes.shadowSpread;
   var wrapperStyles = {
     background: backgroundColor ? backgroundColor : "#3074ff",
     padding: "65px 60px",

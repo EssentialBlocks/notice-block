@@ -1,4 +1,21 @@
+import * as prefixObjs from "./constants/typographyPrefixConstants";
+import { generateTypographyAttributes } from "./myUtil/helpers";
+
 const attributes = {
+	// responsive control attributes ⬇
+	resOption: {
+		type: "string",
+		default: "desktop",
+	},
+
+	// uniqueIdNumber attribute for making unique className
+	uniqueIdNumber: {
+		type: "number",
+	},
+
+	// typography attributes ⬇
+	...generateTypographyAttributes(Object.values(prefixObjs)),
+
 	dismissible: {
 		type: "boolean",
 		default: false,
@@ -55,68 +72,6 @@ const attributes = {
 	},
 	shadowBlur: {
 		type: "number",
-	},
-	titleSizeUnit: {
-		type: "string",
-		default: "px",
-	},
-	textSizeUnit: {
-		type: "string",
-		default: "px",
-	},
-	titleFontFamily: {
-		type: "string",
-	},
-	titleFontWeight: {
-		type: "string",
-		default: "normal",
-	},
-	titleTextTransform: {
-		type: "string",
-	},
-	titleTextDecoration: {
-		type: "string",
-	},
-	titleLetterSpacing: {
-		type: "number",
-	},
-	titleLetterSpacingUnit: {
-		type: "string",
-		default: "px",
-	},
-	titleLineHeight: {
-		type: "number",
-	},
-	titleLineHeightUnit: {
-		type: "string",
-		default: "px",
-	},
-	textFontFamily: {
-		type: "string",
-	},
-	textFontWeight: {
-		type: "string",
-		default: "normal",
-	},
-	textTextTransform: {
-		type: "string",
-	},
-	textTextDecoration: {
-		type: "string",
-	},
-	textLetterSpacing: {
-		type: "number",
-	},
-	textLetterSpacingUnit: {
-		type: "string",
-		default: "px",
-	},
-	textLineHeight: {
-		type: "number",
-	},
-	textLineHeightUnit: {
-		type: "string",
-		default: "px",
 	},
 };
 
