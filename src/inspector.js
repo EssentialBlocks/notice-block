@@ -12,23 +12,29 @@ import {
 	Button,
 	Dropdown,
 } from "@wordpress/components";
+import { useEffect } from "@wordpress/element";
 
 /**
  * Internal dependencies
  */
-import {
-	NOTICE_TYPES,
-	FONT_WEIGHTS,
-	TEXT_TRANSFORM,
-	TEXT_DECORATION,
-} from "./constants";
-import UnitControl from "../util/unit-control";
-import FontPicker from "../util/typography-control/FontPicker";
+import { NOTICE_TYPES } from "./constants";
+
 import ColorControl from "../util/color-control";
+import TypographyControl from "./myUtil/typography-component";
+
+import {
+	typoPrefix_text,
+	typoPrefix_title,
+} from "./constants/typographyPrefixConstants";
+
+import ResPanelBody from "./myUtil/ResPanelBody";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
 	const {
+		// responsive control attributes ⬇
+		resOption,
+
 		dismissible,
 		noticeType,
 		// titleFontSize,
@@ -111,23 +117,141 @@ function Inspector(props) {
 		}
 	};
 
-	const TITLE_SIZE_STEP = titleSizeUnit === "em" ? 0.1 : 1;
-	const TITLE_SIZE_MAX = titleSizeUnit === "em" ? 10 : 100;
+	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
+	useEffect(() => {
+		const bodyClasses = document.body.className;
+		// console.log("----log from inspector useEffect with empty []", {
+		// 	bodyClasses,
+		// });
 
-	const TITLE_LINE_HEIGHT_STEP = titleLineHeightUnit === "em" ? 0.1 : 1;
-	const TITLE_LINE_HEIGHT_MAX = titleLineHeightUnit === "em" ? 10 : 100;
+		if (!/eb\-res\-option\-/i.test(bodyClasses)) {
+			document.body.classList.add("eb-res-option-desktop");
+			setAttributes({
+				resOption: "desktop",
+			});
+		} else {
+			const resOption = bodyClasses
+				.match(/eb-res-option-[^\s]+/g)[0]
+				.split("-")[3];
+			setAttributes({ resOption });
+		}
+	}, []);
 
-	const TITLE_SPACING_STEP = titleLetterSpacingUnit === "em" ? 0.1 : 1;
-	const TITLE_SPACING_MAX = titleLetterSpacingUnit === "em" ? 10 : 100;
+	// this useEffect is for mimmiking css for all the eb blocks on resOption changing
+	useEffect(() => {
+		const allCounterWrapper = document.querySelectorAll(
+			".eb-guten-block-main-parrent-wrapper:not(.is-selected) > style"
+		);
 
-	const TEXT_SIZE_STEP = textSizeUnit === "em" ? 0.1 : 1;
-	const TEXT_SIZE_MAX = textSizeUnit === "em" ? 10 : 100;
+		console.log("---inspector", { allCounterWrapper });
+		if (allCounterWrapper.length < 1) return;
 
-	const TEXT_LINE_HEIGHT_STEP = textLineHeightUnit === "em" ? 0.1 : 1;
-	const TEXT_LINE_HEIGHT_MAX = textLineHeightUnit === "em" ? 10 : 100;
+		allCounterWrapper.forEach((styleTag) => {
+			const cssStrings = styleTag.textContent;
+			const minCss = cssStrings.replace(/\s+/g, " ");
+			const regexCssMimmikSpace = /(?<=edit_mimmikcss_start\s*\*\/).+(?=\/\*\s*edit_mimmikcss_end)/i;
+			let newCssStrings = " ";
 
-	const TEXT_SPACING_STEP = textLetterSpacingUnit === "em" ? 0.1 : 1;
-	const TEXT_SPACING_MAX = textLetterSpacingUnit === "em" ? 10 : 100;
+			if (resOption === "tab") {
+				let tabCssMacth = minCss.match(
+					/(?<=\@media\s+all\s+and\s+\(max-width\s*\:\s*1030px\s*\)\s*\{).+(?=\}\s*\@media\s+all)/i
+				);
+				let tabCssStrings = (tabCssMacth || [" "])[0];
+				// console.log({
+				// 	tabCssStrings: tabCssStrings,
+				// });
+				newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
+			} else if (resOption === "mobile") {
+				let mobCssMacth = minCss.match(
+					/(?<=\@media\s+all\s+and\s+\(max-width\s*\:\s*680px\s*\)\s*\{).+(?=(\}\s*)$)/i
+				);
+				let mobCssStrings = (mobCssMacth || [" "])[0];
+				// console.log({
+				// 	mobCssStrings: mobCssStrings,
+				// });
+				newCssStrings = minCss.replace(regexCssMimmikSpace, mobCssStrings);
+			} else {
+				newCssStrings = minCss.replace(regexCssMimmikSpace, " ");
+			}
+
+			styleTag.textContent = newCssStrings;
+		});
+	}, [resOption]);
+
+	const resRequiredProps = {
+		setAttributes,
+		resOption,
+	};
+
+	const generateTypographyAttributes = (prefixConstant) => {
+		const {
+			[`${prefixConstant}FontFamily`]: fontFamily,
+			[`${prefixConstant}FontWeight`]: fontWeight,
+			[`${prefixConstant}TextTransform`]: textTransform,
+			[`${prefixConstant}TextDecoration`]: textDecoration,
+			[`${prefixConstant}FontSize`]: fontSize,
+			[`${prefixConstant}SizeUnit`]: sizeUnit,
+			[`${prefixConstant}LetterSpacing`]: letterSpacing,
+			[`${prefixConstant}LetterSpacingUnit`]: letterSpacingUnit,
+			[`${prefixConstant}LineHeight`]: lineHeight,
+			[`${prefixConstant}LineHeightUnit`]: lineHeightUnit,
+
+			[`TAB${prefixConstant}FontFamily`]: TABfontFamily,
+			[`TAB${prefixConstant}FontWeight`]: TABfontWeight,
+			[`TAB${prefixConstant}TextTransform`]: TABtextTransform,
+			[`TAB${prefixConstant}TextDecoration`]: TABtextDecoration,
+			[`TAB${prefixConstant}FontSize`]: TABfontSize,
+			[`TAB${prefixConstant}SizeUnit`]: TABsizeUnit,
+			[`TAB${prefixConstant}LetterSpacing`]: TABletterSpacing,
+			[`TAB${prefixConstant}LetterSpacingUnit`]: TABletterSpacingUnit,
+			[`TAB${prefixConstant}LineHeight`]: TABlineHeight,
+			[`TAB${prefixConstant}LineHeightUnit`]: TABlineHeightUnit,
+
+			[`MOB${prefixConstant}FontFamily`]: MOBfontFamily,
+			[`MOB${prefixConstant}FontWeight`]: MOBfontWeight,
+			[`MOB${prefixConstant}TextTransform`]: MOBtextTransform,
+			[`MOB${prefixConstant}TextDecoration`]: MOBtextDecoration,
+			[`MOB${prefixConstant}FontSize`]: MOBfontSize,
+			[`MOB${prefixConstant}SizeUnit`]: MOBsizeUnit,
+			[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing,
+			[`MOB${prefixConstant}LetterSpacingUnit`]: MOBletterSpacingUnit,
+			[`MOB${prefixConstant}LineHeight`]: MOBlineHeight,
+			[`MOB${prefixConstant}LineHeightUnit`]: MOBlineHeightUnit,
+		} = attributes;
+
+		return {
+			fontFamily,
+			fontWeight,
+			textTransform,
+			textDecoration,
+			fontSize,
+			sizeUnit,
+			letterSpacing,
+			letterSpacingUnit,
+			lineHeight,
+			lineHeightUnit,
+			TABfontFamily,
+			TABfontWeight,
+			TABtextTransform,
+			TABtextDecoration,
+			TABfontSize,
+			TABsizeUnit,
+			TABletterSpacing,
+			TABletterSpacingUnit,
+			TABlineHeight,
+			TABlineHeightUnit,
+			MOBfontFamily,
+			MOBfontWeight,
+			MOBtextTransform,
+			MOBtextDecoration,
+			MOBfontSize,
+			MOBsizeUnit,
+			MOBletterSpacing,
+			MOBletterSpacingUnit,
+			MOBlineHeight,
+			MOBlineHeightUnit,
+		};
+	};
 
 	return (
 		<InspectorControls key="controls">
@@ -154,247 +278,28 @@ function Inspector(props) {
 					options={NOTICE_TYPES}
 					onChange={(type) => onTypeChange(type)}
 				/>
-
-				<BaseControl
-					label={__("Title Typography")}
-					className="eb-typography-base"
-				>
-					<Dropdown
-						className="eb-typography-dropdown"
-						contentClassName="my-popover-content-classname"
-						position="bottom right"
-						renderToggle={({ isOpen, onToggle }) => (
-							<Button
-								isSmall
-								onClick={onToggle}
-								aria-expanded={isOpen}
-								icon="edit"
-							></Button>
-						)}
-						renderContent={() => (
-							<div style={{ padding: "1rem" }}>
-								<FontPicker
-									label={__("Font Family")}
-									value={titleFontFamily}
-									onChange={(titleFontFamily) =>
-										setAttributes({ titleFontFamily })
-									}
-								/>
-
-								<UnitControl
-									selectedUnit={titleSizeUnit}
-									unitTypes={[
-										{ label: "px", value: "px" },
-										{ label: "%", value: "%" },
-										{ label: "em", value: "em" },
-									]}
-									onClick={(titleSizeUnit) => setAttributes({ titleSizeUnit })}
-								/>
-
-								<RangeControl
-									label={__("Font Size")}
-									value={titleFontSize}
-									onChange={(titleFontSize) => setAttributes({ titleFontSize })}
-									step={TITLE_SIZE_STEP}
-									min={0}
-									max={TITLE_SIZE_MAX}
-								/>
-
-								<SelectControl
-									label={__("Font Weight")}
-									value={titleFontWeight}
-									options={FONT_WEIGHTS}
-									onChange={(titleFontWeight) =>
-										setAttributes({ titleFontWeight })
-									}
-								/>
-
-								<SelectControl
-									label={__("Text Transform")}
-									value={titleTextTransform}
-									options={TEXT_TRANSFORM}
-									onChange={(titleTextTransform) =>
-										setAttributes({ titleTextTransform })
-									}
-								/>
-
-								<SelectControl
-									label={__("Text Decoration")}
-									value={titleTextDecoration}
-									options={TEXT_DECORATION}
-									onChange={(titleTextDecoration) =>
-										setAttributes({ titleTextDecoration })
-									}
-								/>
-
-								<UnitControl
-									selectedUnit={titleLetterSpacingUnit}
-									unitTypes={[
-										{ label: "px", value: "px" },
-										{ label: "em", value: "em" },
-									]}
-									onClick={(titleLetterSpacingUnit) =>
-										setAttributes({ titleLetterSpacingUnit })
-									}
-								/>
-
-								<RangeControl
-									label={__("Letter Spacing")}
-									value={titleLetterSpacing}
-									onChange={(titleLetterSpacing) =>
-										setAttributes({ titleLetterSpacing })
-									}
-									min={0}
-									max={TITLE_SPACING_MAX}
-									step={TITLE_SPACING_STEP}
-								/>
-
-								<UnitControl
-									selectedUnit={titleLineHeightUnit}
-									unitTypes={[
-										{ label: "px", value: "px" },
-										{ label: "em", value: "em" },
-									]}
-									onClick={(titleLineHeightUnit) =>
-										setAttributes({ titleLineHeightUnit })
-									}
-								/>
-
-								<RangeControl
-									label={__("Line Height")}
-									value={titleLineHeight}
-									onChange={(titleLineHeight) =>
-										setAttributes({ titleLineHeight })
-									}
-									min={0}
-									max={TITLE_LINE_HEIGHT_MAX}
-									step={TITLE_LINE_HEIGHT_STEP}
-								/>
-							</div>
-						)}
-					/>
-				</BaseControl>
-
-				<BaseControl
-					label={__("Text Typography")}
-					className="eb-typography-base"
-				>
-					<Dropdown
-						className="eb-typography-dropdown"
-						contentClassName="my-popover-content-classname"
-						position="bottom right"
-						renderToggle={({ isOpen, onToggle }) => (
-							<Button
-								isSmall
-								onClick={onToggle}
-								aria-expanded={isOpen}
-								icon="edit"
-							></Button>
-						)}
-						renderContent={() => (
-							<div style={{ padding: "1rem" }}>
-								<FontPicker
-									label={__("Font Family")}
-									value={textFontFamily}
-									onChange={(textFontFamily) =>
-										setAttributes({ textFontFamily })
-									}
-								/>
-
-								<UnitControl
-									selectedUnit={textSizeUnit}
-									unitTypes={[
-										{ label: "px", value: "px" },
-										{ label: "%", value: "%" },
-										{ label: "em", value: "em" },
-									]}
-									onClick={(textSizeUnit) => setAttributes({ textSizeUnit })}
-								/>
-
-								<RangeControl
-									label={__("Font Size")}
-									value={textFontSize}
-									onChange={(textFontSize) => setAttributes({ textFontSize })}
-									step={TEXT_SIZE_STEP}
-									min={0}
-									max={TEXT_SIZE_MAX}
-								/>
-
-								<SelectControl
-									label={__("Font Weight")}
-									value={textFontWeight}
-									options={FONT_WEIGHTS}
-									onChange={(textFontWeight) =>
-										setAttributes({ textFontWeight })
-									}
-								/>
-
-								<SelectControl
-									label={__("Text Transform")}
-									value={textTextTransform}
-									options={TEXT_TRANSFORM}
-									onChange={(textTextTransform) =>
-										setAttributes({ textTextTransform })
-									}
-								/>
-
-								<SelectControl
-									label={__("Text Decoration")}
-									value={textTextDecoration}
-									options={TEXT_DECORATION}
-									onChange={(textTextDecoration) =>
-										setAttributes({ textTextDecoration })
-									}
-								/>
-
-								<UnitControl
-									selectedUnit={textLetterSpacingUnit}
-									unitTypes={[
-										{ label: "px", value: "px" },
-										{ label: "em", value: "em" },
-									]}
-									onClick={(textLetterSpacingUnit) =>
-										setAttributes({ textLetterSpacingUnit })
-									}
-								/>
-
-								<RangeControl
-									label={__("Letter Spacing")}
-									value={textLetterSpacing}
-									onChange={(textLetterSpacing) =>
-										setAttributes({ textLetterSpacing })
-									}
-									min={0}
-									max={TEXT_SPACING_MAX}
-									step={TEXT_SPACING_STEP}
-								/>
-
-								<UnitControl
-									selectedUnit={textLineHeightUnit}
-									unitTypes={[
-										{ label: "px", value: "px" },
-										{ label: "em", value: "em" },
-									]}
-									onClick={(textLineHeightUnit) =>
-										setAttributes({ textLineHeightUnit })
-									}
-								/>
-
-								<RangeControl
-									label={__("Line Height")}
-									value={textLineHeight}
-									onChange={(textLineHeight) =>
-										setAttributes({ textLineHeight })
-									}
-									min={0}
-									max={TEXT_LINE_HEIGHT_MAX}
-									step={TEXT_LINE_HEIGHT_STEP}
-								/>
-							</div>
-						)}
-					/>
-				</BaseControl>
 			</PanelBody>
+
+			<ResPanelBody
+				title={__("Typography")}
+				initialOpen={false}
+				resRequiredProps={resRequiredProps}
+			>
+				<TypographyControl
+					baseLabel="Title"
+					typographyPrefixConstant={typoPrefix_title}
+					typographyAttributes={generateTypographyAttributes(typoPrefix_title)}
+					resOption={resOption}
+					setAttributes={setAttributes}
+				/>
+				<TypographyControl
+					baseLabel="Text"
+					typographyPrefixConstant={typoPrefix_text}
+					typographyAttributes={generateTypographyAttributes(typoPrefix_text)}
+					resOption={resOption}
+					setAttributes={setAttributes}
+				/>
+			</ResPanelBody>
 
 			<PanelColorSettings
 				title={__("Color Settings")}

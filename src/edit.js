@@ -12,22 +12,26 @@ import "./editor.scss";
 import Inspector from "./inspector";
 import uuid from "../util/uuid";
 
-import { text, title } from "./constants/typographyPrefixConstants";
+import {
+	typoPrefix_text,
+	typoPrefix_title,
+} from "./constants/typographyPrefixConstants";
 import {
 	generateRandomNumber,
-	textInsideForEdit,
 	softMinifyCssStrings,
 	hasVal,
 	isCssExists,
 } from "./myUtil/helpers";
 
 export default function Edit(props) {
-	const blockProps = useBlockProps({
-		className: "eb-guten-block-main-parrent-wrapper eb-notice-wrapper",
-	});
-
 	const { attributes, setAttributes, isSelected } = props;
 	const {
+		// responsive control attribute ⬇
+		resOption,
+
+		// uniqueIdNumber attribute for making unique className
+		uniqueIdNumber,
+
 		dismissible,
 		// titleFontSize,
 		// textFontSize,
@@ -71,7 +75,7 @@ export default function Edit(props) {
 	useEffect(() => {
 		const genRandomNumber = generateRandomNumber();
 		const anotherSameClassElements = document.querySelectorAll(
-			`.eb-counter-wrapper-${uniqueIdNumber}`
+			`.eb-notice-wrapper-${uniqueIdNumber}`
 		);
 		if (!uniqueIdNumber || anotherSameClassElements[1]) {
 			setAttributes({
@@ -96,6 +100,62 @@ export default function Edit(props) {
 			setAttributes({ resOption });
 		}
 	}, []);
+
+	const blockProps = useBlockProps({
+		className: `eb-guten-block-main-parrent-wrapper eb-notice-wrapper eb-notice-wrapper-${uniqueIdNumber}`,
+	});
+
+	const wrapperStyles = {
+		background: backgroundColor ? backgroundColor : "#3074ff",
+		padding: "65px 60px",
+		boxShadow: `${shadowHOffset || 0}px ${shadowVOffset || 0}px ${
+			shadowBlur || 0
+		}px ${shadowSpread || 0}px ${shadowColor || "#000000"}`,
+		borderRadius: "5px",
+	};
+
+	const titleWrapperStyles = {
+		display: "flex",
+		justifyContent: "space-between",
+		// lineHeight: titleLineHeight
+		// 	? `${titleLineHeight}${titleLineHeightUnit}`
+		// 	: undefined,
+	};
+
+	const titleStyles = {
+		// fontSize: `${titleFontSize || 32}${titleSizeUnit}`,
+		// fontFamily: titleFontFamily,
+		// fontWeight: titleFontWeight,
+		// textDecoration: titleTextDecoration,
+		// textTransform: titleTextTransform,
+		// letterSpacing: titleLetterSpacing
+		// 	? `${titleLetterSpacing}${titleLetterSpacingUnit}`
+		// 	: undefined,
+		color: titleColor || "#fff",
+	};
+
+	const textWrapperStyles = {
+		// lineHeight: textLineHeight
+		// 	? `${textLineHeight}${textLineHeightUnit}`
+		// 	: undefined,
+	};
+
+	const textStyles = {
+		// fontSize: `${textFontSize || 18}${textSizeUnit}`,
+		// fontFamily: textFontFamily,
+		// fontWeight: textFontWeight,
+		// textDecoration: textTextDecoration,
+		// textTransform: textTextTransform,
+		// letterSpacing: textLetterSpacing
+		// 	? `${textLetterSpacing}${textLetterSpacingUnit}`
+		// 	: undefined,
+		color: textColor || "#edf1f7",
+	};
+
+	const dismissStyles = {
+		color: textColor || "#fff",
+		display: dismissible ? "flex" : "none",
+	};
 
 	//
 	// CSS/styling Codes Starts from Here
@@ -213,91 +273,51 @@ export default function Edit(props) {
 		typoStylesDesktop: titleTypoStylesDesktop,
 		typoStylesTab: titleTypoStylesTab,
 		typoStylesMobile: titleTypoStylesMobile,
-	} = generateTypographyStylesForEdit(title, 32);
+	} = generateTypographyStylesForEdit(typoPrefix_title, 32);
 
 	const {
 		typoStylesDesktop: textTypoStylesDesktop,
 		typoStylesTab: textTypoStylesTab,
 		typoStylesMobile: textTypoStylesMobile,
-	} = generateTypographyStylesForEdit(text, 18);
-
-	const wrapperStyles = {
-		background: backgroundColor ? backgroundColor : "#3074ff",
-		padding: "65px 60px",
-		boxShadow: `${shadowHOffset || 0}px ${shadowVOffset || 0}px ${
-			shadowBlur || 0
-		}px ${shadowSpread || 0}px ${shadowColor || "#000000"}`,
-		borderRadius: "5px",
-	};
-
-	const titleWrapperStyles = {
-		display: "flex",
-		justifyContent: "space-between",
-		lineHeight: titleLineHeight
-			? `${titleLineHeight}${titleLineHeightUnit}`
-			: undefined,
-	};
-
-	const titleStyles = {
-		fontSize: `${titleFontSize || 32}${titleSizeUnit}`,
-		fontFamily: titleFontFamily,
-		fontWeight: titleFontWeight,
-		textDecoration: titleTextDecoration,
-		textTransform: titleTextTransform,
-		letterSpacing: titleLetterSpacing
-			? `${titleLetterSpacing}${titleLetterSpacingUnit}`
-			: undefined,
-		color: titleColor || "#fff",
-	};
-
-	const textWrapperStyles = {
-		lineHeight: textLineHeight
-			? `${textLineHeight}${textLineHeightUnit}`
-			: undefined,
-	};
-
-	const textStyles = {
-		fontSize: `${textFontSize || 18}${textSizeUnit}`,
-		fontFamily: textFontFamily,
-		fontWeight: textFontWeight,
-		textDecoration: textTextDecoration,
-		textTransform: textTextTransform,
-		letterSpacing: textLetterSpacing
-			? `${textLetterSpacing}${textLetterSpacingUnit}`
-			: undefined,
-		color: textColor || "#edf1f7",
-	};
-
-	const dismissStyles = {
-		color: textColor || "#fff",
-		display: dismissible ? "flex" : "none",
-	};
+	} = generateTypographyStylesForEdit(typoPrefix_text, 18);
 
 	//
 	// Desktop styles in strings ⬇
 	const titleStylesDesktop = `
-	
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
+		${titleTypoStylesDesktop}
+	}
 	`;
 	const textStylesDesktop = `
-	
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-text{
+		${textTypoStylesDesktop}
+	}
 	`;
 
 	//
 	// Tab styles in strings ⬇
 	const titleStylesTab = `
-	
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
+		${titleTypoStylesTab}
+	}
 	`;
 	const textStylesTab = `
-	
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-text{
+		${textTypoStylesTab}
+	}
 	`;
 
 	//
 	// Mobile styles in strings ⬇
 	const titleStylesMobile = `
-	
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
+		${titleTypoStylesMobile}
+	}
 	`;
 	const textStylesMobile = `
-	
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-text{
+		${textTypoStylesMobile}
+	}
 	`;
 
 	const desktopAllStyles = `

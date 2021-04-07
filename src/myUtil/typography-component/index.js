@@ -8,9 +8,9 @@ import {
 	Dropdown,
 } from "@wordpress/components";
 
-import { TypographyIcon } from "../../util/icons";
-import FontPicker from "../../util/typography-control/FontPicker";
-import UnitControl from "../../util/unit-control";
+import { TypographyIcon } from "./icons";
+import FontPicker from "./FontPicker";
+import UnitControl from "../../../util/unit-control";
 
 function TypographyControllsDropdown({
 	baseLabel,

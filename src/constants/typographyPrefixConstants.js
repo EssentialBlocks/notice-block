@@ -1,2 +1,2 @@
-export const title = "title";
-export const text = "text";
+export const typoPrefix_title = "title";
+export const typoPrefix_text = "text";
