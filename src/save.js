@@ -16,92 +16,18 @@ const save = ({ attributes }) => {
 		// textFontSize,
 		title,
 		text,
-		backgroundColor,
-		titleColor,
-		textColor,
+		backgroundColor = backgroundColor ? backgroundColor : "#3074ff",
+		titleColor = titleColor || "#fff",
+		textColor = textColor || "#edf1f7",
 		noticeId,
+		shadowColor = shadowColor || "#000",
+		shadowHOffset = shadowHOffset || 0,
+		shadowVOffset = shadowVOffset || 0,
+		shadowBlur = shadowBlur || 0,
+		shadowSpread = shadowSpread || 0,
+
 		showAfterDismiss,
-		shadowColor,
-		shadowHOffset,
-		shadowVOffset,
-		shadowBlur,
-		shadowSpread,
-		// titleSizeUnit,
-		// textSizeUnit,
-		// titleFontFamily,
-		// titleFontWeight,
-		// titleTextTransform,
-		// titleTextDecoration,
-		// titleLineHeight,
-		// titleLineHeightUnit,
-		// titleLetterSpacing,
-		// titleLetterSpacingUnit,
-		// textFontFamily,
-		// textFontWeight,
-		// textTextTransform,
-		// textTextDecoration,
-		// textLineHeight,
-		// textLineHeightUnit,
-		// textLetterSpacing,
-		// textLetterSpacingUnit,
 	} = attributes;
-
-	const wrapperStyles = {
-		background: backgroundColor ? backgroundColor : "#3074ff",
-		padding: "65px 60px",
-		boxShadow: `${shadowHOffset || 0}px ${shadowVOffset || 0}px ${
-			shadowBlur || 0
-		}px ${shadowSpread || 0}px ${shadowColor || "#000000"}`,
-		borderRadius: "5px",
-	};
-
-	const titleWrapperStyles = {
-		display: "flex",
-		justifyContent: "space-between",
-		// lineHeight: titleLineHeight
-		// 	? `${titleLineHeight}${titleLineHeightUnit}`
-		// 	: undefined,
-	};
-
-	const titleStyles = {
-		// fontSize: `${titleFontSize || 32}${titleSizeUnit}`,
-		// fontFamily: titleFontFamily,
-		// fontWeight: titleFontWeight,
-		// textDecoration: titleTextDecoration,
-		// textTransform: titleTextTransform,
-		// letterSpacing: titleLetterSpacing
-		// 	? `${titleLetterSpacing}${titleLetterSpacingUnit}`
-		// 	: undefined,
-		color: titleColor || "#fff",
-	};
-
-	const textWrapperStyles = {
-		// lineHeight: textLineHeight
-		// 	? `${textLineHeight}${textLineHeightUnit}`
-		// 	: undefined,
-	};
-
-	const textStyles = {
-		// fontSize: `${textFontSize || 18}${textSizeUnit}`,
-		// fontFamily: textFontFamily,
-		// fontWeight: textFontWeight,
-		// textDecoration: textTextDecoration,
-		// textTransform: textTextTransform,
-		// letterSpacing: textLetterSpacing
-		// 	? `${textLetterSpacing}${textLetterSpacingUnit}`
-		// 	: undefined,
-		color: textColor || "#edf1f7",
-	};
-
-	const dismissStyles = {
-		color: textColor || "#fff",
-		display: dismissible ? "flex" : "none",
-		justifyContent: "center",
-		width: 24,
-		height: 24,
-		cursor: "pointer",
-		alignItems: "center",
-	};
 
 	const generateTypographyStylesForSave = (
 		prefixConstant,
@@ -218,14 +144,39 @@ const save = ({ attributes }) => {
 
 	//
 	// Desktop styles in strings ⬇
+	const wrapperStylesDesktop = `
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber}{
+		background: ${backgroundColor};
+		padding: 65px 60px;
+		box-shadow: ${shadowHOffset}px ${shadowVOffset}px ${shadowBlur}px ${shadowSpread}px ${shadowColor};
+		border-radius: 5px;
+	}
+	`;
+
+	const titleWrapperStylesDesktop = `
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title-wrapper{
+		display: flex;
+		justify-content: space-between;
+	}	
+	`;
+
+	const dismissStylesDesktop = `
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-dismiss{
+		color: ${textColor};
+		display: ${dismissible};
+	}
+	`;
+
 	const titleStylesDesktop = `
 	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
-		${titleTypoStylesDesktop}
+		${titleTypoStylesDesktop}		
+		color: ${titleColor};
 	}
 	`;
 	const textStylesDesktop = `
 	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-text{
 		${textTypoStylesDesktop}
+		color: ${textColor};
 	}
 	`;
 
@@ -256,6 +207,9 @@ const save = ({ attributes }) => {
 	`;
 
 	const desktopAllStyles = `
+		${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
+		${isCssExists(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " "}
+		${isCssExists(dismissStylesDesktop) ? dismissStylesDesktop : " "}
 		${isCssExists(titleStylesDesktop) ? titleStylesDesktop : " "}
 		${isCssExists(textStylesDesktop) ? textStylesDesktop : " "}
 	`;
@@ -273,7 +227,6 @@ const save = ({ attributes }) => {
 	return (
 		<div
 			className={`eb-notice-wrapper eb-notice-wrapper-${uniqueIdNumber}`}
-			style={wrapperStyles}
 			data-id={noticeId}
 			data-show-again={showAfterDismiss}
 		>
@@ -287,21 +240,19 @@ const save = ({ attributes }) => {
 				)}}`}
 			</style>
 
-			<div className="eb-notice-title-wrapper" style={titleWrapperStyles}>
+			<div className="eb-notice-title-wrapper">
 				<RichText.Content
 					tagName="div"
 					className="eb-notice-title"
 					value={title}
-					style={titleStyles}
 				/>
-				<span className="eb-notice-dismiss" style={dismissStyles} />
+				<span className="eb-notice-dismiss" />
 			</div>
-			<div style={textWrapperStyles}>
+			<div>
 				<RichText.Content
 					tagName="div"
 					className="eb-notice-text"
 					value={text}
-					style={textStyles}
 				/>
 			</div>
 		</div>

@@ -1498,18 +1498,27 @@ function Edit(props) {
       isSelected = props.isSelected;
   var resOption = attributes.resOption,
       uniqueIdNumber = attributes.uniqueIdNumber,
-      dismissible = attributes.dismissible,
+      _attributes$dismissib = attributes.dismissible,
+      dismissible = _attributes$dismissib === void 0 ? dismissible ? "flex" : "none" : _attributes$dismissib,
       title = attributes.title,
       text = attributes.text,
-      backgroundColor = attributes.backgroundColor,
-      titleColor = attributes.titleColor,
-      textColor = attributes.textColor,
+      _attributes$backgroun = attributes.backgroundColor,
+      backgroundColor = _attributes$backgroun === void 0 ? backgroundColor ? backgroundColor : "#3074ff" : _attributes$backgroun,
+      _attributes$titleColo = attributes.titleColor,
+      titleColor = _attributes$titleColo === void 0 ? titleColor || "#fff" : _attributes$titleColo,
+      _attributes$textColor = attributes.textColor,
+      textColor = _attributes$textColor === void 0 ? textColor || "#edf1f7" : _attributes$textColor,
       noticeId = attributes.noticeId,
-      shadowColor = attributes.shadowColor,
-      shadowHOffset = attributes.shadowHOffset,
-      shadowVOffset = attributes.shadowVOffset,
-      shadowBlur = attributes.shadowBlur,
-      shadowSpread = attributes.shadowSpread;
+      _attributes$shadowCol = attributes.shadowColor,
+      shadowColor = _attributes$shadowCol === void 0 ? shadowColor || "#000" : _attributes$shadowCol,
+      _attributes$shadowHOf = attributes.shadowHOffset,
+      shadowHOffset = _attributes$shadowHOf === void 0 ? shadowHOffset || 0 : _attributes$shadowHOf,
+      _attributes$shadowVOf = attributes.shadowVOffset,
+      shadowVOffset = _attributes$shadowVOf === void 0 ? shadowVOffset || 0 : _attributes$shadowVOf,
+      _attributes$shadowBlu = attributes.shadowBlur,
+      shadowBlur = _attributes$shadowBlu === void 0 ? shadowBlur || 0 : _attributes$shadowBlu,
+      _attributes$shadowSpr = attributes.shadowSpread,
+      shadowSpread = _attributes$shadowSpr === void 0 ? shadowSpread || 0 : _attributes$shadowSpr;
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var noticeId = Object(_util_uuid__WEBPACK_IMPORTED_MODULE_4__["default"])().substr(0, 5);
     setAttributes({
@@ -1546,45 +1555,6 @@ function Edit(props) {
   var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"])({
     className: "eb-guten-block-main-parrent-wrapper eb-notice-wrapper eb-notice-wrapper-".concat(uniqueIdNumber)
   });
-  var wrapperStyles = {
-    background: backgroundColor ? backgroundColor : "#3074ff",
-    padding: "65px 60px",
-    boxShadow: "".concat(shadowHOffset || 0, "px ").concat(shadowVOffset || 0, "px ").concat(shadowBlur || 0, "px ").concat(shadowSpread || 0, "px ").concat(shadowColor || "#000000"),
-    borderRadius: "5px"
-  };
-  var titleWrapperStyles = {
-    display: "flex",
-    justifyContent: "space-between" // lineHeight: titleLineHeight
-    // 	? `${titleLineHeight}${titleLineHeightUnit}`
-    // 	: undefined,
-
-  };
-  var titleStyles = {
-    // fontSize: `${titleFontSize || 32}${titleSizeUnit}`,
-    // fontFamily: titleFontFamily,
-    // fontWeight: titleFontWeight,
-    // textDecoration: titleTextDecoration,
-    // textTransform: titleTextTransform,
-    // letterSpacing: titleLetterSpacing
-    // 	? `${titleLetterSpacing}${titleLetterSpacingUnit}`
-    // 	: undefined,
-    color: titleColor || "#fff"
-  };
-  var textWrapperStyles = {// lineHeight: textLineHeight
-    // 	? `${textLineHeight}${textLineHeightUnit}`
-    // 	: undefined,
-  };
-  var textStyles = {
-    // fontSize: `${textFontSize || 18}${textSizeUnit}`,
-    // fontFamily: textFontFamily,
-    // fontWeight: textFontWeight,
-    // textDecoration: textTextDecoration,
-    // textTransform: textTextTransform,
-    // letterSpacing: textLetterSpacing
-    // 	? `${textLetterSpacing}${textLetterSpacingUnit}`
-    // 	: undefined,
-    color: textColor || "#edf1f7"
-  };
   var dismissStyles = {
     color: textColor || "#fff",
     display: dismissible ? "flex" : "none"
@@ -1661,8 +1631,11 @@ function Edit(props) {
   // Desktop styles in strings ⬇
 
 
-  var titleStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\n\t}\n\t");
-  var textStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t}\n\t"); //
+  var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tpadding: 65px 60px;\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
+  var titleWrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t");
+  var dismissStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible, ";\n\t}\n\t");
+  var titleStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\t\t\n\t\tcolor: ").concat(titleColor, ";\n\t}\n\t");
+  var textStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor, ";\n\t}\n\t"); //
   // Tab styles in strings ⬇
 
   var titleStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesTab, "\n\t}\n\t");
@@ -1671,21 +1644,18 @@ function Edit(props) {
 
   var titleStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t");
   var textStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t");
-  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t");
+  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t");
   var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t");
   var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t");
   return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_3__["default"], props),
   /*#__PURE__*/
   //Edit view here
   React.createElement("div", _extends({}, blockProps, {
-    style: wrapperStyles,
     "data-id": noticeId
   }), /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(desktopAllStyles), "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_start\n\t\t\t\t*/\n\n\t\t\t\t").concat(resOption === "tab" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(tabAllStyles) : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(mobileAllStyles) : " ", "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_end\n\t\t\t\t*/\n\n\t\t\t\t@media all and (max-width: 1030px) {\t\t\t\t\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t}\n\n\t\t\t\t@media all and (max-width: 680px) {\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
-    className: "eb-notice-title-wrapper",
-    style: titleWrapperStyles
+    className: "eb-notice-title-wrapper"
   }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"], {
     className: "eb-notice-title",
-    style: titleStyles,
     value: title,
     onChange: function onChange(newTitle) {
       return setAttributes({
@@ -1695,13 +1665,9 @@ function Edit(props) {
     placeholder: "Add Title...",
     keepPlaceholderOnFocus: true
   }), /*#__PURE__*/React.createElement("span", {
-    className: "eb-notice-dismiss",
-    style: dismissStyles
-  })), /*#__PURE__*/React.createElement("div", {
-    style: textWrapperStyles
-  }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"], {
+    className: "eb-notice-dismiss"
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"], {
     className: "eb-notice-text",
-    style: textStyles,
     value: text,
     onChange: function onChange(newText) {
       return setAttributes({
@@ -2037,6 +2003,8 @@ function Inspector(props) {
 
   return /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["InspectorControls"], {
     key: "controls"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "eb-panel-control"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Notice Settings")
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ToggleControl"], {
@@ -2161,7 +2129,7 @@ function Inspector(props) {
     },
     min: 0,
     max: 20
-  })));
+  }))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Inspector);
@@ -5548,64 +5516,24 @@ var save = function save(_ref) {
       dismissible = attributes.dismissible,
       title = attributes.title,
       text = attributes.text,
-      backgroundColor = attributes.backgroundColor,
-      titleColor = attributes.titleColor,
-      textColor = attributes.textColor,
+      _attributes$backgroun = attributes.backgroundColor,
+      backgroundColor = _attributes$backgroun === void 0 ? backgroundColor ? backgroundColor : "#3074ff" : _attributes$backgroun,
+      _attributes$titleColo = attributes.titleColor,
+      titleColor = _attributes$titleColo === void 0 ? titleColor || "#fff" : _attributes$titleColo,
+      _attributes$textColor = attributes.textColor,
+      textColor = _attributes$textColor === void 0 ? textColor || "#edf1f7" : _attributes$textColor,
       noticeId = attributes.noticeId,
-      showAfterDismiss = attributes.showAfterDismiss,
-      shadowColor = attributes.shadowColor,
-      shadowHOffset = attributes.shadowHOffset,
-      shadowVOffset = attributes.shadowVOffset,
-      shadowBlur = attributes.shadowBlur,
-      shadowSpread = attributes.shadowSpread;
-  var wrapperStyles = {
-    background: backgroundColor ? backgroundColor : "#3074ff",
-    padding: "65px 60px",
-    boxShadow: "".concat(shadowHOffset || 0, "px ").concat(shadowVOffset || 0, "px ").concat(shadowBlur || 0, "px ").concat(shadowSpread || 0, "px ").concat(shadowColor || "#000000"),
-    borderRadius: "5px"
-  };
-  var titleWrapperStyles = {
-    display: "flex",
-    justifyContent: "space-between" // lineHeight: titleLineHeight
-    // 	? `${titleLineHeight}${titleLineHeightUnit}`
-    // 	: undefined,
-
-  };
-  var titleStyles = {
-    // fontSize: `${titleFontSize || 32}${titleSizeUnit}`,
-    // fontFamily: titleFontFamily,
-    // fontWeight: titleFontWeight,
-    // textDecoration: titleTextDecoration,
-    // textTransform: titleTextTransform,
-    // letterSpacing: titleLetterSpacing
-    // 	? `${titleLetterSpacing}${titleLetterSpacingUnit}`
-    // 	: undefined,
-    color: titleColor || "#fff"
-  };
-  var textWrapperStyles = {// lineHeight: textLineHeight
-    // 	? `${textLineHeight}${textLineHeightUnit}`
-    // 	: undefined,
-  };
-  var textStyles = {
-    // fontSize: `${textFontSize || 18}${textSizeUnit}`,
-    // fontFamily: textFontFamily,
-    // fontWeight: textFontWeight,
-    // textDecoration: textTextDecoration,
-    // textTransform: textTextTransform,
-    // letterSpacing: textLetterSpacing
-    // 	? `${textLetterSpacing}${textLetterSpacingUnit}`
-    // 	: undefined,
-    color: textColor || "#edf1f7"
-  };
-  var dismissStyles = {
-    color: textColor || "#fff",
-    display: dismissible ? "flex" : "none",
-    justifyContent: "center",
-    width: 24,
-    height: 24,
-    cursor: "pointer",
-    alignItems: "center"
-  };
+      _attributes$shadowCol = attributes.shadowColor,
+      shadowColor = _attributes$shadowCol === void 0 ? shadowColor || "#000" : _attributes$shadowCol,
+      _attributes$shadowHOf = attributes.shadowHOffset,
+      shadowHOffset = _attributes$shadowHOf === void 0 ? shadowHOffset || 0 : _attributes$shadowHOf,
+      _attributes$shadowVOf = attributes.shadowVOffset,
+      shadowVOffset = _attributes$shadowVOf === void 0 ? shadowVOffset || 0 : _attributes$shadowVOf,
+      _attributes$shadowBlu = attributes.shadowBlur,
+      shadowBlur = _attributes$shadowBlu === void 0 ? shadowBlur || 0 : _attributes$shadowBlu,
+      _attributes$shadowSpr = attributes.shadowSpread,
+      shadowSpread = _attributes$shadowSpr === void 0 ? shadowSpread || 0 : _attributes$shadowSpr,
+      showAfterDismiss = attributes.showAfterDismiss;
 
   var generateTypographyStylesForSave = function generateTypographyStylesForSave(prefixConstant) {
     var defaultFontSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -5668,8 +5596,11 @@ var save = function save(_ref) {
   // Desktop styles in strings ⬇
 
 
-  var titleStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\n\t}\n\t");
-  var textStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t}\n\t"); //
+  var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tpadding: 65px 60px;\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
+  var titleWrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t");
+  var dismissStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible, ";\n\t}\n\t");
+  var titleStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\t\t\n\t\tcolor: ").concat(titleColor, ";\n\t}\n\t");
+  var textStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor, ";\n\t}\n\t"); //
   // Tab styles in strings ⬇
 
   var titleStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesTab, "\n\t}\n\t");
@@ -5678,32 +5609,25 @@ var save = function save(_ref) {
 
   var titleStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t");
   var textStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t");
-  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t");
+  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t");
   var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t");
   var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t");
   return /*#__PURE__*/React.createElement("div", {
     className: "eb-notice-wrapper eb-notice-wrapper-".concat(uniqueIdNumber),
-    style: wrapperStyles,
     "data-id": noticeId,
     "data-show-again": showAfterDismiss
   }, /*#__PURE__*/React.createElement("style", null, "".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(desktopAllStyles), "@media all and (max-width: 1030px){").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(tabAllStyles), "}@media all and (max-width: 680px){").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(mobileAllStyles), "}")), /*#__PURE__*/React.createElement("div", {
-    className: "eb-notice-title-wrapper",
-    style: titleWrapperStyles
+    className: "eb-notice-title-wrapper"
   }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
     tagName: "div",
     className: "eb-notice-title",
-    value: title,
-    style: titleStyles
+    value: title
   }), /*#__PURE__*/React.createElement("span", {
-    className: "eb-notice-dismiss",
-    style: dismissStyles
-  })), /*#__PURE__*/React.createElement("div", {
-    style: textWrapperStyles
-  }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
+    className: "eb-notice-dismiss"
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
     tagName: "div",
     className: "eb-notice-text",
-    value: text,
-    style: textStyles
+    value: text
   })));
 };
 

@@ -255,118 +255,122 @@ function Inspector(props) {
 
 	return (
 		<InspectorControls key="controls">
-			<PanelBody title={__("Notice Settings")}>
-				<ToggleControl
-					label={__("Dismissible")}
-					checked={dismissible}
-					onChange={() => setAttributes({ dismissible: !dismissible })}
+			<span className="eb-panel-control">
+				<PanelBody title={__("Notice Settings")}>
+					<ToggleControl
+						label={__("Dismissible")}
+						checked={dismissible}
+						onChange={() => setAttributes({ dismissible: !dismissible })}
+					/>
+
+					<ToggleControl
+						label={__("Show After Dismiss")}
+						checked={showAfterDismiss}
+						onChange={() =>
+							setAttributes({
+								showAfterDismiss: !showAfterDismiss,
+							})
+						}
+					/>
+
+					<SelectControl
+						label={__("Type")}
+						value={noticeType}
+						options={NOTICE_TYPES}
+						onChange={(type) => onTypeChange(type)}
+					/>
+				</PanelBody>
+
+				<ResPanelBody
+					title={__("Typography")}
+					initialOpen={false}
+					resRequiredProps={resRequiredProps}
+				>
+					<TypographyControl
+						baseLabel="Title"
+						typographyPrefixConstant={typoPrefix_title}
+						typographyAttributes={generateTypographyAttributes(
+							typoPrefix_title
+						)}
+						resOption={resOption}
+						setAttributes={setAttributes}
+					/>
+					<TypographyControl
+						baseLabel="Text"
+						typographyPrefixConstant={typoPrefix_text}
+						typographyAttributes={generateTypographyAttributes(typoPrefix_text)}
+						resOption={resOption}
+						setAttributes={setAttributes}
+					/>
+				</ResPanelBody>
+
+				<PanelColorSettings
+					title={__("Color Settings")}
+					initialOpen={false}
+					colorSettings={[
+						{
+							value: backgroundColor,
+							onChange: (newColor) =>
+								setAttributes({ backgroundColor: newColor }),
+							label: __("Background Color"),
+						},
+						{
+							value: titleColor,
+							onChange: (newColor) => setAttributes({ titleColor: newColor }),
+							label: __("Title Color"),
+						},
+						{
+							value: textColor,
+							onChange: (newColor) => setAttributes({ textColor: newColor }),
+							label: __("Text Color"),
+						},
+					]}
 				/>
 
-				<ToggleControl
-					label={__("Show After Dismiss")}
-					checked={showAfterDismiss}
-					onChange={() =>
-						setAttributes({
-							showAfterDismiss: !showAfterDismiss,
-						})
-					}
-				/>
+				<PanelBody title={__("Shadow")} initialOpen={false}>
+					<ColorControl
+						label={__("Shadow Color")}
+						color={shadowColor}
+						onChange={(shadowColor) => setAttributes({ shadowColor })}
+					/>
 
-				<SelectControl
-					label={__("Type")}
-					value={noticeType}
-					options={NOTICE_TYPES}
-					onChange={(type) => onTypeChange(type)}
-				/>
-			</PanelBody>
+					<RangeControl
+						label={__("Horizontal Offset")}
+						value={shadowHOffset}
+						allowReset
+						onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
+						min={0}
+						max={100}
+					/>
 
-			<ResPanelBody
-				title={__("Typography")}
-				initialOpen={false}
-				resRequiredProps={resRequiredProps}
-			>
-				<TypographyControl
-					baseLabel="Title"
-					typographyPrefixConstant={typoPrefix_title}
-					typographyAttributes={generateTypographyAttributes(typoPrefix_title)}
-					resOption={resOption}
-					setAttributes={setAttributes}
-				/>
-				<TypographyControl
-					baseLabel="Text"
-					typographyPrefixConstant={typoPrefix_text}
-					typographyAttributes={generateTypographyAttributes(typoPrefix_text)}
-					resOption={resOption}
-					setAttributes={setAttributes}
-				/>
-			</ResPanelBody>
+					<RangeControl
+						label={__("Vertical Offset")}
+						value={shadowVOffset}
+						allowReset
+						onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
+						min={0}
+						max={100}
+					/>
 
-			<PanelColorSettings
-				title={__("Color Settings")}
-				initialOpen={false}
-				colorSettings={[
-					{
-						value: backgroundColor,
-						onChange: (newColor) =>
-							setAttributes({ backgroundColor: newColor }),
-						label: __("Background Color"),
-					},
-					{
-						value: titleColor,
-						onChange: (newColor) => setAttributes({ titleColor: newColor }),
-						label: __("Title Color"),
-					},
-					{
-						value: textColor,
-						onChange: (newColor) => setAttributes({ textColor: newColor }),
-						label: __("Text Color"),
-					},
-				]}
-			/>
+					<RangeControl
+						label={__("Blur")}
+						value={shadowBlur}
+						allowReset
+						onChange={(shadowBlur) => setAttributes({ shadowBlur })}
+						min={0}
+						max={20}
+					/>
 
-			<PanelBody title={__("Shadow")} initialOpen={false}>
-				<ColorControl
-					label={__("Shadow Color")}
-					color={shadowColor}
-					onChange={(shadowColor) => setAttributes({ shadowColor })}
-				/>
-
-				<RangeControl
-					label={__("Horizontal Offset")}
-					value={shadowHOffset}
-					allowReset
-					onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
-					min={0}
-					max={100}
-				/>
-
-				<RangeControl
-					label={__("Vertical Offset")}
-					value={shadowVOffset}
-					allowReset
-					onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
-					min={0}
-					max={100}
-				/>
-
-				<RangeControl
-					label={__("Blur")}
-					value={shadowBlur}
-					allowReset
-					onChange={(shadowBlur) => setAttributes({ shadowBlur })}
-					min={0}
-					max={20}
-				/>
-
-				<RangeControl
-					label={__("Spread")}
-					value={shadowSpread}
-					allowReset
-					onChange={(shadowSpread) => setAttributes({ shadowSpread })}
-					min={0}
-					max={20}
-				/>
-			</PanelBody>
+					<RangeControl
+						label={__("Spread")}
+						value={shadowSpread}
+						allowReset
+						onChange={(shadowSpread) => setAttributes({ shadowSpread })}
+						min={0}
+						max={20}
+					/>
+				</PanelBody>
+			</span>
 		</InspectorControls>
 	);
 }

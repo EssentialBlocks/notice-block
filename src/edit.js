@@ -32,38 +32,20 @@ export default function Edit(props) {
 		// uniqueIdNumber attribute for making unique className
 		uniqueIdNumber,
 
-		dismissible,
+		dismissible = dismissible ? "flex" : "none",
 		// titleFontSize,
 		// textFontSize,
 		title,
 		text,
-		backgroundColor,
-		titleColor,
-		textColor,
+		backgroundColor = backgroundColor ? backgroundColor : "#3074ff",
+		titleColor = titleColor || "#fff",
+		textColor = textColor || "#edf1f7",
 		noticeId,
-		shadowColor,
-		shadowHOffset,
-		shadowVOffset,
-		shadowBlur,
-		shadowSpread,
-		// titleSizeUnit,
-		// textSizeUnit,
-		// titleFontFamily,
-		// titleFontWeight,
-		// titleTextTransform,
-		// titleTextDecoration,
-		// titleLineHeight,
-		// titleLineHeightUnit,
-		// titleLetterSpacing,
-		// titleLetterSpacingUnit,
-		// textFontFamily,
-		// textFontWeight,
-		// textTextTransform,
-		// textTextDecoration,
-		// textLineHeight,
-		// textLineHeightUnit,
-		// textLetterSpacing,
-		// textLetterSpacingUnit,
+		shadowColor = shadowColor || "#000",
+		shadowHOffset = shadowHOffset || 0,
+		shadowVOffset = shadowVOffset || 0,
+		shadowBlur = shadowBlur || 0,
+		shadowSpread = shadowSpread || 0,
 	} = attributes;
 
 	useEffect(() => {
@@ -104,53 +86,6 @@ export default function Edit(props) {
 	const blockProps = useBlockProps({
 		className: `eb-guten-block-main-parrent-wrapper eb-notice-wrapper eb-notice-wrapper-${uniqueIdNumber}`,
 	});
-
-	const wrapperStyles = {
-		background: backgroundColor ? backgroundColor : "#3074ff",
-		padding: "65px 60px",
-		boxShadow: `${shadowHOffset || 0}px ${shadowVOffset || 0}px ${
-			shadowBlur || 0
-		}px ${shadowSpread || 0}px ${shadowColor || "#000000"}`,
-		borderRadius: "5px",
-	};
-
-	const titleWrapperStyles = {
-		display: "flex",
-		justifyContent: "space-between",
-		// lineHeight: titleLineHeight
-		// 	? `${titleLineHeight}${titleLineHeightUnit}`
-		// 	: undefined,
-	};
-
-	const titleStyles = {
-		// fontSize: `${titleFontSize || 32}${titleSizeUnit}`,
-		// fontFamily: titleFontFamily,
-		// fontWeight: titleFontWeight,
-		// textDecoration: titleTextDecoration,
-		// textTransform: titleTextTransform,
-		// letterSpacing: titleLetterSpacing
-		// 	? `${titleLetterSpacing}${titleLetterSpacingUnit}`
-		// 	: undefined,
-		color: titleColor || "#fff",
-	};
-
-	const textWrapperStyles = {
-		// lineHeight: textLineHeight
-		// 	? `${textLineHeight}${textLineHeightUnit}`
-		// 	: undefined,
-	};
-
-	const textStyles = {
-		// fontSize: `${textFontSize || 18}${textSizeUnit}`,
-		// fontFamily: textFontFamily,
-		// fontWeight: textFontWeight,
-		// textDecoration: textTextDecoration,
-		// textTransform: textTextTransform,
-		// letterSpacing: textLetterSpacing
-		// 	? `${textLetterSpacing}${textLetterSpacingUnit}`
-		// 	: undefined,
-		color: textColor || "#edf1f7",
-	};
 
 	const dismissStyles = {
 		color: textColor || "#fff",
@@ -283,14 +218,39 @@ export default function Edit(props) {
 
 	//
 	// Desktop styles in strings ⬇
+	const wrapperStylesDesktop = `
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber}{
+		background: ${backgroundColor};
+		padding: 65px 60px;
+		box-shadow: ${shadowHOffset}px ${shadowVOffset}px ${shadowBlur}px ${shadowSpread}px ${shadowColor};
+		border-radius: 5px;
+	}
+	`;
+
+	const titleWrapperStylesDesktop = `
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title-wrapper{
+		display: flex;
+		justify-content: space-between;
+	}	
+	`;
+
+	const dismissStylesDesktop = `
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-dismiss{
+		color: ${textColor};
+		display: ${dismissible};
+	}
+	`;
+
 	const titleStylesDesktop = `
 	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
-		${titleTypoStylesDesktop}
+		${titleTypoStylesDesktop}		
+		color: ${titleColor};
 	}
 	`;
 	const textStylesDesktop = `
 	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-text{
 		${textTypoStylesDesktop}
+		color: ${textColor};
 	}
 	`;
 
@@ -321,6 +281,9 @@ export default function Edit(props) {
 	`;
 
 	const desktopAllStyles = `
+		${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
+		${isCssExists(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " "}
+		${isCssExists(dismissStylesDesktop) ? dismissStylesDesktop : " "}
 		${isCssExists(titleStylesDesktop) ? titleStylesDesktop : " "}
 		${isCssExists(textStylesDesktop) ? textStylesDesktop : " "}
 	`;
@@ -339,7 +302,7 @@ export default function Edit(props) {
 		isSelected && <Inspector {...props} />,
 
 		//Edit view here
-		<div {...blockProps} style={wrapperStyles} data-id={noticeId}>
+		<div {...blockProps} data-id={noticeId}>
 			<style>
 				{`
 				${softMinifyCssStrings(desktopAllStyles)}
@@ -364,22 +327,20 @@ export default function Edit(props) {
 				}
 				`}
 			</style>
-			<div className="eb-notice-title-wrapper" style={titleWrapperStyles}>
+			<div className="eb-notice-title-wrapper">
 				<RichText
 					className="eb-notice-title"
-					style={titleStyles}
 					value={title}
 					onChange={(newTitle) => setAttributes({ title: newTitle })}
 					placeholder="Add Title..."
 					keepPlaceholderOnFocus
 				/>
-				<span className="eb-notice-dismiss" style={dismissStyles} />
+				<span className="eb-notice-dismiss" />
 			</div>
 
-			<div style={textWrapperStyles}>
+			<div>
 				<RichText
 					className="eb-notice-text"
-					style={textStyles}
 					value={text}
 					onChange={(newText) => setAttributes({ text: newText })}
 					placeholder="Add Text..."
