@@ -46,6 +46,81 @@ export default function Edit(props) {
 		shadowVOffset = shadowVOffset || 0,
 		shadowBlur = shadowBlur || 0,
 		shadowSpread = shadowSpread || 0,
+
+		// margin padding attributes ⬇
+		marginUnit,
+
+		marginTop = marginTop || 0,
+		marginRight = marginRight || 0,
+		marginBottom = marginBottom || 0,
+		marginLeft = marginLeft || 0,
+
+		paddingUnit,
+
+		paddingTop = paddingTop || 0,
+		paddingRight = paddingRight || 0,
+		paddingBottom = paddingBottom || 0,
+		paddingLeft = paddingLeft || 0,
+
+		TABmarginUnit = TABmarginUnit || marginUnit,
+
+		TABmarginTop = TABmarginTop === 0
+			? TABmarginTop
+			: TABmarginTop || marginTop,
+		TABmarginRight = TABmarginRight === 0
+			? TABmarginRight
+			: TABmarginRight || marginRight,
+		TABmarginBottom = TABmarginBottom === 0
+			? TABmarginBottom
+			: TABmarginBottom || marginBottom,
+		TABmarginLeft = TABmarginLeft === 0
+			? TABmarginLeft
+			: TABmarginLeft || marginLeft,
+
+		TABpaddingUnit = TABpaddingUnit || paddingUnit,
+
+		TABpaddingTop = TABpaddingTop === 0
+			? TABpaddingTop
+			: TABpaddingTop || paddingTop,
+		TABpaddingRight = TABpaddingRight === 0
+			? TABpaddingRight
+			: TABpaddingRight || paddingRight,
+		TABpaddingBottom = TABpaddingBottom === 0
+			? TABpaddingBottom
+			: TABpaddingBottom || paddingBottom,
+		TABpaddingLeft = TABpaddingLeft === 0
+			? TABpaddingLeft
+			: TABpaddingLeft || paddingLeft,
+
+		MOBmarginUnit = MOBmarginUnit || TABmarginUnit,
+
+		MOBmarginTop = MOBmarginTop === 0
+			? MOBmarginTop
+			: MOBmarginTop || TABmarginTop,
+		MOBmarginRight = MOBmarginRight === 0
+			? MOBmarginRight
+			: MOBmarginRight || TABmarginRight,
+		MOBmarginBottom = MOBmarginBottom === 0
+			? MOBmarginBottom
+			: MOBmarginBottom || TABmarginBottom,
+		MOBmarginLeft = MOBmarginLeft === 0
+			? MOBmarginLeft
+			: MOBmarginLeft || TABmarginLeft,
+
+		MOBpaddingUnit = MOBpaddingUnit || TABpaddingUnit,
+
+		MOBpaddingTop = MOBpaddingTop === 0
+			? MOBpaddingTop
+			: MOBpaddingTop || TABpaddingTop,
+		MOBpaddingRight = MOBpaddingRight === 0
+			? MOBpaddingRight
+			: MOBpaddingRight || TABpaddingRight,
+		MOBpaddingBottom = MOBpaddingBottom === 0
+			? MOBpaddingBottom
+			: MOBpaddingBottom || TABpaddingBottom,
+		MOBpaddingLeft = MOBpaddingLeft === 0
+			? MOBpaddingLeft
+			: MOBpaddingLeft || TABpaddingLeft,
 	} = attributes;
 
 	useEffect(() => {
@@ -84,13 +159,8 @@ export default function Edit(props) {
 	}, []);
 
 	const blockProps = useBlockProps({
-		className: `eb-guten-block-main-parrent-wrapper eb-notice-wrapper eb-notice-wrapper-${uniqueIdNumber}`,
+		className: `eb-guten-block-main-parrent-wrapper`,
 	});
-
-	const dismissStyles = {
-		color: textColor || "#fff",
-		display: dismissible ? "flex" : "none",
-	};
 
 	//
 	// CSS/styling Codes Starts from Here
@@ -217,16 +287,39 @@ export default function Edit(props) {
 	} = generateTypographyStylesForEdit(typoPrefix_text, 18);
 
 	//
-	// Desktop styles in strings ⬇
+	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
 	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber}{
+
+		margin: ${marginTop}${marginUnit} ${marginRight}${marginUnit} ${marginBottom}${marginUnit} ${marginLeft}${marginUnit};
+		padding: ${paddingTop}${paddingUnit} ${paddingRight}${paddingUnit} ${paddingBottom}${paddingUnit} ${paddingLeft}${paddingUnit};
+
 		background: ${backgroundColor};
-		padding: 65px 60px;
 		box-shadow: ${shadowHOffset}px ${shadowVOffset}px ${shadowBlur}px ${shadowSpread}px ${shadowColor};
 		border-radius: 5px;
 	}
 	`;
 
+	const wrapperStylesTab = `
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber}{
+
+		margin: ${TABmarginTop}${TABmarginUnit} ${TABmarginRight}${TABmarginUnit} ${TABmarginBottom}${TABmarginUnit} ${TABmarginLeft}${TABmarginUnit};
+		padding: ${TABpaddingTop}${TABpaddingUnit} ${TABpaddingRight}${TABpaddingUnit} ${TABpaddingBottom}${TABpaddingUnit} ${TABpaddingLeft}${TABpaddingUnit};
+		
+	}
+	`;
+
+	const wrapperStylesMobile = `
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber}{
+		
+		margin: ${MOBmarginTop}${MOBmarginUnit} ${MOBmarginRight}${MOBmarginUnit} ${MOBmarginBottom}${MOBmarginUnit} ${MOBmarginLeft}${MOBmarginUnit};
+		padding: ${MOBpaddingTop}${MOBpaddingUnit} ${MOBpaddingRight}${MOBpaddingUnit} ${MOBpaddingBottom}${MOBpaddingUnit} ${MOBpaddingLeft}${MOBpaddingUnit};
+
+	}
+	`;
+
+	//
+	// titleWrapper styles css in strings ⬇
 	const titleWrapperStylesDesktop = `
 	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title-wrapper{
 		display: flex;
@@ -234,19 +327,29 @@ export default function Edit(props) {
 	}	
 	`;
 
-	const dismissStylesDesktop = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-dismiss{
-		color: ${textColor};
-		display: ${dismissible};
-	}
-	`;
-
+	//
+	// title styles css in strings ⬇
 	const titleStylesDesktop = `
 	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
 		${titleTypoStylesDesktop}		
 		color: ${titleColor};
 	}
 	`;
+
+	const titleStylesTab = `
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
+		${titleTypoStylesTab}
+	}
+	`;
+
+	const titleStylesMobile = `
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
+		${titleTypoStylesMobile}
+	}
+	`;
+
+	//
+	// text styles css in strings ⬇
 	const textStylesDesktop = `
 	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-text{
 		${textTypoStylesDesktop}
@@ -254,32 +357,29 @@ export default function Edit(props) {
 	}
 	`;
 
-	//
-	// Tab styles in strings ⬇
-	const titleStylesTab = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
-		${titleTypoStylesTab}
-	}
-	`;
 	const textStylesTab = `
 	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-text{
 		${textTypoStylesTab}
 	}
 	`;
 
-	//
-	// Mobile styles in strings ⬇
-	const titleStylesMobile = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
-		${titleTypoStylesMobile}
-	}
-	`;
 	const textStylesMobile = `
 	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-text{
 		${textTypoStylesMobile}
 	}
 	`;
 
+	//
+	// dismiss styles css in strings ⬇
+	const dismissStylesDesktop = `
+	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-dismiss{
+		color: ${textColor};
+		display: ${dismissible};
+	}
+	`;
+
+	//
+	// all css styles for large screen width (desktop/laptop) in strings ⬇
 	const desktopAllStyles = `
 		${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
 		${isCssExists(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " "}
@@ -288,12 +388,18 @@ export default function Edit(props) {
 		${isCssExists(textStylesDesktop) ? textStylesDesktop : " "}
 	`;
 
+	//
+	// all css styles for Tab in strings ⬇
 	const tabAllStyles = `
+		${isCssExists(wrapperStylesTab) ? wrapperStylesTab : " "}
 		${isCssExists(titleStylesTab) ? titleStylesTab : " "}
 		${isCssExists(textStylesTab) ? textStylesTab : " "}
 	`;
 
+	//
+	// all css styles for Mobile in strings ⬇
 	const mobileAllStyles = `
+		${isCssExists(wrapperStylesMobile) ? wrapperStylesMobile : " "}
 		${isCssExists(titleStylesMobile) ? titleStylesMobile : " "}
 		${isCssExists(textStylesMobile) ? textStylesMobile : " "}
 	`;
@@ -302,7 +408,7 @@ export default function Edit(props) {
 		isSelected && <Inspector {...props} />,
 
 		//Edit view here
-		<div {...blockProps} data-id={noticeId}>
+		<div {...blockProps}>
 			<style>
 				{`
 				${softMinifyCssStrings(desktopAllStyles)}
@@ -327,25 +433,31 @@ export default function Edit(props) {
 				}
 				`}
 			</style>
-			<div className="eb-notice-title-wrapper">
-				<RichText
-					className="eb-notice-title"
-					value={title}
-					onChange={(newTitle) => setAttributes({ title: newTitle })}
-					placeholder="Add Title..."
-					keepPlaceholderOnFocus
-				/>
-				<span className="eb-notice-dismiss" />
-			</div>
 
-			<div>
-				<RichText
-					className="eb-notice-text"
-					value={text}
-					onChange={(newText) => setAttributes({ text: newText })}
-					placeholder="Add Text..."
-					keepPlaceholderOnFocus
-				/>
+			<div
+				className={`eb-notice-wrapper eb-notice-wrapper-${uniqueIdNumber}`}
+				data-id={noticeId}
+			>
+				<div className="eb-notice-title-wrapper">
+					<RichText
+						className="eb-notice-title"
+						value={title}
+						onChange={(newTitle) => setAttributes({ title: newTitle })}
+						placeholder="Add Title..."
+						keepPlaceholderOnFocus
+					/>
+					<span className="eb-notice-dismiss" />
+				</div>
+
+				<div>
+					<RichText
+						className="eb-notice-text"
+						value={text}
+						onChange={(newText) => setAttributes({ text: newText })}
+						placeholder="Add Text..."
+						keepPlaceholderOnFocus
+					/>
+				</div>
 			</div>
 		</div>,
 	];

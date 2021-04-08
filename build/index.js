@@ -22,6 +22,17 @@
 
 /***/ }),
 
+/***/ "./util/dimensions-control/style.scss":
+/*!********************************************!*\
+  !*** ./util/dimensions-control/style.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./util/unit-control/style.scss":
 /*!**************************************!*\
   !*** ./util/unit-control/style.scss ***!
@@ -1302,6 +1313,103 @@ var attributes = _objectSpread(_objectSpread({
     type: "number"
   }
 }, Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_1__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), {}, {
+  // margin padding attributes ⬇
+  marginUnit: {
+    type: "string",
+    "default": "px"
+  },
+  marginTop: {
+    type: "number"
+  },
+  marginRight: {
+    type: "number"
+  },
+  marginBottom: {
+    type: "number"
+  },
+  marginLeft: {
+    type: "number"
+  },
+  paddingUnit: {
+    type: "string",
+    "default": "px"
+  },
+  paddingTop: {
+    type: "number",
+    "default": 65
+  },
+  paddingRight: {
+    type: "number",
+    "default": 60
+  },
+  paddingBottom: {
+    type: "number",
+    "default": 65
+  },
+  paddingLeft: {
+    type: "number",
+    "default": 60
+  },
+  TABmarginUnit: {
+    type: "string"
+  },
+  TABmarginTop: {
+    type: "number"
+  },
+  TABmarginRight: {
+    type: "number"
+  },
+  TABmarginBottom: {
+    type: "number"
+  },
+  TABmarginLeft: {
+    type: "number"
+  },
+  TABpaddingUnit: {
+    type: "string"
+  },
+  TABpaddingTop: {
+    type: "number"
+  },
+  TABpaddingRight: {
+    type: "number"
+  },
+  TABpaddingBottom: {
+    type: "number"
+  },
+  TABpaddingLeft: {
+    type: "number"
+  },
+  MOBmarginUnit: {
+    type: "string"
+  },
+  MOBmarginTop: {
+    type: "number"
+  },
+  MOBmarginRight: {
+    type: "number"
+  },
+  MOBmarginBottom: {
+    type: "number"
+  },
+  MOBmarginLeft: {
+    type: "number"
+  },
+  MOBpaddingUnit: {
+    type: "string"
+  },
+  MOBpaddingTop: {
+    type: "number"
+  },
+  MOBpaddingRight: {
+    type: "number"
+  },
+  MOBpaddingBottom: {
+    type: "number"
+  },
+  MOBpaddingLeft: {
+    type: "number"
+  },
   dismissible: {
     type: "boolean",
     "default": false
@@ -1369,7 +1477,7 @@ var attributes = _objectSpread(_objectSpread({
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: NOTICE_TYPES, TEXT_TRANSFORM, FONT_WEIGHTS, TEXT_DECORATION */
+/*! exports provided: NOTICE_TYPES, TEXT_TRANSFORM, FONT_WEIGHTS, TEXT_DECORATION, FONT_SIZE_UNITS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1378,6 +1486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TEXT_TRANSFORM", function() { return TEXT_TRANSFORM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FONT_WEIGHTS", function() { return FONT_WEIGHTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TEXT_DECORATION", function() { return TEXT_DECORATION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FONT_SIZE_UNITS", function() { return FONT_SIZE_UNITS; });
 var __ = wp.i18n.__;
 var NOTICE_TYPES = [{
   label: __("Success"),
@@ -1437,6 +1546,16 @@ var TEXT_DECORATION = [{
   label: __("Underline Oveline"),
   value: "underline overline"
 }];
+var FONT_SIZE_UNITS = [{
+  label: "px",
+  value: "px"
+}, {
+  label: "em",
+  value: "em"
+}, {
+  label: "%",
+  value: "%"
+}];
 
 /***/ }),
 
@@ -1476,8 +1595,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_uuid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/uuid */ "./util/uuid.js");
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
 /* harmony import */ var _myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./myUtil/helpers */ "./src/myUtil/helpers.js");
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 /**
  * WordPress dependencies
  */
@@ -1518,7 +1635,65 @@ function Edit(props) {
       _attributes$shadowBlu = attributes.shadowBlur,
       shadowBlur = _attributes$shadowBlu === void 0 ? shadowBlur || 0 : _attributes$shadowBlu,
       _attributes$shadowSpr = attributes.shadowSpread,
-      shadowSpread = _attributes$shadowSpr === void 0 ? shadowSpread || 0 : _attributes$shadowSpr;
+      shadowSpread = _attributes$shadowSpr === void 0 ? shadowSpread || 0 : _attributes$shadowSpr,
+      marginUnit = attributes.marginUnit,
+      _attributes$marginTop = attributes.marginTop,
+      marginTop = _attributes$marginTop === void 0 ? marginTop || 0 : _attributes$marginTop,
+      _attributes$marginRig = attributes.marginRight,
+      marginRight = _attributes$marginRig === void 0 ? marginRight || 0 : _attributes$marginRig,
+      _attributes$marginBot = attributes.marginBottom,
+      marginBottom = _attributes$marginBot === void 0 ? marginBottom || 0 : _attributes$marginBot,
+      _attributes$marginLef = attributes.marginLeft,
+      marginLeft = _attributes$marginLef === void 0 ? marginLeft || 0 : _attributes$marginLef,
+      paddingUnit = attributes.paddingUnit,
+      _attributes$paddingTo = attributes.paddingTop,
+      paddingTop = _attributes$paddingTo === void 0 ? paddingTop || 0 : _attributes$paddingTo,
+      _attributes$paddingRi = attributes.paddingRight,
+      paddingRight = _attributes$paddingRi === void 0 ? paddingRight || 0 : _attributes$paddingRi,
+      _attributes$paddingBo = attributes.paddingBottom,
+      paddingBottom = _attributes$paddingBo === void 0 ? paddingBottom || 0 : _attributes$paddingBo,
+      _attributes$paddingLe = attributes.paddingLeft,
+      paddingLeft = _attributes$paddingLe === void 0 ? paddingLeft || 0 : _attributes$paddingLe,
+      _attributes$TABmargin = attributes.TABmarginUnit,
+      TABmarginUnit = _attributes$TABmargin === void 0 ? TABmarginUnit || marginUnit : _attributes$TABmargin,
+      _attributes$TABmargin2 = attributes.TABmarginTop,
+      TABmarginTop = _attributes$TABmargin2 === void 0 ? TABmarginTop === 0 ? TABmarginTop : TABmarginTop || marginTop : _attributes$TABmargin2,
+      _attributes$TABmargin3 = attributes.TABmarginRight,
+      TABmarginRight = _attributes$TABmargin3 === void 0 ? TABmarginRight === 0 ? TABmarginRight : TABmarginRight || marginRight : _attributes$TABmargin3,
+      _attributes$TABmargin4 = attributes.TABmarginBottom,
+      TABmarginBottom = _attributes$TABmargin4 === void 0 ? TABmarginBottom === 0 ? TABmarginBottom : TABmarginBottom || marginBottom : _attributes$TABmargin4,
+      _attributes$TABmargin5 = attributes.TABmarginLeft,
+      TABmarginLeft = _attributes$TABmargin5 === void 0 ? TABmarginLeft === 0 ? TABmarginLeft : TABmarginLeft || marginLeft : _attributes$TABmargin5,
+      _attributes$TABpaddin = attributes.TABpaddingUnit,
+      TABpaddingUnit = _attributes$TABpaddin === void 0 ? TABpaddingUnit || paddingUnit : _attributes$TABpaddin,
+      _attributes$TABpaddin2 = attributes.TABpaddingTop,
+      TABpaddingTop = _attributes$TABpaddin2 === void 0 ? TABpaddingTop === 0 ? TABpaddingTop : TABpaddingTop || paddingTop : _attributes$TABpaddin2,
+      _attributes$TABpaddin3 = attributes.TABpaddingRight,
+      TABpaddingRight = _attributes$TABpaddin3 === void 0 ? TABpaddingRight === 0 ? TABpaddingRight : TABpaddingRight || paddingRight : _attributes$TABpaddin3,
+      _attributes$TABpaddin4 = attributes.TABpaddingBottom,
+      TABpaddingBottom = _attributes$TABpaddin4 === void 0 ? TABpaddingBottom === 0 ? TABpaddingBottom : TABpaddingBottom || paddingBottom : _attributes$TABpaddin4,
+      _attributes$TABpaddin5 = attributes.TABpaddingLeft,
+      TABpaddingLeft = _attributes$TABpaddin5 === void 0 ? TABpaddingLeft === 0 ? TABpaddingLeft : TABpaddingLeft || paddingLeft : _attributes$TABpaddin5,
+      _attributes$MOBmargin = attributes.MOBmarginUnit,
+      MOBmarginUnit = _attributes$MOBmargin === void 0 ? MOBmarginUnit || TABmarginUnit : _attributes$MOBmargin,
+      _attributes$MOBmargin2 = attributes.MOBmarginTop,
+      MOBmarginTop = _attributes$MOBmargin2 === void 0 ? MOBmarginTop === 0 ? MOBmarginTop : MOBmarginTop || TABmarginTop : _attributes$MOBmargin2,
+      _attributes$MOBmargin3 = attributes.MOBmarginRight,
+      MOBmarginRight = _attributes$MOBmargin3 === void 0 ? MOBmarginRight === 0 ? MOBmarginRight : MOBmarginRight || TABmarginRight : _attributes$MOBmargin3,
+      _attributes$MOBmargin4 = attributes.MOBmarginBottom,
+      MOBmarginBottom = _attributes$MOBmargin4 === void 0 ? MOBmarginBottom === 0 ? MOBmarginBottom : MOBmarginBottom || TABmarginBottom : _attributes$MOBmargin4,
+      _attributes$MOBmargin5 = attributes.MOBmarginLeft,
+      MOBmarginLeft = _attributes$MOBmargin5 === void 0 ? MOBmarginLeft === 0 ? MOBmarginLeft : MOBmarginLeft || TABmarginLeft : _attributes$MOBmargin5,
+      _attributes$MOBpaddin = attributes.MOBpaddingUnit,
+      MOBpaddingUnit = _attributes$MOBpaddin === void 0 ? MOBpaddingUnit || TABpaddingUnit : _attributes$MOBpaddin,
+      _attributes$MOBpaddin2 = attributes.MOBpaddingTop,
+      MOBpaddingTop = _attributes$MOBpaddin2 === void 0 ? MOBpaddingTop === 0 ? MOBpaddingTop : MOBpaddingTop || TABpaddingTop : _attributes$MOBpaddin2,
+      _attributes$MOBpaddin3 = attributes.MOBpaddingRight,
+      MOBpaddingRight = _attributes$MOBpaddin3 === void 0 ? MOBpaddingRight === 0 ? MOBpaddingRight : MOBpaddingRight || TABpaddingRight : _attributes$MOBpaddin3,
+      _attributes$MOBpaddin4 = attributes.MOBpaddingBottom,
+      MOBpaddingBottom = _attributes$MOBpaddin4 === void 0 ? MOBpaddingBottom === 0 ? MOBpaddingBottom : MOBpaddingBottom || TABpaddingBottom : _attributes$MOBpaddin4,
+      _attributes$MOBpaddin5 = attributes.MOBpaddingLeft,
+      MOBpaddingLeft = _attributes$MOBpaddin5 === void 0 ? MOBpaddingLeft === 0 ? MOBpaddingLeft : MOBpaddingLeft || TABpaddingLeft : _attributes$MOBpaddin5;
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var noticeId = Object(_util_uuid__WEBPACK_IMPORTED_MODULE_4__["default"])().substr(0, 5);
     setAttributes({
@@ -1553,12 +1728,8 @@ function Edit(props) {
     }
   }, []);
   var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"])({
-    className: "eb-guten-block-main-parrent-wrapper eb-notice-wrapper eb-notice-wrapper-".concat(uniqueIdNumber)
-  });
-  var dismissStyles = {
-    color: textColor || "#fff",
-    display: dismissible ? "flex" : "none"
-  }; //
+    className: "eb-guten-block-main-parrent-wrapper"
+  }); //
   // CSS/styling Codes Starts from Here
   //
   // function to generate typography styles for an element based on it's prefix
@@ -1628,31 +1799,44 @@ function Edit(props) {
       textTypoStylesDesktop = _generateTypographySt2.typoStylesDesktop,
       textTypoStylesTab = _generateTypographySt2.typoStylesTab,
       textTypoStylesMobile = _generateTypographySt2.typoStylesMobile; //
-  // Desktop styles in strings ⬇
+  // wrapper styles css in strings ⬇
 
 
-  var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tpadding: 65px 60px;\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
-  var titleWrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t");
-  var dismissStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible, ";\n\t}\n\t");
+  var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\n\t\tmargin: ").concat(marginTop).concat(marginUnit, " ").concat(marginRight).concat(marginUnit, " ").concat(marginBottom).concat(marginUnit, " ").concat(marginLeft).concat(marginUnit, ";\n\t\tpadding: ").concat(paddingTop).concat(paddingUnit, " ").concat(paddingRight).concat(paddingUnit, " ").concat(paddingBottom).concat(paddingUnit, " ").concat(paddingLeft).concat(paddingUnit, ";\n\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
+  var wrapperStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\n\t\tmargin: ").concat(TABmarginTop).concat(TABmarginUnit, " ").concat(TABmarginRight).concat(TABmarginUnit, " ").concat(TABmarginBottom).concat(TABmarginUnit, " ").concat(TABmarginLeft).concat(TABmarginUnit, ";\n\t\tpadding: ").concat(TABpaddingTop).concat(TABpaddingUnit, " ").concat(TABpaddingRight).concat(TABpaddingUnit, " ").concat(TABpaddingBottom).concat(TABpaddingUnit, " ").concat(TABpaddingLeft).concat(TABpaddingUnit, ";\n\t\t\n\t}\n\t");
+  var wrapperStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\t\t\n\t\tmargin: ").concat(MOBmarginTop).concat(MOBmarginUnit, " ").concat(MOBmarginRight).concat(MOBmarginUnit, " ").concat(MOBmarginBottom).concat(MOBmarginUnit, " ").concat(MOBmarginLeft).concat(MOBmarginUnit, ";\n\t\tpadding: ").concat(MOBpaddingTop).concat(MOBpaddingUnit, " ").concat(MOBpaddingRight).concat(MOBpaddingUnit, " ").concat(MOBpaddingBottom).concat(MOBpaddingUnit, " ").concat(MOBpaddingLeft).concat(MOBpaddingUnit, ";\n\n\t}\n\t"); //
+  // titleWrapper styles css in strings ⬇
+
+  var titleWrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t"); //
+  // title styles css in strings ⬇
+
   var titleStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\t\t\n\t\tcolor: ").concat(titleColor, ";\n\t}\n\t");
-  var textStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor, ";\n\t}\n\t"); //
-  // Tab styles in strings ⬇
-
   var titleStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesTab, "\n\t}\n\t");
-  var textStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesTab, "\n\t}\n\t"); //
-  // Mobile styles in strings ⬇
+  var titleStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t"); //
+  // text styles css in strings ⬇
 
-  var titleStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t");
-  var textStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t");
-  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t");
-  var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t");
-  var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t");
+  var textStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor, ";\n\t}\n\t");
+  var textStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesTab, "\n\t}\n\t");
+  var textStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t"); //
+  // dismiss styles css in strings ⬇
+
+  var dismissStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible, ";\n\t}\n\t"); //
+  // all css styles for large screen width (desktop/laptop) in strings ⬇
+
+  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t"); //
+  // all css styles for Tab in strings ⬇
+
+  var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t"); //
+  // all css styles for Mobile in strings ⬇
+
+  var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t");
   return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_3__["default"], props),
   /*#__PURE__*/
   //Edit view here
-  React.createElement("div", _extends({}, blockProps, {
+  React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(desktopAllStyles), "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_start\n\t\t\t\t*/\n\n\t\t\t\t").concat(resOption === "tab" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(tabAllStyles) : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(mobileAllStyles) : " ", "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_end\n\t\t\t\t*/\n\n\t\t\t\t@media all and (max-width: 1030px) {\t\t\t\t\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t}\n\n\t\t\t\t@media all and (max-width: 680px) {\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
+    className: "eb-notice-wrapper eb-notice-wrapper-".concat(uniqueIdNumber),
     "data-id": noticeId
-  }), /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(desktopAllStyles), "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_start\n\t\t\t\t*/\n\n\t\t\t\t").concat(resOption === "tab" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(tabAllStyles) : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(mobileAllStyles) : " ", "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_end\n\t\t\t\t*/\n\n\t\t\t\t@media all and (max-width: 1030px) {\t\t\t\t\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t}\n\n\t\t\t\t@media all and (max-width: 680px) {\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: "eb-notice-title-wrapper"
   }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"], {
     className: "eb-notice-title",
@@ -1676,7 +1860,7 @@ function Edit(props) {
     },
     placeholder: "Add Text...",
     keepPlaceholderOnFocus: true
-  })))];
+  }))))];
 }
 
 /***/ }),
@@ -1794,9 +1978,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
 /* harmony import */ var _util_color_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/color-control */ "./util/color-control/index.js");
-/* harmony import */ var _myUtil_typography_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./myUtil/typography-component */ "./src/myUtil/typography-component/index.js");
-/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
-/* harmony import */ var _myUtil_ResPanelBody__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./myUtil/ResPanelBody */ "./src/myUtil/ResPanelBody.js");
+/* harmony import */ var _util_unit_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/unit-control */ "./util/unit-control/index.js");
+/* harmony import */ var _util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/dimensions-control */ "./util/dimensions-control/index.js");
+/* harmony import */ var _myUtil_typography_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./myUtil/typography-component */ "./src/myUtil/typography-component/index.js");
+/* harmony import */ var _myUtil_ResPanelBody__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./myUtil/ResPanelBody */ "./src/myUtil/ResPanelBody.js");
+/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
 /**
  * WordPress dependencies
  */
@@ -1807,6 +1993,8 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
+
+
 
 
 
@@ -1828,7 +2016,65 @@ function Inspector(props) {
       shadowHOffset = attributes.shadowHOffset,
       shadowVOffset = attributes.shadowVOffset,
       shadowBlur = attributes.shadowBlur,
-      shadowSpread = attributes.shadowSpread;
+      shadowSpread = attributes.shadowSpread,
+      marginUnit = attributes.marginUnit,
+      _attributes$marginTop = attributes.marginTop,
+      marginTop = _attributes$marginTop === void 0 ? marginTop || 0 : _attributes$marginTop,
+      _attributes$marginRig = attributes.marginRight,
+      marginRight = _attributes$marginRig === void 0 ? marginRight || 0 : _attributes$marginRig,
+      _attributes$marginBot = attributes.marginBottom,
+      marginBottom = _attributes$marginBot === void 0 ? marginBottom || 0 : _attributes$marginBot,
+      _attributes$marginLef = attributes.marginLeft,
+      marginLeft = _attributes$marginLef === void 0 ? marginLeft || 0 : _attributes$marginLef,
+      paddingUnit = attributes.paddingUnit,
+      _attributes$paddingTo = attributes.paddingTop,
+      paddingTop = _attributes$paddingTo === void 0 ? paddingTop || 0 : _attributes$paddingTo,
+      _attributes$paddingRi = attributes.paddingRight,
+      paddingRight = _attributes$paddingRi === void 0 ? paddingRight || 0 : _attributes$paddingRi,
+      _attributes$paddingBo = attributes.paddingBottom,
+      paddingBottom = _attributes$paddingBo === void 0 ? paddingBottom || 0 : _attributes$paddingBo,
+      _attributes$paddingLe = attributes.paddingLeft,
+      paddingLeft = _attributes$paddingLe === void 0 ? paddingLeft || 0 : _attributes$paddingLe,
+      _attributes$TABmargin = attributes.TABmarginUnit,
+      TABmarginUnit = _attributes$TABmargin === void 0 ? TABmarginUnit || marginUnit : _attributes$TABmargin,
+      _attributes$TABmargin2 = attributes.TABmarginTop,
+      TABmarginTop = _attributes$TABmargin2 === void 0 ? TABmarginTop === 0 ? TABmarginTop : TABmarginTop || marginTop : _attributes$TABmargin2,
+      _attributes$TABmargin3 = attributes.TABmarginRight,
+      TABmarginRight = _attributes$TABmargin3 === void 0 ? TABmarginRight === 0 ? TABmarginRight : TABmarginRight || marginRight : _attributes$TABmargin3,
+      _attributes$TABmargin4 = attributes.TABmarginBottom,
+      TABmarginBottom = _attributes$TABmargin4 === void 0 ? TABmarginBottom === 0 ? TABmarginBottom : TABmarginBottom || marginBottom : _attributes$TABmargin4,
+      _attributes$TABmargin5 = attributes.TABmarginLeft,
+      TABmarginLeft = _attributes$TABmargin5 === void 0 ? TABmarginLeft === 0 ? TABmarginLeft : TABmarginLeft || marginLeft : _attributes$TABmargin5,
+      _attributes$TABpaddin = attributes.TABpaddingUnit,
+      TABpaddingUnit = _attributes$TABpaddin === void 0 ? TABpaddingUnit || paddingUnit : _attributes$TABpaddin,
+      _attributes$TABpaddin2 = attributes.TABpaddingTop,
+      TABpaddingTop = _attributes$TABpaddin2 === void 0 ? TABpaddingTop === 0 ? TABpaddingTop : TABpaddingTop || paddingTop : _attributes$TABpaddin2,
+      _attributes$TABpaddin3 = attributes.TABpaddingRight,
+      TABpaddingRight = _attributes$TABpaddin3 === void 0 ? TABpaddingRight === 0 ? TABpaddingRight : TABpaddingRight || paddingRight : _attributes$TABpaddin3,
+      _attributes$TABpaddin4 = attributes.TABpaddingBottom,
+      TABpaddingBottom = _attributes$TABpaddin4 === void 0 ? TABpaddingBottom === 0 ? TABpaddingBottom : TABpaddingBottom || paddingBottom : _attributes$TABpaddin4,
+      _attributes$TABpaddin5 = attributes.TABpaddingLeft,
+      TABpaddingLeft = _attributes$TABpaddin5 === void 0 ? TABpaddingLeft === 0 ? TABpaddingLeft : TABpaddingLeft || paddingLeft : _attributes$TABpaddin5,
+      _attributes$MOBmargin = attributes.MOBmarginUnit,
+      MOBmarginUnit = _attributes$MOBmargin === void 0 ? MOBmarginUnit || TABmarginUnit || marginUnit : _attributes$MOBmargin,
+      _attributes$MOBmargin2 = attributes.MOBmarginTop,
+      MOBmarginTop = _attributes$MOBmargin2 === void 0 ? MOBmarginTop === 0 ? MOBmarginTop : MOBmarginTop || TABmarginTop : _attributes$MOBmargin2,
+      _attributes$MOBmargin3 = attributes.MOBmarginRight,
+      MOBmarginRight = _attributes$MOBmargin3 === void 0 ? MOBmarginRight === 0 ? MOBmarginRight : MOBmarginRight || TABmarginRight : _attributes$MOBmargin3,
+      _attributes$MOBmargin4 = attributes.MOBmarginBottom,
+      MOBmarginBottom = _attributes$MOBmargin4 === void 0 ? MOBmarginBottom === 0 ? MOBmarginBottom : MOBmarginBottom || TABmarginBottom : _attributes$MOBmargin4,
+      _attributes$MOBmargin5 = attributes.MOBmarginLeft,
+      MOBmarginLeft = _attributes$MOBmargin5 === void 0 ? MOBmarginLeft === 0 ? MOBmarginLeft : MOBmarginLeft || TABmarginLeft : _attributes$MOBmargin5,
+      _attributes$MOBpaddin = attributes.MOBpaddingUnit,
+      MOBpaddingUnit = _attributes$MOBpaddin === void 0 ? MOBpaddingUnit || TABpaddingUnit || paddingUnit : _attributes$MOBpaddin,
+      _attributes$MOBpaddin2 = attributes.MOBpaddingTop,
+      MOBpaddingTop = _attributes$MOBpaddin2 === void 0 ? MOBpaddingTop === 0 ? MOBpaddingTop : MOBpaddingTop || TABpaddingTop : _attributes$MOBpaddin2,
+      _attributes$MOBpaddin3 = attributes.MOBpaddingRight,
+      MOBpaddingRight = _attributes$MOBpaddin3 === void 0 ? MOBpaddingRight === 0 ? MOBpaddingRight : MOBpaddingRight || TABpaddingRight : _attributes$MOBpaddin3,
+      _attributes$MOBpaddin4 = attributes.MOBpaddingBottom,
+      MOBpaddingBottom = _attributes$MOBpaddin4 === void 0 ? MOBpaddingBottom === 0 ? MOBpaddingBottom : MOBpaddingBottom || TABpaddingBottom : _attributes$MOBpaddin4,
+      _attributes$MOBpaddin5 = attributes.MOBpaddingLeft,
+      MOBpaddingLeft = _attributes$MOBpaddin5 === void 0 ? MOBpaddingLeft === 0 ? MOBpaddingLeft : MOBpaddingLeft || TABpaddingLeft : _attributes$MOBpaddin5;
 
   var onTypeChange = function onTypeChange(type) {
     switch (type) {
@@ -2030,20 +2276,20 @@ function Inspector(props) {
     onChange: function onChange(type) {
       return onTypeChange(type);
     }
-  })), /*#__PURE__*/React.createElement(_myUtil_ResPanelBody__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  })), /*#__PURE__*/React.createElement(_myUtil_ResPanelBody__WEBPACK_IMPORTED_MODULE_9__["default"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Typography"),
     initialOpen: false,
     resRequiredProps: resRequiredProps
-  }, /*#__PURE__*/React.createElement(_myUtil_typography_component__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/React.createElement(_myUtil_typography_component__WEBPACK_IMPORTED_MODULE_8__["default"], {
     baseLabel: "Title",
-    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_7__["typoPrefix_title"],
-    typographyAttributes: generateTypographyAttributes(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_7__["typoPrefix_title"]),
+    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_title"],
+    typographyAttributes: generateTypographyAttributes(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_title"]),
     resOption: resOption,
     setAttributes: setAttributes
-  }), /*#__PURE__*/React.createElement(_myUtil_typography_component__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), /*#__PURE__*/React.createElement(_myUtil_typography_component__WEBPACK_IMPORTED_MODULE_8__["default"], {
     baseLabel: "Text",
-    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_7__["typoPrefix_text"],
-    typographyAttributes: generateTypographyAttributes(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_7__["typoPrefix_text"]),
+    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_text"],
+    typographyAttributes: generateTypographyAttributes(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_text"]),
     resOption: resOption,
     setAttributes: setAttributes
   })), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["PanelColorSettings"], {
@@ -2074,7 +2320,167 @@ function Inspector(props) {
       },
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Text Color")
     }]
-  }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
+  }), /*#__PURE__*/React.createElement(_myUtil_ResPanelBody__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin & Padding"),
+    initialOpen: false,
+    resRequiredProps: resRequiredProps
+  }, resOption == "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    selectedUnit: marginUnit,
+    unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["FONT_SIZE_UNITS"],
+    onClick: function onClick(marginUnit) {
+      return setAttributes({
+        marginUnit: marginUnit
+      });
+    }
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin"),
+    top: marginTop,
+    right: marginRight,
+    bottom: marginBottom,
+    left: marginLeft,
+    onChange: function onChange(_ref) {
+      var top = _ref.top,
+          right = _ref.right,
+          bottom = _ref.bottom,
+          left = _ref.left;
+      return setAttributes({
+        marginTop: top,
+        marginRight: right,
+        marginBottom: bottom,
+        marginLeft: left
+      });
+    }
+  }), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    selectedUnit: paddingUnit,
+    unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["FONT_SIZE_UNITS"],
+    onClick: function onClick(paddingUnit) {
+      return setAttributes({
+        paddingUnit: paddingUnit
+      });
+    }
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Padding"),
+    top: paddingTop,
+    right: paddingRight,
+    bottom: paddingBottom,
+    left: paddingLeft,
+    onChange: function onChange(_ref2) {
+      var top = _ref2.top,
+          right = _ref2.right,
+          bottom = _ref2.bottom,
+          left = _ref2.left;
+      return setAttributes({
+        paddingTop: top,
+        paddingRight: right,
+        paddingBottom: bottom,
+        paddingLeft: left
+      });
+    }
+  })), resOption == "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    selectedUnit: TABmarginUnit,
+    unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["FONT_SIZE_UNITS"],
+    onClick: function onClick(TABmarginUnit) {
+      return setAttributes({
+        TABmarginUnit: TABmarginUnit
+      });
+    }
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin"),
+    top: TABmarginTop,
+    right: TABmarginRight,
+    bottom: TABmarginBottom,
+    left: TABmarginLeft,
+    onChange: function onChange(_ref3) {
+      var top = _ref3.top,
+          right = _ref3.right,
+          bottom = _ref3.bottom,
+          left = _ref3.left;
+      return setAttributes({
+        TABmarginTop: top,
+        TABmarginRight: right,
+        TABmarginBottom: bottom,
+        TABmarginLeft: left
+      });
+    }
+  }), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    selectedUnit: TABpaddingUnit,
+    unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["FONT_SIZE_UNITS"],
+    onClick: function onClick(TABpaddingUnit) {
+      return setAttributes({
+        TABpaddingUnit: TABpaddingUnit
+      });
+    }
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Padding"),
+    top: TABpaddingTop,
+    right: TABpaddingRight,
+    bottom: TABpaddingBottom,
+    left: TABpaddingLeft,
+    onChange: function onChange(_ref4) {
+      var top = _ref4.top,
+          right = _ref4.right,
+          bottom = _ref4.bottom,
+          left = _ref4.left;
+      return setAttributes({
+        TABpaddingTop: top,
+        TABpaddingRight: right,
+        TABpaddingBottom: bottom,
+        TABpaddingLeft: left
+      });
+    }
+  })), resOption == "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    selectedUnit: MOBmarginUnit,
+    unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["FONT_SIZE_UNITS"],
+    onClick: function onClick(MOBmarginUnit) {
+      return setAttributes({
+        MOBmarginUnit: MOBmarginUnit
+      });
+    }
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin"),
+    top: MOBmarginTop,
+    right: MOBmarginRight,
+    bottom: MOBmarginBottom,
+    left: MOBmarginLeft,
+    onChange: function onChange(_ref5) {
+      var top = _ref5.top,
+          right = _ref5.right,
+          bottom = _ref5.bottom,
+          left = _ref5.left;
+      return setAttributes({
+        MOBmarginTop: top,
+        MOBmarginRight: right,
+        MOBmarginBottom: bottom,
+        MOBmarginLeft: left
+      });
+    }
+  }), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    selectedUnit: MOBpaddingUnit,
+    unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["FONT_SIZE_UNITS"],
+    onClick: function onClick(MOBpaddingUnit) {
+      return setAttributes({
+        MOBpaddingUnit: MOBpaddingUnit
+      });
+    }
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Padding"),
+    top: MOBpaddingTop,
+    right: MOBpaddingRight,
+    bottom: MOBpaddingBottom,
+    left: MOBpaddingLeft,
+    onChange: function onChange(_ref6) {
+      var top = _ref6.top,
+          right = _ref6.right,
+          bottom = _ref6.bottom,
+          left = _ref6.left;
+      return setAttributes({
+        MOBpaddingTop: top,
+        MOBpaddingRight: right,
+        MOBpaddingBottom: bottom,
+        MOBpaddingLeft: left
+      });
+    }
+  }))), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Shadow"),
     initialOpen: false
   }, /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -5533,7 +5939,65 @@ var save = function save(_ref) {
       shadowBlur = _attributes$shadowBlu === void 0 ? shadowBlur || 0 : _attributes$shadowBlu,
       _attributes$shadowSpr = attributes.shadowSpread,
       shadowSpread = _attributes$shadowSpr === void 0 ? shadowSpread || 0 : _attributes$shadowSpr,
-      showAfterDismiss = attributes.showAfterDismiss;
+      showAfterDismiss = attributes.showAfterDismiss,
+      marginUnit = attributes.marginUnit,
+      _attributes$marginTop = attributes.marginTop,
+      marginTop = _attributes$marginTop === void 0 ? marginTop || 0 : _attributes$marginTop,
+      _attributes$marginRig = attributes.marginRight,
+      marginRight = _attributes$marginRig === void 0 ? marginRight || 0 : _attributes$marginRig,
+      _attributes$marginBot = attributes.marginBottom,
+      marginBottom = _attributes$marginBot === void 0 ? marginBottom || 0 : _attributes$marginBot,
+      _attributes$marginLef = attributes.marginLeft,
+      marginLeft = _attributes$marginLef === void 0 ? marginLeft || 0 : _attributes$marginLef,
+      paddingUnit = attributes.paddingUnit,
+      _attributes$paddingTo = attributes.paddingTop,
+      paddingTop = _attributes$paddingTo === void 0 ? paddingTop || 0 : _attributes$paddingTo,
+      _attributes$paddingRi = attributes.paddingRight,
+      paddingRight = _attributes$paddingRi === void 0 ? paddingRight || 0 : _attributes$paddingRi,
+      _attributes$paddingBo = attributes.paddingBottom,
+      paddingBottom = _attributes$paddingBo === void 0 ? paddingBottom || 0 : _attributes$paddingBo,
+      _attributes$paddingLe = attributes.paddingLeft,
+      paddingLeft = _attributes$paddingLe === void 0 ? paddingLeft || 0 : _attributes$paddingLe,
+      _attributes$TABmargin = attributes.TABmarginUnit,
+      TABmarginUnit = _attributes$TABmargin === void 0 ? TABmarginUnit || marginUnit : _attributes$TABmargin,
+      _attributes$TABmargin2 = attributes.TABmarginTop,
+      TABmarginTop = _attributes$TABmargin2 === void 0 ? TABmarginTop === 0 ? TABmarginTop : TABmarginTop || marginTop : _attributes$TABmargin2,
+      _attributes$TABmargin3 = attributes.TABmarginRight,
+      TABmarginRight = _attributes$TABmargin3 === void 0 ? TABmarginRight === 0 ? TABmarginRight : TABmarginRight || marginRight : _attributes$TABmargin3,
+      _attributes$TABmargin4 = attributes.TABmarginBottom,
+      TABmarginBottom = _attributes$TABmargin4 === void 0 ? TABmarginBottom === 0 ? TABmarginBottom : TABmarginBottom || marginBottom : _attributes$TABmargin4,
+      _attributes$TABmargin5 = attributes.TABmarginLeft,
+      TABmarginLeft = _attributes$TABmargin5 === void 0 ? TABmarginLeft === 0 ? TABmarginLeft : TABmarginLeft || marginLeft : _attributes$TABmargin5,
+      _attributes$TABpaddin = attributes.TABpaddingUnit,
+      TABpaddingUnit = _attributes$TABpaddin === void 0 ? TABpaddingUnit || paddingUnit : _attributes$TABpaddin,
+      _attributes$TABpaddin2 = attributes.TABpaddingTop,
+      TABpaddingTop = _attributes$TABpaddin2 === void 0 ? TABpaddingTop === 0 ? TABpaddingTop : TABpaddingTop || paddingTop : _attributes$TABpaddin2,
+      _attributes$TABpaddin3 = attributes.TABpaddingRight,
+      TABpaddingRight = _attributes$TABpaddin3 === void 0 ? TABpaddingRight === 0 ? TABpaddingRight : TABpaddingRight || paddingRight : _attributes$TABpaddin3,
+      _attributes$TABpaddin4 = attributes.TABpaddingBottom,
+      TABpaddingBottom = _attributes$TABpaddin4 === void 0 ? TABpaddingBottom === 0 ? TABpaddingBottom : TABpaddingBottom || paddingBottom : _attributes$TABpaddin4,
+      _attributes$TABpaddin5 = attributes.TABpaddingLeft,
+      TABpaddingLeft = _attributes$TABpaddin5 === void 0 ? TABpaddingLeft === 0 ? TABpaddingLeft : TABpaddingLeft || paddingLeft : _attributes$TABpaddin5,
+      _attributes$MOBmargin = attributes.MOBmarginUnit,
+      MOBmarginUnit = _attributes$MOBmargin === void 0 ? MOBmarginUnit || TABmarginUnit : _attributes$MOBmargin,
+      _attributes$MOBmargin2 = attributes.MOBmarginTop,
+      MOBmarginTop = _attributes$MOBmargin2 === void 0 ? MOBmarginTop === 0 ? MOBmarginTop : MOBmarginTop || TABmarginTop : _attributes$MOBmargin2,
+      _attributes$MOBmargin3 = attributes.MOBmarginRight,
+      MOBmarginRight = _attributes$MOBmargin3 === void 0 ? MOBmarginRight === 0 ? MOBmarginRight : MOBmarginRight || TABmarginRight : _attributes$MOBmargin3,
+      _attributes$MOBmargin4 = attributes.MOBmarginBottom,
+      MOBmarginBottom = _attributes$MOBmargin4 === void 0 ? MOBmarginBottom === 0 ? MOBmarginBottom : MOBmarginBottom || TABmarginBottom : _attributes$MOBmargin4,
+      _attributes$MOBmargin5 = attributes.MOBmarginLeft,
+      MOBmarginLeft = _attributes$MOBmargin5 === void 0 ? MOBmarginLeft === 0 ? MOBmarginLeft : MOBmarginLeft || TABmarginLeft : _attributes$MOBmargin5,
+      _attributes$MOBpaddin = attributes.MOBpaddingUnit,
+      MOBpaddingUnit = _attributes$MOBpaddin === void 0 ? MOBpaddingUnit || TABpaddingUnit : _attributes$MOBpaddin,
+      _attributes$MOBpaddin2 = attributes.MOBpaddingTop,
+      MOBpaddingTop = _attributes$MOBpaddin2 === void 0 ? MOBpaddingTop === 0 ? MOBpaddingTop : MOBpaddingTop || TABpaddingTop : _attributes$MOBpaddin2,
+      _attributes$MOBpaddin3 = attributes.MOBpaddingRight,
+      MOBpaddingRight = _attributes$MOBpaddin3 === void 0 ? MOBpaddingRight === 0 ? MOBpaddingRight : MOBpaddingRight || TABpaddingRight : _attributes$MOBpaddin3,
+      _attributes$MOBpaddin4 = attributes.MOBpaddingBottom,
+      MOBpaddingBottom = _attributes$MOBpaddin4 === void 0 ? MOBpaddingBottom === 0 ? MOBpaddingBottom : MOBpaddingBottom || TABpaddingBottom : _attributes$MOBpaddin4,
+      _attributes$MOBpaddin5 = attributes.MOBpaddingLeft,
+      MOBpaddingLeft = _attributes$MOBpaddin5 === void 0 ? MOBpaddingLeft === 0 ? MOBpaddingLeft : MOBpaddingLeft || TABpaddingLeft : _attributes$MOBpaddin5;
 
   var generateTypographyStylesForSave = function generateTypographyStylesForSave(prefixConstant) {
     var defaultFontSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -5593,30 +6057,42 @@ var save = function save(_ref) {
       textTypoStylesDesktop = _generateTypographySt2.typoStylesDesktop,
       textTypoStylesTab = _generateTypographySt2.typoStylesTab,
       textTypoStylesMobile = _generateTypographySt2.typoStylesMobile; //
-  // Desktop styles in strings ⬇
+  // wrapper styles css in strings ⬇
 
 
-  var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tpadding: 65px 60px;\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
-  var titleWrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t");
-  var dismissStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible, ";\n\t}\n\t");
+  var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\n\t\tmargin: ").concat(marginTop).concat(marginUnit, " ").concat(marginRight).concat(marginUnit, " ").concat(marginBottom).concat(marginUnit, " ").concat(marginLeft).concat(marginUnit, ";\n\t\tpadding: ").concat(paddingTop).concat(paddingUnit, " ").concat(paddingRight).concat(paddingUnit, " ").concat(paddingBottom).concat(paddingUnit, " ").concat(paddingLeft).concat(paddingUnit, ";\n\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
+  var wrapperStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\n\t\tmargin: ").concat(TABmarginTop).concat(TABmarginUnit, " ").concat(TABmarginRight).concat(TABmarginUnit, " ").concat(TABmarginBottom).concat(TABmarginUnit, " ").concat(TABmarginLeft).concat(TABmarginUnit, ";\n\t\tpadding: ").concat(TABpaddingTop).concat(TABpaddingUnit, " ").concat(TABpaddingRight).concat(TABpaddingUnit, " ").concat(TABpaddingBottom).concat(TABpaddingUnit, " ").concat(TABpaddingLeft).concat(TABpaddingUnit, ";\n\t\t\n\t}\n\t");
+  var wrapperStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\t\t\n\t\tmargin: ").concat(MOBmarginTop).concat(MOBmarginUnit, " ").concat(MOBmarginRight).concat(MOBmarginUnit, " ").concat(MOBmarginBottom).concat(MOBmarginUnit, " ").concat(MOBmarginLeft).concat(MOBmarginUnit, ";\n\t\tpadding: ").concat(MOBpaddingTop).concat(MOBpaddingUnit, " ").concat(MOBpaddingRight).concat(MOBpaddingUnit, " ").concat(MOBpaddingBottom).concat(MOBpaddingUnit, " ").concat(MOBpaddingLeft).concat(MOBpaddingUnit, ";\n\n\t}\n\t"); //
+  // titleWrapper styles css in strings ⬇
+
+  var titleWrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t"); //
+  // title styles css in strings ⬇
+
   var titleStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\t\t\n\t\tcolor: ").concat(titleColor, ";\n\t}\n\t");
-  var textStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor, ";\n\t}\n\t"); //
-  // Tab styles in strings ⬇
-
   var titleStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesTab, "\n\t}\n\t");
-  var textStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesTab, "\n\t}\n\t"); //
-  // Mobile styles in strings ⬇
+  var titleStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t"); //
+  // text styles css in strings ⬇
 
-  var titleStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t");
-  var textStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t");
-  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t");
-  var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t");
-  var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t");
-  return /*#__PURE__*/React.createElement("div", {
+  var textStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor, ";\n\t}\n\t");
+  var textStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesTab, "\n\t}\n\t");
+  var textStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t"); //
+  // dismiss styles css in strings ⬇
+
+  var dismissStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible, ";\n\t}\n\t"); //
+  // all css styles for large screen width (desktop/laptop) in strings ⬇
+
+  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t"); //
+  // all css styles for Tab in strings ⬇
+
+  var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t"); //
+  // all css styles for Mobile in strings ⬇
+
+  var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t");
+  return /*#__PURE__*/React.createElement("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"].save(), /*#__PURE__*/React.createElement("style", null, "".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(desktopAllStyles), "@media all and (max-width: 1030px){").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(tabAllStyles), "}@media all and (max-width: 680px){").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(mobileAllStyles), "}")), /*#__PURE__*/React.createElement("div", {
     className: "eb-notice-wrapper eb-notice-wrapper-".concat(uniqueIdNumber),
     "data-id": noticeId,
     "data-show-again": showAfterDismiss
-  }, /*#__PURE__*/React.createElement("style", null, "".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(desktopAllStyles), "@media all and (max-width: 1030px){").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(tabAllStyles), "}@media all and (max-width: 680px){").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(mobileAllStyles), "}")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: "eb-notice-title-wrapper"
   }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
     tagName: "div",
@@ -5628,7 +6104,7 @@ var save = function save(_ref) {
     tagName: "div",
     className: "eb-notice-text",
     value: text
-  })));
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (save);
@@ -5744,6 +6220,206 @@ var ColorControl = function ColorControl(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ColorControl);
+
+/***/ }),
+
+/***/ "./util/dimensions-control/index.js":
+/*!******************************************!*\
+  !*** ./util/dimensions-control/index.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./util/dimensions-control/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var DimensionsControl = /*#__PURE__*/function (_Component) {
+  _inherits(DimensionsControl, _Component);
+
+  var _super = _createSuper(DimensionsControl);
+
+  function DimensionsControl() {
+    var _this;
+
+    _classCallCheck(this, DimensionsControl);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      top: _this.props.top || 0,
+      right: _this.props.right || 0,
+      bottom: _this.props.bottom || 0,
+      left: _this.props.left || 0,
+      isLinked: false
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onButtonClick", function () {
+      return _this.setState({
+        isLinked: !_this.state.isLinked
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onInputChange", function (event) {
+      var _this$state = _this.state,
+          top = _this$state.top,
+          right = _this$state.right,
+          bottom = _this$state.bottom,
+          left = _this$state.left,
+          isLinked = _this$state.isLinked;
+      var _event$target = event.target,
+          name = _event$target.name,
+          value = _event$target.value;
+
+      if (isLinked) {
+        top = right = bottom = left = parseInt(value) || 0;
+
+        _this.setState({
+          top: top,
+          right: right,
+          bottom: bottom,
+          left: left
+        }, function () {
+          var _this$state2 = _this.state,
+              top = _this$state2.top,
+              right = _this$state2.right,
+              bottom = _this$state2.bottom,
+              left = _this$state2.left;
+
+          _this.props.onChange({
+            top: top,
+            right: right,
+            bottom: bottom,
+            left: left
+          });
+        });
+      } else {
+        _this.setState(_defineProperty({}, name, parseInt(value) || 0), function () {
+          var _this$state3 = _this.state,
+              top = _this$state3.top,
+              right = _this$state3.right,
+              bottom = _this$state3.bottom,
+              left = _this$state3.left;
+
+          _this.props.onChange({
+            top: top,
+            right: right,
+            bottom: bottom,
+            left: left
+          });
+        });
+      }
+    });
+
+    return _this;
+  }
+
+  _createClass(DimensionsControl, [{
+    key: "render",
+    value: function render() {
+      var _this$state4 = this.state,
+          top = _this$state4.top,
+          right = _this$state4.right,
+          bottom = _this$state4.bottom,
+          left = _this$state4.left,
+          isLinked = _this$state4.isLinked;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dimention-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dimention-label"
+      }, this.props.label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        name: "top",
+        value: top || 0,
+        onChange: this.onInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "dimentions-input-label"
+      }, "Top")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        name: "right",
+        value: right || 0,
+        onChange: this.onInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "dimentions-input-label"
+      }, "Right")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        name: "bottom",
+        value: bottom || 0,
+        onChange: this.onInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "dimentions-input-label"
+      }, "Bottom")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        name: "left",
+        value: left || 0,
+        onChange: this.onInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "dimentions-input-label"
+      }, "Left")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "linked-btn components-button is-button dashicons dashicons-".concat(isLinked ? "admin-links is-primary" : "editor-unlink is-default"),
+        onClick: this.onButtonClick
+      })));
+    }
+  }]);
+
+  return DimensionsControl;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+DimensionsControl.propTypes = {
+  label: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  top: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  right: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  bottom: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  left: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  onChange: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (DimensionsControl);
 
 /***/ }),
 

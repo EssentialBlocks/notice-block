@@ -16,6 +16,115 @@ const attributes = {
 	// typography attributes ⬇
 	...generateTypographyAttributes(Object.values(prefixObjs)),
 
+	// margin padding attributes ⬇
+	marginUnit: {
+		type: "string",
+		default: "px",
+	},
+
+	marginTop: {
+		type: "number",
+	},
+	marginRight: {
+		type: "number",
+	},
+	marginBottom: {
+		type: "number",
+	},
+	marginLeft: {
+		type: "number",
+	},
+
+	paddingUnit: {
+		type: "string",
+		default: "px",
+	},
+
+	paddingTop: {
+		type: "number",
+		default: 65,
+	},
+	paddingRight: {
+		type: "number",
+		default: 60,
+	},
+	paddingBottom: {
+		type: "number",
+		default: 65,
+	},
+	paddingLeft: {
+		type: "number",
+		default: 60,
+	},
+
+	TABmarginUnit: {
+		type: "string",
+	},
+
+	TABmarginTop: {
+		type: "number",
+	},
+	TABmarginRight: {
+		type: "number",
+	},
+	TABmarginBottom: {
+		type: "number",
+	},
+	TABmarginLeft: {
+		type: "number",
+	},
+
+	TABpaddingUnit: {
+		type: "string",
+	},
+
+	TABpaddingTop: {
+		type: "number",
+	},
+	TABpaddingRight: {
+		type: "number",
+	},
+	TABpaddingBottom: {
+		type: "number",
+	},
+	TABpaddingLeft: {
+		type: "number",
+	},
+
+	MOBmarginUnit: {
+		type: "string",
+	},
+
+	MOBmarginTop: {
+		type: "number",
+	},
+	MOBmarginRight: {
+		type: "number",
+	},
+	MOBmarginBottom: {
+		type: "number",
+	},
+	MOBmarginLeft: {
+		type: "number",
+	},
+
+	MOBpaddingUnit: {
+		type: "string",
+	},
+
+	MOBpaddingTop: {
+		type: "number",
+	},
+	MOBpaddingRight: {
+		type: "number",
+	},
+	MOBpaddingBottom: {
+		type: "number",
+	},
+	MOBpaddingLeft: {
+		type: "number",
+	},
+
 	dismissible: {
 		type: "boolean",
 		default: false,

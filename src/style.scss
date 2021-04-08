@@ -19,3 +19,10 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+// style helper class
+.entry-content
+	> *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+	margin-left: auto;
+	margin-right: auto;
+}
