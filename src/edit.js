@@ -9,13 +9,12 @@ const { withSelect } = wp.data;
  * Internal depenencies
  */
 import Inspector from "./inspector";
-import uuid from "../util/style-handler/style-handler";
 
 class Edit extends Component {
 
 	componentDidMount() {
 		const BLOCK_PREFIX = "eb-notice";
-		const unique_id = BLOCK_PREFIX+ "-" + uuid().substr(0, 5);
+		const unique_id = BLOCK_PREFIX+ "-" + Math.random().toString(36).substr(2, 7);
 		const current_block_id = this.props.attributes.blockId;
 
 		/**
