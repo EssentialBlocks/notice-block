@@ -9,7 +9,7 @@ const { withSelect } = wp.data;
  * Internal depenencies
  */
 import Inspector from "./inspector";
-import uuid from "../util/uuid";
+import uuid from "../util/style-handler/style-handler";
 
 class Edit extends Component {
 
