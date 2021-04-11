@@ -1,15 +1,130 @@
+import * as prefixObjs from "./constants/typographyPrefixConstants";
+import { generateTypographyAttributes } from "./myUtil/helpers";
+
 const attributes = {
-	blockId: {
-		type: "string"
+	// responsive control attributes ⬇
+	resOption: {
+		type: "string",
+		default: "desktop",
 	},
-	blockRoot: {
-		type: 'string',
-		default: 'essential_block'
+
+	// uniqueIdNumber attribute for making unique className
+	uniqueIdNumber: {
+		type: "number",
 	},
-	blockMeta: {
-		type: 'string',
-		default: '',
+
+	// typography attributes ⬇
+	...generateTypographyAttributes(Object.values(prefixObjs)),
+
+	// margin padding attributes ⬇
+	marginUnit: {
+		type: "string",
+		default: "px",
 	},
+
+	marginTop: {
+		type: "number",
+	},
+	marginRight: {
+		type: "number",
+	},
+	marginBottom: {
+		type: "number",
+	},
+	marginLeft: {
+		type: "number",
+	},
+
+	paddingUnit: {
+		type: "string",
+		default: "px",
+	},
+
+	paddingTop: {
+		type: "number",
+		default: 65,
+	},
+	paddingRight: {
+		type: "number",
+		default: 60,
+	},
+	paddingBottom: {
+		type: "number",
+		default: 65,
+	},
+	paddingLeft: {
+		type: "number",
+		default: 60,
+	},
+
+	TABmarginUnit: {
+		type: "string",
+	},
+
+	TABmarginTop: {
+		type: "number",
+	},
+	TABmarginRight: {
+		type: "number",
+	},
+	TABmarginBottom: {
+		type: "number",
+	},
+	TABmarginLeft: {
+		type: "number",
+	},
+
+	TABpaddingUnit: {
+		type: "string",
+	},
+
+	TABpaddingTop: {
+		type: "number",
+	},
+	TABpaddingRight: {
+		type: "number",
+	},
+	TABpaddingBottom: {
+		type: "number",
+	},
+	TABpaddingLeft: {
+		type: "number",
+	},
+
+	MOBmarginUnit: {
+		type: "string",
+	},
+
+	MOBmarginTop: {
+		type: "number",
+	},
+	MOBmarginRight: {
+		type: "number",
+	},
+	MOBmarginBottom: {
+		type: "number",
+	},
+	MOBmarginLeft: {
+		type: "number",
+	},
+
+	MOBpaddingUnit: {
+		type: "string",
+	},
+
+	MOBpaddingTop: {
+		type: "number",
+	},
+	MOBpaddingRight: {
+		type: "number",
+	},
+	MOBpaddingBottom: {
+		type: "number",
+	},
+	MOBpaddingLeft: {
+		type: "number",
+	},
+
 	dismissible: {
 		type: "boolean",
 		default: false,
@@ -66,68 +181,6 @@ const attributes = {
 	},
 	shadowBlur: {
 		type: "number",
-	},
-	titleSizeUnit: {
-		type: "string",
-		default: "px",
-	},
-	textSizeUnit: {
-		type: "string",
-		default: "px",
-	},
-	titleFontFamily: {
-		type: "string",
-	},
-	titleFontWeight: {
-		type: "string",
-		default: "normal",
-	},
-	titleTextTransform: {
-		type: "string",
-	},
-	titleTextDecoration: {
-		type: "string",
-	},
-	titleLetterSpacing: {
-		type: "number",
-	},
-	titleLetterSpacingUnit: {
-		type: "string",
-		default: "px",
-	},
-	titleLineHeight: {
-		type: "number",
-	},
-	titleLineHeightUnit: {
-		type: "string",
-		default: "px",
-	},
-	textFontFamily: {
-		type: "string",
-	},
-	textFontWeight: {
-		type: "string",
-		default: "normal",
-	},
-	textTextTransform: {
-		type: "string",
-	},
-	textTextDecoration: {
-		type: "string",
-	},
-	textLetterSpacing: {
-		type: "number",
-	},
-	textLetterSpacingUnit: {
-		type: "string",
-		default: "px",
-	},
-	textLineHeight: {
-		type: "number",
-	},
-	textLineHeightUnit: {
-		type: "string",
-		default: "px",
 	},
 };
 

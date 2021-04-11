@@ -1,3 +1,7 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
 .eb-notice-dismiss {
 	top: 0px;
 	right: 0px;
@@ -11,7 +15,14 @@
 }
 
 // Typography style
-.eb-typography-base div{
-		display: flex;
-		justify-content: space-between;
+.eb-typography-base div {
+	display: flex;
+	justify-content: space-between;
+}
+
+// style helper class
+.entry-content
+	> *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+	margin-left: auto;
+	margin-right: auto;
 }
