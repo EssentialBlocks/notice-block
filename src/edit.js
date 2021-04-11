@@ -10,7 +10,6 @@ import "./editor.scss";
  * Internal depenencies
  */
 import Inspector from "./inspector";
-import uuid from "../util/uuid";
 
 import {
 	typoPrefix_text,
@@ -34,9 +33,6 @@ export default function Edit(props) {
 		// responsive control attribute ⬇
 		resOption,
 
-		// uniqueIdNumber attribute for making unique className
-		uniqueIdNumber,
-
 		dismissible = dismissible ? "flex" : "none",
 		// titleFontSize,
 		// textFontSize,
@@ -45,7 +41,6 @@ export default function Edit(props) {
 		backgroundColor = backgroundColor ? backgroundColor : "#3074ff",
 		titleColor = titleColor || "#fff",
 		textColor = textColor || "#edf1f7",
-		noticeId,
 		shadowColor = shadowColor || "#000",
 		shadowHOffset = shadowHOffset || 0,
 		shadowVOffset = shadowVOffset || 0,
@@ -127,24 +122,6 @@ export default function Edit(props) {
 			? MOBpaddingLeft
 			: MOBpaddingLeft || TABpaddingLeft,
 	} = attributes;
-
-	useEffect(() => {
-		const noticeId = uuid().substr(0, 5);
-		setAttributes({ noticeId });
-	}, []);
-
-	// this useEffect is for creating a unique id for each block's unique className by a random unique number
-	useEffect(() => {
-		const genRandomNumber = generateRandomNumber();
-		const anotherSameClassElements = document.querySelectorAll(
-			`.eb-notice-wrapper-${uniqueIdNumber}`
-		);
-		if (!uniqueIdNumber || anotherSameClassElements[1]) {
-			setAttributes({
-				uniqueIdNumber: genRandomNumber,
-			});
-		}
-	}, []);
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
 	useEffect(() => {
@@ -321,7 +298,7 @@ export default function Edit(props) {
 
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber}{
+	.${blockId}{
 
 		margin: ${marginTop}${marginUnit} ${marginRight}${marginUnit} ${marginBottom}${marginUnit} ${marginLeft}${marginUnit};
 		padding: ${paddingTop}${paddingUnit} ${paddingRight}${paddingUnit} ${paddingBottom}${paddingUnit} ${paddingLeft}${paddingUnit};
@@ -333,7 +310,7 @@ export default function Edit(props) {
 	`;
 
 	const wrapperStylesTab = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber}{
+	.${blockId}{
 
 		margin: ${TABmarginTop}${TABmarginUnit} ${TABmarginRight}${TABmarginUnit} ${TABmarginBottom}${TABmarginUnit} ${TABmarginLeft}${TABmarginUnit};
 		padding: ${TABpaddingTop}${TABpaddingUnit} ${TABpaddingRight}${TABpaddingUnit} ${TABpaddingBottom}${TABpaddingUnit} ${TABpaddingLeft}${TABpaddingUnit};
@@ -342,75 +319,69 @@ export default function Edit(props) {
 	`;
 
 	const wrapperStylesMobile = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber}{
-		
+	.${blockId}{
 		margin: ${MOBmarginTop}${MOBmarginUnit} ${MOBmarginRight}${MOBmarginUnit} ${MOBmarginBottom}${MOBmarginUnit} ${MOBmarginLeft}${MOBmarginUnit};
 		padding: ${MOBpaddingTop}${MOBpaddingUnit} ${MOBpaddingRight}${MOBpaddingUnit} ${MOBpaddingBottom}${MOBpaddingUnit} ${MOBpaddingLeft}${MOBpaddingUnit};
-
 	}
 	`;
 
 	//
 	// titleWrapper styles css in strings ⬇
 	const titleWrapperStylesDesktop = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title-wrapper{
+	.${blockId} .eb-notice-title-wrapper{
 		display: flex;
 		justify-content: space-between;
 	}	
 	`;
 
-	//
 	// title styles css in strings ⬇
 	const titleStylesDesktop = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
+	.${blockId} .eb-notice-title{
 		${titleTypoStylesDesktop}		
 		color: ${titleColor};
 	}
 	`;
 
 	const titleStylesTab = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
+	.${blockId} .eb-notice-title{
 		${titleTypoStylesTab}
 	}
 	`;
 
 	const titleStylesMobile = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-title{
+	.${blockId} .eb-notice-title{
 		${titleTypoStylesMobile}
 	}
 	`;
 
-	//
 	// text styles css in strings ⬇
 	const textStylesDesktop = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-text{
+	.${blockId} .eb-notice-text{
 		${textTypoStylesDesktop}
 		color: ${textColor};
 	}
 	`;
 
 	const textStylesTab = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-text{
+	.${blockId} .eb-notice-text{
 		${textTypoStylesTab}
 	}
 	`;
 
 	const textStylesMobile = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-text{
+	.${blockId} .eb-notice-text{
 		${textTypoStylesMobile}
 	}
 	`;
 
-	//
 	// dismiss styles css in strings ⬇
 	const dismissStylesDesktop = `
-	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber} .eb-notice-dismiss{
+	.${blockId} .eb-notice-dismiss{
 		color: ${textColor};
 		display: ${dismissible};
 	}
 	`;
 
-	//
 	// all css styles for large screen width (desktop/laptop) in strings ⬇
 	const desktopAllStyles = `
 		${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
@@ -420,7 +391,6 @@ export default function Edit(props) {
 		${isCssExists(textStylesDesktop) ? textStylesDesktop : " "}
 	`;
 
-	//
 	// all css styles for Tab in strings ⬇
 	const tabAllStyles = `
 		${isCssExists(wrapperStylesTab) ? wrapperStylesTab : " "}
@@ -428,7 +398,6 @@ export default function Edit(props) {
 		${isCssExists(textStylesTab) ? textStylesTab : " "}
 	`;
 
-	//
 	// all css styles for Mobile in strings ⬇
 	const mobileAllStyles = `
 		${isCssExists(wrapperStylesMobile) ? wrapperStylesMobile : " "}
@@ -468,19 +437,19 @@ export default function Edit(props) {
 					edit_mimmikcss_end
 				*/
 
-				@media all and (max-width: 1030px) {				
+				@media all and (max-width: 1024px) {				
 					${softMinifyCssStrings(tabAllStyles)}
 				}
 
-				@media all and (max-width: 680px) {
+				@media all and (max-width: 767px) {
 					${softMinifyCssStrings(mobileAllStyles)}
 				}
 				`}
 			</style>
 
 			<div
-				className={`eb-notice-wrapper eb-notice-wrapper-${uniqueIdNumber}`}
-				data-id={noticeId}
+				className={`eb-notice-wrapper ${blockId}`}
+				data-id={blockId}
 			>
 				<div className="eb-notice-title-wrapper">
 					<RichText
