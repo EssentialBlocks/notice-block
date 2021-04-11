@@ -1,9 +1,11 @@
 {
+	"apiVersion": 2,
 	"name": "block/notice-block",
 	"title": "Notice",
 	"category": "widgets",
 	"description": "Put Spotlight On News, Announcements & Let The Visitors Find It Easily",
 	"textdomain": "notice-block",
 	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
 }
