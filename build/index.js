@@ -1,4 +1,4 @@
-(window["webpackJsonp_notice"] = window["webpackJsonp_notice"] || []).push([["style-index"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["style-index"],{
 
 /***/ "./src/style.scss":
 /*!************************!*\
@@ -187,7 +187,7 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
-/******/ 	var jsonpArray = window["webpackJsonp_notice"] = window["webpackJsonp_notice"] || [];
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
 /******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
 /******/ 	jsonpArray.push = webpackJsonpCallback;
 /******/ 	jsonpArray = jsonpArray.slice();
@@ -1311,6 +1311,17 @@ var attributes = _objectSpread(_objectSpread({
   // uniqueIdNumber attribute for making unique className
   uniqueIdNumber: {
     type: "number"
+  },
+  blockId: {
+    type: "string"
+  },
+  blockRoot: {
+    type: 'string',
+    "default": 'essential_block'
+  },
+  blockMeta: {
+    type: 'string',
+    "default": ''
   }
 }, Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_1__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), {}, {
   // margin padding attributes ⬇
@@ -1595,6 +1606,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_uuid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/uuid */ "./util/uuid.js");
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
 /* harmony import */ var _myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./myUtil/helpers */ "./src/myUtil/helpers.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /**
  * WordPress dependencies
  */
@@ -1610,10 +1623,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Edit(props) {
+  var BLOCK_PREFIX = "eb-notice";
+  var unique_id = BLOCK_PREFIX + "-" + Math.random().toString(36).substr(2, 7);
   var attributes = props.attributes,
       setAttributes = props.setAttributes,
       isSelected = props.isSelected;
-  var resOption = attributes.resOption,
+  var blockId = attributes.blockId,
+      blockMeta = attributes.blockMeta,
+      resOption = attributes.resOption,
       uniqueIdNumber = attributes.uniqueIdNumber,
       _attributes$dismissib = attributes.dismissible,
       dismissible = _attributes$dismissib === void 0 ? dismissible ? "flex" : "none" : _attributes$dismissib,
@@ -1726,9 +1743,41 @@ function Edit(props) {
         resOption: _resOption
       });
     }
+  }, []); // this useEffect is for creating a unique id for each block's unique className by a random unique number
+
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var current_block_id = attributes.blockId;
+    /**
+     * Define and Generate Unique Block ID
+    */
+
+    if (!current_block_id) {
+      setAttributes({
+        blockId: unique_id
+      });
+    }
+    /**
+     * Assign New Unique ID when duplicate BlockId found
+     * Mostly happens when User Duplicate a Block
+    */
+
+
+    var all_blocks = wp.data.select("core/block-editor").getBlocks();
+    var blockIdCount = 0;
+    all_blocks.forEach(function (item) {
+      if (item.attributes.blockId === current_block_id && item.attributes.blockRoot === 'essential_block' && item.name === 'block/notice-block') {
+        blockIdCount++;
+
+        if (blockIdCount > 1) {
+          setAttributes({
+            blockId: blockId
+          });
+        }
+      }
+    });
   }, []);
   var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"])({
-    className: "eb-guten-block-main-parrent-wrapper"
+    className: "eb-guten-block-main-parent-wrapper"
   }); //
   // CSS/styling Codes Starts from Here
   //
@@ -1798,8 +1847,7 @@ function Edit(props) {
   var _generateTypographySt2 = generateTypographyStylesForEdit(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_5__["typoPrefix_text"], 18),
       textTypoStylesDesktop = _generateTypographySt2.typoStylesDesktop,
       textTypoStylesTab = _generateTypographySt2.typoStylesTab,
-      textTypoStylesMobile = _generateTypographySt2.typoStylesMobile; //
-  // wrapper styles css in strings ⬇
+      textTypoStylesMobile = _generateTypographySt2.typoStylesMobile; // wrapper styles css in strings ⬇
 
 
   var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\n\t\tmargin: ").concat(marginTop).concat(marginUnit, " ").concat(marginRight).concat(marginUnit, " ").concat(marginBottom).concat(marginUnit, " ").concat(marginLeft).concat(marginUnit, ";\n\t\tpadding: ").concat(paddingTop).concat(paddingUnit, " ").concat(paddingRight).concat(paddingUnit, " ").concat(paddingBottom).concat(paddingUnit, " ").concat(paddingLeft).concat(paddingUnit, ";\n\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
@@ -1829,7 +1877,19 @@ function Edit(props) {
   var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t"); //
   // all css styles for Mobile in strings ⬇
 
-  var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t");
+  var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t"); // Set All Style in "blockMeta" Attribute
+
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var _styleObject;
+
+    var styleObject = (_styleObject = {}, _defineProperty(_styleObject, "desktop", desktopAllStyles), _defineProperty(_styleObject, "tab", tabAllStyles), _defineProperty(_styleObject, "mobile", mobileAllStyles), _styleObject);
+
+    if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
+      setAttributes({
+        blockMeta: styleObject
+      });
+    }
+  }, [attributes]);
   return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_3__["default"], props),
   /*#__PURE__*/
   //Edit view here
@@ -6256,7 +6316,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -6501,68 +6561,68 @@ var uuid = function uuid() {
 /***/ }),
 
 /***/ "@wordpress/block-editor":
-/*!*************************************!*\
-  !*** external ["wp","blockEditor"] ***!
-  \*************************************/
+/*!**********************************************!*\
+  !*** external {"this":["wp","blockEditor"]} ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function() { module.exports = window["wp"]["blockEditor"]; }());
+(function() { module.exports = this["wp"]["blockEditor"]; }());
 
 /***/ }),
 
 /***/ "@wordpress/blocks":
-/*!********************************!*\
-  !*** external ["wp","blocks"] ***!
-  \********************************/
+/*!*****************************************!*\
+  !*** external {"this":["wp","blocks"]} ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function() { module.exports = window["wp"]["blocks"]; }());
+(function() { module.exports = this["wp"]["blocks"]; }());
 
 /***/ }),
 
 /***/ "@wordpress/components":
-/*!************************************!*\
-  !*** external ["wp","components"] ***!
-  \************************************/
+/*!*********************************************!*\
+  !*** external {"this":["wp","components"]} ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function() { module.exports = window["wp"]["components"]; }());
+(function() { module.exports = this["wp"]["components"]; }());
 
 /***/ }),
 
 /***/ "@wordpress/element":
-/*!*********************************!*\
-  !*** external ["wp","element"] ***!
-  \*********************************/
+/*!******************************************!*\
+  !*** external {"this":["wp","element"]} ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function() { module.exports = window["wp"]["element"]; }());
+(function() { module.exports = this["wp"]["element"]; }());
 
 /***/ }),
 
 /***/ "@wordpress/i18n":
-/*!******************************!*\
-  !*** external ["wp","i18n"] ***!
-  \******************************/
+/*!***************************************!*\
+  !*** external {"this":["wp","i18n"]} ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function() { module.exports = window["wp"]["i18n"]; }());
+(function() { module.exports = this["wp"]["i18n"]; }());
 
 /***/ }),
 
 /***/ "react":
-/*!************************!*\
-  !*** external "React" ***!
-  \************************/
+/*!*********************************!*\
+  !*** external {"this":"React"} ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function() { module.exports = window["React"]; }());
+(function() { module.exports = this["React"]; }());
 
 /***/ })
 

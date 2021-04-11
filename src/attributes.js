@@ -12,6 +12,17 @@ const attributes = {
 	uniqueIdNumber: {
 		type: "number",
 	},
+	blockId: {
+		type: "string"
+	},
+	blockRoot: {
+		type: 'string',
+		default: 'essential_block'
+	},
+	blockMeta: {
+		type: 'string',
+		default: '',
+	},
 
 	// typography attributes ⬇
 	...generateTypographyAttributes(Object.values(prefixObjs)),

@@ -24,8 +24,13 @@ import {
 } from "./myUtil/helpers";
 
 export default function Edit(props) {
+	const BLOCK_PREFIX = "eb-notice";
+	const unique_id = BLOCK_PREFIX+ "-" + Math.random().toString(36).substr(2, 7);
+
 	const { attributes, setAttributes, isSelected } = props;
 	const {
+		blockId,
+		blockMeta,
 		// responsive control attribute ⬇
 		resOption,
 
@@ -158,8 +163,36 @@ export default function Edit(props) {
 		}
 	}, []);
 
+	// this useEffect is for creating a unique id for each block's unique className by a random unique number
+	useEffect(() => {
+		const current_block_id = attributes.blockId;
+
+		/**
+		 * Define and Generate Unique Block ID
+		*/
+		if ( !current_block_id) {
+			setAttributes({ blockId: unique_id });
+		}
+
+		/**
+		 * Assign New Unique ID when duplicate BlockId found
+		 * Mostly happens when User Duplicate a Block
+		*/
+		const all_blocks = wp.data.select("core/block-editor").getBlocks();
+        let blockIdCount = 0;
+        all_blocks.forEach((item) => {
+			if (item.attributes.blockId === current_block_id && item.attributes.blockRoot === 'essential_block' && item.name === 'block/notice-block' ) {
+				blockIdCount++;
+				if (blockIdCount > 1) {
+					setAttributes({ blockId: blockId });
+				}
+			}
+        });
+		
+	}, []);
+
 	const blockProps = useBlockProps({
-		className: `eb-guten-block-main-parrent-wrapper`,
+		className: `eb-guten-block-main-parent-wrapper`,
 	});
 
 	//
@@ -286,7 +319,6 @@ export default function Edit(props) {
 		typoStylesMobile: textTypoStylesMobile,
 	} = generateTypographyStylesForEdit(typoPrefix_text, 18);
 
-	//
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
 	.eb-notice-wrapper.eb-notice-wrapper-${uniqueIdNumber}{
@@ -403,6 +435,18 @@ export default function Edit(props) {
 		${isCssExists(titleStylesMobile) ? titleStylesMobile : " "}
 		${isCssExists(textStylesMobile) ? textStylesMobile : " "}
 	`;
+
+	// Set All Style in "blockMeta" Attribute
+	useEffect(() => {
+		const styleObject = {
+			["desktop"]: desktopAllStyles,
+			["tab"]: tabAllStyles,
+			["mobile"]: mobileAllStyles,
+		};
+		if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
+			setAttributes({ blockMeta: styleObject });
+		}
+	}, [attributes]);
 
 	return [
 		isSelected && <Inspector {...props} />,
