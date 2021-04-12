@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["style-index"],{
+(window["webpackJsonp_notice"] = window["webpackJsonp_notice"] || []).push([["style-index"],{
 
 /***/ "./src/style.scss":
 /*!************************!*\
@@ -187,7 +187,7 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
-/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var jsonpArray = window["webpackJsonp_notice"] = window["webpackJsonp_notice"] || [];
 /******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
 /******/ 	jsonpArray.push = webpackJsonpCallback;
 /******/ 	jsonpArray = jsonpArray.slice();
@@ -1603,9 +1603,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _inspector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inspector */ "./src/inspector.js");
-/* harmony import */ var _util_uuid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/uuid */ "./util/uuid.js");
-/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
-/* harmony import */ var _myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./myUtil/helpers */ "./src/myUtil/helpers.js");
+/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+/* harmony import */ var _myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./myUtil/helpers */ "./src/myUtil/helpers.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
@@ -1621,7 +1620,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 function Edit(props) {
   var BLOCK_PREFIX = "eb-notice";
   var unique_id = BLOCK_PREFIX + "-" + Math.random().toString(36).substr(2, 7);
@@ -1631,7 +1629,6 @@ function Edit(props) {
   var blockId = attributes.blockId,
       blockMeta = attributes.blockMeta,
       resOption = attributes.resOption,
-      uniqueIdNumber = attributes.uniqueIdNumber,
       _attributes$dismissib = attributes.dismissible,
       dismissible = _attributes$dismissib === void 0 ? dismissible ? "flex" : "none" : _attributes$dismissib,
       title = attributes.title,
@@ -1642,7 +1639,6 @@ function Edit(props) {
       titleColor = _attributes$titleColo === void 0 ? titleColor || "#fff" : _attributes$titleColo,
       _attributes$textColor = attributes.textColor,
       textColor = _attributes$textColor === void 0 ? textColor || "#edf1f7" : _attributes$textColor,
-      noticeId = attributes.noticeId,
       _attributes$shadowCol = attributes.shadowColor,
       shadowColor = _attributes$shadowCol === void 0 ? shadowColor || "#000" : _attributes$shadowCol,
       _attributes$shadowHOf = attributes.shadowHOffset,
@@ -1710,24 +1706,7 @@ function Edit(props) {
       _attributes$MOBpaddin4 = attributes.MOBpaddingBottom,
       MOBpaddingBottom = _attributes$MOBpaddin4 === void 0 ? MOBpaddingBottom === 0 ? MOBpaddingBottom : MOBpaddingBottom || TABpaddingBottom : _attributes$MOBpaddin4,
       _attributes$MOBpaddin5 = attributes.MOBpaddingLeft,
-      MOBpaddingLeft = _attributes$MOBpaddin5 === void 0 ? MOBpaddingLeft === 0 ? MOBpaddingLeft : MOBpaddingLeft || TABpaddingLeft : _attributes$MOBpaddin5;
-  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    var noticeId = Object(_util_uuid__WEBPACK_IMPORTED_MODULE_4__["default"])().substr(0, 5);
-    setAttributes({
-      noticeId: noticeId
-    });
-  }, []); // this useEffect is for creating a unique id for each block's unique className by a random unique number
-
-  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    var genRandomNumber = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["generateRandomNumber"])();
-    var anotherSameClassElements = document.querySelectorAll(".eb-notice-wrapper-".concat(uniqueIdNumber));
-
-    if (!uniqueIdNumber || anotherSameClassElements[1]) {
-      setAttributes({
-        uniqueIdNumber: genRandomNumber
-      });
-    }
-  }, []); // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
+      MOBpaddingLeft = _attributes$MOBpaddin5 === void 0 ? MOBpaddingLeft === 0 ? MOBpaddingLeft : MOBpaddingLeft || TABpaddingLeft : _attributes$MOBpaddin5; // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var bodyClasses = document.body.className;
@@ -1829,9 +1808,9 @@ function Edit(props) {
         MOBlineHeight = _attributes$13 === void 0 ? MOBlineHeight || TABlineHeight : _attributes$13,
         _attributes$14 = attributes["MOB".concat(prefixConstant, "LineHeightUnit")],
         MOBlineHeightUnit = _attributes$14 === void 0 ? MOBlineHeightUnit || TABlineHeightUnit : _attributes$14;
-    var typoStylesDesktop = "\n\t\t\t".concat(fontFamily ? "font-family: ".concat(fontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(fontSize) ? "font-size: ".concat(fontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(lineHeight) ? "line-height: ".concat(lineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(fontWeight ? "font-weight: ".concat(fontWeight, ";") : " ", "\n\t\t\t").concat(textDecoration ? "text-decoration: ".concat(textDecoration, ";") : " ", "\n\t\t\t").concat(textTransform ? "text-transform: ".concat(textTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(letterSpacing) ? "letter-spacing: ".concat(letterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
-    var typoStylesTab = "\n\t\t\t".concat(TABfontFamily ? "font-family: ".concat(TABfontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(TABfontSize) ? "font-size: ".concat(TABfontSize).concat(TABsizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(TABlineHeight) ? "line-height: ".concat(TABlineHeight).concat(TABlineHeightUnit, ";") : " ", "\n\t\t\t").concat(TABfontWeight ? "font-weight: ".concat(TABfontWeight, ";") : " ", "\n\t\t\t").concat(TABtextDecoration ? "text-decoration: ".concat(TABtextDecoration, ";") : " ", "\n\t\t\t").concat(TABtextTransform ? "text-transform: ".concat(TABtextTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(TABletterSpacing) ? "letter-spacing: ".concat(TABletterSpacing).concat(TABletterSpacingUnit, ";") : " ", "\n\t\t");
-    var typoStylesMobile = "\n\t\t\t".concat(MOBfontFamily ? "font-family: ".concat(MOBfontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(MOBfontSize) ? "font-size: ".concat(MOBfontSize).concat(MOBsizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(MOBlineHeight) ? "line-height: ".concat(MOBlineHeight).concat(MOBlineHeightUnit, ";") : " ", "\n\t\t\t").concat(MOBfontWeight ? "font-weight: ".concat(MOBfontWeight, ";") : " ", "\n\t\t\t").concat(MOBtextDecoration ? "text-decoration: ".concat(MOBtextDecoration, ";") : " ", "\n\t\t\t").concat(MOBtextTransform ? "text-transform: ".concat(MOBtextTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["hasVal"])(MOBletterSpacing) ? "letter-spacing: ".concat(MOBletterSpacing).concat(MOBletterSpacingUnit, ";") : " ", "\n\t\t");
+    var typoStylesDesktop = "\n\t\t\t".concat(fontFamily ? "font-family: ".concat(fontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(fontSize) ? "font-size: ".concat(fontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(lineHeight) ? "line-height: ".concat(lineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(fontWeight ? "font-weight: ".concat(fontWeight, ";") : " ", "\n\t\t\t").concat(textDecoration ? "text-decoration: ".concat(textDecoration, ";") : " ", "\n\t\t\t").concat(textTransform ? "text-transform: ".concat(textTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(letterSpacing) ? "letter-spacing: ".concat(letterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
+    var typoStylesTab = "\n\t\t\t".concat(TABfontFamily ? "font-family: ".concat(TABfontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(TABfontSize) ? "font-size: ".concat(TABfontSize).concat(TABsizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(TABlineHeight) ? "line-height: ".concat(TABlineHeight).concat(TABlineHeightUnit, ";") : " ", "\n\t\t\t").concat(TABfontWeight ? "font-weight: ".concat(TABfontWeight, ";") : " ", "\n\t\t\t").concat(TABtextDecoration ? "text-decoration: ".concat(TABtextDecoration, ";") : " ", "\n\t\t\t").concat(TABtextTransform ? "text-transform: ".concat(TABtextTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(TABletterSpacing) ? "letter-spacing: ".concat(TABletterSpacing).concat(TABletterSpacingUnit, ";") : " ", "\n\t\t");
+    var typoStylesMobile = "\n\t\t\t".concat(MOBfontFamily ? "font-family: ".concat(MOBfontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(MOBfontSize) ? "font-size: ".concat(MOBfontSize).concat(MOBsizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(MOBlineHeight) ? "line-height: ".concat(MOBlineHeight).concat(MOBlineHeightUnit, ";") : " ", "\n\t\t\t").concat(MOBfontWeight ? "font-weight: ".concat(MOBfontWeight, ";") : " ", "\n\t\t\t").concat(MOBtextDecoration ? "text-decoration: ".concat(MOBtextDecoration, ";") : " ", "\n\t\t\t").concat(MOBtextTransform ? "text-transform: ".concat(MOBtextTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(MOBletterSpacing) ? "letter-spacing: ".concat(MOBletterSpacing).concat(MOBletterSpacingUnit, ";") : " ", "\n\t\t");
     return {
       typoStylesDesktop: typoStylesDesktop,
       typoStylesTab: typoStylesTab,
@@ -1839,45 +1818,39 @@ function Edit(props) {
     };
   };
 
-  var _generateTypographySt = generateTypographyStylesForEdit(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_5__["typoPrefix_title"], 32),
+  var _generateTypographySt = generateTypographyStylesForEdit(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["typoPrefix_title"], 32),
       titleTypoStylesDesktop = _generateTypographySt.typoStylesDesktop,
       titleTypoStylesTab = _generateTypographySt.typoStylesTab,
       titleTypoStylesMobile = _generateTypographySt.typoStylesMobile;
 
-  var _generateTypographySt2 = generateTypographyStylesForEdit(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_5__["typoPrefix_text"], 18),
+  var _generateTypographySt2 = generateTypographyStylesForEdit(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["typoPrefix_text"], 18),
       textTypoStylesDesktop = _generateTypographySt2.typoStylesDesktop,
       textTypoStylesTab = _generateTypographySt2.typoStylesTab,
       textTypoStylesMobile = _generateTypographySt2.typoStylesMobile; // wrapper styles css in strings ⬇
 
 
-  var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\n\t\tmargin: ").concat(marginTop).concat(marginUnit, " ").concat(marginRight).concat(marginUnit, " ").concat(marginBottom).concat(marginUnit, " ").concat(marginLeft).concat(marginUnit, ";\n\t\tpadding: ").concat(paddingTop).concat(paddingUnit, " ").concat(paddingRight).concat(paddingUnit, " ").concat(paddingBottom).concat(paddingUnit, " ").concat(paddingLeft).concat(paddingUnit, ";\n\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
-  var wrapperStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\n\t\tmargin: ").concat(TABmarginTop).concat(TABmarginUnit, " ").concat(TABmarginRight).concat(TABmarginUnit, " ").concat(TABmarginBottom).concat(TABmarginUnit, " ").concat(TABmarginLeft).concat(TABmarginUnit, ";\n\t\tpadding: ").concat(TABpaddingTop).concat(TABpaddingUnit, " ").concat(TABpaddingRight).concat(TABpaddingUnit, " ").concat(TABpaddingBottom).concat(TABpaddingUnit, " ").concat(TABpaddingLeft).concat(TABpaddingUnit, ";\n\t\t\n\t}\n\t");
-  var wrapperStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\t\t\n\t\tmargin: ").concat(MOBmarginTop).concat(MOBmarginUnit, " ").concat(MOBmarginRight).concat(MOBmarginUnit, " ").concat(MOBmarginBottom).concat(MOBmarginUnit, " ").concat(MOBmarginLeft).concat(MOBmarginUnit, ";\n\t\tpadding: ").concat(MOBpaddingTop).concat(MOBpaddingUnit, " ").concat(MOBpaddingRight).concat(MOBpaddingUnit, " ").concat(MOBpaddingBottom).concat(MOBpaddingUnit, " ").concat(MOBpaddingLeft).concat(MOBpaddingUnit, ";\n\n\t}\n\t"); //
+  var wrapperStylesDesktop = "\n\t.".concat(blockId, "{\n\n\t\tmargin: ").concat(marginTop).concat(marginUnit, " ").concat(marginRight).concat(marginUnit, " ").concat(marginBottom).concat(marginUnit, " ").concat(marginLeft).concat(marginUnit, ";\n\t\tpadding: ").concat(paddingTop).concat(paddingUnit, " ").concat(paddingRight).concat(paddingUnit, " ").concat(paddingBottom).concat(paddingUnit, " ").concat(paddingLeft).concat(paddingUnit, ";\n\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
+  var wrapperStylesTab = "\n\t.".concat(blockId, "{\n\n\t\tmargin: ").concat(TABmarginTop).concat(TABmarginUnit, " ").concat(TABmarginRight).concat(TABmarginUnit, " ").concat(TABmarginBottom).concat(TABmarginUnit, " ").concat(TABmarginLeft).concat(TABmarginUnit, ";\n\t\tpadding: ").concat(TABpaddingTop).concat(TABpaddingUnit, " ").concat(TABpaddingRight).concat(TABpaddingUnit, " ").concat(TABpaddingBottom).concat(TABpaddingUnit, " ").concat(TABpaddingLeft).concat(TABpaddingUnit, ";\n\t\t\n\t}\n\t");
+  var wrapperStylesMobile = "\n\t.".concat(blockId, "{\n\t\tmargin: ").concat(MOBmarginTop).concat(MOBmarginUnit, " ").concat(MOBmarginRight).concat(MOBmarginUnit, " ").concat(MOBmarginBottom).concat(MOBmarginUnit, " ").concat(MOBmarginLeft).concat(MOBmarginUnit, ";\n\t\tpadding: ").concat(MOBpaddingTop).concat(MOBpaddingUnit, " ").concat(MOBpaddingRight).concat(MOBpaddingUnit, " ").concat(MOBpaddingBottom).concat(MOBpaddingUnit, " ").concat(MOBpaddingLeft).concat(MOBpaddingUnit, ";\n\t}\n\t"); //
   // titleWrapper styles css in strings ⬇
 
-  var titleWrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t"); //
-  // title styles css in strings ⬇
+  var titleWrapperStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t"); // title styles css in strings ⬇
 
-  var titleStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\t\t\n\t\tcolor: ").concat(titleColor, ";\n\t}\n\t");
-  var titleStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesTab, "\n\t}\n\t");
-  var titleStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t"); //
-  // text styles css in strings ⬇
+  var titleStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\t\t\n\t\tcolor: ").concat(titleColor, ";\n\t}\n\t");
+  var titleStylesTab = "\n\t.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesTab, "\n\t}\n\t");
+  var titleStylesMobile = "\n\t.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t"); // text styles css in strings ⬇
 
-  var textStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor, ";\n\t}\n\t");
-  var textStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesTab, "\n\t}\n\t");
-  var textStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t"); //
-  // dismiss styles css in strings ⬇
+  var textStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor, ";\n\t}\n\t");
+  var textStylesTab = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesTab, "\n\t}\n\t");
+  var textStylesMobile = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t"); // dismiss styles css in strings ⬇
 
-  var dismissStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible, ";\n\t}\n\t"); //
-  // all css styles for large screen width (desktop/laptop) in strings ⬇
+  var dismissStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible, ";\n\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
 
-  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t"); //
-  // all css styles for Tab in strings ⬇
+  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t"); // all css styles for Tab in strings ⬇
 
-  var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t"); //
-  // all css styles for Mobile in strings ⬇
+  var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t"); // all css styles for Mobile in strings ⬇
 
-  var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t"); // Set All Style in "blockMeta" Attribute
+  var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t"); // Set All Style in "blockMeta" Attribute
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var _styleObject;
@@ -1893,9 +1866,9 @@ function Edit(props) {
   return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_3__["default"], props),
   /*#__PURE__*/
   //Edit view here
-  React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(desktopAllStyles), "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_start\n\t\t\t\t*/\n\n\t\t\t\t").concat(resOption === "tab" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(tabAllStyles) : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(mobileAllStyles) : " ", "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_end\n\t\t\t\t*/\n\n\t\t\t\t@media all and (max-width: 1030px) {\t\t\t\t\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t}\n\n\t\t\t\t@media all and (max-width: 680px) {\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
-    className: "eb-notice-wrapper eb-notice-wrapper-".concat(uniqueIdNumber),
-    "data-id": noticeId
+  React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(desktopAllStyles), "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_start\n\t\t\t\t*/\n\n\t\t\t\t").concat(resOption === "tab" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(tabAllStyles) : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(mobileAllStyles) : " ", "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_end\n\t\t\t\t*/\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\t\t\t\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t}\n\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
+    className: "eb-notice-wrapper ".concat(blockId),
+    "data-id": blockId
   }, /*#__PURE__*/React.createElement("div", {
     className: "eb-notice-title-wrapper"
   }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"], {
@@ -5970,187 +5943,17 @@ function TypographyControllsDropdown(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
-/* harmony import */ var _myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./myUtil/helpers */ "./src/myUtil/helpers.js");
-
-
 
 
 var save = function save(_ref) {
   var attributes = _ref.attributes;
-  var uniqueIdNumber = attributes.uniqueIdNumber,
-      dismissible = attributes.dismissible,
-      title = attributes.title,
-      text = attributes.text,
-      _attributes$backgroun = attributes.backgroundColor,
-      backgroundColor = _attributes$backgroun === void 0 ? backgroundColor ? backgroundColor : "#3074ff" : _attributes$backgroun,
-      _attributes$titleColo = attributes.titleColor,
-      titleColor = _attributes$titleColo === void 0 ? titleColor || "#fff" : _attributes$titleColo,
-      _attributes$textColor = attributes.textColor,
-      textColor = _attributes$textColor === void 0 ? textColor || "#edf1f7" : _attributes$textColor,
-      noticeId = attributes.noticeId,
-      _attributes$shadowCol = attributes.shadowColor,
-      shadowColor = _attributes$shadowCol === void 0 ? shadowColor || "#000" : _attributes$shadowCol,
-      _attributes$shadowHOf = attributes.shadowHOffset,
-      shadowHOffset = _attributes$shadowHOf === void 0 ? shadowHOffset || 0 : _attributes$shadowHOf,
-      _attributes$shadowVOf = attributes.shadowVOffset,
-      shadowVOffset = _attributes$shadowVOf === void 0 ? shadowVOffset || 0 : _attributes$shadowVOf,
-      _attributes$shadowBlu = attributes.shadowBlur,
-      shadowBlur = _attributes$shadowBlu === void 0 ? shadowBlur || 0 : _attributes$shadowBlu,
-      _attributes$shadowSpr = attributes.shadowSpread,
-      shadowSpread = _attributes$shadowSpr === void 0 ? shadowSpread || 0 : _attributes$shadowSpr,
+  var blockId = attributes.blockId,
       showAfterDismiss = attributes.showAfterDismiss,
-      marginUnit = attributes.marginUnit,
-      _attributes$marginTop = attributes.marginTop,
-      marginTop = _attributes$marginTop === void 0 ? marginTop || 0 : _attributes$marginTop,
-      _attributes$marginRig = attributes.marginRight,
-      marginRight = _attributes$marginRig === void 0 ? marginRight || 0 : _attributes$marginRig,
-      _attributes$marginBot = attributes.marginBottom,
-      marginBottom = _attributes$marginBot === void 0 ? marginBottom || 0 : _attributes$marginBot,
-      _attributes$marginLef = attributes.marginLeft,
-      marginLeft = _attributes$marginLef === void 0 ? marginLeft || 0 : _attributes$marginLef,
-      paddingUnit = attributes.paddingUnit,
-      _attributes$paddingTo = attributes.paddingTop,
-      paddingTop = _attributes$paddingTo === void 0 ? paddingTop || 0 : _attributes$paddingTo,
-      _attributes$paddingRi = attributes.paddingRight,
-      paddingRight = _attributes$paddingRi === void 0 ? paddingRight || 0 : _attributes$paddingRi,
-      _attributes$paddingBo = attributes.paddingBottom,
-      paddingBottom = _attributes$paddingBo === void 0 ? paddingBottom || 0 : _attributes$paddingBo,
-      _attributes$paddingLe = attributes.paddingLeft,
-      paddingLeft = _attributes$paddingLe === void 0 ? paddingLeft || 0 : _attributes$paddingLe,
-      _attributes$TABmargin = attributes.TABmarginUnit,
-      TABmarginUnit = _attributes$TABmargin === void 0 ? TABmarginUnit || marginUnit : _attributes$TABmargin,
-      _attributes$TABmargin2 = attributes.TABmarginTop,
-      TABmarginTop = _attributes$TABmargin2 === void 0 ? TABmarginTop === 0 ? TABmarginTop : TABmarginTop || marginTop : _attributes$TABmargin2,
-      _attributes$TABmargin3 = attributes.TABmarginRight,
-      TABmarginRight = _attributes$TABmargin3 === void 0 ? TABmarginRight === 0 ? TABmarginRight : TABmarginRight || marginRight : _attributes$TABmargin3,
-      _attributes$TABmargin4 = attributes.TABmarginBottom,
-      TABmarginBottom = _attributes$TABmargin4 === void 0 ? TABmarginBottom === 0 ? TABmarginBottom : TABmarginBottom || marginBottom : _attributes$TABmargin4,
-      _attributes$TABmargin5 = attributes.TABmarginLeft,
-      TABmarginLeft = _attributes$TABmargin5 === void 0 ? TABmarginLeft === 0 ? TABmarginLeft : TABmarginLeft || marginLeft : _attributes$TABmargin5,
-      _attributes$TABpaddin = attributes.TABpaddingUnit,
-      TABpaddingUnit = _attributes$TABpaddin === void 0 ? TABpaddingUnit || paddingUnit : _attributes$TABpaddin,
-      _attributes$TABpaddin2 = attributes.TABpaddingTop,
-      TABpaddingTop = _attributes$TABpaddin2 === void 0 ? TABpaddingTop === 0 ? TABpaddingTop : TABpaddingTop || paddingTop : _attributes$TABpaddin2,
-      _attributes$TABpaddin3 = attributes.TABpaddingRight,
-      TABpaddingRight = _attributes$TABpaddin3 === void 0 ? TABpaddingRight === 0 ? TABpaddingRight : TABpaddingRight || paddingRight : _attributes$TABpaddin3,
-      _attributes$TABpaddin4 = attributes.TABpaddingBottom,
-      TABpaddingBottom = _attributes$TABpaddin4 === void 0 ? TABpaddingBottom === 0 ? TABpaddingBottom : TABpaddingBottom || paddingBottom : _attributes$TABpaddin4,
-      _attributes$TABpaddin5 = attributes.TABpaddingLeft,
-      TABpaddingLeft = _attributes$TABpaddin5 === void 0 ? TABpaddingLeft === 0 ? TABpaddingLeft : TABpaddingLeft || paddingLeft : _attributes$TABpaddin5,
-      _attributes$MOBmargin = attributes.MOBmarginUnit,
-      MOBmarginUnit = _attributes$MOBmargin === void 0 ? MOBmarginUnit || TABmarginUnit : _attributes$MOBmargin,
-      _attributes$MOBmargin2 = attributes.MOBmarginTop,
-      MOBmarginTop = _attributes$MOBmargin2 === void 0 ? MOBmarginTop === 0 ? MOBmarginTop : MOBmarginTop || TABmarginTop : _attributes$MOBmargin2,
-      _attributes$MOBmargin3 = attributes.MOBmarginRight,
-      MOBmarginRight = _attributes$MOBmargin3 === void 0 ? MOBmarginRight === 0 ? MOBmarginRight : MOBmarginRight || TABmarginRight : _attributes$MOBmargin3,
-      _attributes$MOBmargin4 = attributes.MOBmarginBottom,
-      MOBmarginBottom = _attributes$MOBmargin4 === void 0 ? MOBmarginBottom === 0 ? MOBmarginBottom : MOBmarginBottom || TABmarginBottom : _attributes$MOBmargin4,
-      _attributes$MOBmargin5 = attributes.MOBmarginLeft,
-      MOBmarginLeft = _attributes$MOBmargin5 === void 0 ? MOBmarginLeft === 0 ? MOBmarginLeft : MOBmarginLeft || TABmarginLeft : _attributes$MOBmargin5,
-      _attributes$MOBpaddin = attributes.MOBpaddingUnit,
-      MOBpaddingUnit = _attributes$MOBpaddin === void 0 ? MOBpaddingUnit || TABpaddingUnit : _attributes$MOBpaddin,
-      _attributes$MOBpaddin2 = attributes.MOBpaddingTop,
-      MOBpaddingTop = _attributes$MOBpaddin2 === void 0 ? MOBpaddingTop === 0 ? MOBpaddingTop : MOBpaddingTop || TABpaddingTop : _attributes$MOBpaddin2,
-      _attributes$MOBpaddin3 = attributes.MOBpaddingRight,
-      MOBpaddingRight = _attributes$MOBpaddin3 === void 0 ? MOBpaddingRight === 0 ? MOBpaddingRight : MOBpaddingRight || TABpaddingRight : _attributes$MOBpaddin3,
-      _attributes$MOBpaddin4 = attributes.MOBpaddingBottom,
-      MOBpaddingBottom = _attributes$MOBpaddin4 === void 0 ? MOBpaddingBottom === 0 ? MOBpaddingBottom : MOBpaddingBottom || TABpaddingBottom : _attributes$MOBpaddin4,
-      _attributes$MOBpaddin5 = attributes.MOBpaddingLeft,
-      MOBpaddingLeft = _attributes$MOBpaddin5 === void 0 ? MOBpaddingLeft === 0 ? MOBpaddingLeft : MOBpaddingLeft || TABpaddingLeft : _attributes$MOBpaddin5;
-
-  var generateTypographyStylesForSave = function generateTypographyStylesForSave(prefixConstant) {
-    var defaultFontSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    var fontFamily = attributes["".concat(prefixConstant, "FontFamily")],
-        fontWeight = attributes["".concat(prefixConstant, "FontWeight")],
-        textTransform = attributes["".concat(prefixConstant, "TextTransform")],
-        textDecoration = attributes["".concat(prefixConstant, "TextDecoration")],
-        _attributes$ = attributes["".concat(prefixConstant, "FontSize")],
-        fontSize = _attributes$ === void 0 ? fontSize || defaultFontSize : _attributes$,
-        sizeUnit = attributes["".concat(prefixConstant, "SizeUnit")],
-        letterSpacing = attributes["".concat(prefixConstant, "LetterSpacing")],
-        letterSpacingUnit = attributes["".concat(prefixConstant, "LetterSpacingUnit")],
-        lineHeight = attributes["".concat(prefixConstant, "LineHeight")],
-        lineHeightUnit = attributes["".concat(prefixConstant, "LineHeightUnit")],
-        TABfontFamily = attributes["TAB".concat(prefixConstant, "FontFamily")],
-        TABfontWeight = attributes["TAB".concat(prefixConstant, "FontWeight")],
-        TABtextTransform = attributes["TAB".concat(prefixConstant, "TextTransform")],
-        TABtextDecoration = attributes["TAB".concat(prefixConstant, "TextDecoration")],
-        TABfontSize = attributes["TAB".concat(prefixConstant, "FontSize")],
-        _attributes$2 = attributes["TAB".concat(prefixConstant, "SizeUnit")],
-        TABsizeUnit = _attributes$2 === void 0 ? TABsizeUnit || sizeUnit : _attributes$2,
-        _attributes$3 = attributes["TAB".concat(prefixConstant, "LetterSpacingUnit")],
-        TABletterSpacingUnit = _attributes$3 === void 0 ? TABletterSpacingUnit || letterSpacingUnit : _attributes$3,
-        TABletterSpacing = attributes["TAB".concat(prefixConstant, "LetterSpacing")],
-        TABlineHeight = attributes["TAB".concat(prefixConstant, "LineHeight")],
-        _attributes$4 = attributes["TAB".concat(prefixConstant, "LineHeightUnit")],
-        TABlineHeightUnit = _attributes$4 === void 0 ? TABlineHeightUnit || lineHeightUnit : _attributes$4,
-        MOBfontFamily = attributes["MOB".concat(prefixConstant, "FontFamily")],
-        MOBfontWeight = attributes["MOB".concat(prefixConstant, "FontWeight")],
-        MOBtextTransform = attributes["MOB".concat(prefixConstant, "TextTransform")],
-        MOBtextDecoration = attributes["MOB".concat(prefixConstant, "TextDecoration")],
-        MOBfontSize = attributes["MOB".concat(prefixConstant, "FontSize")],
-        _attributes$5 = attributes["MOB".concat(prefixConstant, "SizeUnit")],
-        MOBsizeUnit = _attributes$5 === void 0 ? MOBsizeUnit || TABsizeUnit : _attributes$5,
-        MOBletterSpacing = attributes["MOB".concat(prefixConstant, "LetterSpacing")],
-        _attributes$6 = attributes["MOB".concat(prefixConstant, "LetterSpacingUnit")],
-        MOBletterSpacingUnit = _attributes$6 === void 0 ? MOBletterSpacingUnit || TABletterSpacingUnit : _attributes$6,
-        MOBlineHeight = attributes["MOB".concat(prefixConstant, "LineHeight")],
-        _attributes$7 = attributes["MOB".concat(prefixConstant, "LineHeightUnit")],
-        MOBlineHeightUnit = _attributes$7 === void 0 ? MOBlineHeightUnit || TABlineHeightUnit : _attributes$7;
-    var typoStylesDesktop = "\n\t\t\t".concat(fontFamily ? "font-family: ".concat(fontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hasVal"])(fontSize) ? "font-size: ".concat(fontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hasVal"])(lineHeight) ? "line-height: ".concat(lineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(fontWeight ? "font-weight: ".concat(fontWeight, ";") : " ", "\n\t\t\t").concat(textDecoration ? "text-decoration: ".concat(textDecoration, ";") : " ", "\n\t\t\t").concat(textTransform ? "text-transform: ".concat(textTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hasVal"])(letterSpacing) ? "letter-spacing: ".concat(letterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
-    var typoStylesTab = "\n\t\t\t".concat(TABfontFamily ? "font-family: ".concat(TABfontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hasVal"])(TABfontSize) ? "font-size: ".concat(TABfontSize).concat(TABsizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hasVal"])(TABlineHeight) ? "line-height: ".concat(TABlineHeight).concat(TABlineHeightUnit, ";") : " ", "\n\t\t\t").concat(TABfontWeight ? "font-weight: ".concat(TABfontWeight, ";") : " ", "\n\t\t\t").concat(TABtextDecoration ? "text-decoration: ".concat(TABtextDecoration, ";") : " ", "\n\t\t\t").concat(TABtextTransform ? "text-transform: ".concat(TABtextTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hasVal"])(TABletterSpacing) ? "letter-spacing: ".concat(TABletterSpacing).concat(TABletterSpacingUnit, ";") : " ", "\n\t\t");
-    var typoStylesMobile = "\n\t\t\t".concat(MOBfontFamily ? "font-family: ".concat(MOBfontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hasVal"])(MOBfontSize) ? "font-size: ".concat(MOBfontSize).concat(MOBsizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hasVal"])(MOBlineHeight) ? "line-height: ".concat(MOBlineHeight).concat(MOBlineHeightUnit, ";") : " ", "\n\t\t\t").concat(MOBfontWeight ? "font-weight: ".concat(MOBfontWeight, ";") : " ", "\n\t\t\t").concat(MOBtextDecoration ? "text-decoration: ".concat(MOBtextDecoration, ";") : " ", "\n\t\t\t").concat(MOBtextTransform ? "text-transform: ".concat(MOBtextTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hasVal"])(MOBletterSpacing) ? "letter-spacing: ".concat(MOBletterSpacing).concat(MOBletterSpacingUnit, ";") : " ", "\n\t\t");
-    return {
-      typoStylesDesktop: typoStylesDesktop,
-      typoStylesTab: typoStylesTab,
-      typoStylesMobile: typoStylesMobile
-    };
-  };
-
-  var _generateTypographySt = generateTypographyStylesForSave(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__["typoPrefix_title"], 32),
-      titleTypoStylesDesktop = _generateTypographySt.typoStylesDesktop,
-      titleTypoStylesTab = _generateTypographySt.typoStylesTab,
-      titleTypoStylesMobile = _generateTypographySt.typoStylesMobile;
-
-  var _generateTypographySt2 = generateTypographyStylesForSave(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_1__["typoPrefix_text"], 18),
-      textTypoStylesDesktop = _generateTypographySt2.typoStylesDesktop,
-      textTypoStylesTab = _generateTypographySt2.typoStylesTab,
-      textTypoStylesMobile = _generateTypographySt2.typoStylesMobile; //
-  // wrapper styles css in strings ⬇
-
-
-  var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\n\t\tmargin: ").concat(marginTop).concat(marginUnit, " ").concat(marginRight).concat(marginUnit, " ").concat(marginBottom).concat(marginUnit, " ").concat(marginLeft).concat(marginUnit, ";\n\t\tpadding: ").concat(paddingTop).concat(paddingUnit, " ").concat(paddingRight).concat(paddingUnit, " ").concat(paddingBottom).concat(paddingUnit, " ").concat(paddingLeft).concat(paddingUnit, ";\n\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
-  var wrapperStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\n\t\tmargin: ").concat(TABmarginTop).concat(TABmarginUnit, " ").concat(TABmarginRight).concat(TABmarginUnit, " ").concat(TABmarginBottom).concat(TABmarginUnit, " ").concat(TABmarginLeft).concat(TABmarginUnit, ";\n\t\tpadding: ").concat(TABpaddingTop).concat(TABpaddingUnit, " ").concat(TABpaddingRight).concat(TABpaddingUnit, " ").concat(TABpaddingBottom).concat(TABpaddingUnit, " ").concat(TABpaddingLeft).concat(TABpaddingUnit, ";\n\t\t\n\t}\n\t");
-  var wrapperStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, "{\n\t\t\n\t\tmargin: ").concat(MOBmarginTop).concat(MOBmarginUnit, " ").concat(MOBmarginRight).concat(MOBmarginUnit, " ").concat(MOBmarginBottom).concat(MOBmarginUnit, " ").concat(MOBmarginLeft).concat(MOBmarginUnit, ";\n\t\tpadding: ").concat(MOBpaddingTop).concat(MOBpaddingUnit, " ").concat(MOBpaddingRight).concat(MOBpaddingUnit, " ").concat(MOBpaddingBottom).concat(MOBpaddingUnit, " ").concat(MOBpaddingLeft).concat(MOBpaddingUnit, ";\n\n\t}\n\t"); //
-  // titleWrapper styles css in strings ⬇
-
-  var titleWrapperStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t"); //
-  // title styles css in strings ⬇
-
-  var titleStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\t\t\n\t\tcolor: ").concat(titleColor, ";\n\t}\n\t");
-  var titleStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesTab, "\n\t}\n\t");
-  var titleStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t"); //
-  // text styles css in strings ⬇
-
-  var textStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor, ";\n\t}\n\t");
-  var textStylesTab = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesTab, "\n\t}\n\t");
-  var textStylesMobile = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t"); //
-  // dismiss styles css in strings ⬇
-
-  var dismissStylesDesktop = "\n\t.eb-notice-wrapper.eb-notice-wrapper-".concat(uniqueIdNumber, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible, ";\n\t}\n\t"); //
-  // all css styles for large screen width (desktop/laptop) in strings ⬇
-
-  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t"); //
-  // all css styles for Tab in strings ⬇
-
-  var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t"); //
-  // all css styles for Mobile in strings ⬇
-
-  var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t");
-  return /*#__PURE__*/React.createElement("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"].save(), /*#__PURE__*/React.createElement("style", null, "".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(desktopAllStyles), "@media all and (max-width: 1030px){").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(tabAllStyles), "}@media all and (max-width: 680px){").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_2__["hardMinifyCssStrings"])(mobileAllStyles), "}")), /*#__PURE__*/React.createElement("div", {
-    className: "eb-notice-wrapper eb-notice-wrapper-".concat(uniqueIdNumber),
-    "data-id": noticeId,
+      title = attributes.title,
+      text = attributes.text;
+  return /*#__PURE__*/React.createElement("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"].save(), /*#__PURE__*/React.createElement("div", {
+    className: "eb-notice-wrapper ".concat(blockId),
+    "data-id": blockId,
     "data-show-again": showAfterDismiss
   }, /*#__PURE__*/React.createElement("div", {
     className: "eb-notice-title-wrapper"
@@ -6316,7 +6119,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -6539,90 +6342,69 @@ UnitControl.propTypes = {
 
 /***/ }),
 
-/***/ "./util/uuid.js":
-/*!**********************!*\
-  !*** ./util/uuid.js ***!
-  \**********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var uuid = function uuid() {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
-    var r = Math.random() * 16 | 0,
-        v = c === "x" ? r : r & 0x3 | 0x8;
-    return v.toString(16);
-  });
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (uuid);
-
-/***/ }),
-
 /***/ "@wordpress/block-editor":
-/*!**********************************************!*\
-  !*** external {"this":["wp","blockEditor"]} ***!
-  \**********************************************/
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["blockEditor"]; }());
+(function() { module.exports = window["wp"]["blockEditor"]; }());
 
 /***/ }),
 
 /***/ "@wordpress/blocks":
-/*!*****************************************!*\
-  !*** external {"this":["wp","blocks"]} ***!
-  \*****************************************/
+/*!********************************!*\
+  !*** external ["wp","blocks"] ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["blocks"]; }());
+(function() { module.exports = window["wp"]["blocks"]; }());
 
 /***/ }),
 
 /***/ "@wordpress/components":
-/*!*********************************************!*\
-  !*** external {"this":["wp","components"]} ***!
-  \*********************************************/
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["wp"]["components"]; }());
+(function() { module.exports = window["wp"]["components"]; }());
 
 /***/ }),
 
 /***/ "@wordpress/element":
-/*!******************************************!*\
-  !*** external {"this":["wp","element"]} ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["element"]; }());
-
-/***/ }),
-
-/***/ "@wordpress/i18n":
-/*!***************************************!*\
-  !*** external {"this":["wp","i18n"]} ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["i18n"]; }());
-
-/***/ }),
-
-/***/ "react":
 /*!*********************************!*\
-  !*** external {"this":"React"} ***!
+  !*** external ["wp","element"] ***!
   \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function() { module.exports = this["React"]; }());
+(function() { module.exports = window["wp"]["element"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["React"]; }());
 
 /***/ })
 
