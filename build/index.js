@@ -1621,8 +1621,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function Edit(props) {
-  var BLOCK_PREFIX = "eb-notice";
-  var unique_id = BLOCK_PREFIX + "-" + Math.random().toString(36).substr(2, 7);
   var attributes = props.attributes,
       setAttributes = props.setAttributes,
       isSelected = props.isSelected;
@@ -1725,12 +1723,14 @@ function Edit(props) {
   }, []); // this useEffect is for creating a unique id for each block's unique className by a random unique number
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    var current_block_id = attributes.blockId;
+    // const current_block_id = attributes.blockId;
+    var BLOCK_PREFIX = "eb-notice";
+    var unique_id = BLOCK_PREFIX + "-" + Math.random().toString(36).substr(2, 7);
     /**
      * Define and Generate Unique Block ID
-    */
+     */
 
-    if (!current_block_id) {
+    if (!blockId) {
       setAttributes({
         blockId: unique_id
       });
@@ -1738,21 +1738,17 @@ function Edit(props) {
     /**
      * Assign New Unique ID when duplicate BlockId found
      * Mostly happens when User Duplicate a Block
-    */
+     */
 
 
     var all_blocks = wp.data.select("core/block-editor").getBlocks();
-    var blockIdCount = 0;
-    all_blocks.forEach(function (item) {
-      if (item.attributes.blockId === current_block_id && item.attributes.blockRoot === 'essential_block' && item.name === 'block/notice-block') {
-        blockIdCount++;
-
-        if (blockIdCount > 1) {
-          setAttributes({
-            blockId: blockId
-          });
-        }
-      }
+    console.log({
+      all_blocks: all_blocks
+    });
+    if (all_blocks.filter(function (item) {
+      return item.attributes.blockId === blockId;
+    }).length > 1) setAttributes({
+      blockId: unique_id
     });
   }, []);
   var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"])({
