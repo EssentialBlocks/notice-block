@@ -4,6 +4,8 @@ const save = ({ attributes }) => {
 	const {
 		blockId,
 		showAfterDismiss,
+		title,
+		text
 	} = attributes;
 
 	return (

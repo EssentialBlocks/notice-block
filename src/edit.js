@@ -23,8 +23,6 @@ import {
 } from "./myUtil/helpers";
 
 export default function Edit(props) {
-	const BLOCK_PREFIX = "eb-notice";
-	const unique_id = BLOCK_PREFIX+ "-" + Math.random().toString(36).substr(2, 7);
 
 	const { attributes, setAttributes, isSelected } = props;
 	const {
@@ -142,6 +140,8 @@ export default function Edit(props) {
 
 	// this useEffect is for creating a unique id for each block's unique className by a random unique number
 	useEffect(() => {
+		const BLOCK_PREFIX = "eb-notice";
+		const unique_id = BLOCK_PREFIX+ "-" + Math.random().toString(36).substr(2, 7);
 		const current_block_id = attributes.blockId;
 
 		/**
