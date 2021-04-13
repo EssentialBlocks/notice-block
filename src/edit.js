@@ -30,7 +30,7 @@ export default function Edit(props) {
 		// responsive control attribute ⬇
 		resOption,
 
-		dismissible = dismissible ? "flex" : "none",
+		dismissible,
 		// titleFontSize,
 		// textFontSize,
 		title,
@@ -377,7 +377,7 @@ export default function Edit(props) {
 	const dismissStylesDesktop = `
 	.${blockId} .eb-notice-dismiss{
 		color: ${textColor};
-		display: ${dismissible};
+		display: ${dismissible ? "flex" : "none"};
 	}
 	`;
 

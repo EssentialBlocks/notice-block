@@ -1627,8 +1627,7 @@ function Edit(props) {
   var blockId = attributes.blockId,
       blockMeta = attributes.blockMeta,
       resOption = attributes.resOption,
-      _attributes$dismissib = attributes.dismissible,
-      dismissible = _attributes$dismissib === void 0 ? dismissible ? "flex" : "none" : _attributes$dismissib,
+      dismissible = attributes.dismissible,
       title = attributes.title,
       text = attributes.text,
       _attributes$backgroun = attributes.backgroundColor,
@@ -1840,7 +1839,7 @@ function Edit(props) {
   var textStylesTab = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesTab, "\n\t}\n\t");
   var textStylesMobile = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t"); // dismiss styles css in strings ⬇
 
-  var dismissStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible, ";\n\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
+  var dismissStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible ? "flex" : "none", ";\n\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
 
   var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t"); // all css styles for Tab in strings ⬇
 
