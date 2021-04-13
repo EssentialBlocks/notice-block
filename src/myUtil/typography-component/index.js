@@ -1,64 +1,56 @@
-import { __ } from "@wordpress/i18n";
-
 import {
-	Button,
-	SelectControl,
 	BaseControl,
-	RangeControl,
+	Button,
 	Dropdown,
+	RangeControl,
+	SelectControl,
 } from "@wordpress/components";
-
-import { TypographyIcon } from "./icons";
-import FontPicker from "./FontPicker";
+import { __ } from "@wordpress/i18n";
 import UnitControl from "../../../util/unit-control";
+import FontPicker from "./FontPicker";
+import { TypographyIcon } from "./icons";
 
-function TypographyControllsDropdown({
+function TypographyDropdown({
 	baseLabel,
 	typographyPrefixConstant,
-	resOption,
-	setAttributes,
-	typographyAttributes,
+	typoRequiredProps,
 }) {
+	const { attributes, setAttributes, resOption } = typoRequiredProps;
+
 	const {
-		fontFamily,
-		fontWeight,
-		textTransform,
-		textDecoration,
-		fontSize,
-		sizeUnit,
-		letterSpacing,
-		letterSpacingUnit,
-		lineHeight,
-		lineHeightUnit,
+		[`${typographyPrefixConstant}FontFamily`]: fontFamily,
+		[`${typographyPrefixConstant}FontWeight`]: fontWeight,
+		[`${typographyPrefixConstant}TextTransform`]: textTransform,
+		[`${typographyPrefixConstant}TextDecoration`]: textDecoration,
+		[`${typographyPrefixConstant}FontSize`]: fontSize,
+		[`${typographyPrefixConstant}SizeUnit`]: sizeUnit,
+		[`${typographyPrefixConstant}LetterSpacing`]: letterSpacing,
+		[`${typographyPrefixConstant}LetterSpacingUnit`]: letterSpacingUnit,
+		[`${typographyPrefixConstant}LineHeight`]: lineHeight,
+		[`${typographyPrefixConstant}LineHeightUnit`]: lineHeightUnit,
 
-		TABfontFamily = TABfontFamily || fontFamily,
-		TABfontWeight = TABfontWeight || fontWeight,
-		TABtextTransform = TABtextTransform || textTransform,
-		TABtextDecoration = TABtextDecoration || textDecoration,
-		TABfontSize = TABfontSize || fontSize,
-		TABsizeUnit = TABsizeUnit || sizeUnit,
-		TABletterSpacing = TABletterSpacing || letterSpacing,
-		TABletterSpacingUnit = TABletterSpacingUnit || letterSpacingUnit,
-		TABlineHeight = TABlineHeight || lineHeight,
-		TABlineHeightUnit = TABlineHeightUnit || lineHeightUnit,
+		[`TAB${typographyPrefixConstant}FontFamily`]: TABfontFamily = fontFamily,
+		[`TAB${typographyPrefixConstant}FontWeight`]: TABfontWeight = fontWeight,
+		[`TAB${typographyPrefixConstant}TextTransform`]: TABtextTransform = textTransform,
+		[`TAB${typographyPrefixConstant}TextDecoration`]: TABtextDecoration = textDecoration,
+		[`TAB${typographyPrefixConstant}FontSize`]: TABfontSize = fontSize,
+		[`TAB${typographyPrefixConstant}SizeUnit`]: TABsizeUnit = sizeUnit,
+		[`TAB${typographyPrefixConstant}LetterSpacing`]: TABletterSpacing = letterSpacing,
+		[`TAB${typographyPrefixConstant}LetterSpacingUnit`]: TABletterSpacingUnit = letterSpacingUnit,
+		[`TAB${typographyPrefixConstant}LineHeight`]: TABlineHeight = lineHeight,
+		[`TAB${typographyPrefixConstant}LineHeightUnit`]: TABlineHeightUnit = lineHeightUnit,
 
-		MOBfontFamily = MOBfontFamily || TABfontFamily || fontFamily,
-		MOBfontWeight = MOBfontWeight || TABfontWeight || fontWeight,
-		MOBtextTransform = MOBtextTransform || TABtextTransform || textTransform,
-		MOBtextDecoration = MOBtextDecoration ||
-			TABtextDecoration ||
-			textDecoration,
-		MOBfontSize = MOBfontSize || TABfontSize || fontSize,
-		MOBsizeUnit = MOBsizeUnit || TABsizeUnit || sizeUnit,
-		MOBletterSpacing = MOBletterSpacing || TABletterSpacing || letterSpacing,
-		MOBletterSpacingUnit = MOBletterSpacingUnit ||
-			TABletterSpacingUnit ||
-			letterSpacingUnit,
-		MOBlineHeight = MOBlineHeight || TABlineHeight || lineHeight,
-		MOBlineHeightUnit = MOBlineHeightUnit ||
-			TABlineHeightUnit ||
-			lineHeightUnit,
-	} = typographyAttributes;
+		[`MOB${typographyPrefixConstant}FontFamily`]: MOBfontFamily = TABfontFamily,
+		[`MOB${typographyPrefixConstant}FontWeight`]: MOBfontWeight = TABfontWeight,
+		[`MOB${typographyPrefixConstant}TextTransform`]: MOBtextTransform = TABtextTransform,
+		[`MOB${typographyPrefixConstant}TextDecoration`]: MOBtextDecoration = TABtextDecoration,
+		[`MOB${typographyPrefixConstant}FontSize`]: MOBfontSize = TABfontSize,
+		[`MOB${typographyPrefixConstant}SizeUnit`]: MOBsizeUnit = TABsizeUnit,
+		[`MOB${typographyPrefixConstant}LetterSpacing`]: MOBletterSpacing = TABletterSpacing,
+		[`MOB${typographyPrefixConstant}LetterSpacingUnit`]: MOBletterSpacingUnit = TABletterSpacingUnit,
+		[`MOB${typographyPrefixConstant}LineHeight`]: MOBlineHeight = TABlineHeight,
+		[`MOB${typographyPrefixConstant}LineHeightUnit`]: MOBlineHeightUnit = TABlineHeightUnit,
+	} = attributes;
 
 	return (
 		<>
@@ -573,4 +565,4 @@ function TypographyControllsDropdown({
 	);
 }
 
-export default TypographyControllsDropdown;
+export default TypographyDropdown;

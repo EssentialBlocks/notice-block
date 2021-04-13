@@ -22,7 +22,7 @@ import { NOTICE_TYPES, FONT_SIZE_UNITS } from "./constants";
 import ColorControl from "../util/color-control";
 import UnitControl from "../util/unit-control";
 import DimensionsControl from "../util/dimensions-control";
-import TypographyControl from "./myUtil/typography-component";
+import TypographyDropdown from "./myUtil/typography-component";
 import ResPanelBody from "./myUtil/ResPanelBody";
 
 import {
@@ -254,79 +254,83 @@ function Inspector(props) {
 		});
 	}, [resOption]);
 
+	{
+		// const generateTypographyAttributes = (prefixConstant) => {
+		// 	const {
+		// 		[`${prefixConstant}FontFamily`]: fontFamily,
+		// 		[`${prefixConstant}FontWeight`]: fontWeight,
+		// 		[`${prefixConstant}TextTransform`]: textTransform,
+		// 		[`${prefixConstant}TextDecoration`]: textDecoration,
+		// 		[`${prefixConstant}FontSize`]: fontSize,
+		// 		[`${prefixConstant}SizeUnit`]: sizeUnit,
+		// 		[`${prefixConstant}LetterSpacing`]: letterSpacing,
+		// 		[`${prefixConstant}LetterSpacingUnit`]: letterSpacingUnit,
+		// 		[`${prefixConstant}LineHeight`]: lineHeight,
+		// 		[`${prefixConstant}LineHeightUnit`]: lineHeightUnit,
+		// 		[`TAB${prefixConstant}FontFamily`]: TABfontFamily,
+		// 		[`TAB${prefixConstant}FontWeight`]: TABfontWeight,
+		// 		[`TAB${prefixConstant}TextTransform`]: TABtextTransform,
+		// 		[`TAB${prefixConstant}TextDecoration`]: TABtextDecoration,
+		// 		[`TAB${prefixConstant}FontSize`]: TABfontSize,
+		// 		[`TAB${prefixConstant}SizeUnit`]: TABsizeUnit,
+		// 		[`TAB${prefixConstant}LetterSpacing`]: TABletterSpacing,
+		// 		[`TAB${prefixConstant}LetterSpacingUnit`]: TABletterSpacingUnit,
+		// 		[`TAB${prefixConstant}LineHeight`]: TABlineHeight,
+		// 		[`TAB${prefixConstant}LineHeightUnit`]: TABlineHeightUnit,
+		// 		[`MOB${prefixConstant}FontFamily`]: MOBfontFamily,
+		// 		[`MOB${prefixConstant}FontWeight`]: MOBfontWeight,
+		// 		[`MOB${prefixConstant}TextTransform`]: MOBtextTransform,
+		// 		[`MOB${prefixConstant}TextDecoration`]: MOBtextDecoration,
+		// 		[`MOB${prefixConstant}FontSize`]: MOBfontSize,
+		// 		[`MOB${prefixConstant}SizeUnit`]: MOBsizeUnit,
+		// 		[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing,
+		// 		[`MOB${prefixConstant}LetterSpacingUnit`]: MOBletterSpacingUnit,
+		// 		[`MOB${prefixConstant}LineHeight`]: MOBlineHeight,
+		// 		[`MOB${prefixConstant}LineHeightUnit`]: MOBlineHeightUnit,
+		// 	} = attributes;
+		// 	return {
+		// 		fontFamily,
+		// 		fontWeight,
+		// 		textTransform,
+		// 		textDecoration,
+		// 		fontSize,
+		// 		sizeUnit,
+		// 		letterSpacing,
+		// 		letterSpacingUnit,
+		// 		lineHeight,
+		// 		lineHeightUnit,
+		// 		TABfontFamily,
+		// 		TABfontWeight,
+		// 		TABtextTransform,
+		// 		TABtextDecoration,
+		// 		TABfontSize,
+		// 		TABsizeUnit,
+		// 		TABletterSpacing,
+		// 		TABletterSpacingUnit,
+		// 		TABlineHeight,
+		// 		TABlineHeightUnit,
+		// 		MOBfontFamily,
+		// 		MOBfontWeight,
+		// 		MOBtextTransform,
+		// 		MOBtextDecoration,
+		// 		MOBfontSize,
+		// 		MOBsizeUnit,
+		// 		MOBletterSpacing,
+		// 		MOBletterSpacingUnit,
+		// 		MOBlineHeight,
+		// 		MOBlineHeightUnit,
+		// 	};
+		// };
+	}
 	const resRequiredProps = {
 		setAttributes,
 		resOption,
 	};
 
-	const generateTypographyAttributes = (prefixConstant) => {
-		const {
-			[`${prefixConstant}FontFamily`]: fontFamily,
-			[`${prefixConstant}FontWeight`]: fontWeight,
-			[`${prefixConstant}TextTransform`]: textTransform,
-			[`${prefixConstant}TextDecoration`]: textDecoration,
-			[`${prefixConstant}FontSize`]: fontSize,
-			[`${prefixConstant}SizeUnit`]: sizeUnit,
-			[`${prefixConstant}LetterSpacing`]: letterSpacing,
-			[`${prefixConstant}LetterSpacingUnit`]: letterSpacingUnit,
-			[`${prefixConstant}LineHeight`]: lineHeight,
-			[`${prefixConstant}LineHeightUnit`]: lineHeightUnit,
-
-			[`TAB${prefixConstant}FontFamily`]: TABfontFamily,
-			[`TAB${prefixConstant}FontWeight`]: TABfontWeight,
-			[`TAB${prefixConstant}TextTransform`]: TABtextTransform,
-			[`TAB${prefixConstant}TextDecoration`]: TABtextDecoration,
-			[`TAB${prefixConstant}FontSize`]: TABfontSize,
-			[`TAB${prefixConstant}SizeUnit`]: TABsizeUnit,
-			[`TAB${prefixConstant}LetterSpacing`]: TABletterSpacing,
-			[`TAB${prefixConstant}LetterSpacingUnit`]: TABletterSpacingUnit,
-			[`TAB${prefixConstant}LineHeight`]: TABlineHeight,
-			[`TAB${prefixConstant}LineHeightUnit`]: TABlineHeightUnit,
-
-			[`MOB${prefixConstant}FontFamily`]: MOBfontFamily,
-			[`MOB${prefixConstant}FontWeight`]: MOBfontWeight,
-			[`MOB${prefixConstant}TextTransform`]: MOBtextTransform,
-			[`MOB${prefixConstant}TextDecoration`]: MOBtextDecoration,
-			[`MOB${prefixConstant}FontSize`]: MOBfontSize,
-			[`MOB${prefixConstant}SizeUnit`]: MOBsizeUnit,
-			[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing,
-			[`MOB${prefixConstant}LetterSpacingUnit`]: MOBletterSpacingUnit,
-			[`MOB${prefixConstant}LineHeight`]: MOBlineHeight,
-			[`MOB${prefixConstant}LineHeightUnit`]: MOBlineHeightUnit,
-		} = attributes;
-
-		return {
-			fontFamily,
-			fontWeight,
-			textTransform,
-			textDecoration,
-			fontSize,
-			sizeUnit,
-			letterSpacing,
-			letterSpacingUnit,
-			lineHeight,
-			lineHeightUnit,
-			TABfontFamily,
-			TABfontWeight,
-			TABtextTransform,
-			TABtextDecoration,
-			TABfontSize,
-			TABsizeUnit,
-			TABletterSpacing,
-			TABletterSpacingUnit,
-			TABlineHeight,
-			TABlineHeightUnit,
-			MOBfontFamily,
-			MOBfontWeight,
-			MOBtextTransform,
-			MOBtextDecoration,
-			MOBfontSize,
-			MOBsizeUnit,
-			MOBletterSpacing,
-			MOBletterSpacingUnit,
-			MOBlineHeight,
-			MOBlineHeightUnit,
-		};
+	const typoRequiredProps = {
+		attributes,
+		setAttributes,
+		resOption,
 	};
 
 	return (
@@ -362,21 +366,15 @@ function Inspector(props) {
 					initialOpen={false}
 					resRequiredProps={resRequiredProps}
 				>
-					<TypographyControl
+					<TypographyDropdown
 						baseLabel="Title"
 						typographyPrefixConstant={typoPrefix_title}
-						typographyAttributes={generateTypographyAttributes(
-							typoPrefix_title
-						)}
-						resOption={resOption}
-						setAttributes={setAttributes}
+						typoRequiredProps={typoRequiredProps}
 					/>
-					<TypographyControl
+					<TypographyDropdown
 						baseLabel="Text"
 						typographyPrefixConstant={typoPrefix_text}
-						typographyAttributes={generateTypographyAttributes(typoPrefix_text)}
-						resOption={resOption}
-						setAttributes={setAttributes}
+						typoRequiredProps={typoRequiredProps}
 					/>
 				</ResPanelBody>
 
