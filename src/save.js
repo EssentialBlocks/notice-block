@@ -1,16 +1,10 @@
 import { RichText, useBlockProps } from "@wordpress/block-editor";
 
 const save = ({ attributes }) => {
-	const {
-		blockId,
-		showAfterDismiss,
-		title,
-		text
-	} = attributes;
+	const { blockId, showAfterDismiss, title, text } = attributes;
 
 	return (
 		<div {...useBlockProps.save()}>
-
 			<div
 				className={`eb-notice-wrapper ${blockId}`}
 				data-id={blockId}

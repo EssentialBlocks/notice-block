@@ -1,112 +1,67 @@
 // function to generate typography attributes for multiple typography control based on the array of prefix
 export const generateTypographyAttributes = (prefixArray) => {
-	const templateForTypographyAttributes = `{
-		"_prefix_FontFamily":{
-			"type":"string"
-		},
-		"_prefix_SizeUnit":{
-			"type":"string",
-			"default":"px"
-		},
-		"_prefix_FontSize":{
-			"type":"number"
-		},
-		"_prefix_FontWeight":{
-			"type":"string"
-		},
-		"_prefix_TextTransform":{
-			"type":"string"
-		},
-		"_prefix_TextDecoration":{
-			"type":"string"
-		},
-		"_prefix_LetterSpacingUnit":{
-			"type":"string",
-			"default":"px"
-		},
-		"_prefix_LetterSpacing":{
-			"type":"number"
-		},
-		"_prefix_LineHeightUnit":{
-			"type":"string",
-			"default":"em"
-		},
-		"_prefix_LineHeight":{
-			"type":"number"
-		},
-		"TAB_prefix_FontFamily":{
-			"type":"string"
-		},
-		"TAB_prefix_SizeUnit":{
-			"type":"string"
-		},
-		"TAB_prefix_FontSize":{
-			"type":"number"
-		},
-		"TAB_prefix_FontWeight":{
-			"type":"string"
-		},
-		"TAB_prefix_TextTransform":{
-			"type":"string"
-		},
-		"TAB_prefix_TextDecoration":{
-			"type":"string"
-		},
-		"TAB_prefix_LetterSpacingUnit":{
-			"type":"string"
-		},
-		"TAB_prefix_LetterSpacing":{
-			"type":"number"
-		},
-		"TAB_prefix_LineHeightUnit":{
-			"type":"string"
-		},
-		"TAB_prefix_LineHeight":{
-			"type":"number"
-		},
-		"MOB_prefix_FontFamily":{
-			"type":"string"
-		},
-		"MOB_prefix_SizeUnit":{
-			"type":"string"
-		},
-		"MOB_prefix_FontSize":{
-			"type":"number"
-		},
-		"MOB_prefix_FontWeight":{
-			"type":"string"
-		},
-		"MOB_prefix_TextTransform":{
-			"type":"string"
-		},
-		"MOB_prefix_TextDecoration":{
-			"type":"string"
-		},
-		"MOB_prefix_LetterSpacingUnit":{
-			"type":"string"
-		},
-		"MOB_prefix_LetterSpacing":{
-			"type":"number"
-		},
-		"MOB_prefix_LineHeightUnit":{
-			"type":"string"
-		},
-		"MOB_prefix_LineHeight":{
-			"type":"number"
-		}
-		
-	}`;
-
-	return prefixArray.reduce((total, current) => {
-		const result = templateForTypographyAttributes.replace(
-			/_prefix_/g,
-			current
-		);
+	const typoAttrs = prefixArray.reduce((total, current) => {
+		const result = {
+			[`${current}FontFamily`]: {
+				type: "string",
+			},
+			[`${current}SizeUnit`]: {
+				type: "string",
+				default: "px",
+			},
+			[`${current}FontSize`]: {
+				type: "number",
+			},
+			[`${current}FontWeight`]: {
+				type: "string",
+			},
+			[`${current}TextTransform`]: {
+				type: "string",
+			},
+			[`${current}TextDecoration`]: {
+				type: "string",
+			},
+			[`${current}LetterSpacingUnit`]: {
+				type: "string",
+				default: "px",
+			},
+			[`${current}LetterSpacing`]: {
+				type: "number",
+			},
+			[`${current}LineHeightUnit`]: {
+				type: "string",
+				default: "em",
+			},
+			[`${current}LineHeight`]: {
+				type: "number",
+			},
+			[`TAB${current}FontSize`]: {
+				type: "number",
+			},
+			[`TAB${current}LetterSpacing`]: {
+				type: "number",
+			},
+			[`TAB${current}LineHeight`]: {
+				type: "number",
+			},
+			[`MOB${current}FontSize`]: {
+				type: "number",
+			},
+			[`MOB${current}LetterSpacing`]: {
+				type: "number",
+			},
+			[`MOB${current}LineHeight`]: {
+				type: "number",
+			},
+		};
 		return {
 			...total,
-			...JSON.parse(result),
+			...result,
 		};
 	}, {});
+
+	console.log({ typoAttrs });
+	return typoAttrs;
 };
 
 // helper Functions: function 'textInsideForEdit' is for setting the innertext depending on whether separator should be shown and which separator should be shown

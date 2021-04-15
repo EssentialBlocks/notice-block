@@ -23,7 +23,6 @@ import {
 } from "./myUtil/helpers";
 
 export default function Edit(props) {
-
 	const { attributes, setAttributes, isSelected } = props;
 	const {
 		blockId,
@@ -31,7 +30,7 @@ export default function Edit(props) {
 		// responsive control attribute ⬇
 		resOption,
 
-		dismissible = dismissible ? "flex" : "none",
+		dismissible,
 		// titleFontSize,
 		// textFontSize,
 		title,
@@ -140,32 +139,32 @@ export default function Edit(props) {
 
 	// this useEffect is for creating a unique id for each block's unique className by a random unique number
 	useEffect(() => {
+		// const current_block_id = attributes.blockId;
+
 		const BLOCK_PREFIX = "eb-notice";
-		const unique_id = BLOCK_PREFIX+ "-" + Math.random().toString(36).substr(2, 7);
-		const current_block_id = attributes.blockId;
+		const unique_id =
+			BLOCK_PREFIX + "-" + Math.random().toString(36).substr(2, 7);
 
 		/**
 		 * Define and Generate Unique Block ID
-		*/
-		if ( !current_block_id) {
+		 */
+		if (!blockId) {
 			setAttributes({ blockId: unique_id });
 		}
 
 		/**
 		 * Assign New Unique ID when duplicate BlockId found
 		 * Mostly happens when User Duplicate a Block
-		*/
+		 */
 		const all_blocks = wp.data.select("core/block-editor").getBlocks();
-        let blockIdCount = 0;
-        all_blocks.forEach((item) => {
-			if (item.attributes.blockId === current_block_id && item.attributes.blockRoot === 'essential_block' && item.name === 'block/notice-block' ) {
-				blockIdCount++;
-				if (blockIdCount > 1) {
-					setAttributes({ blockId: blockId });
-				}
-			}
-        });
-		
+
+		console.log({ all_blocks });
+
+		if (
+			all_blocks.filter((item) => item.attributes.blockId === blockId).length >
+			1
+		)
+			setAttributes({ blockId: unique_id });
 	}, []);
 
 	const blockProps = useBlockProps({
@@ -378,7 +377,7 @@ export default function Edit(props) {
 	const dismissStylesDesktop = `
 	.${blockId} .eb-notice-dismiss{
 		color: ${textColor};
-		display: ${dismissible};
+		display: ${dismissible ? "flex" : "none"};
 	}
 	`;
 
@@ -447,10 +446,7 @@ export default function Edit(props) {
 				`}
 			</style>
 
-			<div
-				className={`eb-notice-wrapper ${blockId}`}
-				data-id={blockId}
-			>
+			<div className={`eb-notice-wrapper ${blockId}`} data-id={blockId}>
 				<div className="eb-notice-title-wrapper">
 					<RichText
 						className="eb-notice-title"
