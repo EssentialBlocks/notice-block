@@ -4,10 +4,10 @@ import "./style.scss";
 
 class DimensionsControl extends Component {
   state = {
-    top: this.props.top || 0,
-    right: this.props.right || 0,
-    bottom: this.props.bottom || 0,
-    left: this.props.left || 0,
+    top: this.props.top,
+    right: this.props.right,
+    bottom: this.props.bottom,
+    left: this.props.left,
     isLinked: false,
   };
 
@@ -18,13 +18,13 @@ class DimensionsControl extends Component {
     let { name, value } = event.target;
 
     if (isLinked) {
-      top = right = bottom = left = parseInt(value) || 0;
+      top = right = bottom = left = value;
       this.setState({ top, right, bottom, left }, () => {
         const { top, right, bottom, left } = this.state;
         this.props.onChange({ top, right, bottom, left });
       });
     } else {
-      this.setState({ [name]: parseInt(value) || 0 }, () => {
+      this.setState({ [name]: value }, () => {
         const { top, right, bottom, left } = this.state;
         this.props.onChange({ top, right, bottom, left });
       });
@@ -43,7 +43,7 @@ class DimensionsControl extends Component {
             <input
               type="number"
               name="top"
-              value={top || 0}
+              value={top}
               onChange={this.onInputChange}
             />
             <label className="dimentions-input-label">Top</label>
@@ -52,7 +52,7 @@ class DimensionsControl extends Component {
             <input
               type="number"
               name="right"
-              value={right || 0}
+              value={right}
               onChange={this.onInputChange}
             />
             <label className="dimentions-input-label">Right</label>
@@ -61,7 +61,7 @@ class DimensionsControl extends Component {
             <input
               type="number"
               name="bottom"
-              value={bottom || 0}
+              value={bottom}
               onChange={this.onInputChange}
             />
             <label className="dimentions-input-label">Bottom</label>
@@ -70,18 +70,18 @@ class DimensionsControl extends Component {
             <input
               type="number"
               name="left"
-              value={left || 0}
+              value={left}
               onChange={this.onInputChange}
             />
             <label className="dimentions-input-label">Left</label>
           </div>
-          <button
-            className={`linked-btn components-button is-button dashicons dashicons-${
-              isLinked ? "admin-links is-primary" : "editor-unlink is-default"
-            }`}
-            onClick={this.onButtonClick}
-          />
         </div>
+        <button
+          className={`linked-btn components-button is-button dashicons dashicons-${
+            isLinked ? "admin-links is-primary" : "editor-unlink is-default"
+          }`}
+          onClick={this.onButtonClick}
+        />
       </div>
     );
   }
