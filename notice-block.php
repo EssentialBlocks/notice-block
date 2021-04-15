@@ -71,7 +71,7 @@ function create_block_notice_block_init()
 	);
 
 	if (!WP_Block_Type_Registry::get_instance()->is_registered('essential-blocks/notice')) {
-		register_block_type('create-block/notice-block', array(
+		register_block_type('notice-block/notice', array(
 			'editor_script' => 'create-block-notice-block-editor',
 			'editor_style'  => 'create-block-notice-block-editor',
 			'style'         => 'create-block-notice-block',

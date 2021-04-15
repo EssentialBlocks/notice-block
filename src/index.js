@@ -8,7 +8,7 @@ import save from "./save";
 import icon from "./icon";
 import attributes from "./attributes";
 
-registerBlockType("block/notice-block", {
+registerBlockType("notice-block/notice", {
 	apiVersion: 2,
 	title: __("Notice", "block"),
 	description: __(
@@ -24,5 +24,5 @@ registerBlockType("block/notice-block", {
 	icon,
 	attributes,
 	edit: Edit,
-	save
+	save,
 });
