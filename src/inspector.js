@@ -38,8 +38,6 @@ function Inspector(props) {
 
 		dismissible,
 		noticeType,
-		// titleFontSize,
-		// textFontSize,
 		backgroundColor,
 		titleColor,
 		textColor,
@@ -49,24 +47,6 @@ function Inspector(props) {
 		shadowVOffset,
 		shadowBlur,
 		shadowSpread,
-		// titleSizeUnit,
-		// textSizeUnit,
-		// titleFontFamily,
-		// titleFontWeight,
-		// titleTextTransform,
-		// titleTextDecoration,
-		// titleLineHeight,
-		// titleLineHeightUnit,
-		// titleLetterSpacing,
-		// titleLetterSpacingUnit,
-		// textFontFamily,
-		// textFontWeight,
-		// textTextTransform,
-		// textTextDecoration,
-		// textLineHeight,
-		// textLineHeightUnit,
-		// textLetterSpacing,
-		// textLetterSpacingUnit,
 
 		// margin padding attributes ⬇
 		marginUnit,
@@ -193,7 +173,7 @@ function Inspector(props) {
 		}
 	};
 
-	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
+	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
 	useEffect(() => {
 		const bodyClasses = document.body.className;
 		// console.log("----log from inspector useEffect with empty []", {
@@ -254,74 +234,6 @@ function Inspector(props) {
 		});
 	}, [resOption]);
 
-	{
-		// const generateTypographyAttributes = (prefixConstant) => {
-		// 	const {
-		// 		[`${prefixConstant}FontFamily`]: fontFamily,
-		// 		[`${prefixConstant}FontWeight`]: fontWeight,
-		// 		[`${prefixConstant}TextTransform`]: textTransform,
-		// 		[`${prefixConstant}TextDecoration`]: textDecoration,
-		// 		[`${prefixConstant}FontSize`]: fontSize,
-		// 		[`${prefixConstant}SizeUnit`]: sizeUnit,
-		// 		[`${prefixConstant}LetterSpacing`]: letterSpacing,
-		// 		[`${prefixConstant}LetterSpacingUnit`]: letterSpacingUnit,
-		// 		[`${prefixConstant}LineHeight`]: lineHeight,
-		// 		[`${prefixConstant}LineHeightUnit`]: lineHeightUnit,
-		// 		[`TAB${prefixConstant}FontFamily`]: TABfontFamily,
-		// 		[`TAB${prefixConstant}FontWeight`]: TABfontWeight,
-		// 		[`TAB${prefixConstant}TextTransform`]: TABtextTransform,
-		// 		[`TAB${prefixConstant}TextDecoration`]: TABtextDecoration,
-		// 		[`TAB${prefixConstant}FontSize`]: TABfontSize,
-		// 		[`TAB${prefixConstant}SizeUnit`]: TABsizeUnit,
-		// 		[`TAB${prefixConstant}LetterSpacing`]: TABletterSpacing,
-		// 		[`TAB${prefixConstant}LetterSpacingUnit`]: TABletterSpacingUnit,
-		// 		[`TAB${prefixConstant}LineHeight`]: TABlineHeight,
-		// 		[`TAB${prefixConstant}LineHeightUnit`]: TABlineHeightUnit,
-		// 		[`MOB${prefixConstant}FontFamily`]: MOBfontFamily,
-		// 		[`MOB${prefixConstant}FontWeight`]: MOBfontWeight,
-		// 		[`MOB${prefixConstant}TextTransform`]: MOBtextTransform,
-		// 		[`MOB${prefixConstant}TextDecoration`]: MOBtextDecoration,
-		// 		[`MOB${prefixConstant}FontSize`]: MOBfontSize,
-		// 		[`MOB${prefixConstant}SizeUnit`]: MOBsizeUnit,
-		// 		[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing,
-		// 		[`MOB${prefixConstant}LetterSpacingUnit`]: MOBletterSpacingUnit,
-		// 		[`MOB${prefixConstant}LineHeight`]: MOBlineHeight,
-		// 		[`MOB${prefixConstant}LineHeightUnit`]: MOBlineHeightUnit,
-		// 	} = attributes;
-		// 	return {
-		// 		fontFamily,
-		// 		fontWeight,
-		// 		textTransform,
-		// 		textDecoration,
-		// 		fontSize,
-		// 		sizeUnit,
-		// 		letterSpacing,
-		// 		letterSpacingUnit,
-		// 		lineHeight,
-		// 		lineHeightUnit,
-		// 		TABfontFamily,
-		// 		TABfontWeight,
-		// 		TABtextTransform,
-		// 		TABtextDecoration,
-		// 		TABfontSize,
-		// 		TABsizeUnit,
-		// 		TABletterSpacing,
-		// 		TABletterSpacingUnit,
-		// 		TABlineHeight,
-		// 		TABlineHeightUnit,
-		// 		MOBfontFamily,
-		// 		MOBfontWeight,
-		// 		MOBtextTransform,
-		// 		MOBtextDecoration,
-		// 		MOBfontSize,
-		// 		MOBsizeUnit,
-		// 		MOBletterSpacing,
-		// 		MOBletterSpacingUnit,
-		// 		MOBlineHeight,
-		// 		MOBlineHeightUnit,
-		// 	};
-		// };
-	}
 	const resRequiredProps = {
 		setAttributes,
 		resOption,
