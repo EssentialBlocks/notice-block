@@ -534,4 +534,31 @@ body.eb-res-option-mobile .editor-styles-wrapper {
   max-width: 480px;
 }
 
+.typoResButton {
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 23px;
+  width: 16px;
+}
+
+.typoResButton.active {
+  color: #6c40f7;
+}
+
+.resIcons {
+  position: absolute;
+}
+
+.eb-typography-component-panel .wrap_res.forFontSize .resIcons {
+  left: 70px;
+}
+
+.eb-typography-component-panel .wrap_res.forLetterSpacing .resIcons {
+  left: 100px;
+}
+
+.eb-typography-component-panel .wrap_res.forLineHeight .resIcons {
+  left: 83px;
+}
+
 /*# sourceMappingURL=index.css.map*/

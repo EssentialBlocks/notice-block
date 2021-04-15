@@ -2695,44 +2695,16 @@ var generateTypographyAttributes = function generateTypographyAttributes(prefixA
       "default": "em"
     }), _defineProperty(_result, "".concat(current, "LineHeight"), {
       type: "number"
-    }), _defineProperty(_result, "TAB".concat(current, "FontFamily"), {
-      type: "string"
-    }), _defineProperty(_result, "TAB".concat(current, "SizeUnit"), {
-      type: "string"
     }), _defineProperty(_result, "TAB".concat(current, "FontSize"), {
       type: "number"
-    }), _defineProperty(_result, "TAB".concat(current, "FontWeight"), {
-      type: "string"
-    }), _defineProperty(_result, "TAB".concat(current, "TextTransform"), {
-      type: "string"
-    }), _defineProperty(_result, "TAB".concat(current, "TextDecoration"), {
-      type: "string"
-    }), _defineProperty(_result, "TAB".concat(current, "LetterSpacingUnit"), {
-      type: "string"
     }), _defineProperty(_result, "TAB".concat(current, "LetterSpacing"), {
       type: "number"
-    }), _defineProperty(_result, "TAB".concat(current, "LineHeightUnit"), {
-      type: "string"
     }), _defineProperty(_result, "TAB".concat(current, "LineHeight"), {
       type: "number"
-    }), _defineProperty(_result, "MOB".concat(current, "FontFamily"), {
-      type: "string"
-    }), _defineProperty(_result, "MOB".concat(current, "SizeUnit"), {
-      type: "string"
     }), _defineProperty(_result, "MOB".concat(current, "FontSize"), {
       type: "number"
-    }), _defineProperty(_result, "MOB".concat(current, "FontWeight"), {
-      type: "string"
-    }), _defineProperty(_result, "MOB".concat(current, "TextTransform"), {
-      type: "string"
-    }), _defineProperty(_result, "MOB".concat(current, "TextDecoration"), {
-      type: "string"
-    }), _defineProperty(_result, "MOB".concat(current, "LetterSpacingUnit"), {
-      type: "string"
     }), _defineProperty(_result, "MOB".concat(current, "LetterSpacing"), {
       type: "number"
-    }), _defineProperty(_result, "MOB".concat(current, "LineHeightUnit"), {
-      type: "string"
     }), _defineProperty(_result, "MOB".concat(current, "LineHeight"), {
       type: "number"
     }), _result);
@@ -2894,6 +2866,53 @@ function FontFamilyPicker(_ref) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (withInstanceId(FontFamilyPicker));
+
+/***/ }),
+
+/***/ "./src/myUtil/typography-component/WithResButtons.js":
+/*!***********************************************************!*\
+  !*** ./src/myUtil/typography-component/WithResButtons.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WithResButtons; });
+/* harmony import */ var _typoHelpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./typoHelpers */ "./src/myUtil/typography-component/typoHelpers.js");
+
+function WithResButtons(_ref) {
+  var className = _ref.className,
+      children = _ref.children,
+      resOption = _ref.resOption,
+      setAttributes = _ref.setAttributes;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "wrap_res ".concat(className || " ")
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "resIcons"
+  }, /*#__PURE__*/React.createElement("span", {
+    onClick: function onClick() {
+      return Object(_typoHelpers__WEBPACK_IMPORTED_MODULE_0__["handleDesktopBtnClick"])({
+        setAttributes: setAttributes
+      });
+    },
+    "class": "typoResButton dashicons dashicons-desktop ".concat(resOption === "desktop" ? "active" : " ")
+  }), /*#__PURE__*/React.createElement("span", {
+    onClick: function onClick() {
+      return Object(_typoHelpers__WEBPACK_IMPORTED_MODULE_0__["handleTabBtnClick"])({
+        setAttributes: setAttributes
+      });
+    },
+    "class": "typoResButton dashicons dashicons-tablet ".concat(resOption === "tab" ? "active" : " ")
+  }), /*#__PURE__*/React.createElement("span", {
+    onClick: function onClick() {
+      return Object(_typoHelpers__WEBPACK_IMPORTED_MODULE_0__["handleMobileBtnClick"])({
+        setAttributes: setAttributes
+      });
+    },
+    "class": "typoResButton dashicons dashicons-smartphone ".concat(resOption === "mobile" ? "active" : " ")
+  })), children);
+}
 
 /***/ }),
 
@@ -5386,7 +5405,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_unit_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../util/unit-control */ "./util/unit-control/index.js");
 /* harmony import */ var _FontPicker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FontPicker */ "./src/myUtil/typography-component/FontPicker.js");
 /* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./icons */ "./src/myUtil/typography-component/icons.js");
+/* harmony import */ var _WithResButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WithResButtons */ "./src/myUtil/typography-component/WithResButtons.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -5411,47 +5432,19 @@ function TypographyDropdown(_ref) {
       letterSpacingUnit = attributes["".concat(typographyPrefixConstant, "LetterSpacingUnit")],
       lineHeight = attributes["".concat(typographyPrefixConstant, "LineHeight")],
       lineHeightUnit = attributes["".concat(typographyPrefixConstant, "LineHeightUnit")],
-      _attributes$ = attributes["TAB".concat(typographyPrefixConstant, "FontFamily")],
-      TABfontFamily = _attributes$ === void 0 ? fontFamily : _attributes$,
-      _attributes$2 = attributes["TAB".concat(typographyPrefixConstant, "FontWeight")],
-      TABfontWeight = _attributes$2 === void 0 ? fontWeight : _attributes$2,
-      _attributes$3 = attributes["TAB".concat(typographyPrefixConstant, "TextTransform")],
-      TABtextTransform = _attributes$3 === void 0 ? textTransform : _attributes$3,
-      _attributes$4 = attributes["TAB".concat(typographyPrefixConstant, "TextDecoration")],
-      TABtextDecoration = _attributes$4 === void 0 ? textDecoration : _attributes$4,
-      _attributes$5 = attributes["TAB".concat(typographyPrefixConstant, "FontSize")],
-      TABfontSize = _attributes$5 === void 0 ? fontSize : _attributes$5,
-      _attributes$6 = attributes["TAB".concat(typographyPrefixConstant, "SizeUnit")],
-      TABsizeUnit = _attributes$6 === void 0 ? sizeUnit : _attributes$6,
-      _attributes$7 = attributes["TAB".concat(typographyPrefixConstant, "LetterSpacing")],
-      TABletterSpacing = _attributes$7 === void 0 ? letterSpacing : _attributes$7,
-      _attributes$8 = attributes["TAB".concat(typographyPrefixConstant, "LetterSpacingUnit")],
-      TABletterSpacingUnit = _attributes$8 === void 0 ? letterSpacingUnit : _attributes$8,
-      _attributes$9 = attributes["TAB".concat(typographyPrefixConstant, "LineHeight")],
-      TABlineHeight = _attributes$9 === void 0 ? lineHeight : _attributes$9,
-      _attributes$10 = attributes["TAB".concat(typographyPrefixConstant, "LineHeightUnit")],
-      TABlineHeightUnit = _attributes$10 === void 0 ? lineHeightUnit : _attributes$10,
-      _attributes$11 = attributes["MOB".concat(typographyPrefixConstant, "FontFamily")],
-      MOBfontFamily = _attributes$11 === void 0 ? TABfontFamily : _attributes$11,
-      _attributes$12 = attributes["MOB".concat(typographyPrefixConstant, "FontWeight")],
-      MOBfontWeight = _attributes$12 === void 0 ? TABfontWeight : _attributes$12,
-      _attributes$13 = attributes["MOB".concat(typographyPrefixConstant, "TextTransform")],
-      MOBtextTransform = _attributes$13 === void 0 ? TABtextTransform : _attributes$13,
-      _attributes$14 = attributes["MOB".concat(typographyPrefixConstant, "TextDecoration")],
-      MOBtextDecoration = _attributes$14 === void 0 ? TABtextDecoration : _attributes$14,
-      _attributes$15 = attributes["MOB".concat(typographyPrefixConstant, "FontSize")],
-      MOBfontSize = _attributes$15 === void 0 ? TABfontSize : _attributes$15,
-      _attributes$16 = attributes["MOB".concat(typographyPrefixConstant, "SizeUnit")],
-      MOBsizeUnit = _attributes$16 === void 0 ? TABsizeUnit : _attributes$16,
-      _attributes$17 = attributes["MOB".concat(typographyPrefixConstant, "LetterSpacing")],
-      MOBletterSpacing = _attributes$17 === void 0 ? TABletterSpacing : _attributes$17,
-      _attributes$18 = attributes["MOB".concat(typographyPrefixConstant, "LetterSpacingUnit")],
-      MOBletterSpacingUnit = _attributes$18 === void 0 ? TABletterSpacingUnit : _attributes$18,
-      _attributes$19 = attributes["MOB".concat(typographyPrefixConstant, "LineHeight")],
-      MOBlineHeight = _attributes$19 === void 0 ? TABlineHeight : _attributes$19,
-      _attributes$20 = attributes["MOB".concat(typographyPrefixConstant, "LineHeightUnit")],
-      MOBlineHeightUnit = _attributes$20 === void 0 ? TABlineHeightUnit : _attributes$20;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, resOption == "desktop" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["BaseControl"], {
+      _attributes$ = attributes["TAB".concat(typographyPrefixConstant, "FontSize")],
+      TABfontSize = _attributes$ === void 0 ? fontSize : _attributes$,
+      _attributes$2 = attributes["TAB".concat(typographyPrefixConstant, "LetterSpacing")],
+      TABletterSpacing = _attributes$2 === void 0 ? letterSpacing : _attributes$2,
+      _attributes$3 = attributes["TAB".concat(typographyPrefixConstant, "LineHeight")],
+      TABlineHeight = _attributes$3 === void 0 ? lineHeight : _attributes$3,
+      _attributes$4 = attributes["MOB".concat(typographyPrefixConstant, "FontSize")],
+      MOBfontSize = _attributes$4 === void 0 ? TABfontSize : _attributes$4,
+      _attributes$5 = attributes["MOB".concat(typographyPrefixConstant, "LetterSpacing")],
+      MOBletterSpacing = _attributes$5 === void 0 ? TABletterSpacing : _attributes$5,
+      _attributes$6 = attributes["MOB".concat(typographyPrefixConstant, "LineHeight")],
+      MOBlineHeight = _attributes$6 === void 0 ? TABlineHeight : _attributes$6;
+  return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["BaseControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])(baseLabel),
     className: "eb-typography-base"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["Dropdown"], {
@@ -5494,7 +5487,11 @@ function TypographyDropdown(_ref) {
         onClick: function onClick(SizeUnit) {
           return setAttributes(_defineProperty({}, "".concat(typographyPrefixConstant, "SizeUnit"), SizeUnit));
         }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }), resOption === "desktop" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "forFontSize",
+        resOption: resOption,
+        setAttributes: setAttributes
+      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Size"),
         value: fontSize,
         onChange: function onChange(FontSize) {
@@ -5503,7 +5500,33 @@ function TypographyDropdown(_ref) {
         step: sizeUnit === "em" ? 0.1 : 1,
         min: 0,
         max: sizeUnit === "em" ? 10 : 300
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["SelectControl"], {
+      })), resOption === "tab" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "forFontSize",
+        resOption: resOption,
+        setAttributes: setAttributes
+      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Size"),
+        value: TABfontSize,
+        onChange: function onChange(FontSize) {
+          return setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "FontSize"), FontSize));
+        },
+        step: sizeUnit === "em" ? 0.1 : 1,
+        min: 0,
+        max: sizeUnit === "em" ? 10 : 300
+      })), resOption === "mobile" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "forFontSize",
+        resOption: resOption,
+        setAttributes: setAttributes
+      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Size"),
+        value: MOBfontSize,
+        onChange: function onChange(FontSize) {
+          return setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "FontSize"), FontSize));
+        },
+        step: sizeUnit === "em" ? 0.1 : 1,
+        min: 0,
+        max: sizeUnit === "em" ? 10 : 300
+      })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["SelectControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Weight"),
         value: fontWeight,
         options: [{
@@ -5599,7 +5622,11 @@ function TypographyDropdown(_ref) {
         onClick: function onClick(LetterSpacingUnit) {
           return setAttributes(_defineProperty({}, "".concat(typographyPrefixConstant, "LetterSpacingUnit"), LetterSpacingUnit));
         }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }), resOption === "desktop" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "forLetterSpacing",
+        resOption: resOption,
+        setAttributes: setAttributes
+      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Letter Spacing"),
         value: letterSpacing,
         onChange: function onChange(LetterSpacing) {
@@ -5608,7 +5635,33 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: letterSpacingUnit === "em" ? 10 : 100,
         step: letterSpacingUnit === "em" ? 0.1 : 1
-      }), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      })), resOption === "tab" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "forLetterSpacing",
+        resOption: resOption,
+        setAttributes: setAttributes
+      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Letter Spacing"),
+        value: TABletterSpacing,
+        onChange: function onChange(LetterSpacing) {
+          return setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "LetterSpacing"), LetterSpacing));
+        },
+        min: 0,
+        max: letterSpacingUnit === "em" ? 10 : 100,
+        step: letterSpacingUnit === "em" ? 0.1 : 1
+      })), resOption === "mobile" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "forLetterSpacing",
+        resOption: resOption,
+        setAttributes: setAttributes
+      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Letter Spacing"),
+        value: MOBletterSpacing,
+        onChange: function onChange(LetterSpacing) {
+          return setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "LetterSpacing"), LetterSpacing));
+        },
+        min: 0,
+        max: letterSpacingUnit === "em" ? 10 : 100,
+        step: letterSpacingUnit === "em" ? 0.1 : 1
+      })), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
         selectedUnit: lineHeightUnit,
         unitTypes: [{
           label: "px",
@@ -5620,7 +5673,11 @@ function TypographyDropdown(_ref) {
         onClick: function onClick(LineHeightUnit) {
           return setAttributes(_defineProperty({}, "".concat(typographyPrefixConstant, "LineHeightUnit"), LineHeightUnit));
         }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }), resOption === "desktop" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "forLineHeight",
+        resOption: resOption,
+        setAttributes: setAttributes
+      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Line Height"),
         value: lineHeight,
         onChange: function onChange(LineHeight) {
@@ -5629,372 +5686,77 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: lineHeightUnit === "em" ? 10 : 600,
         step: lineHeightUnit === "em" ? 0.1 : 1
-      }));
-    }
-  })), resOption == "tab" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["BaseControl"], {
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])(baseLabel),
-    className: "eb-typography-base"
-  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["Dropdown"], {
-    className: "eb-typography-dropdown",
-    contentClassName: "my-popover-content-classname",
-    position: "bottom right",
-    renderToggle: function renderToggle(_ref3) {
-      var isOpen = _ref3.isOpen,
-          onToggle = _ref3.onToggle;
-      return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["Button"], {
-        isSmall: true,
-        onClick: onToggle,
-        "aria-expanded": isOpen
-      }, /*#__PURE__*/React.createElement(_icons__WEBPACK_IMPORTED_MODULE_4__["TypographyIcon"], null));
-    },
-    renderContent: function renderContent() {
-      return /*#__PURE__*/React.createElement("div", {
-        className: "eb-panel-control eb-typography-component-panel",
-        style: {
-          padding: "0.2rem"
-        }
-      }, /*#__PURE__*/React.createElement(_FontPicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Family"),
-        value: TABfontFamily,
-        onChange: function onChange(FontFamily) {
-          setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "FontFamily"), FontFamily));
-        }
-      }), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        selectedUnit: TABsizeUnit,
-        unitTypes: [{
-          label: "px",
-          value: "px"
-        }, {
-          label: "%",
-          value: "%"
-        }, {
-          label: "em",
-          value: "em"
-        }],
-        onClick: function onClick(SizeUnit) {
-          return setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "SizeUnit"), SizeUnit));
-        }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Size"),
-        value: TABfontSize,
-        onChange: function onChange(FontSize) {
-          return setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "FontSize"), FontSize));
-        },
-        step: TABsizeUnit === "em" ? 0.1 : 1,
-        min: 0,
-        max: TABsizeUnit === "em" ? 10 : 300
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["SelectControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Weight"),
-        value: TABfontWeight,
-        options: [{
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Default"),
-          value: ""
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("100"),
-          value: "100"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("200"),
-          value: "200"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("300"),
-          value: "300"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("400"),
-          value: "400"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("500"),
-          value: "500"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("600"),
-          value: "600"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("700"),
-          value: "700"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("800"),
-          value: "800"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("900"),
-          value: "900"
-        }],
-        onChange: function onChange(FontWeight) {
-          return setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "FontWeight"), FontWeight));
-        }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["SelectControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Text Transform"),
-        value: TABtextTransform,
-        options: [{
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Default"),
-          value: ""
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("None"),
-          value: "none"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Lowercase"),
-          value: "lowercase"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Capitalize"),
-          value: "capitalize"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Uppercase"),
-          value: "uppercase"
-        }],
-        onChange: function onChange(TextTransform) {
-          return setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "TextTransform"), TextTransform));
-        }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["SelectControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Text Decoration"),
-        value: TABtextDecoration,
-        options: [{
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Default"),
-          value: ""
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("None"),
-          value: "initial"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Overline"),
-          value: "overline"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Line Through"),
-          value: "line-through"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Underline"),
-          value: "underline"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Underline Oveline"),
-          value: "underline overline"
-        }],
-        onChange: function onChange(TextDecoration) {
-          return setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "TextDecoration"), TextDecoration));
-        }
-      }), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        selectedUnit: TABletterSpacingUnit,
-        unitTypes: [{
-          label: "px",
-          value: "px"
-        }, {
-          label: "em",
-          value: "em"
-        }],
-        onClick: function onClick(LetterSpacingUnit) {
-          return setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "LetterSpacingUnit"), LetterSpacingUnit));
-        }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Letter Spacing"),
-        value: TABletterSpacing,
-        onChange: function onChange(LetterSpacing) {
-          return setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "LetterSpacing"), LetterSpacing));
-        },
-        min: 0,
-        max: TABletterSpacingUnit === "em" ? 10 : 100,
-        step: TABletterSpacingUnit === "em" ? 0.1 : 1
-      }), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        selectedUnit: TABlineHeightUnit,
-        unitTypes: [{
-          label: "px",
-          value: "px"
-        }, {
-          label: "em",
-          value: "em"
-        }],
-        onClick: function onClick(LineHeightUnit) {
-          return setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "LineHeightUnit"), LineHeightUnit));
-        }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      })), resOption === "tab" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "forLineHeight",
+        resOption: resOption,
+        setAttributes: setAttributes
+      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Line Height"),
         value: TABlineHeight,
         onChange: function onChange(LineHeight) {
           return setAttributes(_defineProperty({}, "TAB".concat(typographyPrefixConstant, "LineHeight"), LineHeight));
         },
         min: 0,
-        max: TABlineHeightUnit === "em" ? 10 : 600,
-        step: TABlineHeightUnit === "em" ? 0.1 : 1
-      }));
-    }
-  })), resOption == "mobile" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["BaseControl"], {
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])(baseLabel),
-    className: "eb-typography-base"
-  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["Dropdown"], {
-    className: "eb-typography-dropdown",
-    contentClassName: "my-popover-content-classname",
-    position: "bottom right",
-    renderToggle: function renderToggle(_ref4) {
-      var isOpen = _ref4.isOpen,
-          onToggle = _ref4.onToggle;
-      return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["Button"], {
-        isSmall: true,
-        onClick: onToggle,
-        "aria-expanded": isOpen
-      }, /*#__PURE__*/React.createElement(_icons__WEBPACK_IMPORTED_MODULE_4__["TypographyIcon"], null));
-    },
-    renderContent: function renderContent() {
-      return /*#__PURE__*/React.createElement("div", {
-        className: "eb-panel-control eb-typography-component-panel",
-        style: {
-          padding: "0.2rem"
-        }
-      }, /*#__PURE__*/React.createElement(_FontPicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Family"),
-        value: MOBfontFamily,
-        onChange: function onChange(FontFamily) {
-          setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "FontFamily"), FontFamily));
-        }
-      }), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        selectedUnit: MOBsizeUnit,
-        unitTypes: [{
-          label: "px",
-          value: "px"
-        }, {
-          label: "%",
-          value: "%"
-        }, {
-          label: "em",
-          value: "em"
-        }],
-        onClick: function onClick(SizeUnit) {
-          return setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "SizeUnit"), SizeUnit));
-        }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Size"),
-        value: MOBfontSize,
-        onChange: function onChange(FontSize) {
-          return setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "FontSize"), FontSize));
-        },
-        step: MOBsizeUnit === "em" ? 0.1 : 1,
-        min: 0,
-        max: MOBsizeUnit === "em" ? 10 : 300
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["SelectControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Weight"),
-        value: MOBfontWeight,
-        options: [{
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Default"),
-          value: ""
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("100"),
-          value: "100"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("200"),
-          value: "200"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("300"),
-          value: "300"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("400"),
-          value: "400"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("500"),
-          value: "500"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("600"),
-          value: "600"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("700"),
-          value: "700"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("800"),
-          value: "800"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("900"),
-          value: "900"
-        }],
-        onChange: function onChange(FontWeight) {
-          return setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "FontWeight"), FontWeight));
-        }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["SelectControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Text Transform"),
-        value: MOBtextTransform,
-        options: [{
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Default"),
-          value: ""
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("None"),
-          value: "none"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Lowercase"),
-          value: "lowercase"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Capitalize"),
-          value: "capitalize"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Uppercase"),
-          value: "uppercase"
-        }],
-        onChange: function onChange(TextTransform) {
-          return setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "TextTransform"), TextTransform));
-        }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["SelectControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Text Decoration"),
-        value: MOBtextDecoration,
-        options: [{
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Default"),
-          value: ""
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("None"),
-          value: "none"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Overline"),
-          value: "overline"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Line Through"),
-          value: "line-through"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Underline"),
-          value: "underline"
-        }, {
-          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Underline Oveline"),
-          value: "underline overline"
-        }],
-        onChange: function onChange(TextDecoration) {
-          return setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "TextDecoration"), TextDecoration));
-        }
-      }), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        selectedUnit: MOBletterSpacingUnit,
-        unitTypes: [{
-          label: "px",
-          value: "px"
-        }, {
-          label: "em",
-          value: "em"
-        }],
-        onClick: function onClick(LetterSpacingUnit) {
-          return setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "LetterSpacingUnit"), LetterSpacingUnit));
-        }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Letter Spacing"),
-        value: MOBletterSpacing,
-        onChange: function onChange(LetterSpacing) {
-          return setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "LetterSpacing"), LetterSpacing));
-        },
-        min: 0,
-        max: MOBletterSpacingUnit === "em" ? 10 : 100,
-        step: MOBletterSpacingUnit === "em" ? 0.1 : 1
-      }), /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        selectedUnit: MOBlineHeightUnit,
-        unitTypes: [{
-          label: "px",
-          value: "px"
-        }, {
-          label: "em",
-          value: "em"
-        }],
-        onClick: function onClick(LineHeightUnit) {
-          return setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "LineHeightUnit"), LineHeightUnit));
-        }
-      }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+        max: lineHeightUnit === "em" ? 10 : 600,
+        step: lineHeightUnit === "em" ? 0.1 : 1
+      })), resOption === "mobile" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        className: "forLineHeight",
+        resOption: resOption,
+        setAttributes: setAttributes
+      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Line Height"),
         value: MOBlineHeight,
         onChange: function onChange(LineHeight) {
           return setAttributes(_defineProperty({}, "MOB".concat(typographyPrefixConstant, "LineHeight"), LineHeight));
         },
         min: 0,
-        max: MOBlineHeightUnit === "em" ? 10 : 600,
-        step: MOBlineHeightUnit === "em" ? 0.1 : 1
-      }));
+        max: lineHeightUnit === "em" ? 10 : 600,
+        step: lineHeightUnit === "em" ? 0.1 : 1
+      })));
     }
-  })));
+  }));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (TypographyDropdown);
+
+/***/ }),
+
+/***/ "./src/myUtil/typography-component/typoHelpers.js":
+/*!********************************************************!*\
+  !*** ./src/myUtil/typography-component/typoHelpers.js ***!
+  \********************************************************/
+/*! exports provided: handleDesktopBtnClick, handleTabBtnClick, handleMobileBtnClick */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleDesktopBtnClick", function() { return handleDesktopBtnClick; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleTabBtnClick", function() { return handleTabBtnClick; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleMobileBtnClick", function() { return handleMobileBtnClick; });
+var handleDesktopBtnClick = function handleDesktopBtnClick(_ref) {
+  var setAttributes = _ref.setAttributes;
+  document.body.classList.add("eb-res-option-desktop");
+  document.body.classList.remove("eb-res-option-tab", "eb-res-option-mobile");
+  setAttributes({
+    resOption: "desktop"
+  });
+};
+var handleTabBtnClick = function handleTabBtnClick(_ref2) {
+  var setAttributes = _ref2.setAttributes;
+  document.body.classList.add("eb-res-option-tab");
+  document.body.classList.remove("eb-res-option-desktop", "eb-res-option-mobile");
+  setAttributes({
+    resOption: "tab"
+  });
+};
+var handleMobileBtnClick = function handleMobileBtnClick(_ref3) {
+  var setAttributes = _ref3.setAttributes;
+  document.body.classList.add("eb-res-option-mobile");
+  document.body.classList.remove("eb-res-option-desktop", "eb-res-option-tab");
+  setAttributes({
+    resOption: "mobile"
+  });
+};
 
 /***/ }),
 

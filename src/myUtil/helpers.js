@@ -35,62 +35,20 @@ export const generateTypographyAttributes = (prefixArray) => {
 			[`${current}LineHeight`]: {
 				type: "number",
 			},
-			[`TAB${current}FontFamily`]: {
-				type: "string",
-			},
-			[`TAB${current}SizeUnit`]: {
-				type: "string",
-			},
 			[`TAB${current}FontSize`]: {
 				type: "number",
-			},
-			[`TAB${current}FontWeight`]: {
-				type: "string",
-			},
-			[`TAB${current}TextTransform`]: {
-				type: "string",
-			},
-			[`TAB${current}TextDecoration`]: {
-				type: "string",
-			},
-			[`TAB${current}LetterSpacingUnit`]: {
-				type: "string",
 			},
 			[`TAB${current}LetterSpacing`]: {
 				type: "number",
 			},
-			[`TAB${current}LineHeightUnit`]: {
-				type: "string",
-			},
 			[`TAB${current}LineHeight`]: {
 				type: "number",
-			},
-			[`MOB${current}FontFamily`]: {
-				type: "string",
-			},
-			[`MOB${current}SizeUnit`]: {
-				type: "string",
 			},
 			[`MOB${current}FontSize`]: {
 				type: "number",
 			},
-			[`MOB${current}FontWeight`]: {
-				type: "string",
-			},
-			[`MOB${current}TextTransform`]: {
-				type: "string",
-			},
-			[`MOB${current}TextDecoration`]: {
-				type: "string",
-			},
-			[`MOB${current}LetterSpacingUnit`]: {
-				type: "string",
-			},
 			[`MOB${current}LetterSpacing`]: {
 				type: "number",
-			},
-			[`MOB${current}LineHeightUnit`]: {
-				type: "string",
 			},
 			[`MOB${current}LineHeight`]: {
 				type: "number",
