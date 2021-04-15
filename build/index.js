@@ -1,5 +1,16 @@
 (window["webpackJsonp_notice"] = window["webpackJsonp_notice"] || []).push([["style-index"],{
 
+/***/ "./src/myUtil/dimensions-control/style.scss":
+/*!**************************************************!*\
+  !*** ./src/myUtil/dimensions-control/style.scss ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/style.scss":
 /*!************************!*\
   !*** ./src/style.scss ***!
@@ -15,17 +26,6 @@
 /*!**************************************!*\
   !*** ./util/color-control/style.css ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "./util/dimensions-control/style.scss":
-/*!********************************************!*\
-  !*** ./util/dimensions-control/style.scss ***!
-  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1316,12 +1316,12 @@ var attributes = _objectSpread(_objectSpread({
     type: "string"
   },
   blockRoot: {
-    type: 'string',
-    "default": 'essential_block'
+    type: "string",
+    "default": "essential_block"
   },
   blockMeta: {
-    type: 'string',
-    "default": ''
+    type: "string",
+    "default": ""
   }
 }, Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_1__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), {}, {
   // margin padding attributes ⬇
@@ -1330,96 +1330,96 @@ var attributes = _objectSpread(_objectSpread({
     "default": "px"
   },
   marginTop: {
-    type: "number"
+    type: "string"
   },
   marginRight: {
-    type: "number"
+    type: "string"
   },
   marginBottom: {
-    type: "number"
+    type: "string"
   },
   marginLeft: {
-    type: "number"
+    type: "string"
   },
   paddingUnit: {
     type: "string",
     "default": "px"
   },
   paddingTop: {
-    type: "number",
-    "default": 65
+    type: "string",
+    "default": "65"
   },
   paddingRight: {
-    type: "number",
-    "default": 60
+    type: "string",
+    "default": "60"
   },
   paddingBottom: {
-    type: "number",
-    "default": 65
+    type: "string",
+    "default": "65"
   },
   paddingLeft: {
-    type: "number",
-    "default": 60
+    type: "string",
+    "default": "60"
   },
   TABmarginUnit: {
     type: "string"
   },
   TABmarginTop: {
-    type: "number"
+    type: "string"
   },
   TABmarginRight: {
-    type: "number"
+    type: "string"
   },
   TABmarginBottom: {
-    type: "number"
+    type: "string"
   },
   TABmarginLeft: {
-    type: "number"
+    type: "string"
   },
   TABpaddingUnit: {
     type: "string"
   },
   TABpaddingTop: {
-    type: "number"
+    type: "string"
   },
   TABpaddingRight: {
-    type: "number"
+    type: "string"
   },
   TABpaddingBottom: {
-    type: "number"
+    type: "string"
   },
   TABpaddingLeft: {
-    type: "number"
+    type: "string"
   },
   MOBmarginUnit: {
     type: "string"
   },
   MOBmarginTop: {
-    type: "number"
+    type: "string"
   },
   MOBmarginRight: {
-    type: "number"
+    type: "string"
   },
   MOBmarginBottom: {
-    type: "number"
+    type: "string"
   },
   MOBmarginLeft: {
-    type: "number"
+    type: "string"
   },
   MOBpaddingUnit: {
     type: "string"
   },
   MOBpaddingTop: {
-    type: "number"
+    type: "string"
   },
   MOBpaddingRight: {
-    type: "number"
+    type: "string"
   },
   MOBpaddingBottom: {
-    type: "number"
+    type: "string"
   },
   MOBpaddingLeft: {
-    type: "number"
+    type: "string"
   },
   dismissible: {
     type: "boolean",
@@ -1957,7 +1957,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
 /* harmony import */ var _util_color_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/color-control */ "./util/color-control/index.js");
 /* harmony import */ var _util_unit_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/unit-control */ "./util/unit-control/index.js");
-/* harmony import */ var _util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/dimensions-control */ "./util/dimensions-control/index.js");
+/* harmony import */ var _myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./myUtil/dimensions-control */ "./src/myUtil/dimensions-control/index.js");
 /* harmony import */ var _myUtil_typography_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./myUtil/typography-component */ "./src/myUtil/typography-component/index.js");
 /* harmony import */ var _myUtil_ResPanelBody__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./myUtil/ResPanelBody */ "./src/myUtil/ResPanelBody.js");
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
@@ -2243,7 +2243,7 @@ function Inspector(props) {
         marginUnit: marginUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin"),
     top: marginTop,
     right: marginRight,
@@ -2269,7 +2269,7 @@ function Inspector(props) {
         paddingUnit: paddingUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Padding"),
     top: paddingTop,
     right: paddingRight,
@@ -2295,7 +2295,7 @@ function Inspector(props) {
         TABmarginUnit: TABmarginUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin"),
     top: TABmarginTop,
     right: TABmarginRight,
@@ -2321,7 +2321,7 @@ function Inspector(props) {
         TABpaddingUnit: TABpaddingUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Padding"),
     top: TABpaddingTop,
     right: TABpaddingRight,
@@ -2347,7 +2347,7 @@ function Inspector(props) {
         MOBmarginUnit: MOBmarginUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin"),
     top: MOBmarginTop,
     right: MOBmarginRight,
@@ -2373,7 +2373,7 @@ function Inspector(props) {
         MOBpaddingUnit: MOBpaddingUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Padding"),
     top: MOBpaddingTop,
     right: MOBpaddingRight,
@@ -2523,6 +2523,206 @@ function ResPanelBody(props) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (ResPanelBody);
+
+/***/ }),
+
+/***/ "./src/myUtil/dimensions-control/index.js":
+/*!************************************************!*\
+  !*** ./src/myUtil/dimensions-control/index.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/myUtil/dimensions-control/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var DimensionsControl = /*#__PURE__*/function (_Component) {
+  _inherits(DimensionsControl, _Component);
+
+  var _super = _createSuper(DimensionsControl);
+
+  function DimensionsControl() {
+    var _this;
+
+    _classCallCheck(this, DimensionsControl);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      top: _this.props.top || 0,
+      right: _this.props.right || 0,
+      bottom: _this.props.bottom || 0,
+      left: _this.props.left || 0,
+      isLinked: false
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onButtonClick", function () {
+      return _this.setState({
+        isLinked: !_this.state.isLinked
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onInputChange", function (event) {
+      var _this$state = _this.state,
+          top = _this$state.top,
+          right = _this$state.right,
+          bottom = _this$state.bottom,
+          left = _this$state.left,
+          isLinked = _this$state.isLinked;
+      var _event$target = event.target,
+          name = _event$target.name,
+          value = _event$target.value;
+
+      if (isLinked) {
+        top = right = bottom = left = parseInt(value) || 0;
+
+        _this.setState({
+          top: top,
+          right: right,
+          bottom: bottom,
+          left: left
+        }, function () {
+          var _this$state2 = _this.state,
+              top = _this$state2.top,
+              right = _this$state2.right,
+              bottom = _this$state2.bottom,
+              left = _this$state2.left;
+
+          _this.props.onChange({
+            top: top,
+            right: right,
+            bottom: bottom,
+            left: left
+          });
+        });
+      } else {
+        _this.setState(_defineProperty({}, name, parseInt(value) || 0), function () {
+          var _this$state3 = _this.state,
+              top = _this$state3.top,
+              right = _this$state3.right,
+              bottom = _this$state3.bottom,
+              left = _this$state3.left;
+
+          _this.props.onChange({
+            top: top,
+            right: right,
+            bottom: bottom,
+            left: left
+          });
+        });
+      }
+    });
+
+    return _this;
+  }
+
+  _createClass(DimensionsControl, [{
+    key: "render",
+    value: function render() {
+      var _this$state4 = this.state,
+          top = _this$state4.top,
+          right = _this$state4.right,
+          bottom = _this$state4.bottom,
+          left = _this$state4.left,
+          isLinked = _this$state4.isLinked;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dimention-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dimention-label"
+      }, this.props.label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        name: "top",
+        value: top || 0,
+        onChange: this.onInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "dimentions-input-label"
+      }, "Top")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        name: "right",
+        value: right || 0,
+        onChange: this.onInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "dimentions-input-label"
+      }, "Right")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        name: "bottom",
+        value: bottom || 0,
+        onChange: this.onInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "dimentions-input-label"
+      }, "Bottom")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        name: "left",
+        value: left || 0,
+        onChange: this.onInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "dimentions-input-label"
+      }, "Left")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "linked-btn components-button is-button dashicons dashicons-".concat(isLinked ? "admin-links is-primary" : "editor-unlink is-default"),
+        onClick: this.onButtonClick
+      })));
+    }
+  }]);
+
+  return DimensionsControl;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+DimensionsControl.propTypes = {
+  label: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  top: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  right: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  bottom: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  left: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  onChange: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (DimensionsControl);
 
 /***/ }),
 
@@ -5804,206 +6004,6 @@ var ColorControl = function ColorControl(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ColorControl);
-
-/***/ }),
-
-/***/ "./util/dimensions-control/index.js":
-/*!******************************************!*\
-  !*** ./util/dimensions-control/index.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./util/dimensions-control/style.scss");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-var DimensionsControl = /*#__PURE__*/function (_Component) {
-  _inherits(DimensionsControl, _Component);
-
-  var _super = _createSuper(DimensionsControl);
-
-  function DimensionsControl() {
-    var _this;
-
-    _classCallCheck(this, DimensionsControl);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      top: _this.props.top || 0,
-      right: _this.props.right || 0,
-      bottom: _this.props.bottom || 0,
-      left: _this.props.left || 0,
-      isLinked: false
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onButtonClick", function () {
-      return _this.setState({
-        isLinked: !_this.state.isLinked
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onInputChange", function (event) {
-      var _this$state = _this.state,
-          top = _this$state.top,
-          right = _this$state.right,
-          bottom = _this$state.bottom,
-          left = _this$state.left,
-          isLinked = _this$state.isLinked;
-      var _event$target = event.target,
-          name = _event$target.name,
-          value = _event$target.value;
-
-      if (isLinked) {
-        top = right = bottom = left = parseInt(value) || 0;
-
-        _this.setState({
-          top: top,
-          right: right,
-          bottom: bottom,
-          left: left
-        }, function () {
-          var _this$state2 = _this.state,
-              top = _this$state2.top,
-              right = _this$state2.right,
-              bottom = _this$state2.bottom,
-              left = _this$state2.left;
-
-          _this.props.onChange({
-            top: top,
-            right: right,
-            bottom: bottom,
-            left: left
-          });
-        });
-      } else {
-        _this.setState(_defineProperty({}, name, parseInt(value) || 0), function () {
-          var _this$state3 = _this.state,
-              top = _this$state3.top,
-              right = _this$state3.right,
-              bottom = _this$state3.bottom,
-              left = _this$state3.left;
-
-          _this.props.onChange({
-            top: top,
-            right: right,
-            bottom: bottom,
-            left: left
-          });
-        });
-      }
-    });
-
-    return _this;
-  }
-
-  _createClass(DimensionsControl, [{
-    key: "render",
-    value: function render() {
-      var _this$state4 = this.state,
-          top = _this$state4.top,
-          right = _this$state4.right,
-          bottom = _this$state4.bottom,
-          left = _this$state4.left,
-          isLinked = _this$state4.isLinked;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dimention-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dimention-label"
-      }, this.props.label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-wrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        name: "top",
-        value: top || 0,
-        onChange: this.onInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "dimentions-input-label"
-      }, "Top")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-wrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        name: "right",
-        value: right || 0,
-        onChange: this.onInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "dimentions-input-label"
-      }, "Right")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-wrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        name: "bottom",
-        value: bottom || 0,
-        onChange: this.onInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "dimentions-input-label"
-      }, "Bottom")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-wrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        name: "left",
-        value: left || 0,
-        onChange: this.onInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "dimentions-input-label"
-      }, "Left")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "linked-btn components-button is-button dashicons dashicons-".concat(isLinked ? "admin-links is-primary" : "editor-unlink is-default"),
-        onClick: this.onButtonClick
-      })));
-    }
-  }]);
-
-  return DimensionsControl;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-DimensionsControl.propTypes = {
-  label: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
-  top: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
-  right: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
-  bottom: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
-  left: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
-  onChange: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
-};
-/* harmony default export */ __webpack_exports__["default"] = (DimensionsControl);
 
 /***/ }),
 

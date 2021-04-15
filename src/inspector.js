@@ -21,7 +21,7 @@ import { NOTICE_TYPES, FONT_SIZE_UNITS } from "./constants";
 
 import ColorControl from "../util/color-control";
 import UnitControl from "../util/unit-control";
-import DimensionsControl from "../util/dimensions-control";
+import DimensionsControl from "./myUtil/dimensions-control";
 import TypographyDropdown from "./myUtil/typography-component";
 import ResPanelBody from "./myUtil/ResPanelBody";
 
