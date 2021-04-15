@@ -2193,10 +2193,8 @@ function Inspector(props) {
     onChange: function onChange(type) {
       return onTypeChange(type);
     }
-  })), /*#__PURE__*/React.createElement(_myUtil_ResPanelBody__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Typography"),
-    initialOpen: false,
-    resRequiredProps: resRequiredProps
+  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Typography")
   }, /*#__PURE__*/React.createElement(_myUtil_typography_component__WEBPACK_IMPORTED_MODULE_8__["default"], {
     baseLabel: "Title",
     typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_title"],

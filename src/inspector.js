@@ -273,11 +273,7 @@ function Inspector(props) {
 					/>
 				</PanelBody>
 
-				<ResPanelBody
-					title={__("Typography")}
-					initialOpen={false}
-					resRequiredProps={resRequiredProps}
-				>
+				<PanelBody title={__("Typography")}>
 					<TypographyDropdown
 						baseLabel="Title"
 						typographyPrefixConstant={typoPrefix_title}
@@ -288,7 +284,7 @@ function Inspector(props) {
 						typographyPrefixConstant={typoPrefix_text}
 						typoRequiredProps={typoRequiredProps}
 					/>
-				</ResPanelBody>
+				</PanelBody>
 
 				<PanelColorSettings
 					title={__("Color Settings")}
