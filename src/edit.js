@@ -184,46 +184,20 @@ export default function Edit(props) {
 			[`${prefixConstant}FontWeight`]: fontWeight,
 			[`${prefixConstant}TextTransform`]: textTransform,
 			[`${prefixConstant}TextDecoration`]: textDecoration,
-			[`${prefixConstant}FontSize`]: fontSize = fontSize || defaultFontSize,
+			[`${prefixConstant}FontSize`]: fontSize = defaultFontSize,
 			[`${prefixConstant}SizeUnit`]: sizeUnit,
 			[`${prefixConstant}LetterSpacing`]: letterSpacing,
 			[`${prefixConstant}LetterSpacingUnit`]: letterSpacingUnit,
 			[`${prefixConstant}LineHeight`]: lineHeight,
 			[`${prefixConstant}LineHeightUnit`]: lineHeightUnit,
 
-			[`TAB${prefixConstant}FontFamily`]: TABfontFamily,
-			[`TAB${prefixConstant}FontWeight`]: TABfontWeight,
-			[`TAB${prefixConstant}TextTransform`]: TABtextTransform,
-			[`TAB${prefixConstant}TextDecoration`]: TABtextDecoration,
 			[`TAB${prefixConstant}FontSize`]: TABfontSize,
-			[`TAB${prefixConstant}SizeUnit`]: TABsizeUnit = TABsizeUnit || sizeUnit,
-			[`TAB${prefixConstant}LetterSpacingUnit`]: TABletterSpacingUnit = TABletterSpacingUnit ||
-				letterSpacingUnit,
 			[`TAB${prefixConstant}LetterSpacing`]: TABletterSpacing,
 			[`TAB${prefixConstant}LineHeight`]: TABlineHeight,
-			[`TAB${prefixConstant}LineHeightUnit`]: TABlineHeightUnit = TABlineHeightUnit ||
-				lineHeightUnit,
 
-			[`MOB${prefixConstant}FontFamily`]: MOBfontFamily = MOBfontFamily ||
-				TABfontFamily,
-			[`MOB${prefixConstant}FontWeight`]: MOBfontWeight = MOBfontWeight ||
-				TABfontWeight,
-			[`MOB${prefixConstant}TextTransform`]: MOBtextTransform = MOBtextTransform ||
-				TABtextTransform,
-			[`MOB${prefixConstant}TextDecoration`]: MOBtextDecoration = MOBtextDecoration ||
-				TABtextDecoration,
-			[`MOB${prefixConstant}FontSize`]: MOBfontSize = MOBfontSize ||
-				TABfontSize,
-			[`MOB${prefixConstant}SizeUnit`]: MOBsizeUnit = MOBsizeUnit ||
-				TABsizeUnit,
-			[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing = MOBletterSpacing ||
-				TABletterSpacing,
-			[`MOB${prefixConstant}LetterSpacingUnit`]: MOBletterSpacingUnit = MOBletterSpacingUnit ||
-				TABletterSpacingUnit,
-			[`MOB${prefixConstant}LineHeight`]: MOBlineHeight = MOBlineHeight ||
-				TABlineHeight,
-			[`MOB${prefixConstant}LineHeightUnit`]: MOBlineHeightUnit = MOBlineHeightUnit ||
-				TABlineHeightUnit,
+			[`MOB${prefixConstant}FontSize`]: MOBfontSize = TABfontSize,
+			[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing = TABletterSpacing,
+			[`MOB${prefixConstant}LineHeight`]: MOBlineHeight = TABlineHeight,
 		} = attributes;
 
 		const typoStylesDesktop = `
@@ -241,37 +215,29 @@ export default function Edit(props) {
 		`;
 
 		const typoStylesTab = `
-			${TABfontFamily ? `font-family: ${TABfontFamily};` : " "}
-			${hasVal(TABfontSize) ? `font-size: ${TABfontSize}${TABsizeUnit};` : " "}
+			${hasVal(TABfontSize) ? `font-size: ${TABfontSize}${sizeUnit};` : " "}
 			${
 				hasVal(TABlineHeight)
-					? `line-height: ${TABlineHeight}${TABlineHeightUnit};`
+					? `line-height: ${TABlineHeight}${lineHeightUnit};`
 					: " "
 			}
-			${TABfontWeight ? `font-weight: ${TABfontWeight};` : " "}
-			${TABtextDecoration ? `text-decoration: ${TABtextDecoration};` : " "}
-			${TABtextTransform ? `text-transform: ${TABtextTransform};` : " "}
 			${
 				hasVal(TABletterSpacing)
-					? `letter-spacing: ${TABletterSpacing}${TABletterSpacingUnit};`
+					? `letter-spacing: ${TABletterSpacing}${letterSpacingUnit};`
 					: " "
 			}
 		`;
 
 		const typoStylesMobile = `
-			${MOBfontFamily ? `font-family: ${MOBfontFamily};` : " "}
-			${hasVal(MOBfontSize) ? `font-size: ${MOBfontSize}${MOBsizeUnit};` : " "}
+			${hasVal(MOBfontSize) ? `font-size: ${MOBfontSize}${sizeUnit};` : " "}
 			${
 				hasVal(MOBlineHeight)
-					? `line-height: ${MOBlineHeight}${MOBlineHeightUnit};`
+					? `line-height: ${MOBlineHeight}${lineHeightUnit};`
 					: " "
 			}
-			${MOBfontWeight ? `font-weight: ${MOBfontWeight};` : " "}
-			${MOBtextDecoration ? `text-decoration: ${MOBtextDecoration};` : " "}
-			${MOBtextTransform ? `text-transform: ${MOBtextTransform};` : " "}
 			${
 				hasVal(MOBletterSpacing)
-					? `letter-spacing: ${MOBletterSpacing}${MOBletterSpacingUnit};`
+					? `letter-spacing: ${MOBletterSpacing}${letterSpacingUnit};`
 					: " "
 			}
 		`;
