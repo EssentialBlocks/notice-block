@@ -80,12 +80,12 @@ function TypographyDropdown({
 							}
 						/>
 
-						{resOption === "desktop" && (
-							<WithResButtons
-								className="forFontSize"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
+						<WithResButtons
+							className="forFontSize"
+							resOption={resOption}
+							setAttributes={setAttributes}
+						>
+							{resOption === "desktop" && (
 								<RangeControl
 									label={__("Font Size")}
 									value={fontSize}
@@ -98,15 +98,9 @@ function TypographyDropdown({
 									min={0}
 									max={sizeUnit === "em" ? 10 : 300}
 								/>
-							</WithResButtons>
-						)}
+							)}
 
-						{resOption === "tab" && (
-							<WithResButtons
-								className="forFontSize"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
+							{resOption === "tab" && (
 								<RangeControl
 									label={__("Font Size")}
 									value={TABfontSize}
@@ -119,14 +113,9 @@ function TypographyDropdown({
 									min={0}
 									max={sizeUnit === "em" ? 10 : 300}
 								/>
-							</WithResButtons>
-						)}
-						{resOption === "mobile" && (
-							<WithResButtons
-								className="forFontSize"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
+							)}
+
+							{resOption === "mobile" && (
 								<RangeControl
 									label={__("Font Size")}
 									value={MOBfontSize}
@@ -139,8 +128,8 @@ function TypographyDropdown({
 									min={0}
 									max={sizeUnit === "em" ? 10 : 300}
 								/>
-							</WithResButtons>
-						)}
+							)}
+						</WithResButtons>
 
 						<SelectControl
 							label={__("Font Weight")}
@@ -214,12 +203,12 @@ function TypographyDropdown({
 								})
 							}
 						/>
-						{resOption === "desktop" && (
-							<WithResButtons
-								className="forLetterSpacing"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
+						<WithResButtons
+							className="forLetterSpacing"
+							resOption={resOption}
+							setAttributes={setAttributes}
+						>
+							{resOption === "desktop" && (
 								<RangeControl
 									label={__("Letter Spacing")}
 									value={letterSpacing}
@@ -232,14 +221,9 @@ function TypographyDropdown({
 									max={letterSpacingUnit === "em" ? 10 : 100}
 									step={letterSpacingUnit === "em" ? 0.1 : 1}
 								/>
-							</WithResButtons>
-						)}
-						{resOption === "tab" && (
-							<WithResButtons
-								className="forLetterSpacing"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
+							)}
+
+							{resOption === "tab" && (
 								<RangeControl
 									label={__("Letter Spacing")}
 									value={TABletterSpacing}
@@ -252,14 +236,9 @@ function TypographyDropdown({
 									max={letterSpacingUnit === "em" ? 10 : 100}
 									step={letterSpacingUnit === "em" ? 0.1 : 1}
 								/>
-							</WithResButtons>
-						)}
-						{resOption === "mobile" && (
-							<WithResButtons
-								className="forLetterSpacing"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
+							)}
+
+							{resOption === "mobile" && (
 								<RangeControl
 									label={__("Letter Spacing")}
 									value={MOBletterSpacing}
@@ -272,8 +251,9 @@ function TypographyDropdown({
 									max={letterSpacingUnit === "em" ? 10 : 100}
 									step={letterSpacingUnit === "em" ? 0.1 : 1}
 								/>
-							</WithResButtons>
-						)}
+							)}
+						</WithResButtons>
+
 						<UnitControl
 							selectedUnit={lineHeightUnit}
 							unitTypes={[
@@ -287,12 +267,12 @@ function TypographyDropdown({
 							}
 						/>
 
-						{resOption === "desktop" && (
-							<WithResButtons
-								className="forLineHeight"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
+						<WithResButtons
+							className="forLineHeight"
+							resOption={resOption}
+							setAttributes={setAttributes}
+						>
+							{resOption === "desktop" && (
 								<RangeControl
 									label={__("Line Height")}
 									value={lineHeight}
@@ -305,14 +285,9 @@ function TypographyDropdown({
 									max={lineHeightUnit === "em" ? 10 : 600}
 									step={lineHeightUnit === "em" ? 0.1 : 1}
 								/>
-							</WithResButtons>
-						)}
-						{resOption === "tab" && (
-							<WithResButtons
-								className="forLineHeight"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
+							)}
+
+							{resOption === "tab" && (
 								<RangeControl
 									label={__("Line Height")}
 									value={TABlineHeight}
@@ -325,14 +300,9 @@ function TypographyDropdown({
 									max={lineHeightUnit === "em" ? 10 : 600}
 									step={lineHeightUnit === "em" ? 0.1 : 1}
 								/>
-							</WithResButtons>
-						)}
-						{resOption === "mobile" && (
-							<WithResButtons
-								className="forLineHeight"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
+							)}
+
+							{resOption === "mobile" && (
 								<RangeControl
 									label={__("Line Height")}
 									value={MOBlineHeight}
@@ -345,8 +315,8 @@ function TypographyDropdown({
 									max={lineHeightUnit === "em" ? 10 : 600}
 									step={lineHeightUnit === "em" ? 0.1 : 1}
 								/>
-							</WithResButtons>
-						)}
+							)}
+						</WithResButtons>
 					</div>
 				)}
 			/>

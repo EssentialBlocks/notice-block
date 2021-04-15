@@ -5420,11 +5420,11 @@ function TypographyDropdown(_ref) {
         onClick: function onClick(SizeUnit) {
           return setAttributes(_defineProperty({}, "".concat(typographyPrefixConstant, "SizeUnit"), SizeUnit));
         }
-      }), resOption === "desktop" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }), /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
         className: "forFontSize",
         resOption: resOption,
         setAttributes: setAttributes
-      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }, resOption === "desktop" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Size"),
         value: fontSize,
         onChange: function onChange(FontSize) {
@@ -5433,11 +5433,7 @@ function TypographyDropdown(_ref) {
         step: sizeUnit === "em" ? 0.1 : 1,
         min: 0,
         max: sizeUnit === "em" ? 10 : 300
-      })), resOption === "tab" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        className: "forFontSize",
-        resOption: resOption,
-        setAttributes: setAttributes
-      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }), resOption === "tab" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Size"),
         value: TABfontSize,
         onChange: function onChange(FontSize) {
@@ -5446,11 +5442,7 @@ function TypographyDropdown(_ref) {
         step: sizeUnit === "em" ? 0.1 : 1,
         min: 0,
         max: sizeUnit === "em" ? 10 : 300
-      })), resOption === "mobile" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        className: "forFontSize",
-        resOption: resOption,
-        setAttributes: setAttributes
-      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }), resOption === "mobile" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Font Size"),
         value: MOBfontSize,
         onChange: function onChange(FontSize) {
@@ -5555,11 +5547,11 @@ function TypographyDropdown(_ref) {
         onClick: function onClick(LetterSpacingUnit) {
           return setAttributes(_defineProperty({}, "".concat(typographyPrefixConstant, "LetterSpacingUnit"), LetterSpacingUnit));
         }
-      }), resOption === "desktop" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }), /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
         className: "forLetterSpacing",
         resOption: resOption,
         setAttributes: setAttributes
-      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }, resOption === "desktop" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Letter Spacing"),
         value: letterSpacing,
         onChange: function onChange(LetterSpacing) {
@@ -5568,11 +5560,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: letterSpacingUnit === "em" ? 10 : 100,
         step: letterSpacingUnit === "em" ? 0.1 : 1
-      })), resOption === "tab" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        className: "forLetterSpacing",
-        resOption: resOption,
-        setAttributes: setAttributes
-      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }), resOption === "tab" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Letter Spacing"),
         value: TABletterSpacing,
         onChange: function onChange(LetterSpacing) {
@@ -5581,11 +5569,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: letterSpacingUnit === "em" ? 10 : 100,
         step: letterSpacingUnit === "em" ? 0.1 : 1
-      })), resOption === "mobile" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        className: "forLetterSpacing",
-        resOption: resOption,
-        setAttributes: setAttributes
-      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }), resOption === "mobile" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Letter Spacing"),
         value: MOBletterSpacing,
         onChange: function onChange(LetterSpacing) {
@@ -5606,11 +5590,11 @@ function TypographyDropdown(_ref) {
         onClick: function onClick(LineHeightUnit) {
           return setAttributes(_defineProperty({}, "".concat(typographyPrefixConstant, "LineHeightUnit"), LineHeightUnit));
         }
-      }), resOption === "desktop" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }), /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
         className: "forLineHeight",
         resOption: resOption,
         setAttributes: setAttributes
-      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }, resOption === "desktop" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Line Height"),
         value: lineHeight,
         onChange: function onChange(LineHeight) {
@@ -5619,11 +5603,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: lineHeightUnit === "em" ? 10 : 600,
         step: lineHeightUnit === "em" ? 0.1 : 1
-      })), resOption === "tab" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        className: "forLineHeight",
-        resOption: resOption,
-        setAttributes: setAttributes
-      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }), resOption === "tab" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Line Height"),
         value: TABlineHeight,
         onChange: function onChange(LineHeight) {
@@ -5632,11 +5612,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: lineHeightUnit === "em" ? 10 : 600,
         step: lineHeightUnit === "em" ? 0.1 : 1
-      })), resOption === "mobile" && /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        className: "forLineHeight",
-        resOption: resOption,
-        setAttributes: setAttributes
-      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
+      }), resOption === "mobile" && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["RangeControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("Line Height"),
         value: MOBlineHeight,
         onChange: function onChange(LineHeight) {
