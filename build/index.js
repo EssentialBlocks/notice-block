@@ -1754,47 +1754,21 @@ function Edit(props) {
     className: "eb-guten-block-main-parent-wrapper"
   }); //
   // CSS/styling Codes Starts from Here
-  //
-  // function to generate typography styles for an element based on it's prefix
 
-  var generateTypographyStylesForEdit = function generateTypographyStylesForEdit(prefixConstant) {
-    var defaultFontSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    var fontFamily = attributes["".concat(prefixConstant, "FontFamily")],
-        fontWeight = attributes["".concat(prefixConstant, "FontWeight")],
-        textTransform = attributes["".concat(prefixConstant, "TextTransform")],
-        textDecoration = attributes["".concat(prefixConstant, "TextDecoration")],
-        _attributes$ = attributes["".concat(prefixConstant, "FontSize")],
-        fontSize = _attributes$ === void 0 ? defaultFontSize : _attributes$,
-        sizeUnit = attributes["".concat(prefixConstant, "SizeUnit")],
-        letterSpacing = attributes["".concat(prefixConstant, "LetterSpacing")],
-        letterSpacingUnit = attributes["".concat(prefixConstant, "LetterSpacingUnit")],
-        lineHeight = attributes["".concat(prefixConstant, "LineHeight")],
-        lineHeightUnit = attributes["".concat(prefixConstant, "LineHeightUnit")],
-        TABfontSize = attributes["TAB".concat(prefixConstant, "FontSize")],
-        TABletterSpacing = attributes["TAB".concat(prefixConstant, "LetterSpacing")],
-        TABlineHeight = attributes["TAB".concat(prefixConstant, "LineHeight")],
-        _attributes$2 = attributes["MOB".concat(prefixConstant, "FontSize")],
-        MOBfontSize = _attributes$2 === void 0 ? TABfontSize : _attributes$2,
-        _attributes$3 = attributes["MOB".concat(prefixConstant, "LetterSpacing")],
-        MOBletterSpacing = _attributes$3 === void 0 ? TABletterSpacing : _attributes$3,
-        _attributes$4 = attributes["MOB".concat(prefixConstant, "LineHeight")],
-        MOBlineHeight = _attributes$4 === void 0 ? TABlineHeight : _attributes$4;
-    var typoStylesDesktop = "\n\t\t\t".concat(fontFamily ? "font-family: ".concat(fontFamily, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(fontSize) ? "font-size: ".concat(fontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(lineHeight) ? "line-height: ".concat(lineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(fontWeight ? "font-weight: ".concat(fontWeight, ";") : " ", "\n\t\t\t").concat(textDecoration ? "text-decoration: ".concat(textDecoration, ";") : " ", "\n\t\t\t").concat(textTransform ? "text-transform: ".concat(textTransform, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(letterSpacing) ? "letter-spacing: ".concat(letterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
-    var typoStylesTab = "\n\t\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(TABfontSize) ? "font-size: ".concat(TABfontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(TABlineHeight) ? "line-height: ".concat(TABlineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(TABletterSpacing) ? "letter-spacing: ".concat(TABletterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
-    var typoStylesMobile = "\n\t\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(MOBfontSize) ? "font-size: ".concat(MOBfontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(MOBlineHeight) ? "line-height: ".concat(MOBlineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["hasVal"])(MOBletterSpacing) ? "letter-spacing: ".concat(MOBletterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
-    return {
-      typoStylesDesktop: typoStylesDesktop,
-      typoStylesTab: typoStylesTab,
-      typoStylesMobile: typoStylesMobile
-    };
-  };
-
-  var _generateTypographySt = generateTypographyStylesForEdit(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["typoPrefix_title"], 32),
+  var _generateTypographySt = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["generateTypographyStylesForEdit"])({
+    attributes: attributes,
+    prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["typoPrefix_title"],
+    defaultFontSize: 32
+  }),
       titleTypoStylesDesktop = _generateTypographySt.typoStylesDesktop,
       titleTypoStylesTab = _generateTypographySt.typoStylesTab,
       titleTypoStylesMobile = _generateTypographySt.typoStylesMobile;
 
-  var _generateTypographySt2 = generateTypographyStylesForEdit(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["typoPrefix_text"], 18),
+  var _generateTypographySt2 = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["generateTypographyStylesForEdit"])({
+    attributes: attributes,
+    prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["typoPrefix_text"],
+    defaultFontSize: 18
+  }),
       textTypoStylesDesktop = _generateTypographySt2.typoStylesDesktop,
       textTypoStylesTab = _generateTypographySt2.typoStylesTab,
       textTypoStylesMobile = _generateTypographySt2.typoStylesMobile; // wrapper styles css in strings ⬇
@@ -2558,7 +2532,7 @@ function ResPanelBody(props) {
 /*!*******************************!*\
   !*** ./src/myUtil/helpers.js ***!
   \*******************************/
-/*! exports provided: generateTypographyAttributes, textInsideForEdit, generateRandomNumber, hardMinifyCssStrings, softMinifyCssStrings, isCssExists, hasVal */
+/*! exports provided: generateTypographyAttributes, textInsideForEdit, generateRandomNumber, hardMinifyCssStrings, softMinifyCssStrings, isCssExists, hasVal, generateTypographyStylesForEdit */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2570,6 +2544,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "softMinifyCssStrings", function() { return softMinifyCssStrings; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCssExists", function() { return isCssExists; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasVal", function() { return hasVal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateTypographyStylesForEdit", function() { return generateTypographyStylesForEdit; });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2652,6 +2627,41 @@ var isCssExists = function isCssExists(cssString) {
 
 var hasVal = function hasVal(val) {
   return val || val === 0;
+}; //
+// function to generate typography styles for an element based on it's prefix
+
+var generateTypographyStylesForEdit = function generateTypographyStylesForEdit(_ref) {
+  var prefixConstant = _ref.prefixConstant,
+      defaultFontSize = _ref.defaultFontSize,
+      attributes = _ref.attributes;
+  var fontFamily = attributes["".concat(prefixConstant, "FontFamily")],
+      fontWeight = attributes["".concat(prefixConstant, "FontWeight")],
+      textTransform = attributes["".concat(prefixConstant, "TextTransform")],
+      textDecoration = attributes["".concat(prefixConstant, "TextDecoration")],
+      _attributes$ = attributes["".concat(prefixConstant, "FontSize")],
+      fontSize = _attributes$ === void 0 ? defaultFontSize : _attributes$,
+      sizeUnit = attributes["".concat(prefixConstant, "SizeUnit")],
+      letterSpacing = attributes["".concat(prefixConstant, "LetterSpacing")],
+      letterSpacingUnit = attributes["".concat(prefixConstant, "LetterSpacingUnit")],
+      lineHeight = attributes["".concat(prefixConstant, "LineHeight")],
+      lineHeightUnit = attributes["".concat(prefixConstant, "LineHeightUnit")],
+      TABfontSize = attributes["TAB".concat(prefixConstant, "FontSize")],
+      TABletterSpacing = attributes["TAB".concat(prefixConstant, "LetterSpacing")],
+      TABlineHeight = attributes["TAB".concat(prefixConstant, "LineHeight")],
+      _attributes$2 = attributes["MOB".concat(prefixConstant, "FontSize")],
+      MOBfontSize = _attributes$2 === void 0 ? TABfontSize : _attributes$2,
+      _attributes$3 = attributes["MOB".concat(prefixConstant, "LetterSpacing")],
+      MOBletterSpacing = _attributes$3 === void 0 ? TABletterSpacing : _attributes$3,
+      _attributes$4 = attributes["MOB".concat(prefixConstant, "LineHeight")],
+      MOBlineHeight = _attributes$4 === void 0 ? TABlineHeight : _attributes$4;
+  var typoStylesDesktop = "\n\t\t\t".concat(fontFamily ? "font-family: ".concat(fontFamily, ";") : " ", "\n\t\t\t").concat(hasVal(fontSize) ? "font-size: ".concat(fontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(lineHeight) ? "line-height: ".concat(lineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(fontWeight ? "font-weight: ".concat(fontWeight, ";") : " ", "\n\t\t\t").concat(textDecoration ? "text-decoration: ".concat(textDecoration, ";") : " ", "\n\t\t\t").concat(textTransform ? "text-transform: ".concat(textTransform, ";") : " ", "\n\t\t\t").concat(hasVal(letterSpacing) ? "letter-spacing: ".concat(letterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
+  var typoStylesTab = "\n\t\t\t".concat(hasVal(TABfontSize) ? "font-size: ".concat(TABfontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(TABlineHeight) ? "line-height: ".concat(TABlineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(hasVal(TABletterSpacing) ? "letter-spacing: ".concat(TABletterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
+  var typoStylesMobile = "\n\t\t\t".concat(hasVal(MOBfontSize) ? "font-size: ".concat(MOBfontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(MOBlineHeight) ? "line-height: ".concat(MOBlineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(hasVal(MOBletterSpacing) ? "letter-spacing: ".concat(MOBletterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
+  return {
+    typoStylesDesktop: typoStylesDesktop,
+    typoStylesTab: typoStylesTab,
+    typoStylesMobile: typoStylesMobile
+  };
 };
 
 /***/ }),

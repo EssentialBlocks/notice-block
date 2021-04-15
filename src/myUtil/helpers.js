@@ -102,3 +102,80 @@ export const isCssExists = (cssString) =>
 
 // check if range controller input numbers  has value
 export const hasVal = (val) => val || val === 0;
+
+//
+// function to generate typography styles for an element based on it's prefix
+export const generateTypographyStylesForEdit = ({
+	prefixConstant,
+	defaultFontSize,
+	attributes,
+}) => {
+	const {
+		[`${prefixConstant}FontFamily`]: fontFamily,
+		[`${prefixConstant}FontWeight`]: fontWeight,
+		[`${prefixConstant}TextTransform`]: textTransform,
+		[`${prefixConstant}TextDecoration`]: textDecoration,
+		[`${prefixConstant}FontSize`]: fontSize = defaultFontSize,
+		[`${prefixConstant}SizeUnit`]: sizeUnit,
+		[`${prefixConstant}LetterSpacing`]: letterSpacing,
+		[`${prefixConstant}LetterSpacingUnit`]: letterSpacingUnit,
+		[`${prefixConstant}LineHeight`]: lineHeight,
+		[`${prefixConstant}LineHeightUnit`]: lineHeightUnit,
+
+		[`TAB${prefixConstant}FontSize`]: TABfontSize,
+		[`TAB${prefixConstant}LetterSpacing`]: TABletterSpacing,
+		[`TAB${prefixConstant}LineHeight`]: TABlineHeight,
+
+		[`MOB${prefixConstant}FontSize`]: MOBfontSize = TABfontSize,
+		[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing = TABletterSpacing,
+		[`MOB${prefixConstant}LineHeight`]: MOBlineHeight = TABlineHeight,
+	} = attributes;
+
+	const typoStylesDesktop = `
+			${fontFamily ? `font-family: ${fontFamily};` : " "}
+			${hasVal(fontSize) ? `font-size: ${fontSize}${sizeUnit};` : " "}
+			${hasVal(lineHeight) ? `line-height: ${lineHeight}${lineHeightUnit};` : " "}
+			${fontWeight ? `font-weight: ${fontWeight};` : " "}
+			${textDecoration ? `text-decoration: ${textDecoration};` : " "}
+			${textTransform ? `text-transform: ${textTransform};` : " "}
+			${
+				hasVal(letterSpacing)
+					? `letter-spacing: ${letterSpacing}${letterSpacingUnit};`
+					: " "
+			}
+		`;
+
+	const typoStylesTab = `
+			${hasVal(TABfontSize) ? `font-size: ${TABfontSize}${sizeUnit};` : " "}
+			${
+				hasVal(TABlineHeight)
+					? `line-height: ${TABlineHeight}${lineHeightUnit};`
+					: " "
+			}
+			${
+				hasVal(TABletterSpacing)
+					? `letter-spacing: ${TABletterSpacing}${letterSpacingUnit};`
+					: " "
+			}
+		`;
+
+	const typoStylesMobile = `
+			${hasVal(MOBfontSize) ? `font-size: ${MOBfontSize}${sizeUnit};` : " "}
+			${
+				hasVal(MOBlineHeight)
+					? `line-height: ${MOBlineHeight}${lineHeightUnit};`
+					: " "
+			}
+			${
+				hasVal(MOBletterSpacing)
+					? `letter-spacing: ${MOBletterSpacing}${letterSpacingUnit};`
+					: " "
+			}
+		`;
+
+	return {
+		typoStylesDesktop,
+		typoStylesTab,
+		typoStylesMobile,
+	};
+};

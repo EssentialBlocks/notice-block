@@ -16,10 +16,9 @@ import {
 	typoPrefix_title,
 } from "./constants/typographyPrefixConstants";
 import {
-	generateRandomNumber,
 	softMinifyCssStrings,
-	hasVal,
 	isCssExists,
+	generateTypographyStylesForEdit,
 } from "./myUtil/helpers";
 
 export default function Edit(props) {
@@ -173,93 +172,26 @@ export default function Edit(props) {
 
 	//
 	// CSS/styling Codes Starts from Here
-	//
-	// function to generate typography styles for an element based on it's prefix
-	const generateTypographyStylesForEdit = (
-		prefixConstant,
-		defaultFontSize = false
-	) => {
-		const {
-			[`${prefixConstant}FontFamily`]: fontFamily,
-			[`${prefixConstant}FontWeight`]: fontWeight,
-			[`${prefixConstant}TextTransform`]: textTransform,
-			[`${prefixConstant}TextDecoration`]: textDecoration,
-			[`${prefixConstant}FontSize`]: fontSize = defaultFontSize,
-			[`${prefixConstant}SizeUnit`]: sizeUnit,
-			[`${prefixConstant}LetterSpacing`]: letterSpacing,
-			[`${prefixConstant}LetterSpacingUnit`]: letterSpacingUnit,
-			[`${prefixConstant}LineHeight`]: lineHeight,
-			[`${prefixConstant}LineHeightUnit`]: lineHeightUnit,
-
-			[`TAB${prefixConstant}FontSize`]: TABfontSize,
-			[`TAB${prefixConstant}LetterSpacing`]: TABletterSpacing,
-			[`TAB${prefixConstant}LineHeight`]: TABlineHeight,
-
-			[`MOB${prefixConstant}FontSize`]: MOBfontSize = TABfontSize,
-			[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing = TABletterSpacing,
-			[`MOB${prefixConstant}LineHeight`]: MOBlineHeight = TABlineHeight,
-		} = attributes;
-
-		const typoStylesDesktop = `
-			${fontFamily ? `font-family: ${fontFamily};` : " "}
-			${hasVal(fontSize) ? `font-size: ${fontSize}${sizeUnit};` : " "}
-			${hasVal(lineHeight) ? `line-height: ${lineHeight}${lineHeightUnit};` : " "}
-			${fontWeight ? `font-weight: ${fontWeight};` : " "}
-			${textDecoration ? `text-decoration: ${textDecoration};` : " "}
-			${textTransform ? `text-transform: ${textTransform};` : " "}
-			${
-				hasVal(letterSpacing)
-					? `letter-spacing: ${letterSpacing}${letterSpacingUnit};`
-					: " "
-			}
-		`;
-
-		const typoStylesTab = `
-			${hasVal(TABfontSize) ? `font-size: ${TABfontSize}${sizeUnit};` : " "}
-			${
-				hasVal(TABlineHeight)
-					? `line-height: ${TABlineHeight}${lineHeightUnit};`
-					: " "
-			}
-			${
-				hasVal(TABletterSpacing)
-					? `letter-spacing: ${TABletterSpacing}${letterSpacingUnit};`
-					: " "
-			}
-		`;
-
-		const typoStylesMobile = `
-			${hasVal(MOBfontSize) ? `font-size: ${MOBfontSize}${sizeUnit};` : " "}
-			${
-				hasVal(MOBlineHeight)
-					? `line-height: ${MOBlineHeight}${lineHeightUnit};`
-					: " "
-			}
-			${
-				hasVal(MOBletterSpacing)
-					? `letter-spacing: ${MOBletterSpacing}${letterSpacingUnit};`
-					: " "
-			}
-		`;
-
-		return {
-			typoStylesDesktop,
-			typoStylesTab,
-			typoStylesMobile,
-		};
-	};
 
 	const {
 		typoStylesDesktop: titleTypoStylesDesktop,
 		typoStylesTab: titleTypoStylesTab,
 		typoStylesMobile: titleTypoStylesMobile,
-	} = generateTypographyStylesForEdit(typoPrefix_title, 32);
+	} = generateTypographyStylesForEdit({
+		attributes,
+		prefixConstant: typoPrefix_title,
+		defaultFontSize: 32,
+	});
 
 	const {
 		typoStylesDesktop: textTypoStylesDesktop,
 		typoStylesTab: textTypoStylesTab,
 		typoStylesMobile: textTypoStylesMobile,
-	} = generateTypographyStylesForEdit(typoPrefix_text, 18);
+	} = generateTypographyStylesForEdit({
+		attributes,
+		prefixConstant: typoPrefix_text,
+		defaultFontSize: 18,
+	});
 
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
