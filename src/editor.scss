@@ -583,6 +583,11 @@ button.eb-res-btn:focus {
 
 .editor-styles-wrapper {
 	margin: auto;
+	transition: 0.5s;
+}
+
+body.eb-res-option-desktop .editor-styles-wrapper {
+	max-width: 100%;
 }
 
 body.eb-res-option-tab .editor-styles-wrapper {
