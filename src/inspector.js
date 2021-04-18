@@ -51,77 +51,45 @@ function Inspector(props) {
 		// margin padding attributes ⬇
 		marginUnit,
 
-		marginTop = marginTop || 0,
-		marginRight = marginRight || 0,
-		marginBottom = marginBottom || 0,
-		marginLeft = marginLeft || 0,
+		marginTop,
+		marginRight,
+		marginBottom,
+		marginLeft,
 
 		paddingUnit,
 
-		paddingTop = paddingTop || 0,
-		paddingRight = paddingRight || 0,
-		paddingBottom = paddingBottom || 0,
-		paddingLeft = paddingLeft || 0,
+		paddingTop,
+		paddingRight,
+		paddingBottom,
+		paddingLeft,
 
-		TABmarginUnit = TABmarginUnit || marginUnit,
+		TABmarginUnit,
 
-		TABmarginTop = TABmarginTop === 0
-			? TABmarginTop
-			: TABmarginTop || marginTop,
-		TABmarginRight = TABmarginRight === 0
-			? TABmarginRight
-			: TABmarginRight || marginRight,
-		TABmarginBottom = TABmarginBottom === 0
-			? TABmarginBottom
-			: TABmarginBottom || marginBottom,
-		TABmarginLeft = TABmarginLeft === 0
-			? TABmarginLeft
-			: TABmarginLeft || marginLeft,
+		TABmarginTop,
+		TABmarginRight,
+		TABmarginBottom,
+		TABmarginLeft,
 
-		TABpaddingUnit = TABpaddingUnit || paddingUnit,
+		TABpaddingUnit,
 
-		TABpaddingTop = TABpaddingTop === 0
-			? TABpaddingTop
-			: TABpaddingTop || paddingTop,
-		TABpaddingRight = TABpaddingRight === 0
-			? TABpaddingRight
-			: TABpaddingRight || paddingRight,
-		TABpaddingBottom = TABpaddingBottom === 0
-			? TABpaddingBottom
-			: TABpaddingBottom || paddingBottom,
-		TABpaddingLeft = TABpaddingLeft === 0
-			? TABpaddingLeft
-			: TABpaddingLeft || paddingLeft,
+		TABpaddingTop,
+		TABpaddingRight,
+		TABpaddingBottom,
+		TABpaddingLeft,
 
-		MOBmarginUnit = MOBmarginUnit || TABmarginUnit || marginUnit,
+		MOBmarginUnit,
 
-		MOBmarginTop = MOBmarginTop === 0
-			? MOBmarginTop
-			: MOBmarginTop || TABmarginTop,
-		MOBmarginRight = MOBmarginRight === 0
-			? MOBmarginRight
-			: MOBmarginRight || TABmarginRight,
-		MOBmarginBottom = MOBmarginBottom === 0
-			? MOBmarginBottom
-			: MOBmarginBottom || TABmarginBottom,
-		MOBmarginLeft = MOBmarginLeft === 0
-			? MOBmarginLeft
-			: MOBmarginLeft || TABmarginLeft,
+		MOBmarginTop,
+		MOBmarginRight,
+		MOBmarginBottom,
+		MOBmarginLeft,
 
-		MOBpaddingUnit = MOBpaddingUnit || TABpaddingUnit || paddingUnit,
+		MOBpaddingUnit,
 
-		MOBpaddingTop = MOBpaddingTop === 0
-			? MOBpaddingTop
-			: MOBpaddingTop || TABpaddingTop,
-		MOBpaddingRight = MOBpaddingRight === 0
-			? MOBpaddingRight
-			: MOBpaddingRight || TABpaddingRight,
-		MOBpaddingBottom = MOBpaddingBottom === 0
-			? MOBpaddingBottom
-			: MOBpaddingBottom || TABpaddingBottom,
-		MOBpaddingLeft = MOBpaddingLeft === 0
-			? MOBpaddingLeft
-			: MOBpaddingLeft || TABpaddingLeft,
+		MOBpaddingTop,
+		MOBpaddingRight,
+		MOBpaddingBottom,
+		MOBpaddingLeft,
 	} = attributes;
 
 	const onTypeChange = (type) => {

@@ -1,4 +1,6 @@
-const FONTS = {
+import { __ } from "@wordpress/i18n";
+
+export const FONTS = {
 	"Abril Fatface": { weight: ["400"] },
 	Anton: { weight: ["400"] },
 	Arvo: { weight: ["400", "700"] },
@@ -41,4 +43,46 @@ const FONTS = {
 	Yrsa: { weight: ["300", "400", "500", "600", "700"] },
 };
 
-export { FONTS };
+export const sizeUnitTypes = [
+	{ label: "px", value: "px" },
+	{ label: "%", value: "%" },
+	{ label: "em", value: "em" },
+];
+
+export const optionsFontWeights = [
+	{ label: __("Default"), value: "" },
+	{ label: __("100"), value: "100" },
+	{ label: __("200"), value: "200" },
+	{ label: __("300"), value: "300" },
+	{ label: __("400"), value: "400" },
+	{ label: __("500"), value: "500" },
+	{ label: __("600"), value: "600" },
+	{ label: __("700"), value: "700" },
+	{ label: __("800"), value: "800" },
+	{ label: __("900"), value: "900" },
+];
+
+export const optionsTextTransforms = [
+	{ label: __("Default"), value: "" },
+	{ label: __("None"), value: "none" },
+	{ label: __("Lowercase"), value: "lowercase" },
+	{ label: __("Capitalize"), value: "capitalize" },
+	{ label: __("Uppercase"), value: "uppercase" },
+];
+
+export const optionsTextDecorations = [
+	{ label: __("Default"), value: "" },
+	{ label: __("None"), value: "initial" },
+	{ label: __("Overline"), value: "overline" },
+	{ label: __("Line Through"), value: "line-through" },
+	{ label: __("Underline"), value: "underline" },
+	{
+		label: __("Underline Oveline"),
+		value: "underline overline",
+	},
+];
+
+export const optionsLhLsp = [
+	{ label: "px", value: "px" },
+	{ label: "em", value: "em" },
+];

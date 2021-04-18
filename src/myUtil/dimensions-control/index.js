@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./style.scss";
 
 class DimensionsControl extends Component {
   state = {
@@ -75,13 +74,13 @@ class DimensionsControl extends Component {
             />
             <label className="dimentions-input-label">Left</label>
           </div>
+          <button
+            className={`linked-btn components-button is-button dashicons dashicons-${
+              isLinked ? "admin-links is-primary" : "editor-unlink is-default"
+            }`}
+            onClick={this.onButtonClick}
+          />
         </div>
-        <button
-          className={`linked-btn components-button is-button dashicons dashicons-${
-            isLinked ? "admin-links is-primary" : "editor-unlink is-default"
-          }`}
-          onClick={this.onButtonClick}
-        />
       </div>
     );
   }

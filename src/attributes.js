@@ -70,6 +70,7 @@ const attributes = {
 
 	TABmarginUnit: {
 		type: "string",
+		default: "px",
 	},
 
 	TABmarginTop: {
@@ -87,6 +88,7 @@ const attributes = {
 
 	TABpaddingUnit: {
 		type: "string",
+		default: "px",
 	},
 
 	TABpaddingTop: {
@@ -104,6 +106,7 @@ const attributes = {
 
 	MOBmarginUnit: {
 		type: "string",
+		default: "px",
 	},
 
 	MOBmarginTop: {
@@ -121,6 +124,7 @@ const attributes = {
 
 	MOBpaddingUnit: {
 		type: "string",
+		default: "px",
 	},
 
 	MOBpaddingTop: {

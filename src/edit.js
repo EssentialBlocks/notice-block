@@ -18,7 +18,7 @@ import {
 import {
 	softMinifyCssStrings,
 	isCssExists,
-	generateTypographyStylesForEdit,
+	generateTypographyStyles,
 } from "./myUtil/helpers";
 
 export default function Edit(props) {
@@ -30,93 +30,59 @@ export default function Edit(props) {
 		resOption,
 
 		dismissible,
-		// titleFontSize,
-		// textFontSize,
 		title,
 		text,
-		backgroundColor = backgroundColor ? backgroundColor : "#3074ff",
-		titleColor = titleColor || "#fff",
-		textColor = textColor || "#edf1f7",
-		shadowColor = shadowColor || "#000",
-		shadowHOffset = shadowHOffset || 0,
-		shadowVOffset = shadowVOffset || 0,
-		shadowBlur = shadowBlur || 0,
-		shadowSpread = shadowSpread || 0,
+		backgroundColor = "#3074ff",
+		titleColor = "#fff",
+		textColor = "#edf1f7",
+		shadowColor = "#000",
+		shadowHOffset = 0,
+		shadowVOffset = 0,
+		shadowBlur = 0,
+		shadowSpread = 0,
 
 		// margin padding attributes ⬇
 		marginUnit,
 
-		marginTop = marginTop || 0,
-		marginRight = marginRight || 0,
-		marginBottom = marginBottom || 0,
-		marginLeft = marginLeft || 0,
+		marginTop,
+		marginRight,
+		marginBottom,
+		marginLeft,
 
 		paddingUnit,
 
-		paddingTop = paddingTop || 0,
-		paddingRight = paddingRight || 0,
-		paddingBottom = paddingBottom || 0,
-		paddingLeft = paddingLeft || 0,
+		paddingTop = 0,
+		paddingRight = 0,
+		paddingBottom = 0,
+		paddingLeft = 0,
 
-		TABmarginUnit = TABmarginUnit || marginUnit,
+		TABmarginUnit,
 
-		TABmarginTop = TABmarginTop === 0
-			? TABmarginTop
-			: TABmarginTop || marginTop,
-		TABmarginRight = TABmarginRight === 0
-			? TABmarginRight
-			: TABmarginRight || marginRight,
-		TABmarginBottom = TABmarginBottom === 0
-			? TABmarginBottom
-			: TABmarginBottom || marginBottom,
-		TABmarginLeft = TABmarginLeft === 0
-			? TABmarginLeft
-			: TABmarginLeft || marginLeft,
+		TABmarginTop,
+		TABmarginRight,
+		TABmarginBottom,
+		TABmarginLeft,
 
-		TABpaddingUnit = TABpaddingUnit || paddingUnit,
+		TABpaddingUnit,
 
-		TABpaddingTop = TABpaddingTop === 0
-			? TABpaddingTop
-			: TABpaddingTop || paddingTop,
-		TABpaddingRight = TABpaddingRight === 0
-			? TABpaddingRight
-			: TABpaddingRight || paddingRight,
-		TABpaddingBottom = TABpaddingBottom === 0
-			? TABpaddingBottom
-			: TABpaddingBottom || paddingBottom,
-		TABpaddingLeft = TABpaddingLeft === 0
-			? TABpaddingLeft
-			: TABpaddingLeft || paddingLeft,
+		TABpaddingTop,
+		TABpaddingRight,
+		TABpaddingBottom,
+		TABpaddingLeft,
 
-		MOBmarginUnit = MOBmarginUnit || TABmarginUnit,
+		MOBmarginUnit,
 
-		MOBmarginTop = MOBmarginTop === 0
-			? MOBmarginTop
-			: MOBmarginTop || TABmarginTop,
-		MOBmarginRight = MOBmarginRight === 0
-			? MOBmarginRight
-			: MOBmarginRight || TABmarginRight,
-		MOBmarginBottom = MOBmarginBottom === 0
-			? MOBmarginBottom
-			: MOBmarginBottom || TABmarginBottom,
-		MOBmarginLeft = MOBmarginLeft === 0
-			? MOBmarginLeft
-			: MOBmarginLeft || TABmarginLeft,
+		MOBmarginTop,
+		MOBmarginRight,
+		MOBmarginBottom,
+		MOBmarginLeft,
 
-		MOBpaddingUnit = MOBpaddingUnit || TABpaddingUnit,
+		MOBpaddingUnit,
 
-		MOBpaddingTop = MOBpaddingTop === 0
-			? MOBpaddingTop
-			: MOBpaddingTop || TABpaddingTop,
-		MOBpaddingRight = MOBpaddingRight === 0
-			? MOBpaddingRight
-			: MOBpaddingRight || TABpaddingRight,
-		MOBpaddingBottom = MOBpaddingBottom === 0
-			? MOBpaddingBottom
-			: MOBpaddingBottom || TABpaddingBottom,
-		MOBpaddingLeft = MOBpaddingLeft === 0
-			? MOBpaddingLeft
-			: MOBpaddingLeft || TABpaddingLeft,
+		MOBpaddingTop,
+		MOBpaddingRight,
+		MOBpaddingBottom,
+		MOBpaddingLeft,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
@@ -177,7 +143,7 @@ export default function Edit(props) {
 		typoStylesDesktop: titleTypoStylesDesktop,
 		typoStylesTab: titleTypoStylesTab,
 		typoStylesMobile: titleTypoStylesMobile,
-	} = generateTypographyStylesForEdit({
+	} = generateTypographyStyles({
 		attributes,
 		prefixConstant: typoPrefix_title,
 		defaultFontSize: 32,
@@ -187,7 +153,7 @@ export default function Edit(props) {
 		typoStylesDesktop: textTypoStylesDesktop,
 		typoStylesTab: textTypoStylesTab,
 		typoStylesMobile: textTypoStylesMobile,
-	} = generateTypographyStylesForEdit({
+	} = generateTypographyStyles({
 		attributes,
 		prefixConstant: typoPrefix_text,
 		defaultFontSize: 18,
@@ -196,8 +162,14 @@ export default function Edit(props) {
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
 	.${blockId}{
-
-		margin: ${marginTop}${marginUnit} ${marginRight}${marginUnit} ${marginBottom}${marginUnit} ${marginLeft}${marginUnit};
+		${marginTop ? `margin-top: ${parseFloat(marginTop)}${marginUnit};` : " "}
+		${marginRight ? `margin-right: ${parseFloat(marginRight)}${marginUnit};` : " "}
+		${marginLeft ? `margin-left: ${parseFloat(marginLeft)}${marginUnit};` : " "}
+		${
+			marginBottom
+				? `margin-bottom: ${parseFloat(marginBottom)}${marginUnit};`
+				: " "
+		}
 		padding: ${paddingTop}${paddingUnit} ${paddingRight}${paddingUnit} ${paddingBottom}${paddingUnit} ${paddingLeft}${paddingUnit};
 
 		background: ${backgroundColor};
@@ -208,17 +180,91 @@ export default function Edit(props) {
 
 	const wrapperStylesTab = `
 	.${blockId}{
-
-		margin: ${TABmarginTop}${TABmarginUnit} ${TABmarginRight}${TABmarginUnit} ${TABmarginBottom}${TABmarginUnit} ${TABmarginLeft}${TABmarginUnit};
-		padding: ${TABpaddingTop}${TABpaddingUnit} ${TABpaddingRight}${TABpaddingUnit} ${TABpaddingBottom}${TABpaddingUnit} ${TABpaddingLeft}${TABpaddingUnit};
-		
+		${
+			TABmarginTop
+				? `margin-top: ${parseFloat(TABmarginTop)}${TABmarginUnit};`
+				: " "
+		}
+		${
+			TABmarginRight
+				? `margin-right: ${parseFloat(TABmarginRight)}${TABmarginUnit};`
+				: " "
+		}
+		${
+			TABmarginLeft
+				? `margin-left: ${parseFloat(TABmarginLeft)}${TABmarginUnit};`
+				: " "
+		}
+		${
+			TABmarginBottom
+				? `margin-bottom: ${parseFloat(TABmarginBottom)}${TABmarginUnit};`
+				: " "
+		}
+		${
+			TABpaddingTop
+				? `padding-top: ${parseFloat(TABpaddingTop)}${TABpaddingUnit};`
+				: " "
+		}
+		${
+			TABpaddingRight
+				? `padding-right: ${parseFloat(TABpaddingRight)}${TABpaddingUnit};`
+				: " "
+		}
+		${
+			TABpaddingLeft
+				? `padding-left: ${parseFloat(TABpaddingLeft)}${TABpaddingUnit};`
+				: " "
+		}
+		${
+			TABpaddingBottom
+				? `padding-bottom: ${parseFloat(TABpaddingBottom)}${TABpaddingUnit};`
+				: " "
+		}
 	}
 	`;
 
 	const wrapperStylesMobile = `
 	.${blockId}{
-		margin: ${MOBmarginTop}${MOBmarginUnit} ${MOBmarginRight}${MOBmarginUnit} ${MOBmarginBottom}${MOBmarginUnit} ${MOBmarginLeft}${MOBmarginUnit};
-		padding: ${MOBpaddingTop}${MOBpaddingUnit} ${MOBpaddingRight}${MOBpaddingUnit} ${MOBpaddingBottom}${MOBpaddingUnit} ${MOBpaddingLeft}${MOBpaddingUnit};
+		${
+			MOBmarginTop
+				? `margin-top: ${parseFloat(MOBmarginTop)}${MOBmarginUnit};`
+				: " "
+		}
+		${
+			MOBmarginRight
+				? `margin-right: ${parseFloat(MOBmarginRight)}${MOBmarginUnit};`
+				: " "
+		}
+		${
+			MOBmarginLeft
+				? `margin-left: ${parseFloat(MOBmarginLeft)}${MOBmarginUnit};`
+				: " "
+		}
+		${
+			MOBmarginBottom
+				? `margin-bottom: ${parseFloat(MOBmarginBottom)}${MOBmarginUnit};`
+				: " "
+		}
+		${
+			MOBpaddingTop
+				? `padding-top: ${parseFloat(MOBpaddingTop)}${MOBpaddingUnit};`
+				: " "
+		}
+		${
+			MOBpaddingRight
+				? `padding-right: ${parseFloat(MOBpaddingRight)}${MOBpaddingUnit};`
+				: " "
+		}
+		${
+			MOBpaddingLeft
+				? `padding-left: ${parseFloat(MOBpaddingLeft)}${MOBpaddingUnit};`
+				: " "
+		}
+		${
+			MOBpaddingBottom
+				? `padding-bottom: ${parseFloat(MOBpaddingBottom)}${MOBpaddingUnit};`
+				: " "
+		}	
 	}
 	`;
 
@@ -305,9 +351,9 @@ export default function Edit(props) {
 	// Set All Style in "blockMeta" Attribute
 	useEffect(() => {
 		const styleObject = {
-			["desktop"]: desktopAllStyles,
-			["tab"]: tabAllStyles,
-			["mobile"]: mobileAllStyles,
+			["desktop"]: softMinifyCssStrings(desktopAllStyles),
+			["tab"]: softMinifyCssStrings(tabAllStyles),
+			["mobile"]: softMinifyCssStrings(mobileAllStyles),
 		};
 		if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
 			setAttributes({ blockMeta: styleObject });

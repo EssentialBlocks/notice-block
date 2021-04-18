@@ -35,20 +35,46 @@ export const generateTypographyAttributes = (prefixArray) => {
 			[`${current}LineHeight`]: {
 				type: "number",
 			},
+
+			[`TAB${current}SizeUnit`]: {
+				type: "string",
+				default: "px",
+			},
 			[`TAB${current}FontSize`]: {
 				type: "number",
+			},
+			[`TAB${current}LetterSpacingUnit`]: {
+				type: "string",
+				default: "px",
 			},
 			[`TAB${current}LetterSpacing`]: {
 				type: "number",
 			},
+			[`TAB${current}LineHeightUnit`]: {
+				type: "string",
+				default: "em",
+			},
 			[`TAB${current}LineHeight`]: {
 				type: "number",
+			},
+
+			[`MOB${current}SizeUnit`]: {
+				type: "string",
+				default: "px",
 			},
 			[`MOB${current}FontSize`]: {
 				type: "number",
 			},
+			[`MOB${current}LetterSpacingUnit`]: {
+				type: "string",
+				default: "px",
+			},
 			[`MOB${current}LetterSpacing`]: {
 				type: "number",
+			},
+			[`MOB${current}LineHeightUnit`]: {
+				type: "string",
+				default: "em",
 			},
 			[`MOB${current}LineHeight`]: {
 				type: "number",
@@ -105,7 +131,7 @@ export const hasVal = (val) => val || val === 0;
 
 //
 // function to generate typography styles for an element based on it's prefix
-export const generateTypographyStylesForEdit = ({
+export const generateTypographyStyles = ({
 	prefixConstant,
 	defaultFontSize,
 	attributes,
@@ -122,13 +148,19 @@ export const generateTypographyStylesForEdit = ({
 		[`${prefixConstant}LineHeight`]: lineHeight,
 		[`${prefixConstant}LineHeightUnit`]: lineHeightUnit,
 
+		[`TAB${prefixConstant}SizeUnit`]: TABsizeUnit,
+		[`TAB${prefixConstant}LetterSpacingUnit`]: TABletterSpacingUnit,
+		[`TAB${prefixConstant}LineHeightUnit`]: TABlineHeightUnit,
 		[`TAB${prefixConstant}FontSize`]: TABfontSize,
 		[`TAB${prefixConstant}LetterSpacing`]: TABletterSpacing,
 		[`TAB${prefixConstant}LineHeight`]: TABlineHeight,
 
-		[`MOB${prefixConstant}FontSize`]: MOBfontSize = TABfontSize,
-		[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing = TABletterSpacing,
-		[`MOB${prefixConstant}LineHeight`]: MOBlineHeight = TABlineHeight,
+		[`MOB${prefixConstant}SizeUnit`]: MOBsizeUnit,
+		[`MOB${prefixConstant}LetterSpacingUnit`]: MOBletterSpacingUnit,
+		[`MOB${prefixConstant}LineHeightUnit`]: MOBlineHeightUnit,
+		[`MOB${prefixConstant}FontSize`]: MOBfontSize,
+		[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing,
+		[`MOB${prefixConstant}LineHeight`]: MOBlineHeight,
 	} = attributes;
 
 	const typoStylesDesktop = `
@@ -146,29 +178,29 @@ export const generateTypographyStylesForEdit = ({
 		`;
 
 	const typoStylesTab = `
-			${hasVal(TABfontSize) ? `font-size: ${TABfontSize}${sizeUnit};` : " "}
+			${hasVal(TABfontSize) ? `font-size: ${TABfontSize}${TABsizeUnit};` : " "}
 			${
 				hasVal(TABlineHeight)
-					? `line-height: ${TABlineHeight}${lineHeightUnit};`
+					? `line-height: ${TABlineHeight}${TABlineHeightUnit};`
 					: " "
 			}
 			${
 				hasVal(TABletterSpacing)
-					? `letter-spacing: ${TABletterSpacing}${letterSpacingUnit};`
+					? `letter-spacing: ${TABletterSpacing}${TABletterSpacingUnit};`
 					: " "
 			}
 		`;
 
 	const typoStylesMobile = `
-			${hasVal(MOBfontSize) ? `font-size: ${MOBfontSize}${sizeUnit};` : " "}
+			${hasVal(MOBfontSize) ? `font-size: ${MOBfontSize}${MOBsizeUnit};` : " "}
 			${
 				hasVal(MOBlineHeight)
-					? `line-height: ${MOBlineHeight}${lineHeightUnit};`
+					? `line-height: ${MOBlineHeight}${MOBlineHeightUnit};`
 					: " "
 			}
 			${
 				hasVal(MOBletterSpacing)
-					? `letter-spacing: ${MOBletterSpacing}${letterSpacingUnit};`
+					? `letter-spacing: ${MOBletterSpacing}${MOBletterSpacingUnit};`
 					: " "
 			}
 		`;
