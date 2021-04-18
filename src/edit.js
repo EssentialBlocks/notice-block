@@ -22,7 +22,7 @@ import {
 } from "./myUtil/helpers";
 
 export default function Edit(props) {
-	const { attributes, setAttributes, isSelected } = props;
+	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
 		blockId,
 		blockMeta,
@@ -125,11 +125,24 @@ export default function Edit(props) {
 
 		console.log({ all_blocks });
 
-		if (
-			all_blocks.filter((item) => item.attributes.blockId === blockId).length >
-			1
-		)
-			setAttributes({ blockId: unique_id });
+		const fixDuplicateBlockId = (blocks) => {
+			for (const item of blocks) {
+				const { innerBlocks } = item;
+				if (item.attributes.blockId === blockId) {
+					if (item.clientId !== clientId) {
+						console.log("found a duplicate");
+						setAttributes({ blockId: unique_id });
+						return;
+					} else if (innerBlocks.length > 0) {
+						fixDuplicateBlockId(innerBlocks);
+					}
+				} else if (innerBlocks.length > 0) {
+					fixDuplicateBlockId(innerBlocks);
+				}
+			}
+		};
+
+		fixDuplicateBlockId(all_blocks);
 	}, []);
 
 	const blockProps = useBlockProps({
