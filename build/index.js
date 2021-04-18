@@ -1760,16 +1760,16 @@ function Edit(props) {
 
   var dismissStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor, ";\n\t\tdisplay: ").concat(dismissible ? "flex" : "none", ";\n\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
 
-  var desktopAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t"); // all css styles for Tab in strings ⬇
+  var desktopAllStyles = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t")); // all css styles for Tab in strings ⬇
 
-  var tabAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t"); // all css styles for Mobile in strings ⬇
+  var tabAllStyles = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t")); // all css styles for Mobile in strings ⬇
 
-  var mobileAllStyles = "\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t"); // Set All Style in "blockMeta" Attribute
+  var mobileAllStyles = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t")); // Set All Style in "blockMeta" Attribute
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var _styleObject;
 
-    var styleObject = (_styleObject = {}, _defineProperty(_styleObject, "desktop", Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(desktopAllStyles)), _defineProperty(_styleObject, "tab", Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(tabAllStyles)), _defineProperty(_styleObject, "mobile", Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(mobileAllStyles)), _styleObject);
+    var styleObject = (_styleObject = {}, _defineProperty(_styleObject, "desktop", desktopAllStyles), _defineProperty(_styleObject, "tab", tabAllStyles), _defineProperty(_styleObject, "mobile", mobileAllStyles), _styleObject);
 
     if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
       setAttributes({
@@ -1780,7 +1780,7 @@ function Edit(props) {
   return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_3__["default"], props),
   /*#__PURE__*/
   //Edit view here
-  React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(desktopAllStyles), "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_start\n\t\t\t\t*/\n\n\t\t\t\t").concat(resOption === "tab" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(tabAllStyles) : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(mobileAllStyles) : " ", "\n\n\t\t\t\t/*\n\t\t\t\t\tedit_mimmikcss_end\n\t\t\t\t*/\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\t\t\t\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t}\n\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
+  React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(desktopAllStyles, "\n\n\t\t\t\t/* mimmikcssStart */\n\n\t\t\t\t").concat(resOption === "tab" ? tabAllStyles : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? tabAllStyles + mobileAllStyles : " ", "\n\n\t\t\t\t/* mimmikcssEnd */\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\n\n\t\t\t\t\t/* tabcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t\t/* tabcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t\n\t\t\t\t\t/* mobcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t\t/* mobcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
     className: "eb-notice-wrapper ".concat(blockId),
     "data-id": blockId
   }, /*#__PURE__*/React.createElement("div", {
@@ -2064,31 +2064,31 @@ function Inspector(props) {
   }, []); // this useEffect is for mimmiking css for all the eb blocks on resOption changing
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
-    var allCounterWrapper = document.querySelectorAll(".eb-guten-block-main-parrent-wrapper:not(.is-selected) > style");
+    var allEbBlocksWrapper = document.querySelectorAll(".eb-guten-block-main-parent-wrapper:not(.is-selected) > style");
     console.log("---inspector", {
-      allCounterWrapper: allCounterWrapper
+      allEbBlocksWrapper: allEbBlocksWrapper
     });
-    if (allCounterWrapper.length < 1) return;
-    allCounterWrapper.forEach(function (styleTag) {
+    if (allEbBlocksWrapper.length < 1) return;
+    allEbBlocksWrapper.forEach(function (styleTag) {
       var cssStrings = styleTag.textContent;
       var minCss = cssStrings.replace(/\s+/g, " ");
-      var regexCssMimmikSpace = /(?<=edit_mimmikcss_start\s*\*\/).+(?=\/\*\s*edit_mimmikcss_end)/i;
+      var regexCssMimmikSpace = /(?<=mimmikcssStart\s\*\/).+(?=\/\*\smimmikcssEnd)/i;
       var newCssStrings = " ";
 
       if (resOption === "tab") {
-        var tabCssMacth = minCss.match(/(?<=\@media\s+all\s+and\s+\(max-width\s*\:\s*1030px\s*\)\s*\{).+(?=\}\s*\@media\s+all)/i);
-        var tabCssStrings = (tabCssMacth || [" "])[0]; // console.log({
-        // 	tabCssStrings: tabCssStrings,
-        // });
-
+        var tabCssStrings = (minCss.match(/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i) || [" "])[0];
+        console.log({
+          tabCssStrings: tabCssStrings
+        });
         newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
       } else if (resOption === "mobile") {
-        var mobCssMacth = minCss.match(/(?<=\@media\s+all\s+and\s+\(max-width\s*\:\s*680px\s*\)\s*\{).+(?=(\}\s*)$)/i);
-        var mobCssStrings = (mobCssMacth || [" "])[0]; // console.log({
-        // 	mobCssStrings: mobCssStrings,
-        // });
-
-        newCssStrings = minCss.replace(regexCssMimmikSpace, mobCssStrings);
+        var _tabCssStrings = (minCss.match(/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i) || [" "])[0];
+        var mobCssStrings = (minCss.match(/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i) || [" "])[0];
+        console.log({
+          tabCssStrings: _tabCssStrings,
+          mobCssStrings: mobCssStrings
+        });
+        newCssStrings = minCss.replace(regexCssMimmikSpace, "".concat(_tabCssStrings, " ").concat(mobCssStrings));
       } else {
         newCssStrings = minCss.replace(regexCssMimmikSpace, " ");
       }

@@ -11,3 +11,5 @@
  8) src\myUtil\dimensions-control\style.scss : deleted this file as the styles here is working both in frontend and editor panel which is unnecessary. So, moved the styles in 'src/editor.scss' file.
  9) src\myUtil\dimensions-control\constants.js : few options of dimension control brought from constants rather than hard code typing in index.js pf dimension control.
  10) src\myUtil\dimensions-control\index.js : imported few things from constants rather than hard coding. fixed the  'font size, line height and letterspacing unit' attributes for tab & mobile. fixed the 'UnitControl' for seperate screensizes
+ -----------------------------------------------
+ 1) css mimmiking pattern/system of editor page when clicking responsive buttons (desktop/tab/mobile) changed.

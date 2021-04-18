@@ -163,41 +163,40 @@ function Inspector(props) {
 
 	// this useEffect is for mimmiking css for all the eb blocks on resOption changing
 	useEffect(() => {
-		const allCounterWrapper = document.querySelectorAll(
-			".eb-guten-block-main-parrent-wrapper:not(.is-selected) > style"
+		const allEbBlocksWrapper = document.querySelectorAll(
+			".eb-guten-block-main-parent-wrapper:not(.is-selected) > style"
 		);
-
-		console.log("---inspector", { allCounterWrapper });
-		if (allCounterWrapper.length < 1) return;
-
-		allCounterWrapper.forEach((styleTag) => {
+		console.log("---inspector", { allEbBlocksWrapper });
+		if (allEbBlocksWrapper.length < 1) return;
+		allEbBlocksWrapper.forEach((styleTag) => {
 			const cssStrings = styleTag.textContent;
 			const minCss = cssStrings.replace(/\s+/g, " ");
-			const regexCssMimmikSpace = /(?<=edit_mimmikcss_start\s*\*\/).+(?=\/\*\s*edit_mimmikcss_end)/i;
+			const regexCssMimmikSpace = /(?<=mimmikcssStart\s\*\/).+(?=\/\*\smimmikcssEnd)/i;
 			let newCssStrings = " ";
-
 			if (resOption === "tab") {
-				let tabCssMacth = minCss.match(
-					/(?<=\@media\s+all\s+and\s+\(max-width\s*\:\s*1030px\s*\)\s*\{).+(?=\}\s*\@media\s+all)/i
-				);
-				let tabCssStrings = (tabCssMacth || [" "])[0];
-				// console.log({
-				// 	tabCssStrings: tabCssStrings,
-				// });
+				const tabCssStrings = (minCss.match(
+					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
+				) || [" "])[0];
+				console.log({ tabCssStrings });
 				newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
 			} else if (resOption === "mobile") {
-				let mobCssMacth = minCss.match(
-					/(?<=\@media\s+all\s+and\s+\(max-width\s*\:\s*680px\s*\)\s*\{).+(?=(\}\s*)$)/i
+				const tabCssStrings = (minCss.match(
+					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
+				) || [" "])[0];
+
+				const mobCssStrings = (minCss.match(
+					/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i
+				) || [" "])[0];
+
+				console.log({ tabCssStrings, mobCssStrings });
+
+				newCssStrings = minCss.replace(
+					regexCssMimmikSpace,
+					`${tabCssStrings} ${mobCssStrings}`
 				);
-				let mobCssStrings = (mobCssMacth || [" "])[0];
-				// console.log({
-				// 	mobCssStrings: mobCssStrings,
-				// });
-				newCssStrings = minCss.replace(regexCssMimmikSpace, mobCssStrings);
 			} else {
 				newCssStrings = minCss.replace(regexCssMimmikSpace, " ");
 			}
-
 			styleTag.textContent = newCssStrings;
 		});
 	}, [resOption]);

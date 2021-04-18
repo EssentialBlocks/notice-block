@@ -326,34 +326,34 @@ export default function Edit(props) {
 	`;
 
 	// all css styles for large screen width (desktop/laptop) in strings ⬇
-	const desktopAllStyles = `
+	const desktopAllStyles = softMinifyCssStrings(`
 		${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
 		${isCssExists(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " "}
 		${isCssExists(dismissStylesDesktop) ? dismissStylesDesktop : " "}
 		${isCssExists(titleStylesDesktop) ? titleStylesDesktop : " "}
 		${isCssExists(textStylesDesktop) ? textStylesDesktop : " "}
-	`;
+	`);
 
 	// all css styles for Tab in strings ⬇
-	const tabAllStyles = `
+	const tabAllStyles = softMinifyCssStrings(`
 		${isCssExists(wrapperStylesTab) ? wrapperStylesTab : " "}
 		${isCssExists(titleStylesTab) ? titleStylesTab : " "}
 		${isCssExists(textStylesTab) ? textStylesTab : " "}
-	`;
+	`);
 
 	// all css styles for Mobile in strings ⬇
-	const mobileAllStyles = `
+	const mobileAllStyles = softMinifyCssStrings(`
 		${isCssExists(wrapperStylesMobile) ? wrapperStylesMobile : " "}
 		${isCssExists(titleStylesMobile) ? titleStylesMobile : " "}
 		${isCssExists(textStylesMobile) ? textStylesMobile : " "}
-	`;
+	`);
 
 	// Set All Style in "blockMeta" Attribute
 	useEffect(() => {
 		const styleObject = {
-			["desktop"]: softMinifyCssStrings(desktopAllStyles),
-			["tab"]: softMinifyCssStrings(tabAllStyles),
-			["mobile"]: softMinifyCssStrings(mobileAllStyles),
+			["desktop"]: desktopAllStyles,
+			["tab"]: tabAllStyles,
+			["mobile"]: mobileAllStyles,
 		};
 		if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
 			setAttributes({ blockMeta: styleObject });
@@ -367,25 +367,29 @@ export default function Edit(props) {
 		<div {...blockProps}>
 			<style>
 				{`
-				${softMinifyCssStrings(desktopAllStyles)}
+				${desktopAllStyles}
 
-				/*
-					edit_mimmikcss_start
-				*/
+				/* mimmikcssStart */
 
-				${resOption === "tab" ? softMinifyCssStrings(tabAllStyles) : " "}
-				${resOption === "mobile" ? softMinifyCssStrings(mobileAllStyles) : " "}
+				${resOption === "tab" ? tabAllStyles : " "}
+				${resOption === "mobile" ? tabAllStyles + mobileAllStyles : " "}
 
-				/*
-					edit_mimmikcss_end
-				*/
+				/* mimmikcssEnd */
 
-				@media all and (max-width: 1024px) {				
+				@media all and (max-width: 1024px) {	
+
+					/* tabcssStart */			
 					${softMinifyCssStrings(tabAllStyles)}
+					/* tabcssEnd */			
+				
 				}
-
+				
 				@media all and (max-width: 767px) {
+					
+					/* mobcssStart */			
 					${softMinifyCssStrings(mobileAllStyles)}
+					/* mobcssEnd */			
+				
 				}
 				`}
 			</style>
