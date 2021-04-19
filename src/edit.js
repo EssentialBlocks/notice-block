@@ -364,9 +364,9 @@ export default function Edit(props) {
 	// Set All Style in "blockMeta" Attribute
 	useEffect(() => {
 		const styleObject = {
-			["desktop"]: desktopAllStyles,
-			["tab"]: tabAllStyles,
-			["mobile"]: mobileAllStyles,
+			desktop: desktopAllStyles,
+			tab: tabAllStyles,
+			mobile: mobileAllStyles,
 		};
 		if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
 			setAttributes({ blockMeta: styleObject });
