@@ -237,7 +237,7 @@ function Inspector(props) {
 					/>
 				</PanelBody>
 
-				<PanelBody title={__("Typography")}>
+				<PanelBody title={__("Typography")} initialOpen={false}>
 					<TypographyDropdown
 						baseLabel="Title"
 						typographyPrefixConstant={typoPrefix_title}

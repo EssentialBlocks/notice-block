@@ -2165,7 +2165,8 @@ function Inspector(props) {
       return onTypeChange(type);
     }
   })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Typography")
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Typography"),
+    initialOpen: false
   }, /*#__PURE__*/React.createElement(_myUtil_typography_component__WEBPACK_IMPORTED_MODULE_8__["default"], {
     baseLabel: "Title",
     typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_title"],
