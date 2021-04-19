@@ -32,14 +32,14 @@ export default function Edit(props) {
 		dismissible,
 		title,
 		text,
-		backgroundColor = "#3074ff",
-		titleColor = "#fff",
-		textColor = "#edf1f7",
-		shadowColor = "#000",
-		shadowHOffset = 0,
-		shadowVOffset = 0,
-		shadowBlur = 0,
-		shadowSpread = 0,
+		backgroundColor,
+		titleColor,
+		textColor,
+		shadowHOffset,
+		shadowVOffset,
+		shadowBlur,
+		shadowSpread,
+		shadowColor,
 
 		// margin padding attributes ⬇
 		marginUnit,
@@ -189,8 +189,19 @@ export default function Edit(props) {
 			${paddingBottom || 0}${paddingUnit} 
 			${paddingLeft || 0}${paddingUnit};
 
-		background: ${backgroundColor};
-		box-shadow: ${shadowHOffset}px ${shadowVOffset}px ${shadowBlur}px ${shadowSpread}px ${shadowColor};
+		${backgroundColor ? `background: ${backgroundColor};` : " "}
+			
+		${
+			shadowColor
+				? `box-shadow: 
+					${shadowHOffset || 0}px 
+					${shadowVOffset || 0}px 
+					${shadowBlur || 0}px 
+					${shadowSpread || 0}px 
+					${shadowColor};`
+				: " "
+		}
+
 		border-radius: 5px;
 	}
 	`;
@@ -298,7 +309,7 @@ export default function Edit(props) {
 	const titleStylesDesktop = `
 	.${blockId} .eb-notice-title{
 		${titleTypoStylesDesktop}		
-		color: ${titleColor};
+		${titleColor ? `color: ${titleColor};` : " "}
 	}
 	`;
 
@@ -318,7 +329,7 @@ export default function Edit(props) {
 	const textStylesDesktop = `
 	.${blockId} .eb-notice-text{
 		${textTypoStylesDesktop}
-		color: ${textColor};
+		${textColor ? `color: ${textColor};` : " "}
 	}
 	`;
 
@@ -337,7 +348,7 @@ export default function Edit(props) {
 	// dismiss styles css in strings ⬇
 	const dismissStylesDesktop = `
 	.${blockId} .eb-notice-dismiss{
-		color: ${textColor};
+		${textColor ? `color: ${textColor};` : " "}
 		display: ${dismissible ? "flex" : "none"};
 	}
 	`;

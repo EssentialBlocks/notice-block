@@ -172,12 +172,15 @@ const attributes = {
 	},
 	backgroundColor: {
 		type: "string",
+		default: "#3074ff",
 	},
 	titleColor: {
 		type: "string",
+		default: "#fff",
 	},
 	textColor: {
 		type: "string",
+		default: "#edf1f7",
 	},
 	noticeId: {
 		type: "string",
