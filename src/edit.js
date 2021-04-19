@@ -125,13 +125,16 @@ export default function Edit(props) {
 
 		console.log({ all_blocks });
 
+		let duplicateFound = false;
 		const fixDuplicateBlockId = (blocks) => {
+			if (duplicateFound) return;
 			for (const item of blocks) {
 				const { innerBlocks } = item;
 				if (item.attributes.blockId === blockId) {
 					if (item.clientId !== clientId) {
-						console.log("found a duplicate");
 						setAttributes({ blockId: unique_id });
+						console.log("found a duplicate");
+						duplicateFound = true;
 						return;
 					} else if (innerBlocks.length > 0) {
 						fixDuplicateBlockId(innerBlocks);

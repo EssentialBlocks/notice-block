@@ -1710,8 +1710,11 @@ function Edit(props) {
     console.log({
       all_blocks: all_blocks
     });
+    var duplicateFound = false;
 
     var fixDuplicateBlockId = function fixDuplicateBlockId(blocks) {
+      if (duplicateFound) return;
+
       var _iterator = _createForOfIteratorHelper(blocks),
           _step;
 
@@ -1722,10 +1725,11 @@ function Edit(props) {
 
           if (item.attributes.blockId === blockId) {
             if (item.clientId !== clientId) {
-              console.log("found a duplicate");
               setAttributes({
                 blockId: unique_id
               });
+              console.log("found a duplicate");
+              duplicateFound = true;
               return;
             } else if (innerBlocks.length > 0) {
               fixDuplicateBlockId(innerBlocks);
