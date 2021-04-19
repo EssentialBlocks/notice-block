@@ -1309,8 +1309,12 @@ var attributes = _objectSpread(_objectSpread({
     "default": "essential_block"
   },
   blockMeta: {
-    type: "string",
-    "default": ""
+    type: "object" // default: {
+    // 	desktop: "",
+    // 	tab: "",
+    // 	mobile: "",
+    // },
+
   }
 }, Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_1__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), {}, {
   // margin padding attributes ⬇

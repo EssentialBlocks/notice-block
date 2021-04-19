@@ -20,8 +20,12 @@ const attributes = {
 		default: "essential_block",
 	},
 	blockMeta: {
-		type: "string",
-		default: "",
+		type: "object",
+		// default: {
+		// 	desktop: "",
+		// 	tab: "",
+		// 	mobile: "",
+		// },
 	},
 
 	// typography attributes ⬇
