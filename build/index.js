@@ -1445,16 +1445,13 @@ var attributes = _objectSpread(_objectSpread({
     "default": "Free shipping on all orders"
   },
   backgroundColor: {
-    type: "string",
-    "default": "#3074ff"
+    type: "string"
   },
   titleColor: {
-    type: "string",
-    "default": "#fff"
+    type: "string"
   },
   textColor: {
-    type: "string",
-    "default": "#edf1f7"
+    type: "string"
   },
   noticeId: {
     type: "string"
@@ -1770,22 +1767,22 @@ function Edit(props) {
       textTypoStylesMobile = _generateTypographySt2.typoStylesMobile; // wrapper styles css in strings ⬇
 
 
-  var wrapperStylesDesktop = "\n\t.".concat(blockId, "{\n\t\t").concat(marginTop ? "margin-top: ".concat(parseFloat(marginTop)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginRight ? "margin-right: ".concat(parseFloat(marginRight)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginLeft ? "margin-left: ".concat(parseFloat(marginLeft)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginBottom ? "margin-bottom: ".concat(parseFloat(marginBottom)).concat(marginUnit, ";") : " ", "\n\t\tpadding: \n\t\t\t").concat(paddingTop || 0).concat(paddingUnit, " \n\t\t\t").concat(paddingRight || 0).concat(paddingUnit, " \n\t\t\t").concat(paddingBottom || 0).concat(paddingUnit, " \n\t\t\t").concat(paddingLeft || 0).concat(paddingUnit, ";\n\n\t\t").concat(backgroundColor ? "background: ".concat(backgroundColor, ";") : " ", "\n\t\t\t\n\t\t").concat(shadowColor ? "box-shadow: \n\t\t\t\t\t".concat(shadowHOffset || 0, "px \n\t\t\t\t\t").concat(shadowVOffset || 0, "px \n\t\t\t\t\t").concat(shadowBlur || 0, "px \n\t\t\t\t\t").concat(shadowSpread || 0, "px \n\t\t\t\t\t").concat(shadowColor, ";") : " ", "\n\n\t\tborder-radius: 5px;\n\t}\n\t");
+  var wrapperStylesDesktop = "\n\t.".concat(blockId, "{\n\t\t").concat(marginTop ? "margin-top: ".concat(parseFloat(marginTop)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginRight ? "margin-right: ".concat(parseFloat(marginRight)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginLeft ? "margin-left: ".concat(parseFloat(marginLeft)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginBottom ? "margin-bottom: ".concat(parseFloat(marginBottom)).concat(marginUnit, ";") : " ", "\n\t\tpadding: \n\t\t\t").concat(paddingTop || 0).concat(paddingUnit, " \n\t\t\t").concat(paddingRight || 0).concat(paddingUnit, " \n\t\t\t").concat(paddingBottom || 0).concat(paddingUnit, " \n\t\t\t").concat(paddingLeft || 0).concat(paddingUnit, ";\n\n\t\tbackground: ").concat(backgroundColor || "#3074ff", ";\n\t\t\t\n\t\t").concat(shadowColor ? "box-shadow: \n\t\t\t\t\t".concat(shadowHOffset || 0, "px \n\t\t\t\t\t").concat(shadowVOffset || 0, "px \n\t\t\t\t\t").concat(shadowBlur || 0, "px \n\t\t\t\t\t").concat(shadowSpread || 0, "px \n\t\t\t\t\t").concat(shadowColor, ";") : " ", "\n\n\t\tborder-radius: 5px;\n\t}\n\t");
   var wrapperStylesTab = "\n\t.".concat(blockId, "{\n\t\t").concat(TABmarginTop ? "margin-top: ".concat(parseFloat(TABmarginTop)).concat(TABmarginUnit, ";") : " ", "\n\t\t").concat(TABmarginRight ? "margin-right: ".concat(parseFloat(TABmarginRight)).concat(TABmarginUnit, ";") : " ", "\n\t\t").concat(TABmarginLeft ? "margin-left: ".concat(parseFloat(TABmarginLeft)).concat(TABmarginUnit, ";") : " ", "\n\t\t").concat(TABmarginBottom ? "margin-bottom: ".concat(parseFloat(TABmarginBottom)).concat(TABmarginUnit, ";") : " ", "\n\t\t").concat(TABpaddingTop ? "padding-top: ".concat(parseFloat(TABpaddingTop)).concat(TABpaddingUnit, ";") : " ", "\n\t\t").concat(TABpaddingRight ? "padding-right: ".concat(parseFloat(TABpaddingRight)).concat(TABpaddingUnit, ";") : " ", "\n\t\t").concat(TABpaddingLeft ? "padding-left: ".concat(parseFloat(TABpaddingLeft)).concat(TABpaddingUnit, ";") : " ", "\n\t\t").concat(TABpaddingBottom ? "padding-bottom: ".concat(parseFloat(TABpaddingBottom)).concat(TABpaddingUnit, ";") : " ", "\n\t}\n\t");
   var wrapperStylesMobile = "\n\t.".concat(blockId, "{\n\t\t").concat(MOBmarginTop ? "margin-top: ".concat(parseFloat(MOBmarginTop)).concat(MOBmarginUnit, ";") : " ", "\n\t\t").concat(MOBmarginRight ? "margin-right: ".concat(parseFloat(MOBmarginRight)).concat(MOBmarginUnit, ";") : " ", "\n\t\t").concat(MOBmarginLeft ? "margin-left: ".concat(parseFloat(MOBmarginLeft)).concat(MOBmarginUnit, ";") : " ", "\n\t\t").concat(MOBmarginBottom ? "margin-bottom: ".concat(parseFloat(MOBmarginBottom)).concat(MOBmarginUnit, ";") : " ", "\n\t\t").concat(MOBpaddingTop ? "padding-top: ".concat(parseFloat(MOBpaddingTop)).concat(MOBpaddingUnit, ";") : " ", "\n\t\t").concat(MOBpaddingRight ? "padding-right: ".concat(parseFloat(MOBpaddingRight)).concat(MOBpaddingUnit, ";") : " ", "\n\t\t").concat(MOBpaddingLeft ? "padding-left: ".concat(parseFloat(MOBpaddingLeft)).concat(MOBpaddingUnit, ";") : " ", "\n\t\t").concat(MOBpaddingBottom ? "padding-bottom: ".concat(parseFloat(MOBpaddingBottom)).concat(MOBpaddingUnit, ";") : " ", "\t\n\t}\n\t"); //
   // titleWrapper styles css in strings ⬇
 
   var titleWrapperStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t"); // title styles css in strings ⬇
 
-  var titleStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\t\t\n\t\t").concat(titleColor ? "color: ".concat(titleColor, ";") : " ", "\n\t}\n\t");
+  var titleStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\t\t\n\t\tcolor: ").concat(titleColor || "#fff", ";\n\t}\n\t");
   var titleStylesTab = "\n\t.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesTab, "\n\t}\n\t");
   var titleStylesMobile = "\n\t.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t"); // text styles css in strings ⬇
 
-  var textStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\t").concat(textColor ? "color: ".concat(textColor, ";") : " ", "\n\t}\n\t");
+  var textStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor || "#edf1f7", ";\n\t}\n\t");
   var textStylesTab = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesTab, "\n\t}\n\t");
   var textStylesMobile = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t"); // dismiss styles css in strings ⬇
 
-  var dismissStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-dismiss{\n\t\t").concat(textColor ? "color: ".concat(textColor, ";") : " ", "\n\t\tdisplay: ").concat(dismissible ? "flex" : "none", ";\n\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
+  var dismissStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor || "#edf1f7", ";\n\t\tdisplay: ").concat(dismissible ? "flex" : "none", ";\n\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
 
   var desktopAllStyles = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t")); // all css styles for Tab in strings ⬇
 

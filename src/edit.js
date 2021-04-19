@@ -189,7 +189,7 @@ export default function Edit(props) {
 			${paddingBottom || 0}${paddingUnit} 
 			${paddingLeft || 0}${paddingUnit};
 
-		${backgroundColor ? `background: ${backgroundColor};` : " "}
+		background: ${backgroundColor || "#3074ff"};
 			
 		${
 			shadowColor
@@ -309,7 +309,7 @@ export default function Edit(props) {
 	const titleStylesDesktop = `
 	.${blockId} .eb-notice-title{
 		${titleTypoStylesDesktop}		
-		${titleColor ? `color: ${titleColor};` : " "}
+		color: ${titleColor || "#fff"};
 	}
 	`;
 
@@ -329,7 +329,7 @@ export default function Edit(props) {
 	const textStylesDesktop = `
 	.${blockId} .eb-notice-text{
 		${textTypoStylesDesktop}
-		${textColor ? `color: ${textColor};` : " "}
+		color: ${textColor || "#edf1f7"};
 	}
 	`;
 
@@ -348,7 +348,7 @@ export default function Edit(props) {
 	// dismiss styles css in strings ⬇
 	const dismissStylesDesktop = `
 	.${blockId} .eb-notice-dismiss{
-		${textColor ? `color: ${textColor};` : " "}
+		color: ${textColor || "#edf1f7"};
 		display: ${dismissible ? "flex" : "none"};
 	}
 	`;
