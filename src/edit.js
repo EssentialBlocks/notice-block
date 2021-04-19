@@ -51,10 +51,10 @@ export default function Edit(props) {
 
 		paddingUnit,
 
-		paddingTop = 0, // padding attributes fallbacked to 0 when undefined. Because padding style is done in one line (see inside 'wrapperStylesDesktop') rather than 4 line so, it cannot be undefined there otherwise it'll be invalid css string.
-		paddingRight = 0,
-		paddingBottom = 0,
-		paddingLeft = 0,
+		paddingTop,
+		paddingRight,
+		paddingBottom,
+		paddingLeft,
 
 		TABmarginUnit,
 
@@ -183,7 +183,11 @@ export default function Edit(props) {
 				? `margin-bottom: ${parseFloat(marginBottom)}${marginUnit};`
 				: " "
 		}
-		padding: ${paddingTop}${paddingUnit} ${paddingRight}${paddingUnit} ${paddingBottom}${paddingUnit} ${paddingLeft}${paddingUnit};
+		padding: 
+			${paddingTop || 0}${paddingUnit} 
+			${paddingRight || 0}${paddingUnit} 
+			${paddingBottom || 0}${paddingUnit} 
+			${paddingLeft || 0}${paddingUnit};
 
 		background: ${backgroundColor};
 		box-shadow: ${shadowHOffset}px ${shadowVOffset}px ${shadowBlur}px ${shadowSpread}px ${shadowColor};

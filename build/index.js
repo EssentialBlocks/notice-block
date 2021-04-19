@@ -1654,14 +1654,10 @@ function Edit(props) {
       marginBottom = attributes.marginBottom,
       marginLeft = attributes.marginLeft,
       paddingUnit = attributes.paddingUnit,
-      _attributes$paddingTo = attributes.paddingTop,
-      paddingTop = _attributes$paddingTo === void 0 ? 0 : _attributes$paddingTo,
-      _attributes$paddingRi = attributes.paddingRight,
-      paddingRight = _attributes$paddingRi === void 0 ? 0 : _attributes$paddingRi,
-      _attributes$paddingBo = attributes.paddingBottom,
-      paddingBottom = _attributes$paddingBo === void 0 ? 0 : _attributes$paddingBo,
-      _attributes$paddingLe = attributes.paddingLeft,
-      paddingLeft = _attributes$paddingLe === void 0 ? 0 : _attributes$paddingLe,
+      paddingTop = attributes.paddingTop,
+      paddingRight = attributes.paddingRight,
+      paddingBottom = attributes.paddingBottom,
+      paddingLeft = attributes.paddingLeft,
       TABmarginUnit = attributes.TABmarginUnit,
       TABmarginTop = attributes.TABmarginTop,
       TABmarginRight = attributes.TABmarginRight,
@@ -1779,7 +1775,7 @@ function Edit(props) {
       textTypoStylesMobile = _generateTypographySt2.typoStylesMobile; // wrapper styles css in strings ⬇
 
 
-  var wrapperStylesDesktop = "\n\t.".concat(blockId, "{\n\t\t").concat(marginTop ? "margin-top: ".concat(parseFloat(marginTop)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginRight ? "margin-right: ".concat(parseFloat(marginRight)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginLeft ? "margin-left: ".concat(parseFloat(marginLeft)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginBottom ? "margin-bottom: ".concat(parseFloat(marginBottom)).concat(marginUnit, ";") : " ", "\n\t\tpadding: ").concat(paddingTop).concat(paddingUnit, " ").concat(paddingRight).concat(paddingUnit, " ").concat(paddingBottom).concat(paddingUnit, " ").concat(paddingLeft).concat(paddingUnit, ";\n\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
+  var wrapperStylesDesktop = "\n\t.".concat(blockId, "{\n\t\t").concat(marginTop ? "margin-top: ".concat(parseFloat(marginTop)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginRight ? "margin-right: ".concat(parseFloat(marginRight)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginLeft ? "margin-left: ".concat(parseFloat(marginLeft)).concat(marginUnit, ";") : " ", "\n\t\t").concat(marginBottom ? "margin-bottom: ".concat(parseFloat(marginBottom)).concat(marginUnit, ";") : " ", "\n\t\tpadding: \n\t\t\t").concat(paddingTop || 0).concat(paddingUnit, " \n\t\t\t").concat(paddingRight || 0).concat(paddingUnit, " \n\t\t\t").concat(paddingBottom || 0).concat(paddingUnit, " \n\t\t\t").concat(paddingLeft || 0).concat(paddingUnit, ";\n\n\t\tbackground: ").concat(backgroundColor, ";\n\t\tbox-shadow: ").concat(shadowHOffset, "px ").concat(shadowVOffset, "px ").concat(shadowBlur, "px ").concat(shadowSpread, "px ").concat(shadowColor, ";\n\t\tborder-radius: 5px;\n\t}\n\t");
   var wrapperStylesTab = "\n\t.".concat(blockId, "{\n\t\t").concat(TABmarginTop ? "margin-top: ".concat(parseFloat(TABmarginTop)).concat(TABmarginUnit, ";") : " ", "\n\t\t").concat(TABmarginRight ? "margin-right: ".concat(parseFloat(TABmarginRight)).concat(TABmarginUnit, ";") : " ", "\n\t\t").concat(TABmarginLeft ? "margin-left: ".concat(parseFloat(TABmarginLeft)).concat(TABmarginUnit, ";") : " ", "\n\t\t").concat(TABmarginBottom ? "margin-bottom: ".concat(parseFloat(TABmarginBottom)).concat(TABmarginUnit, ";") : " ", "\n\t\t").concat(TABpaddingTop ? "padding-top: ".concat(parseFloat(TABpaddingTop)).concat(TABpaddingUnit, ";") : " ", "\n\t\t").concat(TABpaddingRight ? "padding-right: ".concat(parseFloat(TABpaddingRight)).concat(TABpaddingUnit, ";") : " ", "\n\t\t").concat(TABpaddingLeft ? "padding-left: ".concat(parseFloat(TABpaddingLeft)).concat(TABpaddingUnit, ";") : " ", "\n\t\t").concat(TABpaddingBottom ? "padding-bottom: ".concat(parseFloat(TABpaddingBottom)).concat(TABpaddingUnit, ";") : " ", "\n\t}\n\t");
   var wrapperStylesMobile = "\n\t.".concat(blockId, "{\n\t\t").concat(MOBmarginTop ? "margin-top: ".concat(parseFloat(MOBmarginTop)).concat(MOBmarginUnit, ";") : " ", "\n\t\t").concat(MOBmarginRight ? "margin-right: ".concat(parseFloat(MOBmarginRight)).concat(MOBmarginUnit, ";") : " ", "\n\t\t").concat(MOBmarginLeft ? "margin-left: ".concat(parseFloat(MOBmarginLeft)).concat(MOBmarginUnit, ";") : " ", "\n\t\t").concat(MOBmarginBottom ? "margin-bottom: ".concat(parseFloat(MOBmarginBottom)).concat(MOBmarginUnit, ";") : " ", "\n\t\t").concat(MOBpaddingTop ? "padding-top: ".concat(parseFloat(MOBpaddingTop)).concat(MOBpaddingUnit, ";") : " ", "\n\t\t").concat(MOBpaddingRight ? "padding-right: ".concat(parseFloat(MOBpaddingRight)).concat(MOBpaddingUnit, ";") : " ", "\n\t\t").concat(MOBpaddingLeft ? "padding-left: ".concat(parseFloat(MOBpaddingLeft)).concat(MOBpaddingUnit, ";") : " ", "\n\t\t").concat(MOBpaddingBottom ? "padding-bottom: ".concat(parseFloat(MOBpaddingBottom)).concat(MOBpaddingUnit, ";") : " ", "\t\n\t}\n\t"); //
   // titleWrapper styles css in strings ⬇
