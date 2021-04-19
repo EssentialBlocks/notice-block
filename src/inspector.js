@@ -8,9 +8,6 @@ import {
 	ToggleControl,
 	SelectControl,
 	RangeControl,
-	BaseControl,
-	Button,
-	Dropdown,
 } from "@wordpress/components";
 import { useEffect } from "@wordpress/element";
 
