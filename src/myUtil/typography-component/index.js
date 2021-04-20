@@ -8,9 +8,15 @@ import {
 import { __ } from "@wordpress/i18n";
 import UnitControl from "../../../util/unit-control";
 import FontPicker from "./FontPicker";
-import { TypographyIcon } from "./icons";
-
+import TypographyIcon from "./Icon";
 import WithResButtons from "./WithResButtons";
+import {
+	sizeUnitTypes,
+	optionsFontWeights,
+	optionsTextTransforms,
+	optionsTextDecorations,
+	optionsLhLsp,
+} from "./constants";
 
 function TypographyDropdown({
 	baseLabel,
@@ -31,13 +37,19 @@ function TypographyDropdown({
 		[`${typographyPrefixConstant}LineHeight`]: lineHeight,
 		[`${typographyPrefixConstant}LineHeightUnit`]: lineHeightUnit,
 
-		[`TAB${typographyPrefixConstant}FontSize`]: TABfontSize = fontSize,
-		[`TAB${typographyPrefixConstant}LetterSpacing`]: TABletterSpacing = letterSpacing,
-		[`TAB${typographyPrefixConstant}LineHeight`]: TABlineHeight = lineHeight,
+		[`TAB${typographyPrefixConstant}SizeUnit`]: TABsizeUnit,
+		[`TAB${typographyPrefixConstant}LetterSpacingUnit`]: TABletterSpacingUnit,
+		[`TAB${typographyPrefixConstant}LineHeightUnit`]: TABlineHeightUnit,
+		[`TAB${typographyPrefixConstant}FontSize`]: TABfontSize,
+		[`TAB${typographyPrefixConstant}LetterSpacing`]: TABletterSpacing,
+		[`TAB${typographyPrefixConstant}LineHeight`]: TABlineHeight,
 
-		[`MOB${typographyPrefixConstant}FontSize`]: MOBfontSize = TABfontSize,
-		[`MOB${typographyPrefixConstant}LetterSpacing`]: MOBletterSpacing = TABletterSpacing,
-		[`MOB${typographyPrefixConstant}LineHeight`]: MOBlineHeight = TABlineHeight,
+		[`MOB${typographyPrefixConstant}SizeUnit`]: MOBsizeUnit,
+		[`MOB${typographyPrefixConstant}LetterSpacingUnit`]: MOBletterSpacingUnit,
+		[`MOB${typographyPrefixConstant}LineHeightUnit`]: MOBlineHeightUnit,
+		[`MOB${typographyPrefixConstant}FontSize`]: MOBfontSize,
+		[`MOB${typographyPrefixConstant}LetterSpacing`]: MOBletterSpacing,
+		[`MOB${typographyPrefixConstant}LineHeight`]: MOBlineHeight,
 	} = attributes;
 
 	return (
@@ -66,97 +78,94 @@ function TypographyDropdown({
 							}}
 						/>
 
-						<UnitControl
-							selectedUnit={sizeUnit}
-							unitTypes={[
-								{ label: "px", value: "px" },
-								{ label: "%", value: "%" },
-								{ label: "em", value: "em" },
-							]}
-							onClick={(SizeUnit) =>
-								setAttributes({
-									[`${typographyPrefixConstant}SizeUnit`]: SizeUnit,
-								})
-							}
-						/>
+						<WithResButtons
+							className="forFontSize"
+							resOption={resOption}
+							setAttributes={setAttributes}
+						>
+							{resOption === "desktop" && (
+								<>
+									<UnitControl
+										selectedUnit={sizeUnit}
+										unitTypes={sizeUnitTypes}
+										onClick={(sizeUnit) =>
+											setAttributes({
+												[`${typographyPrefixConstant}SizeUnit`]: sizeUnit,
+											})
+										}
+									/>
+									<RangeControl
+										label={__("Font Size")}
+										value={fontSize}
+										onChange={(FontSize) =>
+											setAttributes({
+												[`${typographyPrefixConstant}FontSize`]: FontSize,
+											})
+										}
+										step={sizeUnit === "em" ? 0.1 : 1}
+										min={0}
+										max={sizeUnit === "em" ? 10 : 300}
+									/>
+								</>
+							)}
 
-						{resOption === "desktop" && (
-							<WithResButtons
-								className="forFontSize"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
-								<RangeControl
-									label={__("Font Size")}
-									value={fontSize}
-									onChange={(FontSize) =>
-										setAttributes({
-											[`${typographyPrefixConstant}FontSize`]: FontSize,
-										})
-									}
-									step={sizeUnit === "em" ? 0.1 : 1}
-									min={0}
-									max={sizeUnit === "em" ? 10 : 300}
-								/>
-							</WithResButtons>
-						)}
+							{resOption === "tab" && (
+								<>
+									<UnitControl
+										selectedUnit={TABsizeUnit}
+										unitTypes={sizeUnitTypes}
+										onClick={(TABsizeUnit) =>
+											setAttributes({
+												[`TAB${typographyPrefixConstant}SizeUnit`]: TABsizeUnit,
+											})
+										}
+									/>
+									<RangeControl
+										label={__("Font Size")}
+										value={TABfontSize}
+										onChange={(FontSize) =>
+											setAttributes({
+												[`TAB${typographyPrefixConstant}FontSize`]: FontSize,
+											})
+										}
+										step={TABsizeUnit === "em" ? 0.1 : 1}
+										min={0}
+										max={TABsizeUnit === "em" ? 10 : 300}
+									/>
+								</>
+							)}
 
-						{resOption === "tab" && (
-							<WithResButtons
-								className="forFontSize"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
-								<RangeControl
-									label={__("Font Size")}
-									value={TABfontSize}
-									onChange={(FontSize) =>
-										setAttributes({
-											[`TAB${typographyPrefixConstant}FontSize`]: FontSize,
-										})
-									}
-									step={sizeUnit === "em" ? 0.1 : 1}
-									min={0}
-									max={sizeUnit === "em" ? 10 : 300}
-								/>
-							</WithResButtons>
-						)}
-						{resOption === "mobile" && (
-							<WithResButtons
-								className="forFontSize"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
-								<RangeControl
-									label={__("Font Size")}
-									value={MOBfontSize}
-									onChange={(FontSize) =>
-										setAttributes({
-											[`MOB${typographyPrefixConstant}FontSize`]: FontSize,
-										})
-									}
-									step={sizeUnit === "em" ? 0.1 : 1}
-									min={0}
-									max={sizeUnit === "em" ? 10 : 300}
-								/>
-							</WithResButtons>
-						)}
+							{resOption === "mobile" && (
+								<>
+									<UnitControl
+										selectedUnit={MOBsizeUnit}
+										unitTypes={sizeUnitTypes}
+										onClick={(MOBsizeUnit) =>
+											setAttributes({
+												[`MOB${typographyPrefixConstant}SizeUnit`]: MOBsizeUnit,
+											})
+										}
+									/>
+									<RangeControl
+										label={__("Font Size")}
+										value={MOBfontSize}
+										onChange={(FontSize) =>
+											setAttributes({
+												[`MOB${typographyPrefixConstant}FontSize`]: FontSize,
+											})
+										}
+										step={MOBsizeUnit === "em" ? 0.1 : 1}
+										min={0}
+										max={MOBsizeUnit === "em" ? 10 : 300}
+									/>
+								</>
+							)}
+						</WithResButtons>
 
 						<SelectControl
 							label={__("Font Weight")}
 							value={fontWeight}
-							options={[
-								{ label: __("Default"), value: "" },
-								{ label: __("100"), value: "100" },
-								{ label: __("200"), value: "200" },
-								{ label: __("300"), value: "300" },
-								{ label: __("400"), value: "400" },
-								{ label: __("500"), value: "500" },
-								{ label: __("600"), value: "600" },
-								{ label: __("700"), value: "700" },
-								{ label: __("800"), value: "800" },
-								{ label: __("900"), value: "900" },
-							]}
+							options={optionsFontWeights}
 							onChange={(FontWeight) =>
 								setAttributes({
 									[`${typographyPrefixConstant}FontWeight`]: FontWeight,
@@ -167,13 +176,7 @@ function TypographyDropdown({
 						<SelectControl
 							label={__("Text Transform")}
 							value={textTransform}
-							options={[
-								{ label: __("Default"), value: "" },
-								{ label: __("None"), value: "none" },
-								{ label: __("Lowercase"), value: "lowercase" },
-								{ label: __("Capitalize"), value: "capitalize" },
-								{ label: __("Uppercase"), value: "uppercase" },
-							]}
+							options={optionsTextTransforms}
 							onChange={(TextTransform) =>
 								setAttributes({
 									[`${typographyPrefixConstant}TextTransform`]: TextTransform,
@@ -184,17 +187,7 @@ function TypographyDropdown({
 						<SelectControl
 							label={__("Text Decoration")}
 							value={textDecoration}
-							options={[
-								{ label: __("Default"), value: "" },
-								{ label: __("None"), value: "initial" },
-								{ label: __("Overline"), value: "overline" },
-								{ label: __("Line Through"), value: "line-through" },
-								{ label: __("Underline"), value: "underline" },
-								{
-									label: __("Underline Oveline"),
-									value: "underline overline",
-								},
-							]}
+							options={optionsTextDecorations}
 							onChange={(TextDecoration) =>
 								setAttributes({
 									[`${typographyPrefixConstant}TextDecoration`]: TextDecoration,
@@ -202,151 +195,173 @@ function TypographyDropdown({
 							}
 						/>
 
-						<UnitControl
-							selectedUnit={letterSpacingUnit}
-							unitTypes={[
-								{ label: "px", value: "px" },
-								{ label: "em", value: "em" },
-							]}
-							onClick={(LetterSpacingUnit) =>
-								setAttributes({
-									[`${typographyPrefixConstant}LetterSpacingUnit`]: LetterSpacingUnit,
-								})
-							}
-						/>
-						{resOption === "desktop" && (
-							<WithResButtons
-								className="forLetterSpacing"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
-								<RangeControl
-									label={__("Letter Spacing")}
-									value={letterSpacing}
-									onChange={(LetterSpacing) =>
-										setAttributes({
-											[`${typographyPrefixConstant}LetterSpacing`]: LetterSpacing,
-										})
-									}
-									min={0}
-									max={letterSpacingUnit === "em" ? 10 : 100}
-									step={letterSpacingUnit === "em" ? 0.1 : 1}
-								/>
-							</WithResButtons>
-						)}
-						{resOption === "tab" && (
-							<WithResButtons
-								className="forLetterSpacing"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
-								<RangeControl
-									label={__("Letter Spacing")}
-									value={TABletterSpacing}
-									onChange={(LetterSpacing) =>
-										setAttributes({
-											[`TAB${typographyPrefixConstant}LetterSpacing`]: LetterSpacing,
-										})
-									}
-									min={0}
-									max={letterSpacingUnit === "em" ? 10 : 100}
-									step={letterSpacingUnit === "em" ? 0.1 : 1}
-								/>
-							</WithResButtons>
-						)}
-						{resOption === "mobile" && (
-							<WithResButtons
-								className="forLetterSpacing"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
-								<RangeControl
-									label={__("Letter Spacing")}
-									value={MOBletterSpacing}
-									onChange={(LetterSpacing) =>
-										setAttributes({
-											[`MOB${typographyPrefixConstant}LetterSpacing`]: LetterSpacing,
-										})
-									}
-									min={0}
-									max={letterSpacingUnit === "em" ? 10 : 100}
-									step={letterSpacingUnit === "em" ? 0.1 : 1}
-								/>
-							</WithResButtons>
-						)}
-						<UnitControl
-							selectedUnit={lineHeightUnit}
-							unitTypes={[
-								{ label: "px", value: "px" },
-								{ label: "em", value: "em" },
-							]}
-							onClick={(LineHeightUnit) =>
-								setAttributes({
-									[`${typographyPrefixConstant}LineHeightUnit`]: LineHeightUnit,
-								})
-							}
-						/>
+						<WithResButtons
+							className="forLetterSpacing"
+							resOption={resOption}
+							setAttributes={setAttributes}
+						>
+							{resOption === "desktop" && (
+								<>
+									<UnitControl
+										selectedUnit={letterSpacingUnit}
+										unitTypes={optionsLhLsp}
+										onClick={(LetterSpacingUnit) =>
+											setAttributes({
+												[`${typographyPrefixConstant}LetterSpacingUnit`]: LetterSpacingUnit,
+											})
+										}
+									/>
+									<RangeControl
+										label={__("Letter Spacing")}
+										value={letterSpacing}
+										onChange={(LetterSpacing) =>
+											setAttributes({
+												[`${typographyPrefixConstant}LetterSpacing`]: LetterSpacing,
+											})
+										}
+										min={0}
+										max={letterSpacingUnit === "em" ? 10 : 100}
+										step={letterSpacingUnit === "em" ? 0.1 : 1}
+									/>
+								</>
+							)}
 
-						{resOption === "desktop" && (
-							<WithResButtons
-								className="forLineHeight"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
-								<RangeControl
-									label={__("Line Height")}
-									value={lineHeight}
-									onChange={(LineHeight) =>
-										setAttributes({
-											[`${typographyPrefixConstant}LineHeight`]: LineHeight,
-										})
-									}
-									min={0}
-									max={lineHeightUnit === "em" ? 10 : 600}
-									step={lineHeightUnit === "em" ? 0.1 : 1}
-								/>
-							</WithResButtons>
-						)}
-						{resOption === "tab" && (
-							<WithResButtons
-								className="forLineHeight"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
-								<RangeControl
-									label={__("Line Height")}
-									value={TABlineHeight}
-									onChange={(LineHeight) =>
-										setAttributes({
-											[`TAB${typographyPrefixConstant}LineHeight`]: LineHeight,
-										})
-									}
-									min={0}
-									max={lineHeightUnit === "em" ? 10 : 600}
-									step={lineHeightUnit === "em" ? 0.1 : 1}
-								/>
-							</WithResButtons>
-						)}
-						{resOption === "mobile" && (
-							<WithResButtons
-								className="forLineHeight"
-								resOption={resOption}
-								setAttributes={setAttributes}
-							>
-								<RangeControl
-									label={__("Line Height")}
-									value={MOBlineHeight}
-									onChange={(LineHeight) =>
-										setAttributes({
-											[`MOB${typographyPrefixConstant}LineHeight`]: LineHeight,
-										})
-									}
-									min={0}
-									max={lineHeightUnit === "em" ? 10 : 600}
-									step={lineHeightUnit === "em" ? 0.1 : 1}
-								/>
-							</WithResButtons>
-						)}
+							{resOption === "tab" && (
+								<>
+									<UnitControl
+										selectedUnit={TABletterSpacingUnit}
+										unitTypes={optionsLhLsp}
+										onClick={(TABletterSpacingUnit) =>
+											setAttributes({
+												[`TAB${typographyPrefixConstant}LetterSpacingUnit`]: TABletterSpacingUnit,
+											})
+										}
+									/>
+									<RangeControl
+										label={__("Letter Spacing")}
+										value={TABletterSpacing}
+										onChange={(LetterSpacing) =>
+											setAttributes({
+												[`TAB${typographyPrefixConstant}LetterSpacing`]: LetterSpacing,
+											})
+										}
+										min={0}
+										max={TABletterSpacingUnit === "em" ? 10 : 100}
+										step={TABletterSpacingUnit === "em" ? 0.1 : 1}
+									/>
+								</>
+							)}
+
+							{resOption === "mobile" && (
+								<>
+									<UnitControl
+										selectedUnit={MOBletterSpacingUnit}
+										unitTypes={optionsLhLsp}
+										onClick={(MOBletterSpacingUnit) =>
+											setAttributes({
+												[`MOB${typographyPrefixConstant}LetterSpacingUnit`]: MOBletterSpacingUnit,
+											})
+										}
+									/>
+									<RangeControl
+										label={__("Letter Spacing")}
+										value={MOBletterSpacing}
+										onChange={(LetterSpacing) =>
+											setAttributes({
+												[`MOB${typographyPrefixConstant}LetterSpacing`]: LetterSpacing,
+											})
+										}
+										min={0}
+										max={MOBletterSpacingUnit === "em" ? 10 : 100}
+										step={MOBletterSpacingUnit === "em" ? 0.1 : 1}
+									/>
+								</>
+							)}
+						</WithResButtons>
+
+						<WithResButtons
+							className="forLineHeight"
+							resOption={resOption}
+							setAttributes={setAttributes}
+						>
+							{resOption === "desktop" && (
+								<>
+									<UnitControl
+										selectedUnit={lineHeightUnit}
+										unitTypes={optionsLhLsp}
+										onClick={(LineHeightUnit) =>
+											setAttributes({
+												[`${typographyPrefixConstant}LineHeightUnit`]: LineHeightUnit,
+											})
+										}
+									/>
+									<RangeControl
+										label={__("Line Height")}
+										value={lineHeight}
+										onChange={(LineHeight) =>
+											setAttributes({
+												[`${typographyPrefixConstant}LineHeight`]: LineHeight,
+											})
+										}
+										min={0}
+										max={lineHeightUnit === "em" ? 10 : 600}
+										step={lineHeightUnit === "em" ? 0.1 : 1}
+									/>
+								</>
+							)}
+
+							{resOption === "tab" && (
+								<>
+									<UnitControl
+										selectedUnit={TABlineHeightUnit}
+										unitTypes={optionsLhLsp}
+										onClick={(TABlineHeightUnit) =>
+											setAttributes({
+												[`TAB${typographyPrefixConstant}LineHeightUnit`]: TABlineHeightUnit,
+											})
+										}
+									/>
+									<RangeControl
+										label={__("Line Height")}
+										value={TABlineHeight}
+										onChange={(LineHeight) =>
+											setAttributes({
+												[`TAB${typographyPrefixConstant}LineHeight`]: LineHeight,
+											})
+										}
+										min={0}
+										max={TABlineHeightUnit === "em" ? 10 : 600}
+										step={TABlineHeightUnit === "em" ? 0.1 : 1}
+									/>
+								</>
+							)}
+
+							{resOption === "mobile" && (
+								<>
+									<UnitControl
+										selectedUnit={MOBlineHeightUnit}
+										unitTypes={optionsLhLsp}
+										onClick={(MOBlineHeightUnit) =>
+											setAttributes({
+												[`MOB${typographyPrefixConstant}LineHeightUnit`]: MOBlineHeightUnit,
+											})
+										}
+									/>
+									<RangeControl
+										label={__("Line Height")}
+										value={MOBlineHeight}
+										onChange={(LineHeight) =>
+											setAttributes({
+												[`MOB${typographyPrefixConstant}LineHeight`]: LineHeight,
+											})
+										}
+										min={0}
+										max={MOBlineHeightUnit === "em" ? 10 : 600}
+										step={MOBlineHeightUnit === "em" ? 0.1 : 1}
+									/>
+								</>
+							)}
+						</WithResButtons>
 					</div>
 				)}
 			/>

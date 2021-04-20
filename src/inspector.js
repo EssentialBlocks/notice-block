@@ -8,9 +8,6 @@ import {
 	ToggleControl,
 	SelectControl,
 	RangeControl,
-	BaseControl,
-	Button,
-	Dropdown,
 } from "@wordpress/components";
 import { useEffect } from "@wordpress/element";
 
@@ -21,7 +18,7 @@ import { NOTICE_TYPES, FONT_SIZE_UNITS } from "./constants";
 
 import ColorControl from "../util/color-control";
 import UnitControl from "../util/unit-control";
-import DimensionsControl from "../util/dimensions-control";
+import DimensionsControl from "./myUtil/dimensions-control";
 import TypographyDropdown from "./myUtil/typography-component";
 import ResPanelBody from "./myUtil/ResPanelBody";
 
@@ -38,8 +35,6 @@ function Inspector(props) {
 
 		dismissible,
 		noticeType,
-		// titleFontSize,
-		// textFontSize,
 		backgroundColor,
 		titleColor,
 		textColor,
@@ -49,99 +44,49 @@ function Inspector(props) {
 		shadowVOffset,
 		shadowBlur,
 		shadowSpread,
-		// titleSizeUnit,
-		// textSizeUnit,
-		// titleFontFamily,
-		// titleFontWeight,
-		// titleTextTransform,
-		// titleTextDecoration,
-		// titleLineHeight,
-		// titleLineHeightUnit,
-		// titleLetterSpacing,
-		// titleLetterSpacingUnit,
-		// textFontFamily,
-		// textFontWeight,
-		// textTextTransform,
-		// textTextDecoration,
-		// textLineHeight,
-		// textLineHeightUnit,
-		// textLetterSpacing,
-		// textLetterSpacingUnit,
 
 		// margin padding attributes ⬇
 		marginUnit,
 
-		marginTop = marginTop || 0,
-		marginRight = marginRight || 0,
-		marginBottom = marginBottom || 0,
-		marginLeft = marginLeft || 0,
+		marginTop,
+		marginRight,
+		marginBottom,
+		marginLeft,
 
 		paddingUnit,
 
-		paddingTop = paddingTop || 0,
-		paddingRight = paddingRight || 0,
-		paddingBottom = paddingBottom || 0,
-		paddingLeft = paddingLeft || 0,
+		paddingTop,
+		paddingRight,
+		paddingBottom,
+		paddingLeft,
 
-		TABmarginUnit = TABmarginUnit || marginUnit,
+		TABmarginUnit,
 
-		TABmarginTop = TABmarginTop === 0
-			? TABmarginTop
-			: TABmarginTop || marginTop,
-		TABmarginRight = TABmarginRight === 0
-			? TABmarginRight
-			: TABmarginRight || marginRight,
-		TABmarginBottom = TABmarginBottom === 0
-			? TABmarginBottom
-			: TABmarginBottom || marginBottom,
-		TABmarginLeft = TABmarginLeft === 0
-			? TABmarginLeft
-			: TABmarginLeft || marginLeft,
+		TABmarginTop,
+		TABmarginRight,
+		TABmarginBottom,
+		TABmarginLeft,
 
-		TABpaddingUnit = TABpaddingUnit || paddingUnit,
+		TABpaddingUnit,
 
-		TABpaddingTop = TABpaddingTop === 0
-			? TABpaddingTop
-			: TABpaddingTop || paddingTop,
-		TABpaddingRight = TABpaddingRight === 0
-			? TABpaddingRight
-			: TABpaddingRight || paddingRight,
-		TABpaddingBottom = TABpaddingBottom === 0
-			? TABpaddingBottom
-			: TABpaddingBottom || paddingBottom,
-		TABpaddingLeft = TABpaddingLeft === 0
-			? TABpaddingLeft
-			: TABpaddingLeft || paddingLeft,
+		TABpaddingTop,
+		TABpaddingRight,
+		TABpaddingBottom,
+		TABpaddingLeft,
 
-		MOBmarginUnit = MOBmarginUnit || TABmarginUnit || marginUnit,
+		MOBmarginUnit,
 
-		MOBmarginTop = MOBmarginTop === 0
-			? MOBmarginTop
-			: MOBmarginTop || TABmarginTop,
-		MOBmarginRight = MOBmarginRight === 0
-			? MOBmarginRight
-			: MOBmarginRight || TABmarginRight,
-		MOBmarginBottom = MOBmarginBottom === 0
-			? MOBmarginBottom
-			: MOBmarginBottom || TABmarginBottom,
-		MOBmarginLeft = MOBmarginLeft === 0
-			? MOBmarginLeft
-			: MOBmarginLeft || TABmarginLeft,
+		MOBmarginTop,
+		MOBmarginRight,
+		MOBmarginBottom,
+		MOBmarginLeft,
 
-		MOBpaddingUnit = MOBpaddingUnit || TABpaddingUnit || paddingUnit,
+		MOBpaddingUnit,
 
-		MOBpaddingTop = MOBpaddingTop === 0
-			? MOBpaddingTop
-			: MOBpaddingTop || TABpaddingTop,
-		MOBpaddingRight = MOBpaddingRight === 0
-			? MOBpaddingRight
-			: MOBpaddingRight || TABpaddingRight,
-		MOBpaddingBottom = MOBpaddingBottom === 0
-			? MOBpaddingBottom
-			: MOBpaddingBottom || TABpaddingBottom,
-		MOBpaddingLeft = MOBpaddingLeft === 0
-			? MOBpaddingLeft
-			: MOBpaddingLeft || TABpaddingLeft,
+		MOBpaddingTop,
+		MOBpaddingRight,
+		MOBpaddingBottom,
+		MOBpaddingLeft,
 	} = attributes;
 
 	const onTypeChange = (type) => {
@@ -193,7 +138,7 @@ function Inspector(props) {
 		}
 	};
 
-	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
+	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
 	useEffect(() => {
 		const bodyClasses = document.body.className;
 		// console.log("----log from inspector useEffect with empty []", {
@@ -215,113 +160,44 @@ function Inspector(props) {
 
 	// this useEffect is for mimmiking css for all the eb blocks on resOption changing
 	useEffect(() => {
-		const allCounterWrapper = document.querySelectorAll(
-			".eb-guten-block-main-parrent-wrapper:not(.is-selected) > style"
+		const allEbBlocksWrapper = document.querySelectorAll(
+			".eb-guten-block-main-parent-wrapper:not(.is-selected) > style"
 		);
-
-		console.log("---inspector", { allCounterWrapper });
-		if (allCounterWrapper.length < 1) return;
-
-		allCounterWrapper.forEach((styleTag) => {
+		console.log("---inspector", { allEbBlocksWrapper });
+		if (allEbBlocksWrapper.length < 1) return;
+		allEbBlocksWrapper.forEach((styleTag) => {
 			const cssStrings = styleTag.textContent;
 			const minCss = cssStrings.replace(/\s+/g, " ");
-			const regexCssMimmikSpace = /(?<=edit_mimmikcss_start\s*\*\/).+(?=\/\*\s*edit_mimmikcss_end)/i;
+			const regexCssMimmikSpace = /(?<=mimmikcssStart\s\*\/).+(?=\/\*\smimmikcssEnd)/i;
 			let newCssStrings = " ";
-
 			if (resOption === "tab") {
-				let tabCssMacth = minCss.match(
-					/(?<=\@media\s+all\s+and\s+\(max-width\s*\:\s*1030px\s*\)\s*\{).+(?=\}\s*\@media\s+all)/i
-				);
-				let tabCssStrings = (tabCssMacth || [" "])[0];
-				// console.log({
-				// 	tabCssStrings: tabCssStrings,
-				// });
+				const tabCssStrings = (minCss.match(
+					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
+				) || [" "])[0];
+				console.log({ tabCssStrings });
 				newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
 			} else if (resOption === "mobile") {
-				let mobCssMacth = minCss.match(
-					/(?<=\@media\s+all\s+and\s+\(max-width\s*\:\s*680px\s*\)\s*\{).+(?=(\}\s*)$)/i
+				const tabCssStrings = (minCss.match(
+					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
+				) || [" "])[0];
+
+				const mobCssStrings = (minCss.match(
+					/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i
+				) || [" "])[0];
+
+				console.log({ tabCssStrings, mobCssStrings });
+
+				newCssStrings = minCss.replace(
+					regexCssMimmikSpace,
+					`${tabCssStrings} ${mobCssStrings}`
 				);
-				let mobCssStrings = (mobCssMacth || [" "])[0];
-				// console.log({
-				// 	mobCssStrings: mobCssStrings,
-				// });
-				newCssStrings = minCss.replace(regexCssMimmikSpace, mobCssStrings);
 			} else {
 				newCssStrings = minCss.replace(regexCssMimmikSpace, " ");
 			}
-
 			styleTag.textContent = newCssStrings;
 		});
 	}, [resOption]);
 
-	{
-		// const generateTypographyAttributes = (prefixConstant) => {
-		// 	const {
-		// 		[`${prefixConstant}FontFamily`]: fontFamily,
-		// 		[`${prefixConstant}FontWeight`]: fontWeight,
-		// 		[`${prefixConstant}TextTransform`]: textTransform,
-		// 		[`${prefixConstant}TextDecoration`]: textDecoration,
-		// 		[`${prefixConstant}FontSize`]: fontSize,
-		// 		[`${prefixConstant}SizeUnit`]: sizeUnit,
-		// 		[`${prefixConstant}LetterSpacing`]: letterSpacing,
-		// 		[`${prefixConstant}LetterSpacingUnit`]: letterSpacingUnit,
-		// 		[`${prefixConstant}LineHeight`]: lineHeight,
-		// 		[`${prefixConstant}LineHeightUnit`]: lineHeightUnit,
-		// 		[`TAB${prefixConstant}FontFamily`]: TABfontFamily,
-		// 		[`TAB${prefixConstant}FontWeight`]: TABfontWeight,
-		// 		[`TAB${prefixConstant}TextTransform`]: TABtextTransform,
-		// 		[`TAB${prefixConstant}TextDecoration`]: TABtextDecoration,
-		// 		[`TAB${prefixConstant}FontSize`]: TABfontSize,
-		// 		[`TAB${prefixConstant}SizeUnit`]: TABsizeUnit,
-		// 		[`TAB${prefixConstant}LetterSpacing`]: TABletterSpacing,
-		// 		[`TAB${prefixConstant}LetterSpacingUnit`]: TABletterSpacingUnit,
-		// 		[`TAB${prefixConstant}LineHeight`]: TABlineHeight,
-		// 		[`TAB${prefixConstant}LineHeightUnit`]: TABlineHeightUnit,
-		// 		[`MOB${prefixConstant}FontFamily`]: MOBfontFamily,
-		// 		[`MOB${prefixConstant}FontWeight`]: MOBfontWeight,
-		// 		[`MOB${prefixConstant}TextTransform`]: MOBtextTransform,
-		// 		[`MOB${prefixConstant}TextDecoration`]: MOBtextDecoration,
-		// 		[`MOB${prefixConstant}FontSize`]: MOBfontSize,
-		// 		[`MOB${prefixConstant}SizeUnit`]: MOBsizeUnit,
-		// 		[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing,
-		// 		[`MOB${prefixConstant}LetterSpacingUnit`]: MOBletterSpacingUnit,
-		// 		[`MOB${prefixConstant}LineHeight`]: MOBlineHeight,
-		// 		[`MOB${prefixConstant}LineHeightUnit`]: MOBlineHeightUnit,
-		// 	} = attributes;
-		// 	return {
-		// 		fontFamily,
-		// 		fontWeight,
-		// 		textTransform,
-		// 		textDecoration,
-		// 		fontSize,
-		// 		sizeUnit,
-		// 		letterSpacing,
-		// 		letterSpacingUnit,
-		// 		lineHeight,
-		// 		lineHeightUnit,
-		// 		TABfontFamily,
-		// 		TABfontWeight,
-		// 		TABtextTransform,
-		// 		TABtextDecoration,
-		// 		TABfontSize,
-		// 		TABsizeUnit,
-		// 		TABletterSpacing,
-		// 		TABletterSpacingUnit,
-		// 		TABlineHeight,
-		// 		TABlineHeightUnit,
-		// 		MOBfontFamily,
-		// 		MOBfontWeight,
-		// 		MOBtextTransform,
-		// 		MOBtextDecoration,
-		// 		MOBfontSize,
-		// 		MOBsizeUnit,
-		// 		MOBletterSpacing,
-		// 		MOBletterSpacingUnit,
-		// 		MOBlineHeight,
-		// 		MOBlineHeightUnit,
-		// 	};
-		// };
-	}
 	const resRequiredProps = {
 		setAttributes,
 		resOption,
@@ -361,11 +237,7 @@ function Inspector(props) {
 					/>
 				</PanelBody>
 
-				<ResPanelBody
-					title={__("Typography")}
-					initialOpen={false}
-					resRequiredProps={resRequiredProps}
-				>
+				<PanelBody title={__("Typography")} initialOpen={false}>
 					<TypographyDropdown
 						baseLabel="Title"
 						typographyPrefixConstant={typoPrefix_title}
@@ -376,7 +248,7 @@ function Inspector(props) {
 						typographyPrefixConstant={typoPrefix_text}
 						typoRequiredProps={typoRequiredProps}
 					/>
-				</ResPanelBody>
+				</PanelBody>
 
 				<PanelColorSettings
 					title={__("Color Settings")}

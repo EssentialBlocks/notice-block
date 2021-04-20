@@ -13,15 +13,19 @@ const attributes = {
 		type: "number",
 	},
 	blockId: {
-		type: "string"
+		type: "string",
 	},
 	blockRoot: {
-		type: 'string',
-		default: 'essential_block'
+		type: "string",
+		default: "essential_block",
 	},
 	blockMeta: {
-		type: 'string',
-		default: '',
+		type: "object",
+		// default: {
+		// 	desktop: "",
+		// 	tab: "",
+		// 	mobile: "",
+		// },
 	},
 
 	// typography attributes ⬇
@@ -34,16 +38,16 @@ const attributes = {
 	},
 
 	marginTop: {
-		type: "number",
+		type: "string",
 	},
 	marginRight: {
-		type: "number",
+		type: "string",
 	},
 	marginBottom: {
-		type: "number",
+		type: "string",
 	},
 	marginLeft: {
-		type: "number",
+		type: "string",
 	},
 
 	paddingUnit: {
@@ -52,88 +56,92 @@ const attributes = {
 	},
 
 	paddingTop: {
-		type: "number",
-		default: 65,
+		type: "string",
+		default: "65",
 	},
 	paddingRight: {
-		type: "number",
-		default: 60,
+		type: "string",
+		default: "60",
 	},
 	paddingBottom: {
-		type: "number",
-		default: 65,
+		type: "string",
+		default: "65",
 	},
 	paddingLeft: {
-		type: "number",
-		default: 60,
+		type: "string",
+		default: "60",
 	},
 
 	TABmarginUnit: {
 		type: "string",
+		default: "px",
 	},
 
 	TABmarginTop: {
-		type: "number",
+		type: "string",
 	},
 	TABmarginRight: {
-		type: "number",
+		type: "string",
 	},
 	TABmarginBottom: {
-		type: "number",
+		type: "string",
 	},
 	TABmarginLeft: {
-		type: "number",
+		type: "string",
 	},
 
 	TABpaddingUnit: {
 		type: "string",
+		default: "px",
 	},
 
 	TABpaddingTop: {
-		type: "number",
+		type: "string",
 	},
 	TABpaddingRight: {
-		type: "number",
+		type: "string",
 	},
 	TABpaddingBottom: {
-		type: "number",
+		type: "string",
 	},
 	TABpaddingLeft: {
-		type: "number",
+		type: "string",
 	},
 
 	MOBmarginUnit: {
 		type: "string",
+		default: "px",
 	},
 
 	MOBmarginTop: {
-		type: "number",
+		type: "string",
 	},
 	MOBmarginRight: {
-		type: "number",
+		type: "string",
 	},
 	MOBmarginBottom: {
-		type: "number",
+		type: "string",
 	},
 	MOBmarginLeft: {
-		type: "number",
+		type: "string",
 	},
 
 	MOBpaddingUnit: {
 		type: "string",
+		default: "px",
 	},
 
 	MOBpaddingTop: {
-		type: "number",
+		type: "string",
 	},
 	MOBpaddingRight: {
-		type: "number",
+		type: "string",
 	},
 	MOBpaddingBottom: {
-		type: "number",
+		type: "string",
 	},
 	MOBpaddingLeft: {
-		type: "number",
+		type: "string",
 	},
 
 	dismissible: {
