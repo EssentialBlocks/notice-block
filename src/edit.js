@@ -146,6 +146,8 @@ export default function Edit(props) {
 		};
 
 		fixDuplicateBlockId(all_blocks);
+
+		console.log({ blockId });
 	}, []);
 
 	const blockProps = useBlockProps({
