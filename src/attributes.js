@@ -1,5 +1,5 @@
 import * as prefixObjs from "./constants/typographyPrefixConstants";
-import { generateTypographyAttributes } from "./myUtil/helpers";
+import { generateTypographyAttributes } from "./helpers";
 
 const attributes = {
 	// responsive control attributes ⬇

@@ -86,7 +86,7 @@ export const generateTypographyAttributes = (prefixArray) => {
 		};
 	}, {});
 
-	console.log({ typoAttrs });
+	// console.log({ typoAttrs });
 	return typoAttrs;
 };
 

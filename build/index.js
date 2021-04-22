@@ -20,17 +20,6 @@
 
 // extracted by mini-css-extract-plugin
 
-/***/ }),
-
-/***/ "./util/unit-control/style.scss":
-/*!**************************************!*\
-  !*** ./util/unit-control/style.scss ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
 /***/ })
 
 }]);
@@ -1271,6 +1260,79 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./src/ResPanelBody.js":
+/*!*****************************!*\
+  !*** ./src/ResPanelBody.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function ResPanelBody(props) {
+  // console.log("----------ResPanelBody", { props });
+  var title = props.title,
+      initialOpen = props.initialOpen,
+      children = props.children,
+      resRequiredProps = props.resRequiredProps;
+  var resOption = resRequiredProps.resOption,
+      setAttributes = resRequiredProps.setAttributes;
+
+  var handleDesktopBtnClick = function handleDesktopBtnClick() {
+    document.body.classList.add("eb-res-option-desktop");
+    document.body.classList.remove("eb-res-option-tab", "eb-res-option-mobile");
+    setAttributes({
+      resOption: "desktop"
+    });
+  };
+
+  var handleTabBtnClick = function handleTabBtnClick() {
+    document.body.classList.add("eb-res-option-tab");
+    document.body.classList.remove("eb-res-option-desktop", "eb-res-option-mobile");
+    setAttributes({
+      resOption: "tab"
+    });
+  };
+
+  var handleMobileBtnClick = function handleMobileBtnClick() {
+    document.body.classList.add("eb-res-option-mobile");
+    document.body.classList.remove("eb-res-option-desktop", "eb-res-option-tab");
+    setAttributes({
+      resOption: "mobile"
+    });
+  };
+
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["PanelBody"], {
+    title: title,
+    initialOpen: initialOpen
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eb-resButtons"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "eb-res-btn eb-res-btn-desktop ".concat(resOption == "desktop" && "active"),
+    onClick: handleDesktopBtnClick
+  }, /*#__PURE__*/React.createElement("span", {
+    "class": "dashicons dashicons-desktop"
+  })), /*#__PURE__*/React.createElement("button", {
+    className: "eb-res-btn eb-res-btn-tab ".concat(resOption == "tab" && "active"),
+    onClick: handleTabBtnClick
+  }, /*#__PURE__*/React.createElement("span", {
+    "class": "dashicons dashicons-tablet"
+  })), /*#__PURE__*/React.createElement("button", {
+    className: "eb-res-btn eb-res-btn-mobile ".concat(resOption == "mobile" && "active"),
+    onClick: handleMobileBtnClick
+  }, /*#__PURE__*/React.createElement("span", {
+    "class": "dashicons dashicons-smartphone"
+  }))), children));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (ResPanelBody);
+
+/***/ }),
+
 /***/ "./src/attributes.js":
 /*!***************************!*\
   !*** ./src/attributes.js ***!
@@ -1281,7 +1343,7 @@ if (false) {} else {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
-/* harmony import */ var _myUtil_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./myUtil/helpers */ "./src/myUtil/helpers.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -1316,7 +1378,7 @@ var attributes = _objectSpread(_objectSpread({
     // },
 
   }
-}, Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_1__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), {}, {
+}, Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), {}, {
   // margin padding attributes ⬇
   marginUnit: {
     type: "string",
@@ -1601,7 +1663,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _inspector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inspector */ "./src/inspector.js");
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
-/* harmony import */ var _myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./myUtil/helpers */ "./src/myUtil/helpers.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -1706,10 +1768,8 @@ function Edit(props) {
      */
 
 
-    var all_blocks = wp.data.select("core/block-editor").getBlocks();
-    console.log({
-      all_blocks: all_blocks
-    });
+    var all_blocks = wp.data.select("core/block-editor").getBlocks(); // console.log({ all_blocks });
+
     var duplicateFound = false;
 
     var fixDuplicateBlockId = function fixDuplicateBlockId(blocks) {
@@ -1727,8 +1787,8 @@ function Edit(props) {
             if (item.clientId !== clientId) {
               setAttributes({
                 blockId: unique_id
-              });
-              console.log("found a duplicate");
+              }); // console.log("found a duplicate");
+
               duplicateFound = true;
               return;
             } else if (innerBlocks.length > 0) {
@@ -1745,17 +1805,14 @@ function Edit(props) {
       }
     };
 
-    fixDuplicateBlockId(all_blocks);
-    console.log({
-      blockId: blockId
-    });
+    fixDuplicateBlockId(all_blocks); // console.log({ blockId });
   }, []);
   var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"])({
     className: "eb-guten-block-main-parent-wrapper"
   }); //
   // CSS/styling Codes Starts from Here
 
-  var _generateTypographySt = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["generateTypographyStyles"])({
+  var _generateTypographySt = Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["generateTypographyStyles"])({
     attributes: attributes,
     prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["typoPrefix_title"],
     defaultFontSize: 32
@@ -1764,7 +1821,7 @@ function Edit(props) {
       titleTypoStylesTab = _generateTypographySt.typoStylesTab,
       titleTypoStylesMobile = _generateTypographySt.typoStylesMobile;
 
-  var _generateTypographySt2 = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["generateTypographyStyles"])({
+  var _generateTypographySt2 = Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["generateTypographyStyles"])({
     attributes: attributes,
     prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["typoPrefix_text"],
     defaultFontSize: 18
@@ -1791,11 +1848,11 @@ function Edit(props) {
 
   var dismissStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor || "#edf1f7", ";\n\t\tdisplay: ").concat(dismissible ? "flex" : "none", ";\n\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
 
-  var desktopAllStyles = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t")); // all css styles for Tab in strings ⬇
+  var desktopAllStyles = Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t")); // all css styles for Tab in strings ⬇
 
-  var tabAllStyles = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t")); // all css styles for Mobile in strings ⬇
+  var tabAllStyles = Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t")); // all css styles for Mobile in strings ⬇
 
-  var mobileAllStyles = Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t".concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t")); // Set All Style in "blockMeta" Attribute
+  var mobileAllStyles = Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t")); // Set All Style in "blockMeta" Attribute
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var styleObject = {
@@ -1813,7 +1870,7 @@ function Edit(props) {
   return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_3__["default"], props),
   /*#__PURE__*/
   //Edit view here
-  React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(desktopAllStyles, "\n\n\t\t\t\t/* mimmikcssStart */\n\n\t\t\t\t").concat(resOption === "tab" ? tabAllStyles : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? tabAllStyles + mobileAllStyles : " ", "\n\n\t\t\t\t/* mimmikcssEnd */\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\n\n\t\t\t\t\t/* tabcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t\t/* tabcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t\n\t\t\t\t\t/* mobcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_myUtil_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t\t/* mobcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
+  React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(desktopAllStyles, "\n\n\t\t\t\t/* mimmikcssStart */\n\n\t\t\t\t").concat(resOption === "tab" ? tabAllStyles : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? tabAllStyles + mobileAllStyles : " ", "\n\n\t\t\t\t/* mimmikcssEnd */\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\n\n\t\t\t\t\t/* tabcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t\t/* tabcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t\n\t\t\t\t\t/* mobcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t\t/* mobcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
     className: "eb-notice-wrapper ".concat(blockId),
     "data-id": blockId
   }, /*#__PURE__*/React.createElement("div", {
@@ -1853,6 +1910,163 @@ function Edit(props) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/helpers.js":
+/*!************************!*\
+  !*** ./src/helpers.js ***!
+  \************************/
+/*! exports provided: generateTypographyAttributes, textInsideForEdit, generateRandomNumber, hardMinifyCssStrings, softMinifyCssStrings, isCssExists, hasVal, generateTypographyStyles */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateTypographyAttributes", function() { return generateTypographyAttributes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "textInsideForEdit", function() { return textInsideForEdit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateRandomNumber", function() { return generateRandomNumber; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hardMinifyCssStrings", function() { return hardMinifyCssStrings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "softMinifyCssStrings", function() { return softMinifyCssStrings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCssExists", function() { return isCssExists; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasVal", function() { return hasVal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateTypographyStyles", function() { return generateTypographyStyles; });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// function to generate typography attributes for multiple typography control based on the array of prefix
+var generateTypographyAttributes = function generateTypographyAttributes(prefixArray) {
+  var typoAttrs = prefixArray.reduce(function (total, current) {
+    var _result;
+
+    var result = (_result = {}, _defineProperty(_result, "".concat(current, "FontFamily"), {
+      type: "string"
+    }), _defineProperty(_result, "".concat(current, "SizeUnit"), {
+      type: "string",
+      "default": "px"
+    }), _defineProperty(_result, "".concat(current, "FontSize"), {
+      type: "number"
+    }), _defineProperty(_result, "".concat(current, "FontWeight"), {
+      type: "string"
+    }), _defineProperty(_result, "".concat(current, "TextTransform"), {
+      type: "string"
+    }), _defineProperty(_result, "".concat(current, "TextDecoration"), {
+      type: "string"
+    }), _defineProperty(_result, "".concat(current, "LetterSpacingUnit"), {
+      type: "string",
+      "default": "px"
+    }), _defineProperty(_result, "".concat(current, "LetterSpacing"), {
+      type: "number"
+    }), _defineProperty(_result, "".concat(current, "LineHeightUnit"), {
+      type: "string",
+      "default": "em"
+    }), _defineProperty(_result, "".concat(current, "LineHeight"), {
+      type: "number"
+    }), _defineProperty(_result, "TAB".concat(current, "SizeUnit"), {
+      type: "string",
+      "default": "px"
+    }), _defineProperty(_result, "TAB".concat(current, "FontSize"), {
+      type: "number"
+    }), _defineProperty(_result, "TAB".concat(current, "LetterSpacingUnit"), {
+      type: "string",
+      "default": "px"
+    }), _defineProperty(_result, "TAB".concat(current, "LetterSpacing"), {
+      type: "number"
+    }), _defineProperty(_result, "TAB".concat(current, "LineHeightUnit"), {
+      type: "string",
+      "default": "em"
+    }), _defineProperty(_result, "TAB".concat(current, "LineHeight"), {
+      type: "number"
+    }), _defineProperty(_result, "MOB".concat(current, "SizeUnit"), {
+      type: "string",
+      "default": "px"
+    }), _defineProperty(_result, "MOB".concat(current, "FontSize"), {
+      type: "number"
+    }), _defineProperty(_result, "MOB".concat(current, "LetterSpacingUnit"), {
+      type: "string",
+      "default": "px"
+    }), _defineProperty(_result, "MOB".concat(current, "LetterSpacing"), {
+      type: "number"
+    }), _defineProperty(_result, "MOB".concat(current, "LineHeightUnit"), {
+      type: "string",
+      "default": "em"
+    }), _defineProperty(_result, "MOB".concat(current, "LineHeight"), {
+      type: "number"
+    }), _result);
+    return _objectSpread(_objectSpread({}, total), result);
+  }, {}); // console.log({ typoAttrs });
+
+  return typoAttrs;
+}; // helper Functions: function 'textInsideForEdit' is for setting the innertext depending on whether separator should be shown and which separator should be shown
+
+var textInsideForEdit = function textInsideForEdit(value, isShowSeparator, separator) {
+  return isShowSeparator ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator) : value.toString();
+}; // generateRandomNumber function is for generating a random number
+
+var generateRandomNumber = function generateRandomNumber() {
+  return Math.floor(Math.random() * 1000000000);
+}; // hardMinifyCssStrings is for minifying the css which is in the style tag as a string  for view.js
+
+var hardMinifyCssStrings = function hardMinifyCssStrings(cssString) {
+  // console.log({ cssString });
+  return cssString.replace(/\s+/g, " ").replace(/(?<=\:).+(?=\;)/g, function (match) {
+    // console.log({ match, g1, offset, string });
+    return match.trim().replace(/\s+/g, "__s_p_a_c_e__");
+  }) // .replace(/\s+(?!(?:[\w\d\.\-\#]+\{))/g, "")
+  .replace(/\s+(?![\w\d\.\-\#]+\{)/g, "").replace(/\s+/g, " ").replace(/__s_p_a_c_e__/g, " ");
+}; // softMinifyCssStrings is for minifying the css which is in the style tag as a string  for view.js
+
+var softMinifyCssStrings = function softMinifyCssStrings(cssString) {
+  return cssString.replace(/\s+/g, " ");
+}; // check if css string is empty or not.
+
+var isCssExists = function isCssExists(cssString) {
+  return /.+(?=\:(?!hover)(?!focus))/.test(cssString);
+}; // check if range controller input numbers  has value
+
+var hasVal = function hasVal(val) {
+  return val || val === 0;
+}; //
+// function to generate typography styles for an element based on it's prefix
+
+var generateTypographyStyles = function generateTypographyStyles(_ref) {
+  var prefixConstant = _ref.prefixConstant,
+      defaultFontSize = _ref.defaultFontSize,
+      attributes = _ref.attributes;
+  var fontFamily = attributes["".concat(prefixConstant, "FontFamily")],
+      fontWeight = attributes["".concat(prefixConstant, "FontWeight")],
+      textTransform = attributes["".concat(prefixConstant, "TextTransform")],
+      textDecoration = attributes["".concat(prefixConstant, "TextDecoration")],
+      _attributes$ = attributes["".concat(prefixConstant, "FontSize")],
+      fontSize = _attributes$ === void 0 ? defaultFontSize : _attributes$,
+      sizeUnit = attributes["".concat(prefixConstant, "SizeUnit")],
+      letterSpacing = attributes["".concat(prefixConstant, "LetterSpacing")],
+      letterSpacingUnit = attributes["".concat(prefixConstant, "LetterSpacingUnit")],
+      lineHeight = attributes["".concat(prefixConstant, "LineHeight")],
+      lineHeightUnit = attributes["".concat(prefixConstant, "LineHeightUnit")],
+      TABsizeUnit = attributes["TAB".concat(prefixConstant, "SizeUnit")],
+      TABletterSpacingUnit = attributes["TAB".concat(prefixConstant, "LetterSpacingUnit")],
+      TABlineHeightUnit = attributes["TAB".concat(prefixConstant, "LineHeightUnit")],
+      TABfontSize = attributes["TAB".concat(prefixConstant, "FontSize")],
+      TABletterSpacing = attributes["TAB".concat(prefixConstant, "LetterSpacing")],
+      TABlineHeight = attributes["TAB".concat(prefixConstant, "LineHeight")],
+      MOBsizeUnit = attributes["MOB".concat(prefixConstant, "SizeUnit")],
+      MOBletterSpacingUnit = attributes["MOB".concat(prefixConstant, "LetterSpacingUnit")],
+      MOBlineHeightUnit = attributes["MOB".concat(prefixConstant, "LineHeightUnit")],
+      MOBfontSize = attributes["MOB".concat(prefixConstant, "FontSize")],
+      MOBletterSpacing = attributes["MOB".concat(prefixConstant, "LetterSpacing")],
+      MOBlineHeight = attributes["MOB".concat(prefixConstant, "LineHeight")];
+  var typoStylesDesktop = "\n\t\t\t".concat(fontFamily ? "font-family: ".concat(fontFamily, ";") : " ", "\n\t\t\t").concat(hasVal(fontSize) ? "font-size: ".concat(fontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(lineHeight) ? "line-height: ".concat(lineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(fontWeight ? "font-weight: ".concat(fontWeight, ";") : " ", "\n\t\t\t").concat(textDecoration ? "text-decoration: ".concat(textDecoration, ";") : " ", "\n\t\t\t").concat(textTransform ? "text-transform: ".concat(textTransform, ";") : " ", "\n\t\t\t").concat(hasVal(letterSpacing) ? "letter-spacing: ".concat(letterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
+  var typoStylesTab = "\n\t\t\t".concat(hasVal(TABfontSize) ? "font-size: ".concat(TABfontSize).concat(TABsizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(TABlineHeight) ? "line-height: ".concat(TABlineHeight).concat(TABlineHeightUnit, ";") : " ", "\n\t\t\t").concat(hasVal(TABletterSpacing) ? "letter-spacing: ".concat(TABletterSpacing).concat(TABletterSpacingUnit, ";") : " ", "\n\t\t");
+  var typoStylesMobile = "\n\t\t\t".concat(hasVal(MOBfontSize) ? "font-size: ".concat(MOBfontSize).concat(MOBsizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(MOBlineHeight) ? "line-height: ".concat(MOBlineHeight).concat(MOBlineHeightUnit, ";") : " ", "\n\t\t\t").concat(hasVal(MOBletterSpacing) ? "letter-spacing: ".concat(MOBletterSpacing).concat(MOBletterSpacingUnit, ";") : " ", "\n\t\t");
+  return {
+    typoStylesDesktop: typoStylesDesktop,
+    typoStylesTab: typoStylesTab,
+    typoStylesMobile: typoStylesMobile
+  };
+};
 
 /***/ }),
 
@@ -1959,9 +2173,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
 /* harmony import */ var _util_color_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/color-control */ "./util/color-control/index.js");
 /* harmony import */ var _util_unit_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/unit-control */ "./util/unit-control/index.js");
-/* harmony import */ var _myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./myUtil/dimensions-control */ "./src/myUtil/dimensions-control/index.js");
-/* harmony import */ var _myUtil_typography_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./myUtil/typography-component */ "./src/myUtil/typography-component/index.js");
-/* harmony import */ var _myUtil_ResPanelBody__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./myUtil/ResPanelBody */ "./src/myUtil/ResPanelBody.js");
+/* harmony import */ var _util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/dimensions-control */ "./util/dimensions-control/index.js");
+/* harmony import */ var _util_typography_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/typography-control */ "./util/typography-control/index.js");
+/* harmony import */ var _ResPanelBody__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ResPanelBody */ "./src/ResPanelBody.js");
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
 /**
  * WordPress dependencies
@@ -2097,10 +2311,8 @@ function Inspector(props) {
   }, []); // this useEffect is for mimmiking css for all the eb blocks on resOption changing
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
-    var allEbBlocksWrapper = document.querySelectorAll(".eb-guten-block-main-parent-wrapper:not(.is-selected) > style");
-    console.log("---inspector", {
-      allEbBlocksWrapper: allEbBlocksWrapper
-    });
+    var allEbBlocksWrapper = document.querySelectorAll(".eb-guten-block-main-parent-wrapper:not(.is-selected) > style"); // console.log("---inspector", { allEbBlocksWrapper });
+
     if (allEbBlocksWrapper.length < 1) return;
     allEbBlocksWrapper.forEach(function (styleTag) {
       var cssStrings = styleTag.textContent;
@@ -2109,18 +2321,13 @@ function Inspector(props) {
       var newCssStrings = " ";
 
       if (resOption === "tab") {
-        var tabCssStrings = (minCss.match(/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i) || [" "])[0];
-        console.log({
-          tabCssStrings: tabCssStrings
-        });
+        var tabCssStrings = (minCss.match(/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i) || [" "])[0]; // console.log({ tabCssStrings });
+
         newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
       } else if (resOption === "mobile") {
         var _tabCssStrings = (minCss.match(/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i) || [" "])[0];
-        var mobCssStrings = (minCss.match(/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i) || [" "])[0];
-        console.log({
-          tabCssStrings: _tabCssStrings,
-          mobCssStrings: mobCssStrings
-        });
+        var mobCssStrings = (minCss.match(/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i) || [" "])[0]; // console.log({ tabCssStrings, mobCssStrings });
+
         newCssStrings = minCss.replace(regexCssMimmikSpace, "".concat(_tabCssStrings, " ").concat(mobCssStrings));
       } else {
         newCssStrings = minCss.replace(regexCssMimmikSpace, " ");
@@ -2170,11 +2377,11 @@ function Inspector(props) {
   })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Typography"),
     initialOpen: false
-  }, /*#__PURE__*/React.createElement(_myUtil_typography_component__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, /*#__PURE__*/React.createElement(_util_typography_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
     baseLabel: "Title",
     typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_title"],
     typoRequiredProps: typoRequiredProps
-  }), /*#__PURE__*/React.createElement(_myUtil_typography_component__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_typography_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
     baseLabel: "Text",
     typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_text"],
     typoRequiredProps: typoRequiredProps
@@ -2206,7 +2413,7 @@ function Inspector(props) {
       },
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Text Color")
     }]
-  }), /*#__PURE__*/React.createElement(_myUtil_ResPanelBody__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }), /*#__PURE__*/React.createElement(_ResPanelBody__WEBPACK_IMPORTED_MODULE_9__["default"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin & Padding"),
     initialOpen: false,
     resRequiredProps: resRequiredProps
@@ -2218,7 +2425,7 @@ function Inspector(props) {
         marginUnit: marginUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin"),
     top: marginTop,
     right: marginRight,
@@ -2244,7 +2451,7 @@ function Inspector(props) {
         paddingUnit: paddingUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Padding"),
     top: paddingTop,
     right: paddingRight,
@@ -2270,7 +2477,7 @@ function Inspector(props) {
         TABmarginUnit: TABmarginUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin"),
     top: TABmarginTop,
     right: TABmarginRight,
@@ -2296,7 +2503,7 @@ function Inspector(props) {
         TABpaddingUnit: TABpaddingUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Padding"),
     top: TABpaddingTop,
     right: TABpaddingRight,
@@ -2322,7 +2529,7 @@ function Inspector(props) {
         MOBmarginUnit: MOBmarginUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin"),
     top: MOBmarginTop,
     right: MOBmarginRight,
@@ -2348,7 +2555,7 @@ function Inspector(props) {
         MOBpaddingUnit: MOBpaddingUnit
       });
     }
-  }), /*#__PURE__*/React.createElement(_myUtil_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Padding"),
     top: MOBpaddingTop,
     right: MOBpaddingRight,
@@ -2428,83 +2635,164 @@ function Inspector(props) {
 
 /***/ }),
 
-/***/ "./src/myUtil/ResPanelBody.js":
-/*!************************************!*\
-  !*** ./src/myUtil/ResPanelBody.js ***!
-  \************************************/
+/***/ "./src/save.js":
+/*!*********************!*\
+  !*** ./src/save.js ***!
+  \*********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
 
 
-function ResPanelBody(props) {
-  // console.log("----------ResPanelBody", { props });
-  var title = props.title,
-      initialOpen = props.initialOpen,
-      children = props.children,
-      resRequiredProps = props.resRequiredProps;
-  var resOption = resRequiredProps.resOption,
-      setAttributes = resRequiredProps.setAttributes;
-
-  var handleDesktopBtnClick = function handleDesktopBtnClick() {
-    document.body.classList.add("eb-res-option-desktop");
-    document.body.classList.remove("eb-res-option-tab", "eb-res-option-mobile");
-    setAttributes({
-      resOption: "desktop"
-    });
-  };
-
-  var handleTabBtnClick = function handleTabBtnClick() {
-    document.body.classList.add("eb-res-option-tab");
-    document.body.classList.remove("eb-res-option-desktop", "eb-res-option-mobile");
-    setAttributes({
-      resOption: "tab"
-    });
-  };
-
-  var handleMobileBtnClick = function handleMobileBtnClick() {
-    document.body.classList.add("eb-res-option-mobile");
-    document.body.classList.remove("eb-res-option-desktop", "eb-res-option-tab");
-    setAttributes({
-      resOption: "mobile"
-    });
-  };
-
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__["PanelBody"], {
-    title: title,
-    initialOpen: initialOpen
+var save = function save(_ref) {
+  var attributes = _ref.attributes;
+  var blockId = attributes.blockId,
+      showAfterDismiss = attributes.showAfterDismiss,
+      title = attributes.title,
+      text = attributes.text;
+  return /*#__PURE__*/React.createElement("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"].save(), /*#__PURE__*/React.createElement("div", {
+    className: "eb-notice-wrapper ".concat(blockId),
+    "data-id": blockId,
+    "data-show-again": showAfterDismiss
   }, /*#__PURE__*/React.createElement("div", {
-    className: "eb-resButtons"
-  }, /*#__PURE__*/React.createElement("button", {
-    className: "eb-res-btn eb-res-btn-desktop ".concat(resOption == "desktop" && "active"),
-    onClick: handleDesktopBtnClick
-  }, /*#__PURE__*/React.createElement("span", {
-    "class": "dashicons dashicons-desktop"
-  })), /*#__PURE__*/React.createElement("button", {
-    className: "eb-res-btn eb-res-btn-tab ".concat(resOption == "tab" && "active"),
-    onClick: handleTabBtnClick
-  }, /*#__PURE__*/React.createElement("span", {
-    "class": "dashicons dashicons-tablet"
-  })), /*#__PURE__*/React.createElement("button", {
-    className: "eb-res-btn eb-res-btn-mobile ".concat(resOption == "mobile" && "active"),
-    onClick: handleMobileBtnClick
-  }, /*#__PURE__*/React.createElement("span", {
-    "class": "dashicons dashicons-smartphone"
-  }))), children));
-}
+    className: "eb-notice-title-wrapper"
+  }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
+    tagName: "div",
+    className: "eb-notice-title",
+    value: title
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "eb-notice-dismiss"
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
+    tagName: "div",
+    className: "eb-notice-text",
+    value: text
+  }))));
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (ResPanelBody);
+/* harmony default export */ __webpack_exports__["default"] = (save);
 
 /***/ }),
 
-/***/ "./src/myUtil/dimensions-control/index.js":
-/*!************************************************!*\
-  !*** ./src/myUtil/dimensions-control/index.js ***!
-  \************************************************/
+/***/ "./util/color-control/index.js":
+/*!*************************************!*\
+  !*** ./util/color-control/index.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./util/color-control/style.css");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    useState = _wp$element.useState,
+    useEffect = _wp$element.useEffect;
+var _wp$components = wp.components,
+    BaseControl = _wp$components.BaseControl,
+    Dropdown = _wp$components.Dropdown,
+    Tooltip = _wp$components.Tooltip,
+    ColorPicker = _wp$components.ColorPicker,
+    Button = _wp$components.Button;
+
+
+var ColorControl = function ColorControl(_ref) {
+  var label = _ref.label,
+      color = _ref.color,
+      onChange = _ref.onChange;
+
+  var _useState = useState(color),
+      _useState2 = _slicedToArray(_useState, 2),
+      bgColor = _useState2[0],
+      setBgColor = _useState2[1];
+
+  useEffect(function () {
+    setBgColor(color);
+  }, [color]);
+
+  var _onChangeComplete = function onChangeComplete(_ref2) {
+    var rgb = _ref2.rgb,
+        hex = _ref2.hex;
+    var color = rgb ? "rgba(".concat(rgb.r, ",").concat(rgb.g, ",").concat(rgb.b, ",").concat(rgb.a, ")") : hex;
+    onChange(color);
+  };
+
+  var colorStyles = {
+    padding: 2,
+    borderRadius: 0,
+    background: "white",
+    border: "1px solid #ebebeb"
+  };
+  return /*#__PURE__*/React.createElement(BaseControl, {
+    label: label || "",
+    className: "eb-color-base"
+  }, /*#__PURE__*/React.createElement(Dropdown, {
+    renderToggle: function renderToggle(_ref3) {
+      var isOpen = _ref3.isOpen,
+          onToggle = _ref3.onToggle;
+      return /*#__PURE__*/React.createElement(Tooltip, {
+        text: color || "default"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "eb-color-ball",
+        style: color && colorStyles
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          height: 16,
+          width: 16,
+          borderRadius: "0%",
+          boxShadow: "inset 0 0 0 1px rgba(0,0,0,.1)",
+          backgroundColor: bgColor
+        },
+        "aria-expanded": isOpen,
+        onClick: onToggle,
+        "aria-label": color || "default"
+      })));
+    },
+    renderContent: function renderContent() {
+      return /*#__PURE__*/React.createElement(ColorPicker, {
+        color: color,
+        onChangeComplete: function onChangeComplete(color) {
+          return _onChangeComplete(color);
+        }
+      });
+    }
+  }), bgColor && /*#__PURE__*/React.createElement(Button, {
+    isSmall: true,
+    className: "eb-color-undo",
+    icon: "image-rotate",
+    style: {
+      transform: "scaleX(-1) rotate(90deg)"
+    },
+    onClick: function onClick() {
+      return onChange(undefined);
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ColorControl);
+
+/***/ }),
+
+/***/ "./util/dimensions-control/index.js":
+/*!******************************************!*\
+  !*** ./util/dimensions-control/index.js ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2632,175 +2920,16 @@ function DimensionsControl(_ref) {
 
 /***/ }),
 
-/***/ "./src/myUtil/helpers.js":
-/*!*******************************!*\
-  !*** ./src/myUtil/helpers.js ***!
-  \*******************************/
-/*! exports provided: generateTypographyAttributes, textInsideForEdit, generateRandomNumber, hardMinifyCssStrings, softMinifyCssStrings, isCssExists, hasVal, generateTypographyStyles */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateTypographyAttributes", function() { return generateTypographyAttributes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "textInsideForEdit", function() { return textInsideForEdit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateRandomNumber", function() { return generateRandomNumber; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hardMinifyCssStrings", function() { return hardMinifyCssStrings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "softMinifyCssStrings", function() { return softMinifyCssStrings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCssExists", function() { return isCssExists; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasVal", function() { return hasVal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateTypographyStyles", function() { return generateTypographyStyles; });
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-// function to generate typography attributes for multiple typography control based on the array of prefix
-var generateTypographyAttributes = function generateTypographyAttributes(prefixArray) {
-  var typoAttrs = prefixArray.reduce(function (total, current) {
-    var _result;
-
-    var result = (_result = {}, _defineProperty(_result, "".concat(current, "FontFamily"), {
-      type: "string"
-    }), _defineProperty(_result, "".concat(current, "SizeUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "".concat(current, "FontSize"), {
-      type: "number"
-    }), _defineProperty(_result, "".concat(current, "FontWeight"), {
-      type: "string"
-    }), _defineProperty(_result, "".concat(current, "TextTransform"), {
-      type: "string"
-    }), _defineProperty(_result, "".concat(current, "TextDecoration"), {
-      type: "string"
-    }), _defineProperty(_result, "".concat(current, "LetterSpacingUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "".concat(current, "LetterSpacing"), {
-      type: "number"
-    }), _defineProperty(_result, "".concat(current, "LineHeightUnit"), {
-      type: "string",
-      "default": "em"
-    }), _defineProperty(_result, "".concat(current, "LineHeight"), {
-      type: "number"
-    }), _defineProperty(_result, "TAB".concat(current, "SizeUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "TAB".concat(current, "FontSize"), {
-      type: "number"
-    }), _defineProperty(_result, "TAB".concat(current, "LetterSpacingUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "TAB".concat(current, "LetterSpacing"), {
-      type: "number"
-    }), _defineProperty(_result, "TAB".concat(current, "LineHeightUnit"), {
-      type: "string",
-      "default": "em"
-    }), _defineProperty(_result, "TAB".concat(current, "LineHeight"), {
-      type: "number"
-    }), _defineProperty(_result, "MOB".concat(current, "SizeUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "MOB".concat(current, "FontSize"), {
-      type: "number"
-    }), _defineProperty(_result, "MOB".concat(current, "LetterSpacingUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "MOB".concat(current, "LetterSpacing"), {
-      type: "number"
-    }), _defineProperty(_result, "MOB".concat(current, "LineHeightUnit"), {
-      type: "string",
-      "default": "em"
-    }), _defineProperty(_result, "MOB".concat(current, "LineHeight"), {
-      type: "number"
-    }), _result);
-    return _objectSpread(_objectSpread({}, total), result);
-  }, {});
-  console.log({
-    typoAttrs: typoAttrs
-  });
-  return typoAttrs;
-}; // helper Functions: function 'textInsideForEdit' is for setting the innertext depending on whether separator should be shown and which separator should be shown
-
-var textInsideForEdit = function textInsideForEdit(value, isShowSeparator, separator) {
-  return isShowSeparator ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator) : value.toString();
-}; // generateRandomNumber function is for generating a random number
-
-var generateRandomNumber = function generateRandomNumber() {
-  return Math.floor(Math.random() * 1000000000);
-}; // hardMinifyCssStrings is for minifying the css which is in the style tag as a string  for view.js
-
-var hardMinifyCssStrings = function hardMinifyCssStrings(cssString) {
-  // console.log({ cssString });
-  return cssString.replace(/\s+/g, " ").replace(/(?<=\:).+(?=\;)/g, function (match) {
-    // console.log({ match, g1, offset, string });
-    return match.trim().replace(/\s+/g, "__s_p_a_c_e__");
-  }) // .replace(/\s+(?!(?:[\w\d\.\-\#]+\{))/g, "")
-  .replace(/\s+(?![\w\d\.\-\#]+\{)/g, "").replace(/\s+/g, " ").replace(/__s_p_a_c_e__/g, " ");
-}; // softMinifyCssStrings is for minifying the css which is in the style tag as a string  for view.js
-
-var softMinifyCssStrings = function softMinifyCssStrings(cssString) {
-  return cssString.replace(/\s+/g, " ");
-}; // check if css string is empty or not.
-
-var isCssExists = function isCssExists(cssString) {
-  return /.+(?=\:(?!hover)(?!focus))/.test(cssString);
-}; // check if range controller input numbers  has value
-
-var hasVal = function hasVal(val) {
-  return val || val === 0;
-}; //
-// function to generate typography styles for an element based on it's prefix
-
-var generateTypographyStyles = function generateTypographyStyles(_ref) {
-  var prefixConstant = _ref.prefixConstant,
-      defaultFontSize = _ref.defaultFontSize,
-      attributes = _ref.attributes;
-  var fontFamily = attributes["".concat(prefixConstant, "FontFamily")],
-      fontWeight = attributes["".concat(prefixConstant, "FontWeight")],
-      textTransform = attributes["".concat(prefixConstant, "TextTransform")],
-      textDecoration = attributes["".concat(prefixConstant, "TextDecoration")],
-      _attributes$ = attributes["".concat(prefixConstant, "FontSize")],
-      fontSize = _attributes$ === void 0 ? defaultFontSize : _attributes$,
-      sizeUnit = attributes["".concat(prefixConstant, "SizeUnit")],
-      letterSpacing = attributes["".concat(prefixConstant, "LetterSpacing")],
-      letterSpacingUnit = attributes["".concat(prefixConstant, "LetterSpacingUnit")],
-      lineHeight = attributes["".concat(prefixConstant, "LineHeight")],
-      lineHeightUnit = attributes["".concat(prefixConstant, "LineHeightUnit")],
-      TABsizeUnit = attributes["TAB".concat(prefixConstant, "SizeUnit")],
-      TABletterSpacingUnit = attributes["TAB".concat(prefixConstant, "LetterSpacingUnit")],
-      TABlineHeightUnit = attributes["TAB".concat(prefixConstant, "LineHeightUnit")],
-      TABfontSize = attributes["TAB".concat(prefixConstant, "FontSize")],
-      TABletterSpacing = attributes["TAB".concat(prefixConstant, "LetterSpacing")],
-      TABlineHeight = attributes["TAB".concat(prefixConstant, "LineHeight")],
-      MOBsizeUnit = attributes["MOB".concat(prefixConstant, "SizeUnit")],
-      MOBletterSpacingUnit = attributes["MOB".concat(prefixConstant, "LetterSpacingUnit")],
-      MOBlineHeightUnit = attributes["MOB".concat(prefixConstant, "LineHeightUnit")],
-      MOBfontSize = attributes["MOB".concat(prefixConstant, "FontSize")],
-      MOBletterSpacing = attributes["MOB".concat(prefixConstant, "LetterSpacing")],
-      MOBlineHeight = attributes["MOB".concat(prefixConstant, "LineHeight")];
-  var typoStylesDesktop = "\n\t\t\t".concat(fontFamily ? "font-family: ".concat(fontFamily, ";") : " ", "\n\t\t\t").concat(hasVal(fontSize) ? "font-size: ".concat(fontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(lineHeight) ? "line-height: ".concat(lineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(fontWeight ? "font-weight: ".concat(fontWeight, ";") : " ", "\n\t\t\t").concat(textDecoration ? "text-decoration: ".concat(textDecoration, ";") : " ", "\n\t\t\t").concat(textTransform ? "text-transform: ".concat(textTransform, ";") : " ", "\n\t\t\t").concat(hasVal(letterSpacing) ? "letter-spacing: ".concat(letterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
-  var typoStylesTab = "\n\t\t\t".concat(hasVal(TABfontSize) ? "font-size: ".concat(TABfontSize).concat(TABsizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(TABlineHeight) ? "line-height: ".concat(TABlineHeight).concat(TABlineHeightUnit, ";") : " ", "\n\t\t\t").concat(hasVal(TABletterSpacing) ? "letter-spacing: ".concat(TABletterSpacing).concat(TABletterSpacingUnit, ";") : " ", "\n\t\t");
-  var typoStylesMobile = "\n\t\t\t".concat(hasVal(MOBfontSize) ? "font-size: ".concat(MOBfontSize).concat(MOBsizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(MOBlineHeight) ? "line-height: ".concat(MOBlineHeight).concat(MOBlineHeightUnit, ";") : " ", "\n\t\t\t").concat(hasVal(MOBletterSpacing) ? "letter-spacing: ".concat(MOBletterSpacing).concat(MOBletterSpacingUnit, ";") : " ", "\n\t\t");
-  return {
-    typoStylesDesktop: typoStylesDesktop,
-    typoStylesTab: typoStylesTab,
-    typoStylesMobile: typoStylesMobile
-  };
-};
-
-/***/ }),
-
-/***/ "./src/myUtil/typography-component/FontPicker.js":
-/*!*******************************************************!*\
-  !*** ./src/myUtil/typography-component/FontPicker.js ***!
-  \*******************************************************/
+/***/ "./util/typography-control/FontPicker.js":
+/*!***********************************************!*\
+  !*** ./util/typography-control/FontPicker.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./src/myUtil/typography-component/constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./util/typography-control/constants.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -2913,10 +3042,10 @@ function FontFamilyPicker(_ref) {
 
 /***/ }),
 
-/***/ "./src/myUtil/typography-component/Icon.js":
-/*!*************************************************!*\
-  !*** ./src/myUtil/typography-component/Icon.js ***!
-  \*************************************************/
+/***/ "./util/typography-control/Icon.js":
+/*!*****************************************!*\
+  !*** ./util/typography-control/Icon.js ***!
+  \*****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2944,17 +3073,17 @@ var TypographyIcon = function TypographyIcon() {
 
 /***/ }),
 
-/***/ "./src/myUtil/typography-component/WithResButtons.js":
-/*!***********************************************************!*\
-  !*** ./src/myUtil/typography-component/WithResButtons.js ***!
-  \***********************************************************/
+/***/ "./util/typography-control/WithResButtons.js":
+/*!***************************************************!*\
+  !*** ./util/typography-control/WithResButtons.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WithResButtons; });
-/* harmony import */ var _typoHelpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./typoHelpers */ "./src/myUtil/typography-component/typoHelpers.js");
+/* harmony import */ var _typoHelpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./typoHelpers */ "./util/typography-control/typoHelpers.js");
 
 function WithResButtons(_ref) {
   var className = _ref.className,
@@ -2991,10 +3120,10 @@ function WithResButtons(_ref) {
 
 /***/ }),
 
-/***/ "./src/myUtil/typography-component/constants.js":
-/*!******************************************************!*\
-  !*** ./src/myUtil/typography-component/constants.js ***!
-  \******************************************************/
+/***/ "./util/typography-control/constants.js":
+/*!**********************************************!*\
+  !*** ./util/typography-control/constants.js ***!
+  \**********************************************/
 /*! exports provided: FONTS, sizeUnitTypes, optionsFontWeights, optionsTextTransforms, optionsTextDecorations, optionsLhLsp */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3181,10 +3310,10 @@ var optionsLhLsp = [{
 
 /***/ }),
 
-/***/ "./src/myUtil/typography-component/index.js":
-/*!**************************************************!*\
-  !*** ./src/myUtil/typography-component/index.js ***!
-  \**************************************************/
+/***/ "./util/typography-control/index.js":
+/*!******************************************!*\
+  !*** ./util/typography-control/index.js ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3194,11 +3323,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _util_unit_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../util/unit-control */ "./util/unit-control/index.js");
-/* harmony import */ var _FontPicker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FontPicker */ "./src/myUtil/typography-component/FontPicker.js");
-/* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Icon */ "./src/myUtil/typography-component/Icon.js");
-/* harmony import */ var _WithResButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WithResButtons */ "./src/myUtil/typography-component/WithResButtons.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./constants */ "./src/myUtil/typography-component/constants.js");
+/* harmony import */ var _unit_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./unit-control */ "./util/typography-control/unit-control.js");
+/* harmony import */ var _FontPicker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FontPicker */ "./util/typography-control/FontPicker.js");
+/* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Icon */ "./util/typography-control/Icon.js");
+/* harmony import */ var _WithResButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WithResButtons */ "./util/typography-control/WithResButtons.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./constants */ "./util/typography-control/constants.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -3270,7 +3399,7 @@ function TypographyDropdown(_ref) {
         className: "forFontSize",
         resOption: resOption,
         setAttributes: setAttributes
-      }, resOption === "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, resOption === "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
         selectedUnit: sizeUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_6__["sizeUnitTypes"],
         onClick: function onClick(sizeUnit) {
@@ -3285,7 +3414,7 @@ function TypographyDropdown(_ref) {
         step: sizeUnit === "em" ? 0.1 : 1,
         min: 0,
         max: sizeUnit === "em" ? 10 : 300
-      })), resOption === "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      })), resOption === "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
         selectedUnit: TABsizeUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_6__["sizeUnitTypes"],
         onClick: function onClick(TABsizeUnit) {
@@ -3300,7 +3429,7 @@ function TypographyDropdown(_ref) {
         step: TABsizeUnit === "em" ? 0.1 : 1,
         min: 0,
         max: TABsizeUnit === "em" ? 10 : 300
-      })), resOption === "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      })), resOption === "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
         selectedUnit: MOBsizeUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_6__["sizeUnitTypes"],
         onClick: function onClick(MOBsizeUnit) {
@@ -3340,7 +3469,7 @@ function TypographyDropdown(_ref) {
         className: "forLetterSpacing",
         resOption: resOption,
         setAttributes: setAttributes
-      }, resOption === "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, resOption === "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
         selectedUnit: letterSpacingUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_6__["optionsLhLsp"],
         onClick: function onClick(LetterSpacingUnit) {
@@ -3355,7 +3484,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: letterSpacingUnit === "em" ? 10 : 100,
         step: letterSpacingUnit === "em" ? 0.1 : 1
-      })), resOption === "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      })), resOption === "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
         selectedUnit: TABletterSpacingUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_6__["optionsLhLsp"],
         onClick: function onClick(TABletterSpacingUnit) {
@@ -3370,7 +3499,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: TABletterSpacingUnit === "em" ? 10 : 100,
         step: TABletterSpacingUnit === "em" ? 0.1 : 1
-      })), resOption === "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      })), resOption === "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
         selectedUnit: MOBletterSpacingUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_6__["optionsLhLsp"],
         onClick: function onClick(MOBletterSpacingUnit) {
@@ -3389,7 +3518,7 @@ function TypographyDropdown(_ref) {
         className: "forLineHeight",
         resOption: resOption,
         setAttributes: setAttributes
-      }, resOption === "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, resOption === "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
         selectedUnit: lineHeightUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_6__["optionsLhLsp"],
         onClick: function onClick(LineHeightUnit) {
@@ -3404,7 +3533,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: lineHeightUnit === "em" ? 10 : 600,
         step: lineHeightUnit === "em" ? 0.1 : 1
-      })), resOption === "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      })), resOption === "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
         selectedUnit: TABlineHeightUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_6__["optionsLhLsp"],
         onClick: function onClick(TABlineHeightUnit) {
@@ -3419,7 +3548,7 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: TABlineHeightUnit === "em" ? 10 : 600,
         step: TABlineHeightUnit === "em" ? 0.1 : 1
-      })), resOption === "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_util_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      })), resOption === "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
         selectedUnit: MOBlineHeightUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_6__["optionsLhLsp"],
         onClick: function onClick(MOBlineHeightUnit) {
@@ -3443,10 +3572,10 @@ function TypographyDropdown(_ref) {
 
 /***/ }),
 
-/***/ "./src/myUtil/typography-component/typoHelpers.js":
-/*!********************************************************!*\
-  !*** ./src/myUtil/typography-component/typoHelpers.js ***!
-  \********************************************************/
+/***/ "./util/typography-control/typoHelpers.js":
+/*!************************************************!*\
+  !*** ./util/typography-control/typoHelpers.js ***!
+  \************************************************/
 /*! exports provided: handleDesktopBtnClick, handleTabBtnClick, handleMobileBtnClick */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3482,157 +3611,41 @@ var handleMobileBtnClick = function handleMobileBtnClick(_ref3) {
 
 /***/ }),
 
-/***/ "./src/save.js":
-/*!*********************!*\
-  !*** ./src/save.js ***!
-  \*********************/
+/***/ "./util/typography-control/unit-control.js":
+/*!*************************************************!*\
+  !*** ./util/typography-control/unit-control.js ***!
+  \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var save = function save(_ref) {
-  var attributes = _ref.attributes;
-  var blockId = attributes.blockId,
-      showAfterDismiss = attributes.showAfterDismiss,
-      title = attributes.title,
-      text = attributes.text;
-  return /*#__PURE__*/React.createElement("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"].save(), /*#__PURE__*/React.createElement("div", {
-    className: "eb-notice-wrapper ".concat(blockId),
-    "data-id": blockId,
-    "data-show-again": showAfterDismiss
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "eb-notice-title-wrapper"
-  }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
-    tagName: "div",
-    className: "eb-notice-title",
-    value: title
-  }), /*#__PURE__*/React.createElement("span", {
-    className: "eb-notice-dismiss"
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
-    tagName: "div",
-    className: "eb-notice-text",
-    value: text
-  }))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (save);
-
-/***/ }),
-
-/***/ "./util/color-control/index.js":
-/*!*************************************!*\
-  !*** ./util/color-control/index.js ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./util/color-control/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var __ = wp.i18n.__;
-var _wp$element = wp.element,
-    useState = _wp$element.useState,
-    useEffect = _wp$element.useEffect;
+/**
+ * WordPress dependencies
+ */
 var _wp$components = wp.components,
-    BaseControl = _wp$components.BaseControl,
-    Dropdown = _wp$components.Dropdown,
-    Tooltip = _wp$components.Tooltip,
-    ColorPicker = _wp$components.ColorPicker,
+    ButtonGroup = _wp$components.ButtonGroup,
     Button = _wp$components.Button;
 
-
-var ColorControl = function ColorControl(_ref) {
-  var label = _ref.label,
-      color = _ref.color,
-      onChange = _ref.onChange;
-
-  var _useState = useState(color),
-      _useState2 = _slicedToArray(_useState, 2),
-      bgColor = _useState2[0],
-      setBgColor = _useState2[1];
-
-  useEffect(function () {
-    setBgColor(color);
-  }, [color]);
-
-  var _onChangeComplete = function onChangeComplete(_ref2) {
-    var rgb = _ref2.rgb,
-        hex = _ref2.hex;
-    var color = rgb ? "rgba(".concat(rgb.r, ",").concat(rgb.g, ",").concat(rgb.b, ",").concat(rgb.a, ")") : hex;
-    onChange(color);
-  };
-
-  var colorStyles = {
-    padding: 2,
-    borderRadius: 0,
-    background: "white",
-    border: "1px solid #ebebeb"
-  };
-  return /*#__PURE__*/React.createElement(BaseControl, {
-    label: label || "",
-    className: "eb-color-base"
-  }, /*#__PURE__*/React.createElement(Dropdown, {
-    renderToggle: function renderToggle(_ref3) {
-      var isOpen = _ref3.isOpen,
-          onToggle = _ref3.onToggle;
-      return /*#__PURE__*/React.createElement(Tooltip, {
-        text: color || "default"
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "eb-color-ball",
-        style: color && colorStyles
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          height: 16,
-          width: 16,
-          borderRadius: "0%",
-          boxShadow: "inset 0 0 0 1px rgba(0,0,0,.1)",
-          backgroundColor: bgColor
-        },
-        "aria-expanded": isOpen,
-        onClick: onToggle,
-        "aria-label": color || "default"
-      })));
-    },
-    renderContent: function renderContent() {
-      return /*#__PURE__*/React.createElement(ColorPicker, {
-        color: color,
-        onChangeComplete: function onChangeComplete(color) {
-          return _onChangeComplete(color);
-        }
-      });
-    }
-  }), bgColor && /*#__PURE__*/React.createElement(Button, {
-    isSmall: true,
-    className: "eb-color-undo",
-    icon: "image-rotate",
-    style: {
-      transform: "scaleX(-1) rotate(90deg)"
-    },
-    onClick: function onClick() {
-      return onChange(undefined);
-    }
+var UnitControl = function UnitControl(_ref) {
+  var selectedUnit = _ref.selectedUnit,
+      unitTypes = _ref.unitTypes,
+      _onClick = _ref.onClick;
+  return /*#__PURE__*/React.createElement(ButtonGroup, {
+    className: "eb-unit-control-btn-group"
+  }, unitTypes.map(function (unit) {
+    return /*#__PURE__*/React.createElement(Button, {
+      className: "eb-unit-control-btn ".concat(unit.value === selectedUnit && "eb-unit-active"),
+      isSmall: true,
+      isPrimary: unit.value === selectedUnit,
+      onClick: function onClick() {
+        return _onClick(unit.value);
+      }
+    }, unit.label);
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (ColorControl);
+/* harmony default export */ __webpack_exports__["default"] = (UnitControl);
 
 /***/ }),
 
@@ -3649,9 +3662,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./util/unit-control/style.scss");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
-
 
 
 /**
