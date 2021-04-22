@@ -275,15 +275,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var attributes = _objectSpread(_objectSpread({
+  // the following 4 attributes is must required for responsive options and asset generation for frontend
   // responsive control attributes ⬇
   resOption: {
     type: "string",
     "default": "desktop"
   },
-  // uniqueIdNumber attribute for making unique className
-  uniqueIdNumber: {
-    type: "number"
-  },
+  // blockId attribute for making unique className and other uniqueness
   blockId: {
     type: "string"
   },
@@ -292,12 +290,7 @@ var attributes = _objectSpread(_objectSpread({
     "default": "essential_block"
   },
   blockMeta: {
-    type: "object" // default: {
-    // 	desktop: "",
-    // 	tab: "",
-    // 	mobile: "",
-    // },
-
+    type: "object"
   }
 }, Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), {}, {
   // margin padding attributes ⬇

@@ -2,16 +2,14 @@ import * as prefixObjs from "./constants/typographyPrefixConstants";
 import { generateTypographyAttributes } from "./helpers";
 
 const attributes = {
+	// the following 4 attributes is must required for responsive options and asset generation for frontend
 	// responsive control attributes ⬇
 	resOption: {
 		type: "string",
 		default: "desktop",
 	},
 
-	// uniqueIdNumber attribute for making unique className
-	uniqueIdNumber: {
-		type: "number",
-	},
+	// blockId attribute for making unique className and other uniqueness
 	blockId: {
 		type: "string",
 	},
@@ -21,11 +19,6 @@ const attributes = {
 	},
 	blockMeta: {
 		type: "object",
-		// default: {
-		// 	desktop: "",
-		// 	tab: "",
-		// 	mobile: "",
-		// },
 	},
 
 	// typography attributes ⬇
