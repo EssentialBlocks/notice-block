@@ -19,7 +19,7 @@ import {
 	softMinifyCssStrings,
 	isCssExists,
 	generateTypographyStyles,
-} from "./myUtil/helpers";
+} from "./helpers";
 
 export default function Edit(props) {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -123,7 +123,7 @@ export default function Edit(props) {
 		 */
 		const all_blocks = wp.data.select("core/block-editor").getBlocks();
 
-		console.log({ all_blocks });
+		// console.log({ all_blocks });
 
 		let duplicateFound = false;
 		const fixDuplicateBlockId = (blocks) => {
@@ -133,7 +133,7 @@ export default function Edit(props) {
 				if (item.attributes.blockId === blockId) {
 					if (item.clientId !== clientId) {
 						setAttributes({ blockId: unique_id });
-						console.log("found a duplicate");
+						// console.log("found a duplicate");
 						duplicateFound = true;
 						return;
 					} else if (innerBlocks.length > 0) {
@@ -146,6 +146,8 @@ export default function Edit(props) {
 		};
 
 		fixDuplicateBlockId(all_blocks);
+
+		// console.log({ blockId });
 	}, []);
 
 	const blockProps = useBlockProps({

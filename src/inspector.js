@@ -18,9 +18,9 @@ import { NOTICE_TYPES, FONT_SIZE_UNITS } from "./constants";
 
 import ColorControl from "../util/color-control";
 import UnitControl from "../util/unit-control";
-import DimensionsControl from "./myUtil/dimensions-control";
-import TypographyDropdown from "./myUtil/typography-component";
-import ResPanelBody from "./myUtil/ResPanelBody";
+import DimensionsControl from "../util/dimensions-control";
+import TypographyDropdown from "../util/typography-control";
+import ResPanelBody from "./ResPanelBody";
 
 import {
 	typoPrefix_text,
@@ -163,7 +163,7 @@ function Inspector(props) {
 		const allEbBlocksWrapper = document.querySelectorAll(
 			".eb-guten-block-main-parent-wrapper:not(.is-selected) > style"
 		);
-		console.log("---inspector", { allEbBlocksWrapper });
+		// console.log("---inspector", { allEbBlocksWrapper });
 		if (allEbBlocksWrapper.length < 1) return;
 		allEbBlocksWrapper.forEach((styleTag) => {
 			const cssStrings = styleTag.textContent;
@@ -174,7 +174,7 @@ function Inspector(props) {
 				const tabCssStrings = (minCss.match(
 					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
 				) || [" "])[0];
-				console.log({ tabCssStrings });
+				// console.log({ tabCssStrings });
 				newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
 			} else if (resOption === "mobile") {
 				const tabCssStrings = (minCss.match(
@@ -185,7 +185,7 @@ function Inspector(props) {
 					/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i
 				) || [" "])[0];
 
-				console.log({ tabCssStrings, mobCssStrings });
+				// console.log({ tabCssStrings, mobCssStrings });
 
 				newCssStrings = minCss.replace(
 					regexCssMimmikSpace,
