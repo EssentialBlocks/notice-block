@@ -621,8 +621,13 @@ body.eb-res-option-mobile .editor-styles-wrapper {
   color: #6c40f7;
 }
 
+.wrap_res {
+  position: relative;
+}
+
 .resIcons {
   position: absolute;
+  left: 80px;
 }
 
 .eb-typography-component-panel .wrap_res.forFontSize .resIcons {

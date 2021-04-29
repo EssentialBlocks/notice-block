@@ -19,6 +19,7 @@ import { NOTICE_TYPES, FONT_SIZE_UNITS } from "./constants";
 import ColorControl from "../util/color-control";
 import UnitControl from "../util/unit-control";
 import DimensionsControl from "../util/dimensions-control";
+import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
 import TypographyDropdown from "../util/typography-control-v2";
 import ResPanelBody from "./ResPanelBody";
 
@@ -201,6 +202,7 @@ function Inspector(props) {
 	const resRequiredProps = {
 		setAttributes,
 		resOption,
+		attributes,
 	};
 
 	const typoRequiredProps = {
@@ -278,147 +280,16 @@ function Inspector(props) {
 					initialOpen={false}
 					resRequiredProps={resRequiredProps}
 				>
-					{resOption == "desktop" && (
-						<>
-							<UnitControl
-								selectedUnit={marginUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(marginUnit) => setAttributes({ marginUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Margin")}
-								top={marginTop}
-								right={marginRight}
-								bottom={marginBottom}
-								left={marginLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										marginTop: top,
-										marginRight: right,
-										marginBottom: bottom,
-										marginLeft: left,
-									})
-								}
-							/>
-
-							<UnitControl
-								selectedUnit={paddingUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(paddingUnit) => setAttributes({ paddingUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Padding")}
-								top={paddingTop}
-								right={paddingRight}
-								bottom={paddingBottom}
-								left={paddingLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										paddingTop: top,
-										paddingRight: right,
-										paddingBottom: bottom,
-										paddingLeft: left,
-									})
-								}
-							/>
-						</>
-					)}
-					{resOption == "tab" && (
-						<>
-							<UnitControl
-								selectedUnit={TABmarginUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(TABmarginUnit) => setAttributes({ TABmarginUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Margin")}
-								top={TABmarginTop}
-								right={TABmarginRight}
-								bottom={TABmarginBottom}
-								left={TABmarginLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										TABmarginTop: top,
-										TABmarginRight: right,
-										TABmarginBottom: bottom,
-										TABmarginLeft: left,
-									})
-								}
-							/>
-
-							<UnitControl
-								selectedUnit={TABpaddingUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(TABpaddingUnit) => setAttributes({ TABpaddingUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Padding")}
-								top={TABpaddingTop}
-								right={TABpaddingRight}
-								bottom={TABpaddingBottom}
-								left={TABpaddingLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										TABpaddingTop: top,
-										TABpaddingRight: right,
-										TABpaddingBottom: bottom,
-										TABpaddingLeft: left,
-									})
-								}
-							/>
-						</>
-					)}
-					{resOption == "mobile" && (
-						<>
-							<UnitControl
-								selectedUnit={MOBmarginUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(MOBmarginUnit) => setAttributes({ MOBmarginUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Margin")}
-								top={MOBmarginTop}
-								right={MOBmarginRight}
-								bottom={MOBmarginBottom}
-								left={MOBmarginLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										MOBmarginTop: top,
-										MOBmarginRight: right,
-										MOBmarginBottom: bottom,
-										MOBmarginLeft: left,
-									})
-								}
-							/>
-
-							<UnitControl
-								selectedUnit={MOBpaddingUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(MOBpaddingUnit) => setAttributes({ MOBpaddingUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Padding")}
-								top={MOBpaddingTop}
-								right={MOBpaddingRight}
-								bottom={MOBpaddingBottom}
-								left={MOBpaddingLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										MOBpaddingTop: top,
-										MOBpaddingRight: right,
-										MOBpaddingBottom: bottom,
-										MOBpaddingLeft: left,
-									})
-								}
-							/>
-						</>
-					)}
+					<ResponsiveDimensionsControl
+						resRequiredProps={resRequiredProps}
+						controlName="margin"
+						baseLabel="Margin"
+					/>
+					<ResponsiveDimensionsControl
+						resRequiredProps={resRequiredProps}
+						controlName="padding"
+						baseLabel="Padding"
+					/>
 				</ResPanelBody>
 
 				<PanelBody title={__("Shadow")} initialOpen={false}>
