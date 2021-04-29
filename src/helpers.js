@@ -1,3 +1,68 @@
+// function to generate New Dimensions-Control's attributes for multiple Dimensions control based on the array of values(prefixs)
+export const generateDimensionsAttributes = (prefixArray) => {
+	const dimensionsAttrs = prefixArray.reduce((total, current) => {
+		const result = {
+			[`${controlName}Unit`]: {
+				type: "string",
+				default: "px",
+			},
+			[`${controlName}Top`]: {
+				type: "string",
+			},
+			[`${controlName}Right`]: {
+				type: "string",
+			},
+			[`${controlName}Bottom`]: {
+				type: "string",
+			},
+			[`${controlName}Left`]: {
+				type: "string",
+			},
+
+			[`TAB${controlName}Unit`]: {
+				type: "string",
+				default: "px",
+			},
+			[`TAB${controlName}Top`]: {
+				type: "string",
+			},
+			[`TAB${controlName}Right`]: {
+				type: "string",
+			},
+			[`TAB${controlName}Bottom`]: {
+				type: "string",
+			},
+			[`TAB${controlName}Left`]: {
+				type: "string",
+			},
+
+			[`MOB${controlName}Unit`]: {
+				type: "string",
+				default: "px",
+			},
+			[`MOB${controlName}Top`]: {
+				type: "string",
+			},
+			[`MOB${controlName}Right`]: {
+				type: "string",
+			},
+			[`MOB${controlName}Bottom`]: {
+				type: "string",
+			},
+			[`MOB${controlName}Left`]: {
+				type: "string",
+			},
+		};
+		return {
+			...total,
+			...result,
+		};
+	}, {});
+
+	// console.log({ dimensionsAttrs });
+	return dimensionsAttrs;
+};
+
 // function to generate typography attributes for multiple typography control based on the array of prefix
 export const generateTypographyAttributes = (prefixArray) => {
 	const typoAttrs = prefixArray.reduce((total, current) => {

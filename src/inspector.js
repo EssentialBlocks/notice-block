@@ -14,14 +14,16 @@ import { useEffect } from "@wordpress/element";
 /**
  * Internal dependencies
  */
-import { NOTICE_TYPES, FONT_SIZE_UNITS } from "./constants";
+import { NOTICE_TYPES } from "./constants";
 
 import ColorControl from "../util/color-control";
-import UnitControl from "../util/unit-control";
-import DimensionsControl from "../util/dimensions-control";
 import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
 import TypographyDropdown from "../util/typography-control-v2";
-import ResPanelBody from "./ResPanelBody";
+
+import {
+	dimensionsMargin,
+	dimensionsPadding,
+} from "./constants/dimensionsNames";
 
 import {
 	typoPrefix_text,
@@ -275,22 +277,20 @@ function Inspector(props) {
 					]}
 				/>
 
-				<ResPanelBody
-					title={__("Margin & Padding")}
-					initialOpen={false}
-					resRequiredProps={resRequiredProps}
-				>
+				<PanelBody title={__("Margin & Padding")} initialOpen={false}>
 					<ResponsiveDimensionsControl
 						resRequiredProps={resRequiredProps}
-						controlName="margin"
+						className="forWrapperMargin"
+						controlName={dimensionsMargin}
 						baseLabel="Margin"
 					/>
 					<ResponsiveDimensionsControl
 						resRequiredProps={resRequiredProps}
-						controlName="padding"
+						className="forWrapperPadding"
+						controlName={dimensionsPadding}
 						baseLabel="Padding"
 					/>
-				</ResPanelBody>
+				</PanelBody>
 
 				<PanelBody title={__("Shadow")} initialOpen={false}>
 					<ColorControl
