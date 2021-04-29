@@ -1077,7 +1077,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_color_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/color-control */ "./util/color-control/index.js");
 /* harmony import */ var _util_unit_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/unit-control */ "./util/unit-control/index.js");
 /* harmony import */ var _util_dimensions_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/dimensions-control */ "./util/dimensions-control/index.js");
-/* harmony import */ var _util_typography_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/typography-control */ "./util/typography-control/index.js");
+/* harmony import */ var _util_typography_control_v2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/typography-control-v2 */ "./util/typography-control-v2/index.js");
 /* harmony import */ var _ResPanelBody__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ResPanelBody */ "./src/ResPanelBody.js");
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
 /**
@@ -1280,11 +1280,11 @@ function Inspector(props) {
   })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Typography"),
     initialOpen: false
-  }, /*#__PURE__*/React.createElement(_util_typography_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_8__["default"], {
     baseLabel: "Title",
     typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_title"],
     typoRequiredProps: typoRequiredProps
-  }), /*#__PURE__*/React.createElement(_util_typography_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_8__["default"], {
     baseLabel: "Text",
     typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_text"],
     typoRequiredProps: typoRequiredProps
@@ -1809,16 +1809,16 @@ function DimensionsControl(_ref) {
 
 /***/ }),
 
-/***/ "./util/typography-control/FontPicker.js":
-/*!***********************************************!*\
-  !*** ./util/typography-control/FontPicker.js ***!
-  \***********************************************/
+/***/ "./util/typography-control-v2/FontPicker.js":
+/*!**************************************************!*\
+  !*** ./util/typography-control-v2/FontPicker.js ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./util/typography-control/constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./util/typography-control-v2/constants.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -1931,10 +1931,10 @@ function FontFamilyPicker(_ref) {
 
 /***/ }),
 
-/***/ "./util/typography-control/Icon.js":
-/*!*****************************************!*\
-  !*** ./util/typography-control/Icon.js ***!
-  \*****************************************/
+/***/ "./util/typography-control-v2/Icon.js":
+/*!********************************************!*\
+  !*** ./util/typography-control-v2/Icon.js ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1962,17 +1962,17 @@ var TypographyIcon = function TypographyIcon() {
 
 /***/ }),
 
-/***/ "./util/typography-control/WithResButtons.js":
-/*!***************************************************!*\
-  !*** ./util/typography-control/WithResButtons.js ***!
-  \***************************************************/
+/***/ "./util/typography-control-v2/WithResButtons.js":
+/*!******************************************************!*\
+  !*** ./util/typography-control-v2/WithResButtons.js ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WithResButtons; });
-/* harmony import */ var _typoHelpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./typoHelpers */ "./util/typography-control/typoHelpers.js");
+/* harmony import */ var _typoHelpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./typoHelpers */ "./util/typography-control-v2/typoHelpers.js");
 
 function WithResButtons(_ref) {
   var className = _ref.className,
@@ -2009,10 +2009,10 @@ function WithResButtons(_ref) {
 
 /***/ }),
 
-/***/ "./util/typography-control/constants.js":
-/*!**********************************************!*\
-  !*** ./util/typography-control/constants.js ***!
-  \**********************************************/
+/***/ "./util/typography-control-v2/constants.js":
+/*!*************************************************!*\
+  !*** ./util/typography-control-v2/constants.js ***!
+  \*************************************************/
 /*! exports provided: FONTS, sizeUnitTypes, optionsFontWeights, optionsTextTransforms, optionsTextDecorations, optionsLhLsp */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2199,10 +2199,10 @@ var optionsLhLsp = [{
 
 /***/ }),
 
-/***/ "./util/typography-control/index.js":
-/*!******************************************!*\
-  !*** ./util/typography-control/index.js ***!
-  \******************************************/
+/***/ "./util/typography-control-v2/index.js":
+/*!*********************************************!*\
+  !*** ./util/typography-control-v2/index.js ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2212,11 +2212,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _unit_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./unit-control */ "./util/typography-control/unit-control.js");
-/* harmony import */ var _FontPicker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FontPicker */ "./util/typography-control/FontPicker.js");
-/* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Icon */ "./util/typography-control/Icon.js");
-/* harmony import */ var _WithResButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WithResButtons */ "./util/typography-control/WithResButtons.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./constants */ "./util/typography-control/constants.js");
+/* harmony import */ var _unit_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./unit-control */ "./util/typography-control-v2/unit-control.js");
+/* harmony import */ var _FontPicker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FontPicker */ "./util/typography-control-v2/FontPicker.js");
+/* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Icon */ "./util/typography-control-v2/Icon.js");
+/* harmony import */ var _WithResButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WithResButtons */ "./util/typography-control-v2/WithResButtons.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./constants */ "./util/typography-control-v2/constants.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -2461,10 +2461,10 @@ function TypographyDropdown(_ref) {
 
 /***/ }),
 
-/***/ "./util/typography-control/typoHelpers.js":
-/*!************************************************!*\
-  !*** ./util/typography-control/typoHelpers.js ***!
-  \************************************************/
+/***/ "./util/typography-control-v2/typoHelpers.js":
+/*!***************************************************!*\
+  !*** ./util/typography-control-v2/typoHelpers.js ***!
+  \***************************************************/
 /*! exports provided: handleDesktopBtnClick, handleTabBtnClick, handleMobileBtnClick */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2500,10 +2500,10 @@ var handleMobileBtnClick = function handleMobileBtnClick(_ref3) {
 
 /***/ }),
 
-/***/ "./util/typography-control/unit-control.js":
-/*!*************************************************!*\
-  !*** ./util/typography-control/unit-control.js ***!
-  \*************************************************/
+/***/ "./util/typography-control-v2/unit-control.js":
+/*!****************************************************!*\
+  !*** ./util/typography-control-v2/unit-control.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 

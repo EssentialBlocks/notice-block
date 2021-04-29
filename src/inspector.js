@@ -19,7 +19,7 @@ import { NOTICE_TYPES, FONT_SIZE_UNITS } from "./constants";
 import ColorControl from "../util/color-control";
 import UnitControl from "../util/unit-control";
 import DimensionsControl from "../util/dimensions-control";
-import TypographyDropdown from "../util/typography-control";
+import TypographyDropdown from "../util/typography-control-v2";
 import ResPanelBody from "./ResPanelBody";
 
 import {
