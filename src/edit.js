@@ -15,10 +15,17 @@ import {
 	typoPrefix_text,
 	typoPrefix_title,
 } from "./constants/typographyPrefixConstants";
+
+import {
+	dimensionsMargin,
+	dimensionsPadding,
+} from "./constants/dimensionsNames";
+
 import {
 	softMinifyCssStrings,
 	isCssExists,
 	generateTypographyStyles,
+	generateDimensionsControlStyles,
 } from "./helpers";
 
 export default function Edit(props) {
@@ -177,22 +184,32 @@ export default function Edit(props) {
 		defaultFontSize: 18,
 	});
 
+	const {
+		dimensionStylesDesktop: wrapperMarginStylesDesktop,
+		dimensionStylesTab: wrapperMarginStylesTab,
+		dimensionStylesMobile: wrapperMarginStylesMobile,
+	} = generateDimensionsControlStyles({
+		controlName: dimensionsMargin,
+		isStyleForMargin: true,
+		attributes,
+	});
+
+	const {
+		dimensionStylesDesktop: wrapperPaddingStylesDesktop,
+		dimensionStylesTab: wrapperPaddingStylesTab,
+		dimensionStylesMobile: wrapperPaddingStylesMobile,
+	} = generateDimensionsControlStyles({
+		controlName: dimensionsPadding,
+		isStyleForMargin: false,
+		attributes,
+	});
+
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
 	.${blockId}{
-		${marginTop ? `margin-top: ${parseFloat(marginTop)}${marginUnit};` : " "}
-		${marginRight ? `margin-right: ${parseFloat(marginRight)}${marginUnit};` : " "}
-		${marginLeft ? `margin-left: ${parseFloat(marginLeft)}${marginUnit};` : " "}
-		${
-			marginBottom
-				? `margin-bottom: ${parseFloat(marginBottom)}${marginUnit};`
-				: " "
-		}
-		padding: 
-			${paddingTop || 0}${paddingUnit} 
-			${paddingRight || 0}${paddingUnit} 
-			${paddingBottom || 0}${paddingUnit} 
-			${paddingLeft || 0}${paddingUnit};
+		${wrapperMarginStylesDesktop}
+		${wrapperPaddingStylesDesktop}
+		
 
 		background: ${backgroundColor || "#3074ff"};
 			
@@ -213,91 +230,17 @@ export default function Edit(props) {
 
 	const wrapperStylesTab = `
 	.${blockId}{
-		${
-			TABmarginTop
-				? `margin-top: ${parseFloat(TABmarginTop)}${TABmarginUnit};`
-				: " "
-		}
-		${
-			TABmarginRight
-				? `margin-right: ${parseFloat(TABmarginRight)}${TABmarginUnit};`
-				: " "
-		}
-		${
-			TABmarginLeft
-				? `margin-left: ${parseFloat(TABmarginLeft)}${TABmarginUnit};`
-				: " "
-		}
-		${
-			TABmarginBottom
-				? `margin-bottom: ${parseFloat(TABmarginBottom)}${TABmarginUnit};`
-				: " "
-		}
-		${
-			TABpaddingTop
-				? `padding-top: ${parseFloat(TABpaddingTop)}${TABpaddingUnit};`
-				: " "
-		}
-		${
-			TABpaddingRight
-				? `padding-right: ${parseFloat(TABpaddingRight)}${TABpaddingUnit};`
-				: " "
-		}
-		${
-			TABpaddingLeft
-				? `padding-left: ${parseFloat(TABpaddingLeft)}${TABpaddingUnit};`
-				: " "
-		}
-		${
-			TABpaddingBottom
-				? `padding-bottom: ${parseFloat(TABpaddingBottom)}${TABpaddingUnit};`
-				: " "
-		}
+		${wrapperMarginStylesTab}
+		${wrapperPaddingStylesTab}
+		
 	}
 	`;
 
 	const wrapperStylesMobile = `
 	.${blockId}{
-		${
-			MOBmarginTop
-				? `margin-top: ${parseFloat(MOBmarginTop)}${MOBmarginUnit};`
-				: " "
-		}
-		${
-			MOBmarginRight
-				? `margin-right: ${parseFloat(MOBmarginRight)}${MOBmarginUnit};`
-				: " "
-		}
-		${
-			MOBmarginLeft
-				? `margin-left: ${parseFloat(MOBmarginLeft)}${MOBmarginUnit};`
-				: " "
-		}
-		${
-			MOBmarginBottom
-				? `margin-bottom: ${parseFloat(MOBmarginBottom)}${MOBmarginUnit};`
-				: " "
-		}
-		${
-			MOBpaddingTop
-				? `padding-top: ${parseFloat(MOBpaddingTop)}${MOBpaddingUnit};`
-				: " "
-		}
-		${
-			MOBpaddingRight
-				? `padding-right: ${parseFloat(MOBpaddingRight)}${MOBpaddingUnit};`
-				: " "
-		}
-		${
-			MOBpaddingLeft
-				? `padding-left: ${parseFloat(MOBpaddingLeft)}${MOBpaddingUnit};`
-				: " "
-		}
-		${
-			MOBpaddingBottom
-				? `padding-bottom: ${parseFloat(MOBpaddingBottom)}${MOBpaddingUnit};`
-				: " "
-		}	
+		${wrapperMarginStylesMobile}
+		${wrapperPaddingStylesMobile}
+		
 	}
 	`;
 
