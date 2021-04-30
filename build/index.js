@@ -180,7 +180,8 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
+/* harmony import */ var _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants/dimensionsNames */ "./src/constants/dimensionsNames.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -190,7 +191,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var attributes = _objectSpread(_objectSpread({
+
+var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread({
   // the following 4 attributes is must required for responsive options and asset generation for frontend
   // responsive control attributes ⬇
   resOption: {
@@ -208,108 +210,112 @@ var attributes = _objectSpread(_objectSpread({
   blockMeta: {
     type: "object"
   }
-}, Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), {}, {
-  // margin padding attributes ⬇
-  marginUnit: {
-    type: "string",
-    "default": "px"
-  },
-  marginTop: {
-    type: "string"
-  },
-  marginRight: {
-    type: "string"
-  },
-  marginBottom: {
-    type: "string"
-  },
-  marginLeft: {
-    type: "string"
-  },
-  paddingUnit: {
-    type: "string",
-    "default": "px"
-  },
-  paddingTop: {
-    type: "string",
-    "default": "65"
-  },
-  paddingRight: {
-    type: "string",
-    "default": "60"
-  },
-  paddingBottom: {
-    type: "string",
-    "default": "65"
-  },
-  paddingLeft: {
-    type: "string",
-    "default": "60"
-  },
-  TABmarginUnit: {
-    type: "string",
-    "default": "px"
-  },
-  TABmarginTop: {
-    type: "string"
-  },
-  TABmarginRight: {
-    type: "string"
-  },
-  TABmarginBottom: {
-    type: "string"
-  },
-  TABmarginLeft: {
-    type: "string"
-  },
-  TABpaddingUnit: {
-    type: "string",
-    "default": "px"
-  },
-  TABpaddingTop: {
-    type: "string"
-  },
-  TABpaddingRight: {
-    type: "string"
-  },
-  TABpaddingBottom: {
-    type: "string"
-  },
-  TABpaddingLeft: {
-    type: "string"
-  },
-  MOBmarginUnit: {
-    type: "string",
-    "default": "px"
-  },
-  MOBmarginTop: {
-    type: "string"
-  },
-  MOBmarginRight: {
-    type: "string"
-  },
-  MOBmarginBottom: {
-    type: "string"
-  },
-  MOBmarginLeft: {
-    type: "string"
-  },
-  MOBpaddingUnit: {
-    type: "string",
-    "default": "px"
-  },
-  MOBpaddingTop: {
-    type: "string"
-  },
-  MOBpaddingRight: {
-    type: "string"
-  },
-  MOBpaddingBottom: {
-    type: "string"
-  },
-  MOBpaddingLeft: {
-    type: "string"
-  },
+}, Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_1__["dimensionsMargin"])), Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_1__["dimensionsPadding"], {
+  top: 65,
+  bottom: 65,
+  right: 60,
+  left: 60
+})), {}, {
+  // marginUnit: {
+  // 	type: "string",
+  // 	default: "px",
+  // },
+  // marginTop: {
+  // 	type: "string",
+  // },
+  // marginRight: {
+  // 	type: "string",
+  // },
+  // marginBottom: {
+  // 	type: "string",
+  // },
+  // marginLeft: {
+  // 	type: "string",
+  // },
+  // paddingUnit: {
+  // 	type: "string",
+  // 	default: "px",
+  // },
+  // paddingTop: {
+  // 	type: "string",
+  // 	default: "65",
+  // },
+  // paddingRight: {
+  // 	type: "string",
+  // 	default: "60",
+  // },
+  // paddingBottom: {
+  // 	type: "string",
+  // 	default: "65",
+  // },
+  // paddingLeft: {
+  // 	type: "string",
+  // 	default: "60",
+  // },
+  // TABmarginUnit: {
+  // 	type: "string",
+  // 	default: "px",
+  // },
+  // TABmarginTop: {
+  // 	type: "string",
+  // },
+  // TABmarginRight: {
+  // 	type: "string",
+  // },
+  // TABmarginBottom: {
+  // 	type: "string",
+  // },
+  // TABmarginLeft: {
+  // 	type: "string",
+  // },
+  // TABpaddingUnit: {
+  // 	type: "string",
+  // 	default: "px",
+  // },
+  // TABpaddingTop: {
+  // 	type: "string",
+  // },
+  // TABpaddingRight: {
+  // 	type: "string",
+  // },
+  // TABpaddingBottom: {
+  // 	type: "string",
+  // },
+  // TABpaddingLeft: {
+  // 	type: "string",
+  // },
+  // MOBmarginUnit: {
+  // 	type: "string",
+  // 	default: "px",
+  // },
+  // MOBmarginTop: {
+  // 	type: "string",
+  // },
+  // MOBmarginRight: {
+  // 	type: "string",
+  // },
+  // MOBmarginBottom: {
+  // 	type: "string",
+  // },
+  // MOBmarginLeft: {
+  // 	type: "string",
+  // },
+  // MOBpaddingUnit: {
+  // 	type: "string",
+  // 	default: "px",
+  // },
+  // MOBpaddingTop: {
+  // 	type: "string",
+  // },
+  // MOBpaddingRight: {
+  // 	type: "string",
+  // },
+  // MOBpaddingBottom: {
+  // 	type: "string",
+  // },
+  // MOBpaddingLeft: {
+  // 	type: "string",
+  // },
   dismissible: {
     type: "boolean",
     "default": false
@@ -786,108 +792,124 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // function to generate New Dimensions-Control's attributes for multiple Dimensions control based on the array of values(prefixs)
-var generateDimensionsAttributes = function generateDimensionsAttributes(prefixArray) {
-  var dimensionsAttrs = prefixArray.reduce(function (total, current) {
-    var _result;
+var generateDimensionsAttributes = function generateDimensionsAttributes(controlName) {
+  var _objectSpread3;
 
-    var result = (_result = {}, _defineProperty(_result, "".concat(controlName, "Unit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "".concat(controlName, "Top"), {
-      type: "string"
-    }), _defineProperty(_result, "".concat(controlName, "Right"), {
-      type: "string"
-    }), _defineProperty(_result, "".concat(controlName, "Bottom"), {
-      type: "string"
-    }), _defineProperty(_result, "".concat(controlName, "Left"), {
-      type: "string"
-    }), _defineProperty(_result, "TAB".concat(controlName, "Unit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "TAB".concat(controlName, "Top"), {
-      type: "string"
-    }), _defineProperty(_result, "TAB".concat(controlName, "Right"), {
-      type: "string"
-    }), _defineProperty(_result, "TAB".concat(controlName, "Bottom"), {
-      type: "string"
-    }), _defineProperty(_result, "TAB".concat(controlName, "Left"), {
-      type: "string"
-    }), _defineProperty(_result, "MOB".concat(controlName, "Unit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "MOB".concat(controlName, "Top"), {
-      type: "string"
-    }), _defineProperty(_result, "MOB".concat(controlName, "Right"), {
-      type: "string"
-    }), _defineProperty(_result, "MOB".concat(controlName, "Bottom"), {
-      type: "string"
-    }), _defineProperty(_result, "MOB".concat(controlName, "Left"), {
-      type: "string"
-    }), _result);
-    return _objectSpread(_objectSpread({}, total), result);
-  }, {}); // console.log({ dimensionsAttrs });
-
-  return dimensionsAttrs;
+  var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var top = defaults.top,
+      right = defaults.right,
+      bottom = defaults.bottom,
+      left = defaults.left;
+  var desktopTop = top ? _defineProperty({}, "".concat(controlName, "Top"), {
+    type: "string",
+    "default": "".concat(top)
+  }) : _defineProperty({}, "".concat(controlName, "Top"), {
+    type: "string"
+  });
+  var desktopRight = right ? _defineProperty({}, "".concat(controlName, "Right"), {
+    type: "string",
+    "default": "".concat(right)
+  }) : _defineProperty({}, "".concat(controlName, "Right"), {
+    type: "string"
+  });
+  var desktopBottom = bottom ? _defineProperty({}, "".concat(controlName, "Bottom"), {
+    type: "string",
+    "default": "".concat(bottom)
+  }) : _defineProperty({}, "".concat(controlName, "Bottom"), {
+    type: "string"
+  });
+  var desktopLeft = left ? _defineProperty({}, "".concat(controlName, "Left"), {
+    type: "string",
+    "default": "".concat(left)
+  }) : _defineProperty({}, "".concat(controlName, "Left"), {
+    type: "string"
+  });
+  return _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_defineProperty({}, "".concat(controlName, "Unit"), {
+    type: "string",
+    "default": "px"
+  }), desktopTop), desktopRight), desktopBottom), desktopLeft), {}, (_objectSpread3 = {}, _defineProperty(_objectSpread3, "TAB".concat(controlName, "Unit"), {
+    type: "string",
+    "default": "px"
+  }), _defineProperty(_objectSpread3, "TAB".concat(controlName, "Top"), {
+    type: "string"
+  }), _defineProperty(_objectSpread3, "TAB".concat(controlName, "Right"), {
+    type: "string"
+  }), _defineProperty(_objectSpread3, "TAB".concat(controlName, "Bottom"), {
+    type: "string"
+  }), _defineProperty(_objectSpread3, "TAB".concat(controlName, "Left"), {
+    type: "string"
+  }), _defineProperty(_objectSpread3, "MOB".concat(controlName, "Unit"), {
+    type: "string",
+    "default": "px"
+  }), _defineProperty(_objectSpread3, "MOB".concat(controlName, "Top"), {
+    type: "string"
+  }), _defineProperty(_objectSpread3, "MOB".concat(controlName, "Right"), {
+    type: "string"
+  }), _defineProperty(_objectSpread3, "MOB".concat(controlName, "Bottom"), {
+    type: "string"
+  }), _defineProperty(_objectSpread3, "MOB".concat(controlName, "Left"), {
+    type: "string"
+  }), _objectSpread3));
 }; // function to generate typography attributes for multiple typography control based on the array of prefix
 
 var generateTypographyAttributes = function generateTypographyAttributes(prefixArray) {
   var typoAttrs = prefixArray.reduce(function (total, current) {
-    var _result2;
+    var _result;
 
-    var result = (_result2 = {}, _defineProperty(_result2, "".concat(current, "FontFamily"), {
+    var result = (_result = {}, _defineProperty(_result, "".concat(current, "FontFamily"), {
       type: "string"
-    }), _defineProperty(_result2, "".concat(current, "SizeUnit"), {
+    }), _defineProperty(_result, "".concat(current, "SizeUnit"), {
       type: "string",
       "default": "px"
-    }), _defineProperty(_result2, "".concat(current, "FontSize"), {
+    }), _defineProperty(_result, "".concat(current, "FontSize"), {
       type: "number"
-    }), _defineProperty(_result2, "".concat(current, "FontWeight"), {
+    }), _defineProperty(_result, "".concat(current, "FontWeight"), {
       type: "string"
-    }), _defineProperty(_result2, "".concat(current, "TextTransform"), {
+    }), _defineProperty(_result, "".concat(current, "TextTransform"), {
       type: "string"
-    }), _defineProperty(_result2, "".concat(current, "TextDecoration"), {
+    }), _defineProperty(_result, "".concat(current, "TextDecoration"), {
       type: "string"
-    }), _defineProperty(_result2, "".concat(current, "LetterSpacingUnit"), {
+    }), _defineProperty(_result, "".concat(current, "LetterSpacingUnit"), {
       type: "string",
       "default": "px"
-    }), _defineProperty(_result2, "".concat(current, "LetterSpacing"), {
+    }), _defineProperty(_result, "".concat(current, "LetterSpacing"), {
       type: "number"
-    }), _defineProperty(_result2, "".concat(current, "LineHeightUnit"), {
+    }), _defineProperty(_result, "".concat(current, "LineHeightUnit"), {
       type: "string",
       "default": "em"
-    }), _defineProperty(_result2, "".concat(current, "LineHeight"), {
+    }), _defineProperty(_result, "".concat(current, "LineHeight"), {
       type: "number"
-    }), _defineProperty(_result2, "TAB".concat(current, "SizeUnit"), {
+    }), _defineProperty(_result, "TAB".concat(current, "SizeUnit"), {
       type: "string",
       "default": "px"
-    }), _defineProperty(_result2, "TAB".concat(current, "FontSize"), {
+    }), _defineProperty(_result, "TAB".concat(current, "FontSize"), {
       type: "number"
-    }), _defineProperty(_result2, "TAB".concat(current, "LetterSpacingUnit"), {
+    }), _defineProperty(_result, "TAB".concat(current, "LetterSpacingUnit"), {
       type: "string",
       "default": "px"
-    }), _defineProperty(_result2, "TAB".concat(current, "LetterSpacing"), {
+    }), _defineProperty(_result, "TAB".concat(current, "LetterSpacing"), {
       type: "number"
-    }), _defineProperty(_result2, "TAB".concat(current, "LineHeightUnit"), {
+    }), _defineProperty(_result, "TAB".concat(current, "LineHeightUnit"), {
       type: "string",
       "default": "em"
-    }), _defineProperty(_result2, "TAB".concat(current, "LineHeight"), {
+    }), _defineProperty(_result, "TAB".concat(current, "LineHeight"), {
       type: "number"
-    }), _defineProperty(_result2, "MOB".concat(current, "SizeUnit"), {
+    }), _defineProperty(_result, "MOB".concat(current, "SizeUnit"), {
       type: "string",
       "default": "px"
-    }), _defineProperty(_result2, "MOB".concat(current, "FontSize"), {
+    }), _defineProperty(_result, "MOB".concat(current, "FontSize"), {
       type: "number"
-    }), _defineProperty(_result2, "MOB".concat(current, "LetterSpacingUnit"), {
+    }), _defineProperty(_result, "MOB".concat(current, "LetterSpacingUnit"), {
       type: "string",
       "default": "px"
-    }), _defineProperty(_result2, "MOB".concat(current, "LetterSpacing"), {
+    }), _defineProperty(_result, "MOB".concat(current, "LetterSpacing"), {
       type: "number"
-    }), _defineProperty(_result2, "MOB".concat(current, "LineHeightUnit"), {
+    }), _defineProperty(_result, "MOB".concat(current, "LineHeightUnit"), {
       type: "string",
       "default": "em"
-    }), _defineProperty(_result2, "MOB".concat(current, "LineHeight"), {
+    }), _defineProperty(_result, "MOB".concat(current, "LineHeight"), {
       type: "number"
-    }), _result2);
+    }), _result);
     return _objectSpread(_objectSpread({}, total), result);
   }, {}); // console.log({ typoAttrs });
 
@@ -924,10 +946,10 @@ var hasVal = function hasVal(val) {
 }; //
 // function to generate typography styles for an element based on it's prefix
 
-var generateTypographyStyles = function generateTypographyStyles(_ref) {
-  var prefixConstant = _ref.prefixConstant,
-      defaultFontSize = _ref.defaultFontSize,
-      attributes = _ref.attributes;
+var generateTypographyStyles = function generateTypographyStyles(_ref9) {
+  var prefixConstant = _ref9.prefixConstant,
+      defaultFontSize = _ref9.defaultFontSize,
+      attributes = _ref9.attributes;
   var fontFamily = attributes["".concat(prefixConstant, "FontFamily")],
       fontWeight = attributes["".concat(prefixConstant, "FontWeight")],
       textTransform = attributes["".concat(prefixConstant, "TextTransform")],

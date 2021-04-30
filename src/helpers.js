@@ -1,66 +1,103 @@
 // function to generate New Dimensions-Control's attributes for multiple Dimensions control based on the array of values(prefixs)
-export const generateDimensionsAttributes = (prefixArray) => {
-	const dimensionsAttrs = prefixArray.reduce((total, current) => {
-		const result = {
-			[`${controlName}Unit`]: {
-				type: "string",
-				default: "px",
-			},
-			[`${controlName}Top`]: {
-				type: "string",
-			},
-			[`${controlName}Right`]: {
-				type: "string",
-			},
-			[`${controlName}Bottom`]: {
-				type: "string",
-			},
-			[`${controlName}Left`]: {
-				type: "string",
-			},
+export const generateDimensionsAttributes = (controlName, defaults = {}) => {
+	const { top, right, bottom, left } = defaults;
 
-			[`TAB${controlName}Unit`]: {
-				type: "string",
-				default: "px",
-			},
-			[`TAB${controlName}Top`]: {
-				type: "string",
-			},
-			[`TAB${controlName}Right`]: {
-				type: "string",
-			},
-			[`TAB${controlName}Bottom`]: {
-				type: "string",
-			},
-			[`TAB${controlName}Left`]: {
-				type: "string",
-			},
+	const desktopTop = top
+		? {
+				[`${controlName}Top`]: {
+					type: "string",
+					default: `${top}`,
+				},
+		  }
+		: {
+				[`${controlName}Top`]: {
+					type: "string",
+				},
+		  };
 
-			[`MOB${controlName}Unit`]: {
-				type: "string",
-				default: "px",
-			},
-			[`MOB${controlName}Top`]: {
-				type: "string",
-			},
-			[`MOB${controlName}Right`]: {
-				type: "string",
-			},
-			[`MOB${controlName}Bottom`]: {
-				type: "string",
-			},
-			[`MOB${controlName}Left`]: {
-				type: "string",
-			},
-		};
-		return {
-			...total,
-			...result,
-		};
-	}, {});
+	const desktopRight = right
+		? {
+				[`${controlName}Right`]: {
+					type: "string",
+					default: `${right}`,
+				},
+		  }
+		: {
+				[`${controlName}Right`]: {
+					type: "string",
+				},
+		  };
 
-	// console.log({ dimensionsAttrs });
-	return dimensionsAttrs;
+	const desktopBottom = bottom
+		? {
+				[`${controlName}Bottom`]: {
+					type: "string",
+					default: `${bottom}`,
+				},
+		  }
+		: {
+				[`${controlName}Bottom`]: {
+					type: "string",
+				},
+		  };
+
+	const desktopLeft = left
+		? {
+				[`${controlName}Left`]: {
+					type: "string",
+					default: `${left}`,
+				},
+		  }
+		: {
+				[`${controlName}Left`]: {
+					type: "string",
+				},
+		  };
+
+	return {
+		[`${controlName}Unit`]: {
+			type: "string",
+			default: "px",
+		},
+		...desktopTop,
+		...desktopRight,
+		...desktopBottom,
+		...desktopLeft,
+
+		[`TAB${controlName}Unit`]: {
+			type: "string",
+			default: "px",
+		},
+		[`TAB${controlName}Top`]: {
+			type: "string",
+		},
+		[`TAB${controlName}Right`]: {
+			type: "string",
+		},
+		[`TAB${controlName}Bottom`]: {
+			type: "string",
+		},
+		[`TAB${controlName}Left`]: {
+			type: "string",
+		},
+
+		[`MOB${controlName}Unit`]: {
+			type: "string",
+			default: "px",
+		},
+		[`MOB${controlName}Top`]: {
+			type: "string",
+		},
+		[`MOB${controlName}Right`]: {
+			type: "string",
+		},
+		[`MOB${controlName}Bottom`]: {
+			type: "string",
+		},
+		[`MOB${controlName}Left`]: {
+			type: "string",
+		},
+	};
 };
 
 // function to generate typography attributes for multiple typography control based on the array of prefix
