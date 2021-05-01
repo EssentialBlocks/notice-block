@@ -406,6 +406,7 @@
 .eb-panel-control .components-button.eb-color-undo .dashicon {
   font-size: 14px;
   color: #62626f;
+  padding-left: 7px;
 }
 
 .eb-color-undo {
@@ -693,6 +694,10 @@ body.eb-res-option-mobile .editor-styles-wrapper {
 .eb-color-undo :focus,
 .eb-color-undo :hover {
   box-shadow: none;
+}
+
+.eb-panel-control .components-panel__body .components-input-control__container select.components-select-control__input {
+  line-height: 2em;
 }
 
 /*# sourceMappingURL=index.css.map*/

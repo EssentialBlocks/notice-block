@@ -463,6 +463,7 @@
 .eb-panel-control .components-button.eb-color-undo .dashicon {
 	font-size: 14px;
 	color: #62626f;
+	padding-left: 7px; // fix of thishttps://trello-attachments.s3.amazonaws.com/5bab5a557340da52ebeb1a8f/60896e40f9bcb94f7a144461/dc90d74c7ea7e830c034a52c5b777623/Reset_Icon.png
 }
 
 .eb-color-undo {
@@ -773,3 +774,11 @@ body.eb-res-option-mobile .editor-styles-wrapper {
 }
 
 // color control styles end
+
+// fix of this https://trello-attachments.s3.amazonaws.com/5bab5a557340da52ebeb1a8f/60896e40f9bcb94f7a144461/8ea9805e834dc68d5cc694b3cf18c4b0/Controls.png
+.eb-panel-control
+	.components-panel__body
+	.components-input-control__container
+	select.components-select-control__input {
+	line-height: 2em;
+}
