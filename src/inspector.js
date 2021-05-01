@@ -106,9 +106,9 @@ function Inspector(props) {
 			case "info":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#2196f3",
-					titleColor: "#ffffff",
-					textColor: "#ffffff",
+					backgroundColor: "#d3d3d3",
+					titleColor: "#000000",
+					textColor: "#000000",
 				});
 				break;
 
@@ -133,9 +133,9 @@ function Inspector(props) {
 			case "default":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#d3d3d3",
-					titleColor: "#000000",
-					textColor: "#000000",
+					backgroundColor: "#2196f3",
+					titleColor: "#ffffff",
+					textColor: "#ffffff",
 				});
 				break;
 		}

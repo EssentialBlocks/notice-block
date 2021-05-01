@@ -395,6 +395,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FONT_SIZE_UNITS", function() { return FONT_SIZE_UNITS; });
 var __ = wp.i18n.__;
 var NOTICE_TYPES = [{
+  label: __("Default"),
+  value: "default"
+}, {
   label: __("Success"),
   value: "success"
 }, {
@@ -406,9 +409,6 @@ var NOTICE_TYPES = [{
 }, {
   label: __("Danger"),
   value: "danger"
-}, {
-  label: __("Default"),
-  value: "default"
 }];
 var TEXT_TRANSFORM = [{
   label: __("None"),
@@ -1231,9 +1231,9 @@ function Inspector(props) {
       case "info":
         setAttributes({
           noticeType: type,
-          backgroundColor: "#2196f3",
-          titleColor: "#ffffff",
-          textColor: "#ffffff"
+          backgroundColor: "#d3d3d3",
+          titleColor: "#000000",
+          textColor: "#000000"
         });
         break;
 
@@ -1258,9 +1258,9 @@ function Inspector(props) {
       case "default":
         setAttributes({
           noticeType: type,
-          backgroundColor: "#d3d3d3",
-          titleColor: "#000000",
-          textColor: "#000000"
+          backgroundColor: "#2196f3",
+          titleColor: "#ffffff",
+          textColor: "#ffffff"
         });
         break;
     }
