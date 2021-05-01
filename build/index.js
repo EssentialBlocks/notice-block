@@ -1494,7 +1494,10 @@ var save = function save(_ref) {
     className: "eb-notice-title",
     value: title
   }), /*#__PURE__*/React.createElement("span", {
-    className: "eb-notice-dismiss"
+    className: "eb-notice-dismiss",
+    style: {
+      cursor: "pointer"
+    }
   })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
     tagName: "div",
     className: "eb-notice-text",
