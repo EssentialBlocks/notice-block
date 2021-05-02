@@ -8,6 +8,7 @@ import {
 	ToggleControl,
 	SelectControl,
 	RangeControl,
+	Button,
 } from "@wordpress/components";
 import { useEffect } from "@wordpress/element";
 
@@ -29,6 +30,7 @@ import {
 	typoPrefix_text,
 	typoPrefix_title,
 } from "./constants/typographyPrefixConstants";
+import ResetControl from "../util/reset-control";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
@@ -299,41 +301,53 @@ function Inspector(props) {
 						onChange={(shadowColor) => setAttributes({ shadowColor })}
 					/>
 
-					<RangeControl
-						label={__("Horizontal Offset")}
-						value={shadowHOffset}
-						allowReset
-						onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
-						min={0}
-						max={100}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowHOffset: undefined })}
+					>
+						<RangeControl
+							label={__("Horizontal Offset")}
+							value={shadowHOffset}
+							onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
+							min={0}
+							max={100}
+						/>
+					</ResetControl>
 
-					<RangeControl
-						label={__("Vertical Offset")}
-						value={shadowVOffset}
-						allowReset
-						onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
-						min={0}
-						max={100}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowVOffset: undefined })}
+					>
+						<RangeControl
+							label={__("Vertical Offset")}
+							value={shadowVOffset}
+							onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
+							min={0}
+							max={100}
+						/>
+					</ResetControl>
 
-					<RangeControl
-						label={__("Blur")}
-						value={shadowBlur}
-						allowReset
-						onChange={(shadowBlur) => setAttributes({ shadowBlur })}
-						min={0}
-						max={20}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowBlur: undefined })}
+					>
+						<RangeControl
+							label={__("Blur")}
+							value={shadowBlur}
+							onChange={(shadowBlur) => setAttributes({ shadowBlur })}
+							min={0}
+							max={20}
+						/>
+					</ResetControl>
 
-					<RangeControl
-						label={__("Spread")}
-						value={shadowSpread}
-						allowReset
-						onChange={(shadowSpread) => setAttributes({ shadowSpread })}
-						min={0}
-						max={20}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowSpread: undefined })}
+					>
+						<RangeControl
+							label={__("Spread")}
+							value={shadowSpread}
+							onChange={(shadowSpread) => setAttributes({ shadowSpread })}
+							min={0}
+							max={20}
+						/>
+					</ResetControl>
 				</PanelBody>
 			</span>
 		</InspectorControls>

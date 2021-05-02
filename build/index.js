@@ -1153,6 +1153,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_typography_control_v2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/typography-control-v2 */ "./util/typography-control-v2/index.js");
 /* harmony import */ var _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./constants/dimensionsNames */ "./src/constants/dimensionsNames.js");
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+/* harmony import */ var _util_reset_control__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../util/reset-control */ "./util/reset-control/index.js");
 /**
  * WordPress dependencies
  */
@@ -1163,6 +1164,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
+
 
 
 
@@ -1413,10 +1415,15 @@ function Inspector(props) {
         shadowColor: shadowColor
       });
     }
-  }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["RangeControl"], {
+  }), /*#__PURE__*/React.createElement(_util_reset_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    onReset: function onReset() {
+      return setAttributes({
+        shadowHOffset: undefined
+      });
+    }
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["RangeControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Horizontal Offset"),
     value: shadowHOffset,
-    allowReset: true,
     onChange: function onChange(shadowHOffset) {
       return setAttributes({
         shadowHOffset: shadowHOffset
@@ -1424,10 +1431,15 @@ function Inspector(props) {
     },
     min: 0,
     max: 100
-  }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["RangeControl"], {
+  })), /*#__PURE__*/React.createElement(_util_reset_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    onReset: function onReset() {
+      return setAttributes({
+        shadowVOffset: undefined
+      });
+    }
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["RangeControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Vertical Offset"),
     value: shadowVOffset,
-    allowReset: true,
     onChange: function onChange(shadowVOffset) {
       return setAttributes({
         shadowVOffset: shadowVOffset
@@ -1435,10 +1447,15 @@ function Inspector(props) {
     },
     min: 0,
     max: 100
-  }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["RangeControl"], {
+  })), /*#__PURE__*/React.createElement(_util_reset_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    onReset: function onReset() {
+      return setAttributes({
+        shadowBlur: undefined
+      });
+    }
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["RangeControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Blur"),
     value: shadowBlur,
-    allowReset: true,
     onChange: function onChange(shadowBlur) {
       return setAttributes({
         shadowBlur: shadowBlur
@@ -1446,10 +1463,15 @@ function Inspector(props) {
     },
     min: 0,
     max: 20
-  }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["RangeControl"], {
+  })), /*#__PURE__*/React.createElement(_util_reset_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    onReset: function onReset() {
+      return setAttributes({
+        shadowSpread: undefined
+      });
+    }
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["RangeControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Spread"),
     value: shadowSpread,
-    allowReset: true,
     onChange: function onChange(shadowSpread) {
       return setAttributes({
         shadowSpread: shadowSpread
@@ -1457,7 +1479,7 @@ function Inspector(props) {
     },
     min: 0,
     max: 20
-  }))));
+  })))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Inspector);
@@ -1933,6 +1955,36 @@ function ResponsiveDimensionsControl(_ref) {
     }
   }))));
 }
+
+/***/ }),
+
+/***/ "./util/reset-control/index.js":
+/*!*************************************!*\
+  !*** ./util/reset-control/index.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var ResetControl = function ResetControl(_ref) {
+  var onReset = _ref.onReset,
+      children = _ref.children;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "eb-range-controller-container"
+  }, children, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "eb-range-reset-button",
+    onClick: onReset
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "dashicon dashicons dashicons-image-rotate"
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ResetControl);
 
 /***/ }),
 
@@ -2755,6 +2807,17 @@ var UnitControl = function UnitControl(_ref) {
 /***/ (function(module, exports) {
 
 (function() { module.exports = window["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["React"]; }());
 
 /***/ })
 
