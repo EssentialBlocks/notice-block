@@ -49,49 +49,6 @@ function Inspector(props) {
 		shadowVOffset,
 		shadowBlur,
 		shadowSpread,
-
-		// margin padding attributes ⬇
-		marginUnit,
-
-		marginTop,
-		marginRight,
-		marginBottom,
-		marginLeft,
-
-		paddingUnit,
-
-		paddingTop,
-		paddingRight,
-		paddingBottom,
-		paddingLeft,
-
-		TABmarginUnit,
-
-		TABmarginTop,
-		TABmarginRight,
-		TABmarginBottom,
-		TABmarginLeft,
-
-		TABpaddingUnit,
-
-		TABpaddingTop,
-		TABpaddingRight,
-		TABpaddingBottom,
-		TABpaddingLeft,
-
-		MOBmarginUnit,
-
-		MOBmarginTop,
-		MOBmarginRight,
-		MOBmarginBottom,
-		MOBmarginLeft,
-
-		MOBpaddingUnit,
-
-		MOBpaddingTop,
-		MOBpaddingRight,
-		MOBpaddingBottom,
-		MOBpaddingLeft,
 	} = attributes;
 
 	const onTypeChange = (type) => {

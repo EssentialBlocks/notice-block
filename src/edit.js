@@ -47,49 +47,6 @@ export default function Edit(props) {
 		shadowBlur,
 		shadowSpread,
 		shadowColor,
-
-		// margin padding attributes ⬇
-		marginUnit,
-
-		marginTop,
-		marginRight,
-		marginBottom,
-		marginLeft,
-
-		paddingUnit,
-
-		paddingTop,
-		paddingRight,
-		paddingBottom,
-		paddingLeft,
-
-		TABmarginUnit,
-
-		TABmarginTop,
-		TABmarginRight,
-		TABmarginBottom,
-		TABmarginLeft,
-
-		TABpaddingUnit,
-
-		TABpaddingTop,
-		TABpaddingRight,
-		TABpaddingBottom,
-		TABpaddingLeft,
-
-		MOBmarginUnit,
-
-		MOBmarginTop,
-		MOBmarginRight,
-		MOBmarginBottom,
-		MOBmarginLeft,
-
-		MOBpaddingUnit,
-
-		MOBpaddingTop,
-		MOBpaddingRight,
-		MOBpaddingBottom,
-		MOBpaddingLeft,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
