@@ -1336,12 +1336,10 @@ function Inspector(props) {
     initialOpen: false
   }, /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_6__["default"], {
     resRequiredProps: resRequiredProps,
-    className: "forWrapperMargin",
     controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_8__["dimensionsMargin"],
     baseLabel: "Margin"
   }), /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_6__["default"], {
     resRequiredProps: resRequiredProps,
-    className: "forWrapperPadding",
     controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_8__["dimensionsPadding"],
     baseLabel: "Padding"
   })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
@@ -1569,78 +1567,6 @@ var ColorControl = function ColorControl(_ref) {
 
 /***/ }),
 
-/***/ "./util/dimensions-control-v2/WithResButtons.js":
-/*!******************************************************!*\
-  !*** ./util/dimensions-control-v2/WithResButtons.js ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WithResButtons; });
-var handleDesktopBtnClick = function handleDesktopBtnClick(_ref) {
-  var setAttributes = _ref.setAttributes;
-  document.body.classList.add("eb-res-option-desktop");
-  document.body.classList.remove("eb-res-option-tab", "eb-res-option-mobile");
-  setAttributes({
-    resOption: "desktop"
-  });
-};
-
-var handleTabBtnClick = function handleTabBtnClick(_ref2) {
-  var setAttributes = _ref2.setAttributes;
-  document.body.classList.add("eb-res-option-tab");
-  document.body.classList.remove("eb-res-option-desktop", "eb-res-option-mobile");
-  setAttributes({
-    resOption: "tab"
-  });
-};
-
-var handleMobileBtnClick = function handleMobileBtnClick(_ref3) {
-  var setAttributes = _ref3.setAttributes;
-  document.body.classList.add("eb-res-option-mobile");
-  document.body.classList.remove("eb-res-option-desktop", "eb-res-option-tab");
-  setAttributes({
-    resOption: "mobile"
-  });
-};
-
-function WithResButtons(_ref4) {
-  var className = _ref4.className,
-      children = _ref4.children,
-      resOption = _ref4.resOption,
-      setAttributes = _ref4.setAttributes;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "wrap_res ".concat(className || " ")
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "resIcons"
-  }, /*#__PURE__*/React.createElement("span", {
-    onClick: function onClick() {
-      return handleDesktopBtnClick({
-        setAttributes: setAttributes
-      });
-    },
-    "class": "typoResButton dashicons dashicons-desktop ".concat(resOption === "desktop" ? "active" : " ")
-  }), /*#__PURE__*/React.createElement("span", {
-    onClick: function onClick() {
-      return handleTabBtnClick({
-        setAttributes: setAttributes
-      });
-    },
-    "class": "typoResButton dashicons dashicons-tablet ".concat(resOption === "tab" ? "active" : " ")
-  }), /*#__PURE__*/React.createElement("span", {
-    onClick: function onClick() {
-      return handleMobileBtnClick({
-        setAttributes: setAttributes
-      });
-    },
-    "class": "typoResButton dashicons dashicons-smartphone ".concat(resOption === "mobile" ? "active" : " ")
-  })), children);
-}
-
-/***/ }),
-
 /***/ "./util/dimensions-control-v2/dimensions.js":
 /*!**************************************************!*\
   !*** ./util/dimensions-control-v2/dimensions.js ***!
@@ -1672,13 +1598,40 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
+
+var handleDesktopBtnClick = function handleDesktopBtnClick(setAttributes) {
+  document.body.classList.add("eb-res-option-desktop");
+  document.body.classList.remove("eb-res-option-tab", "eb-res-option-mobile");
+  setAttributes({
+    resOption: "desktop"
+  });
+};
+
+var handleTabBtnClick = function handleTabBtnClick(setAttributes) {
+  document.body.classList.add("eb-res-option-tab");
+  document.body.classList.remove("eb-res-option-desktop", "eb-res-option-mobile");
+  setAttributes({
+    resOption: "tab"
+  });
+};
+
+var handleMobileBtnClick = function handleMobileBtnClick(setAttributes) {
+  document.body.classList.add("eb-res-option-mobile");
+  document.body.classList.remove("eb-res-option-desktop", "eb-res-option-tab");
+  setAttributes({
+    resOption: "mobile"
+  });
+};
+
 function DimensionsControl(_ref) {
   var top = _ref.top,
       right = _ref.right,
       bottom = _ref.bottom,
       left = _ref.left,
       label = _ref.label,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      resOption = _ref.resOption,
+      setAttributes = _ref.setAttributes;
 
   var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     top: top,
@@ -1725,8 +1678,25 @@ function DimensionsControl(_ref) {
   return /*#__PURE__*/React.createElement("div", {
     className: "dimention-container"
   }, /*#__PURE__*/React.createElement("div", {
+    className: "withResWrapperInDimension"
+  }, /*#__PURE__*/React.createElement("div", {
     className: "dimention-label"
-  }, label), /*#__PURE__*/React.createElement("div", {
+  }, label), /*#__PURE__*/React.createElement("span", {
+    onClick: function onClick() {
+      return handleDesktopBtnClick(setAttributes);
+    },
+    "class": "typoResButton dashicons dashicons-desktop ".concat(resOption === "desktop" ? "active" : " ")
+  }), /*#__PURE__*/React.createElement("span", {
+    onClick: function onClick() {
+      return handleTabBtnClick(setAttributes);
+    },
+    "class": "typoResButton dashicons dashicons-tablet ".concat(resOption === "tab" ? "active" : " ")
+  }), /*#__PURE__*/React.createElement("span", {
+    onClick: function onClick() {
+      return handleMobileBtnClick(setAttributes);
+    },
+    "class": "typoResButton dashicons dashicons-smartphone ".concat(resOption === "mobile" ? "active" : " ")
+  })), /*#__PURE__*/React.createElement("div", {
     className: "input-container"
   }, /*#__PURE__*/React.createElement("div", {
     className: "input-wrapper"
@@ -1786,16 +1756,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _dimensions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dimensions */ "./util/dimensions-control-v2/dimensions.js");
 /* harmony import */ var _unit_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../unit-control */ "./util/unit-control/index.js");
-/* harmony import */ var _WithResButtons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WithResButtons */ "./util/dimensions-control-v2/WithResButtons.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
 
 function ResponsiveDimensionsControl(_ref) {
   var resRequiredProps = _ref.resRequiredProps,
-      className = _ref.className,
       controlName = _ref.controlName,
       baseLabel = _ref.baseLabel;
   var attributes = resRequiredProps.attributes,
@@ -1826,11 +1793,7 @@ function ResponsiveDimensionsControl(_ref) {
     label: "%",
     value: "%"
   }];
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    className: className,
-    resOption: resOption,
-    setAttributes: setAttributes
-  }, resOption == "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, resOption == "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
     selectedUnit: dimensionUnit,
     unitTypes: UNITS,
     onClick: function onClick(dimensionUnit) {
@@ -1842,6 +1805,8 @@ function ResponsiveDimensionsControl(_ref) {
     right: dimensionRight,
     bottom: dimensionBottom,
     left: dimensionLeft,
+    resOption: resOption,
+    setAttributes: setAttributes,
     onChange: function onChange(_ref2) {
       var _setAttributes2;
 
@@ -1863,6 +1828,8 @@ function ResponsiveDimensionsControl(_ref) {
     right: TABdimensionRight,
     bottom: TABdimensionBottom,
     left: TABdimensionLeft,
+    resOption: resOption,
+    setAttributes: setAttributes,
     onChange: function onChange(_ref3) {
       var _setAttributes4;
 
@@ -1884,6 +1851,8 @@ function ResponsiveDimensionsControl(_ref) {
     right: MOBdimensionRight,
     bottom: MOBdimensionBottom,
     left: MOBdimensionLeft,
+    resOption: resOption,
+    setAttributes: setAttributes,
     onChange: function onChange(_ref4) {
       var _setAttributes6;
 
@@ -1893,7 +1862,7 @@ function ResponsiveDimensionsControl(_ref) {
           left = _ref4.left;
       return setAttributes((_setAttributes6 = {}, _defineProperty(_setAttributes6, "MOB".concat(controlName, "Top"), top), _defineProperty(_setAttributes6, "MOB".concat(controlName, "Right"), right), _defineProperty(_setAttributes6, "MOB".concat(controlName, "Bottom"), bottom), _defineProperty(_setAttributes6, "MOB".concat(controlName, "Left"), left), _setAttributes6));
     }
-  }))));
+  })));
 }
 
 /***/ }),

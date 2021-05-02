@@ -239,13 +239,11 @@ function Inspector(props) {
 				<PanelBody title={__("Margin & Padding")} initialOpen={false}>
 					<ResponsiveDimensionsControl
 						resRequiredProps={resRequiredProps}
-						className="forWrapperMargin"
 						controlName={dimensionsMargin}
 						baseLabel="Margin"
 					/>
 					<ResponsiveDimensionsControl
 						resRequiredProps={resRequiredProps}
-						className="forWrapperPadding"
 						controlName={dimensionsPadding}
 						baseLabel="Padding"
 					/>
