@@ -147,7 +147,7 @@ export default function Edit(props) {
 		dimensionStylesMobile: wrapperMarginStylesMobile,
 	} = generateDimensionsControlStyles({
 		controlName: dimensionsMargin,
-		isStyleForMargin: true,
+		styleFor: "margin",
 		attributes,
 	});
 
@@ -157,7 +157,7 @@ export default function Edit(props) {
 		dimensionStylesMobile: wrapperPaddingStylesMobile,
 	} = generateDimensionsControlStyles({
 		controlName: dimensionsPadding,
-		isStyleForMargin: false,
+		styleFor: "padding",
 		attributes,
 	});
 

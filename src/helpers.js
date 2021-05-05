@@ -318,7 +318,7 @@ export const generateTypographyStyles = ({
 // function to generate dimensions-controls styles for an element based on it's controlName(prefix)
 export const generateDimensionsControlStyles = ({
 	controlName,
-	isStyleForMargin,
+	styleFor,
 	attributes,
 }) => {
 	const {
@@ -345,26 +345,26 @@ export const generateDimensionsControlStyles = ({
 	let dimensionStylesTab = " ";
 	let dimensionStylesMobile = " ";
 
-	if (isStyleForMargin === true) {
+	if (styleFor !== "border-radius") {
 		dimensionStylesDesktop = `
 		${
 			dimensionTop
-				? `margin-top: ${parseFloat(dimensionTop)}${dimensionUnit};`
+				? `${styleFor}-top: ${parseFloat(dimensionTop)}${dimensionUnit};`
 				: " "
 		}
 		${
 			dimensionRight
-				? `margin-right: ${parseFloat(dimensionRight)}${dimensionUnit};`
+				? `${styleFor}-right: ${parseFloat(dimensionRight)}${dimensionUnit};`
 				: " "
 		}
 		${
 			dimensionLeft
-				? `margin-left: ${parseFloat(dimensionLeft)}${dimensionUnit};`
+				? `${styleFor}-left: ${parseFloat(dimensionLeft)}${dimensionUnit};`
 				: " "
 		}
 		${
 			dimensionBottom
-				? `margin-bottom: ${parseFloat(dimensionBottom)}${dimensionUnit};`
+				? `${styleFor}-bottom: ${parseFloat(dimensionBottom)}${dimensionUnit};`
 				: " "
 		}
 	
@@ -373,22 +373,28 @@ export const generateDimensionsControlStyles = ({
 		dimensionStylesTab = `
 			${
 				TABdimensionTop
-					? `margin-top: ${parseFloat(TABdimensionTop)}${TABdimensionUnit};`
+					? `${styleFor}-top: ${parseFloat(
+							TABdimensionTop
+					  )}${TABdimensionUnit};`
 					: " "
 			}
 			${
 				TABdimensionRight
-					? `margin-right: ${parseFloat(TABdimensionRight)}${TABdimensionUnit};`
+					? `${styleFor}-right: ${parseFloat(
+							TABdimensionRight
+					  )}${TABdimensionUnit};`
 					: " "
 			}
 			${
 				TABdimensionLeft
-					? `margin-left: ${parseFloat(TABdimensionLeft)}${TABdimensionUnit};`
+					? `${styleFor}-left: ${parseFloat(
+							TABdimensionLeft
+					  )}${TABdimensionUnit};`
 					: " "
 			}
 			${
 				TABdimensionBottom
-					? `margin-bottom: ${parseFloat(
+					? `${styleFor}-bottom: ${parseFloat(
 							TABdimensionBottom
 					  )}${TABdimensionUnit};`
 					: " "
@@ -399,22 +405,28 @@ export const generateDimensionsControlStyles = ({
 		dimensionStylesMobile = `
 			${
 				MOBdimensionTop
-					? `margin-top: ${parseFloat(MOBdimensionTop)}${MOBdimensionUnit};`
+					? `${styleFor}-top: ${parseFloat(
+							MOBdimensionTop
+					  )}${MOBdimensionUnit};`
 					: " "
 			}
 			${
 				MOBdimensionRight
-					? `margin-right: ${parseFloat(MOBdimensionRight)}${MOBdimensionUnit};`
+					? `${styleFor}-right: ${parseFloat(
+							MOBdimensionRight
+					  )}${MOBdimensionUnit};`
 					: " "
 			}
 			${
 				MOBdimensionLeft
-					? `margin-left: ${parseFloat(MOBdimensionLeft)}${MOBdimensionUnit};`
+					? `${styleFor}-left: ${parseFloat(
+							MOBdimensionLeft
+					  )}${MOBdimensionUnit};`
 					: " "
 			}
 			${
 				MOBdimensionBottom
-					? `margin-bottom: ${parseFloat(
+					? `${styleFor}-bottom: ${parseFloat(
 							MOBdimensionBottom
 					  )}${MOBdimensionUnit};`
 					: " "
@@ -425,22 +437,30 @@ export const generateDimensionsControlStyles = ({
 		dimensionStylesDesktop = `
 			${
 				dimensionTop
-					? `padding-top: ${parseFloat(dimensionTop)}${dimensionUnit};`
+					? `border-top-left-radius: ${parseFloat(
+							dimensionTop
+					  )}${dimensionUnit};`
 					: " "
 			}
 			${
 				dimensionRight
-					? `padding-right: ${parseFloat(dimensionRight)}${dimensionUnit};`
+					? `border-top-right-radius: ${parseFloat(
+							dimensionRight
+					  )}${dimensionUnit};`
 					: " "
 			}
 			${
 				dimensionLeft
-					? `padding-left: ${parseFloat(dimensionLeft)}${dimensionUnit};`
+					? `border-bottom-right-radius: ${parseFloat(
+							dimensionLeft
+					  )}${dimensionUnit};`
 					: " "
 			}
 			${
 				dimensionBottom
-					? `padding-bottom: ${parseFloat(dimensionBottom)}${dimensionUnit};`
+					? `border-bottom-left-radius: ${parseFloat(
+							dimensionBottom
+					  )}${dimensionUnit};`
 					: " "
 			}
 	
@@ -449,24 +469,28 @@ export const generateDimensionsControlStyles = ({
 		dimensionStylesTab = `
 			${
 				TABdimensionTop
-					? `padding-top: ${parseFloat(TABdimensionTop)}${TABdimensionUnit};`
+					? `border-top-left-radius: ${parseFloat(
+							TABdimensionTop
+					  )}${TABdimensionUnit};`
 					: " "
 			}
 			${
 				TABdimensionRight
-					? `padding-right: ${parseFloat(
+					? `border-top-right-radius: ${parseFloat(
 							TABdimensionRight
 					  )}${TABdimensionUnit};`
 					: " "
 			}
 			${
 				TABdimensionLeft
-					? `padding-left: ${parseFloat(TABdimensionLeft)}${TABdimensionUnit};`
+					? `border-bottom-right-radius: ${parseFloat(
+							TABdimensionLeft
+					  )}${TABdimensionUnit};`
 					: " "
 			}
 			${
 				TABdimensionBottom
-					? `padding-bottom: ${parseFloat(
+					? `border-bottom-left-radius: ${parseFloat(
 							TABdimensionBottom
 					  )}${TABdimensionUnit};`
 					: " "
@@ -477,24 +501,28 @@ export const generateDimensionsControlStyles = ({
 		dimensionStylesMobile = `
 			${
 				MOBdimensionTop
-					? `padding-top: ${parseFloat(MOBdimensionTop)}${MOBdimensionUnit};`
+					? `border-top-left-radius: ${parseFloat(
+							MOBdimensionTop
+					  )}${MOBdimensionUnit};`
 					: " "
 			}
 			${
 				MOBdimensionRight
-					? `padding-right: ${parseFloat(
+					? `border-top-right-radius: ${parseFloat(
 							MOBdimensionRight
 					  )}${MOBdimensionUnit};`
 					: " "
 			}
 			${
 				MOBdimensionLeft
-					? `padding-left: ${parseFloat(MOBdimensionLeft)}${MOBdimensionUnit};`
+					? `border-bottom-right-radius: ${parseFloat(
+							MOBdimensionLeft
+					  )}${MOBdimensionUnit};`
 					: " "
 			}
 			${
 				MOBdimensionBottom
-					? `padding-bottom: ${parseFloat(
+					? `border-bottom-left-radius: ${parseFloat(
 							MOBdimensionBottom
 					  )}${MOBdimensionUnit};`
 					: " "
