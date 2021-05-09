@@ -13,10 +13,13 @@
 		"start": "wp-scripts start",
 		"packages-update": "wp-scripts packages-update"
 	},
-	"devDependencies": {
+	"dependencies": {
 		"@wordpress/block-editor": "^5.3.3",
 		"@wordpress/blocks": "^8.0.3",
-		"@wordpress/i18n": "^3.20.0",
+		"@wordpress/i18n": "^3.20.0"
+	},
+	"devDependencies": {
+		"@babel/plugin-proposal-class-properties": "^7.10.4",
 		"@wordpress/scripts": "^15.0.1"
 	}
 }

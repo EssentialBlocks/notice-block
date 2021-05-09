@@ -1,6 +1,6 @@
 {
 	"apiVersion": 2,
-	"name": "block/notice-block",
+	"name": "create-block/todo-list",
 	"title": "Notice",
 	"category": "widgets",
 	"description": "Put Spotlight On News, Announcements & Let The Visitors Find It Easily",

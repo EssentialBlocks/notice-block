@@ -3,8 +3,8 @@ import { __ } from "@wordpress/i18n";
 
 import "./style.scss";
 
-import Edit from "./edit";
-import save from "./save";
+import Edit from "./components/edit";
+import save from "./components/save";
 import icon from "./icon";
 import attributes from "./attributes";
 

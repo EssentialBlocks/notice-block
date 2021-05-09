@@ -14,18 +14,18 @@ import { useEffect } from "@wordpress/element";
 /**
  * Internal dependencies
  */
-import { NOTICE_TYPES, FONT_SIZE_UNITS } from "./constants";
+import { NOTICE_TYPES, FONT_SIZE_UNITS } from "../constants/constants";
 
-import ColorControl from "../util/color-control";
-import UnitControl from "../util/unit-control";
-import DimensionsControl from "../util/dimensions-control";
-import TypographyDropdown from "../util/typography-control";
-import ResPanelBody from "./ResPanelBody";
+import ColorControl from "../../util/color-control";
+import UnitControl from "../../util/unit-control";
+import DimensionsControl from "../../util/dimensions-control";
+import TypographyDropdown from "../../util/typography-control";
+import ResPanelBody from "../ResPanelBody";
 
 import {
 	typoPrefix_text,
 	typoPrefix_title,
-} from "./constants/typographyPrefixConstants";
+} from "../constants/typographyPrefixConstants";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;

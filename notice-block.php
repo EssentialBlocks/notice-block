@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Notice
  * Plugin URI: 		https://essential-blocks.com
- * Description:     Put Spotlight On News, Announcements & Let The Visitors Find It Easily 
+ * Description:     Put Spotlight On News, Announcements & Let The Visitors Find It Easily
  * Version:         1.0.1
  * Author:          WPDeveloper
  * Author URI: 		https://wpdeveloper.net

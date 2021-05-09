@@ -4,7 +4,7 @@
 import { useBlockProps, RichText } from "@wordpress/block-editor";
 import { useEffect } from "@wordpress/element";
 
-import "./editor.scss";
+import "../editor.scss";
 
 /**
  * Internal depenencies
@@ -14,12 +14,12 @@ import Inspector from "./inspector";
 import {
 	typoPrefix_text,
 	typoPrefix_title,
-} from "./constants/typographyPrefixConstants";
+} from "../constants/typographyPrefixConstants";
 import {
 	softMinifyCssStrings,
 	isCssExists,
 	generateTypographyStyles,
-} from "./helpers";
+} from "../helpers";
 
 export default function Edit(props) {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -188,21 +188,21 @@ export default function Edit(props) {
 				? `margin-bottom: ${parseFloat(marginBottom)}${marginUnit};`
 				: " "
 		}
-		padding: 
-			${paddingTop || 0}${paddingUnit} 
-			${paddingRight || 0}${paddingUnit} 
-			${paddingBottom || 0}${paddingUnit} 
+		padding:
+			${paddingTop || 0}${paddingUnit}
+			${paddingRight || 0}${paddingUnit}
+			${paddingBottom || 0}${paddingUnit}
 			${paddingLeft || 0}${paddingUnit};
 
 		background: ${backgroundColor || "#3074ff"};
-			
+
 		${
 			shadowColor
-				? `box-shadow: 
-					${shadowHOffset || 0}px 
-					${shadowVOffset || 0}px 
-					${shadowBlur || 0}px 
-					${shadowSpread || 0}px 
+				? `box-shadow:
+					${shadowHOffset || 0}px
+					${shadowVOffset || 0}px
+					${shadowBlur || 0}px
+					${shadowSpread || 0}px
 					${shadowColor};`
 				: " "
 		}
@@ -297,7 +297,7 @@ export default function Edit(props) {
 			MOBpaddingBottom
 				? `padding-bottom: ${parseFloat(MOBpaddingBottom)}${MOBpaddingUnit};`
 				: " "
-		}	
+		}
 	}
 	`;
 
@@ -307,13 +307,13 @@ export default function Edit(props) {
 	.${blockId} .eb-notice-title-wrapper{
 		display: flex;
 		justify-content: space-between;
-	}	
+	}
 	`;
 
 	// title styles css in strings ⬇
 	const titleStylesDesktop = `
 	.${blockId} .eb-notice-title{
-		${titleTypoStylesDesktop}		
+		${titleTypoStylesDesktop}
 		color: ${titleColor || "#fff"};
 	}
 	`;
@@ -409,20 +409,20 @@ export default function Edit(props) {
 
 				/* mimmikcssEnd */
 
-				@media all and (max-width: 1024px) {	
+				@media all and (max-width: 1024px) {
 
-					/* tabcssStart */			
+					/* tabcssStart */
 					${softMinifyCssStrings(tabAllStyles)}
-					/* tabcssEnd */			
-				
+					/* tabcssEnd */
+
 				}
-				
+
 				@media all and (max-width: 767px) {
-					
-					/* mobcssStart */			
+
+					/* mobcssStart */
 					${softMinifyCssStrings(mobileAllStyles)}
-					/* mobcssEnd */			
-				
+					/* mobcssEnd */
+
 				}
 				`}
 			</style>
