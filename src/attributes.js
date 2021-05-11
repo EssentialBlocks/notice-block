@@ -28,129 +28,6 @@ const attributes = {
 		type: "object",
 	},
 
-	// typography attributes ⬇
-	...generateTypographyAttributes(Object.values(prefixObjs)),
-
-	// margin padding attributes ⬇
-	...generateDimensionsAttributes(dimensionsMargin),
-	...generateDimensionsAttributes(dimensionsPadding, {
-		top: 65,
-		bottom: 65,
-		right: 60,
-		left: 60,
-	}),
-	// marginUnit: {
-	// 	type: "string",
-	// 	default: "px",
-	// },
-
-	// marginTop: {
-	// 	type: "string",
-	// },
-	// marginRight: {
-	// 	type: "string",
-	// },
-	// marginBottom: {
-	// 	type: "string",
-	// },
-	// marginLeft: {
-	// 	type: "string",
-	// },
-
-	// paddingUnit: {
-	// 	type: "string",
-	// 	default: "px",
-	// },
-
-	// paddingTop: {
-	// 	type: "string",
-	// 	default: "65",
-	// },
-	// paddingRight: {
-	// 	type: "string",
-	// 	default: "60",
-	// },
-	// paddingBottom: {
-	// 	type: "string",
-	// 	default: "65",
-	// },
-	// paddingLeft: {
-	// 	type: "string",
-	// 	default: "60",
-	// },
-
-	// TABmarginUnit: {
-	// 	type: "string",
-	// 	default: "px",
-	// },
-
-	// TABmarginTop: {
-	// 	type: "string",
-	// },
-	// TABmarginRight: {
-	// 	type: "string",
-	// },
-	// TABmarginBottom: {
-	// 	type: "string",
-	// },
-	// TABmarginLeft: {
-	// 	type: "string",
-	// },
-
-	// TABpaddingUnit: {
-	// 	type: "string",
-	// 	default: "px",
-	// },
-
-	// TABpaddingTop: {
-	// 	type: "string",
-	// },
-	// TABpaddingRight: {
-	// 	type: "string",
-	// },
-	// TABpaddingBottom: {
-	// 	type: "string",
-	// },
-	// TABpaddingLeft: {
-	// 	type: "string",
-	// },
-
-	// MOBmarginUnit: {
-	// 	type: "string",
-	// 	default: "px",
-	// },
-
-	// MOBmarginTop: {
-	// 	type: "string",
-	// },
-	// MOBmarginRight: {
-	// 	type: "string",
-	// },
-	// MOBmarginBottom: {
-	// 	type: "string",
-	// },
-	// MOBmarginLeft: {
-	// 	type: "string",
-	// },
-
-	// MOBpaddingUnit: {
-	// 	type: "string",
-	// 	default: "px",
-	// },
-
-	// MOBpaddingTop: {
-	// 	type: "string",
-	// },
-	// MOBpaddingRight: {
-	// 	type: "string",
-	// },
-	// MOBpaddingBottom: {
-	// 	type: "string",
-	// },
-	// MOBpaddingLeft: {
-	// 	type: "string",
-	// },
-
 	dismissible: {
 		type: "boolean",
 		default: false,
@@ -208,6 +85,18 @@ const attributes = {
 	shadowBlur: {
 		type: "number",
 	},
+
+	// typography attributes ⬇
+	...generateTypographyAttributes(Object.values(prefixObjs)),
+
+	// margin padding attributes ⬇
+	...generateDimensionsAttributes(dimensionsMargin),
+	...generateDimensionsAttributes(dimensionsPadding, {
+		top: 65,
+		bottom: 65,
+		right: 60,
+		left: 60,
+	}),
 };
 
 export default attributes;

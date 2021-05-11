@@ -54,7 +54,7 @@ export const generateDimensionsAttributes = (controlName, defaults = {}) => {
 				},
 		  };
 
-	return {
+	const dmAttrs = {
 		[`${controlName}Unit`]: {
 			type: "string",
 			default: "px",
@@ -98,6 +98,10 @@ export const generateDimensionsAttributes = (controlName, defaults = {}) => {
 			type: "string",
 		},
 	};
+
+	// console.log({ dmAttrs });
+
+	return dmAttrs;
 };
 
 // function to generate typography attributes for multiple typography control based on the array of prefix

@@ -1,6 +1,6 @@
-import { RichText, useBlockProps } from "@wordpress/block-editor";
+const { RichText, useBlockProps } = wp.blockEditor;
 
-const save = ({ attributes }) => {
+const Save = ({ attributes }) => {
 	const { blockId, showAfterDismiss, title, text } = attributes;
 
 	return (
@@ -30,4 +30,4 @@ const save = ({ attributes }) => {
 	);
 };
 
-export default save;
+export default Save;

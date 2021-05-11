@@ -1,25 +1,25 @@
 /**
  * WordPress dependencies
  */
-import { __ } from "@wordpress/i18n";
-import { InspectorControls, PanelColorSettings } from "@wordpress/block-editor";
-import {
+const { __ } = wp.i18n;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const {
 	PanelBody,
 	ToggleControl,
 	SelectControl,
 	RangeControl,
 	Button,
-} from "@wordpress/components";
-import { useEffect } from "@wordpress/element";
+} = wp.components;
+const { useEffect } = wp.element;
 
 /**
  * Internal dependencies
  */
 import { NOTICE_TYPES } from "./constants";
 
-import ColorControl from "../util/color-control";
-import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
-import TypographyDropdown from "../util/typography-control-v2";
+import ColorControl from "../../../util/color-control";
+import ResponsiveDimensionsControl from "../../../util/dimensions-control-v2";
+import TypographyDropdown from "../../../util/typography-control-v2";
 
 import {
 	dimensionsMargin,
@@ -30,7 +30,7 @@ import {
 	typoPrefix_text,
 	typoPrefix_title,
 } from "./constants/typographyPrefixConstants";
-import ResetControl from "../util/reset-control";
+import ResetControl from "../../../util/reset-control";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
@@ -166,12 +166,6 @@ function Inspector(props) {
 		attributes,
 	};
 
-	const typoRequiredProps = {
-		attributes,
-		setAttributes,
-		resOption,
-	};
-
 	return (
 		<InspectorControls key="controls">
 			<span className="eb-panel-control">
@@ -204,12 +198,12 @@ function Inspector(props) {
 					<TypographyDropdown
 						baseLabel="Title"
 						typographyPrefixConstant={typoPrefix_title}
-						typoRequiredProps={typoRequiredProps}
+						resRequiredProps={resRequiredProps}
 					/>
 					<TypographyDropdown
 						baseLabel="Text"
 						typographyPrefixConstant={typoPrefix_text}
-						typoRequiredProps={typoRequiredProps}
+						resRequiredProps={resRequiredProps}
 					/>
 				</PanelBody>
 

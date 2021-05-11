@@ -1,10 +1,8 @@
 /**
  * WordPress dependencies
  */
-import { useBlockProps, RichText } from "@wordpress/block-editor";
-import { useEffect } from "@wordpress/element";
-
-import "./editor.scss";
+const { useBlockProps, RichText } = wp.blockEditor;
+const { useEffect } = wp.element;
 
 /**
  * Internal depenencies
