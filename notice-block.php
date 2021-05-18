@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Notice
  * Plugin URI: 		https://essential-blocks.com
- * Description:     Put Spotlight On News, Announcements & Let The Visitors Find It Easily 
+ * Description:     Put Spotlight On News, Announcements & Let The Visitors Find It Easily
  * Version:         1.0.1
  * Author:          WPDeveloper
  * Author URI: 		https://wpdeveloper.net
@@ -23,6 +23,7 @@
 
 require_once __DIR__ . '/includes/font-loader.php';
 require_once __DIR__ . '/includes/post-meta.php';
+require_once __DIR__ . '/lib/style-handler/style-handler.php';
 
 function create_block_notice_block_init()
 {
@@ -70,7 +71,7 @@ function create_block_notice_block_init()
 	);
 
 	if (!WP_Block_Type_Registry::get_instance()->is_registered('essential-blocks/notice')) {
-		register_block_type('create-block/notice-block', array(
+		register_block_type('notice-block/notice', array(
 			'editor_script' => 'create-block-notice-block-editor',
 			'editor_style'  => 'create-block-notice-block-editor',
 			'style'         => 'create-block-notice-block',

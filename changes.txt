@@ -1,0 +1,15 @@
+1) attributes.js: margin, padding units for tab and mobile given default value 'px'. we're allowing users to choose different unit for different screensize (in margin/padding)
+2) edit.js: fixed destructuring the attributes (more fix coming regarding this). margin padding implemented differently as these attribute's type changed to 'string' from 'number'. Minified styleObject/blockMeta as these are going to block's comment delemeter in database. 
+3) editor.scss : css codes of dimensions-control's style.scss copied here because, those styles are only used in editor panel not in frontend.
+4) inspector.js : margin padding attributes destructuring simplified. now we're not fallbacking 'tab' or 'mobile' margin-paddings in inspector panel as 'elementor' doing the same. So, I'm thinking it's unnecessary.
+5) style.scss : typography styles moved to editor.scss as it's only needed in editor panel
+6) src\myUtil\helpers.js : in 'generateTypographyAttributes' function added 'font size, line height and letterspacing unit' seperately for tab & mobile as I'll give option to choose different unit for different screen sizes. 
+'generateTypographyStylesForEdit' funciton renamed to 'generateTypographyStyles' as I'll be using same pattern in both for frontend and editor page.
+ in 'generateTypographyStyles' function attributes destructuring fixed and also destructured the 'font size, line height and letterspacing unit' attributes for tab & mobile. also used the different unit for different screensizes
+ 7) src\myUtil\dimensions-control\index.js : deleted  this folder's style.scss file and removed the import statement of the style.scss. 
+ fixed markup : 'div' ending in wrong place
+ 8) src\myUtil\dimensions-control\style.scss : deleted this file as the styles here is working both in frontend and editor panel which is unnecessary. So, moved the styles in 'src/editor.scss' file.
+ 9) src\myUtil\dimensions-control\constants.js : few options of dimension control brought from constants rather than hard code typing in index.js pf dimension control.
+ 10) src\myUtil\dimensions-control\index.js : imported few things from constants rather than hard coding. fixed the  'font size, line height and letterspacing unit' attributes for tab & mobile. fixed the 'UnitControl' for seperate screensizes
+ -----------------------------------------------
+ 1) css mimmiking pattern/system of editor page when clicking responsive buttons (desktop/tab/mobile) changed.

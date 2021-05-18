@@ -1,11 +1,11 @@
 const { __ } = wp.i18n;
 
 export const NOTICE_TYPES = [
+	{ label: __("Default"), value: "default" },
 	{ label: __("Success"), value: "success" },
 	{ label: __("Info"), value: "info" },
 	{ label: __("Warning"), value: "warning" },
 	{ label: __("Danger"), value: "danger" },
-	{ label: __("Default"), value: "default" },
 ];
 
 export const TEXT_TRANSFORM = [

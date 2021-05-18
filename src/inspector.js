@@ -8,27 +8,29 @@ import {
 	ToggleControl,
 	SelectControl,
 	RangeControl,
-	BaseControl,
 	Button,
-	Dropdown,
 } from "@wordpress/components";
 import { useEffect } from "@wordpress/element";
 
 /**
  * Internal dependencies
  */
-import { NOTICE_TYPES, FONT_SIZE_UNITS } from "./constants";
+import { NOTICE_TYPES } from "./constants";
 
 import ColorControl from "../util/color-control";
-import UnitControl from "../util/unit-control";
-import DimensionsControl from "../util/dimensions-control";
-import TypographyControl from "./myUtil/typography-component";
-import ResPanelBody from "./myUtil/ResPanelBody";
+import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
+import TypographyDropdown from "../util/typography-control-v2";
+
+import {
+	dimensionsMargin,
+	dimensionsPadding,
+} from "./constants/dimensionsNames";
 
 import {
 	typoPrefix_text,
 	typoPrefix_title,
 } from "./constants/typographyPrefixConstants";
+import ResetControl from "../util/reset-control";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
@@ -38,8 +40,6 @@ function Inspector(props) {
 
 		dismissible,
 		noticeType,
-		// titleFontSize,
-		// textFontSize,
 		backgroundColor,
 		titleColor,
 		textColor,
@@ -49,99 +49,6 @@ function Inspector(props) {
 		shadowVOffset,
 		shadowBlur,
 		shadowSpread,
-		// titleSizeUnit,
-		// textSizeUnit,
-		// titleFontFamily,
-		// titleFontWeight,
-		// titleTextTransform,
-		// titleTextDecoration,
-		// titleLineHeight,
-		// titleLineHeightUnit,
-		// titleLetterSpacing,
-		// titleLetterSpacingUnit,
-		// textFontFamily,
-		// textFontWeight,
-		// textTextTransform,
-		// textTextDecoration,
-		// textLineHeight,
-		// textLineHeightUnit,
-		// textLetterSpacing,
-		// textLetterSpacingUnit,
-
-		// margin padding attributes ⬇
-		marginUnit,
-
-		marginTop = marginTop || 0,
-		marginRight = marginRight || 0,
-		marginBottom = marginBottom || 0,
-		marginLeft = marginLeft || 0,
-
-		paddingUnit,
-
-		paddingTop = paddingTop || 0,
-		paddingRight = paddingRight || 0,
-		paddingBottom = paddingBottom || 0,
-		paddingLeft = paddingLeft || 0,
-
-		TABmarginUnit = TABmarginUnit || marginUnit,
-
-		TABmarginTop = TABmarginTop === 0
-			? TABmarginTop
-			: TABmarginTop || marginTop,
-		TABmarginRight = TABmarginRight === 0
-			? TABmarginRight
-			: TABmarginRight || marginRight,
-		TABmarginBottom = TABmarginBottom === 0
-			? TABmarginBottom
-			: TABmarginBottom || marginBottom,
-		TABmarginLeft = TABmarginLeft === 0
-			? TABmarginLeft
-			: TABmarginLeft || marginLeft,
-
-		TABpaddingUnit = TABpaddingUnit || paddingUnit,
-
-		TABpaddingTop = TABpaddingTop === 0
-			? TABpaddingTop
-			: TABpaddingTop || paddingTop,
-		TABpaddingRight = TABpaddingRight === 0
-			? TABpaddingRight
-			: TABpaddingRight || paddingRight,
-		TABpaddingBottom = TABpaddingBottom === 0
-			? TABpaddingBottom
-			: TABpaddingBottom || paddingBottom,
-		TABpaddingLeft = TABpaddingLeft === 0
-			? TABpaddingLeft
-			: TABpaddingLeft || paddingLeft,
-
-		MOBmarginUnit = MOBmarginUnit || TABmarginUnit || marginUnit,
-
-		MOBmarginTop = MOBmarginTop === 0
-			? MOBmarginTop
-			: MOBmarginTop || TABmarginTop,
-		MOBmarginRight = MOBmarginRight === 0
-			? MOBmarginRight
-			: MOBmarginRight || TABmarginRight,
-		MOBmarginBottom = MOBmarginBottom === 0
-			? MOBmarginBottom
-			: MOBmarginBottom || TABmarginBottom,
-		MOBmarginLeft = MOBmarginLeft === 0
-			? MOBmarginLeft
-			: MOBmarginLeft || TABmarginLeft,
-
-		MOBpaddingUnit = MOBpaddingUnit || TABpaddingUnit || paddingUnit,
-
-		MOBpaddingTop = MOBpaddingTop === 0
-			? MOBpaddingTop
-			: MOBpaddingTop || TABpaddingTop,
-		MOBpaddingRight = MOBpaddingRight === 0
-			? MOBpaddingRight
-			: MOBpaddingRight || TABpaddingRight,
-		MOBpaddingBottom = MOBpaddingBottom === 0
-			? MOBpaddingBottom
-			: MOBpaddingBottom || TABpaddingBottom,
-		MOBpaddingLeft = MOBpaddingLeft === 0
-			? MOBpaddingLeft
-			: MOBpaddingLeft || TABpaddingLeft,
 	} = attributes;
 
 	const onTypeChange = (type) => {
@@ -158,9 +65,9 @@ function Inspector(props) {
 			case "info":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#2196f3",
-					titleColor: "#ffffff",
-					textColor: "#ffffff",
+					backgroundColor: "#d3d3d3",
+					titleColor: "#000000",
+					textColor: "#000000",
 				});
 				break;
 
@@ -185,15 +92,15 @@ function Inspector(props) {
 			case "default":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#d3d3d3",
-					titleColor: "#000000",
-					textColor: "#000000",
+					backgroundColor: "#2196f3",
+					titleColor: "#ffffff",
+					textColor: "#ffffff",
 				});
 				break;
 		}
 	};
 
-	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
+	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
 	useEffect(() => {
 		const bodyClasses = document.body.className;
 		// console.log("----log from inspector useEffect with empty []", {
@@ -215,41 +122,40 @@ function Inspector(props) {
 
 	// this useEffect is for mimmiking css for all the eb blocks on resOption changing
 	useEffect(() => {
-		const allCounterWrapper = document.querySelectorAll(
-			".eb-guten-block-main-parrent-wrapper:not(.is-selected) > style"
+		const allEbBlocksWrapper = document.querySelectorAll(
+			".eb-guten-block-main-parent-wrapper:not(.is-selected) > style"
 		);
-
-		console.log("---inspector", { allCounterWrapper });
-		if (allCounterWrapper.length < 1) return;
-
-		allCounterWrapper.forEach((styleTag) => {
+		// console.log("---inspector", { allEbBlocksWrapper });
+		if (allEbBlocksWrapper.length < 1) return;
+		allEbBlocksWrapper.forEach((styleTag) => {
 			const cssStrings = styleTag.textContent;
 			const minCss = cssStrings.replace(/\s+/g, " ");
-			const regexCssMimmikSpace = /(?<=edit_mimmikcss_start\s*\*\/).+(?=\/\*\s*edit_mimmikcss_end)/i;
+			const regexCssMimmikSpace = /(?<=mimmikcssStart\s\*\/).+(?=\/\*\smimmikcssEnd)/i;
 			let newCssStrings = " ";
-
 			if (resOption === "tab") {
-				let tabCssMacth = minCss.match(
-					/(?<=\@media\s+all\s+and\s+\(max-width\s*\:\s*1030px\s*\)\s*\{).+(?=\}\s*\@media\s+all)/i
-				);
-				let tabCssStrings = (tabCssMacth || [" "])[0];
-				// console.log({
-				// 	tabCssStrings: tabCssStrings,
-				// });
+				const tabCssStrings = (minCss.match(
+					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
+				) || [" "])[0];
+				// console.log({ tabCssStrings });
 				newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
 			} else if (resOption === "mobile") {
-				let mobCssMacth = minCss.match(
-					/(?<=\@media\s+all\s+and\s+\(max-width\s*\:\s*680px\s*\)\s*\{).+(?=(\}\s*)$)/i
+				const tabCssStrings = (minCss.match(
+					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
+				) || [" "])[0];
+
+				const mobCssStrings = (minCss.match(
+					/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i
+				) || [" "])[0];
+
+				// console.log({ tabCssStrings, mobCssStrings });
+
+				newCssStrings = minCss.replace(
+					regexCssMimmikSpace,
+					`${tabCssStrings} ${mobCssStrings}`
 				);
-				let mobCssStrings = (mobCssMacth || [" "])[0];
-				// console.log({
-				// 	mobCssStrings: mobCssStrings,
-				// });
-				newCssStrings = minCss.replace(regexCssMimmikSpace, mobCssStrings);
 			} else {
 				newCssStrings = minCss.replace(regexCssMimmikSpace, " ");
 			}
-
 			styleTag.textContent = newCssStrings;
 		});
 	}, [resOption]);
@@ -257,76 +163,13 @@ function Inspector(props) {
 	const resRequiredProps = {
 		setAttributes,
 		resOption,
+		attributes,
 	};
 
-	const generateTypographyAttributes = (prefixConstant) => {
-		const {
-			[`${prefixConstant}FontFamily`]: fontFamily,
-			[`${prefixConstant}FontWeight`]: fontWeight,
-			[`${prefixConstant}TextTransform`]: textTransform,
-			[`${prefixConstant}TextDecoration`]: textDecoration,
-			[`${prefixConstant}FontSize`]: fontSize,
-			[`${prefixConstant}SizeUnit`]: sizeUnit,
-			[`${prefixConstant}LetterSpacing`]: letterSpacing,
-			[`${prefixConstant}LetterSpacingUnit`]: letterSpacingUnit,
-			[`${prefixConstant}LineHeight`]: lineHeight,
-			[`${prefixConstant}LineHeightUnit`]: lineHeightUnit,
-
-			[`TAB${prefixConstant}FontFamily`]: TABfontFamily,
-			[`TAB${prefixConstant}FontWeight`]: TABfontWeight,
-			[`TAB${prefixConstant}TextTransform`]: TABtextTransform,
-			[`TAB${prefixConstant}TextDecoration`]: TABtextDecoration,
-			[`TAB${prefixConstant}FontSize`]: TABfontSize,
-			[`TAB${prefixConstant}SizeUnit`]: TABsizeUnit,
-			[`TAB${prefixConstant}LetterSpacing`]: TABletterSpacing,
-			[`TAB${prefixConstant}LetterSpacingUnit`]: TABletterSpacingUnit,
-			[`TAB${prefixConstant}LineHeight`]: TABlineHeight,
-			[`TAB${prefixConstant}LineHeightUnit`]: TABlineHeightUnit,
-
-			[`MOB${prefixConstant}FontFamily`]: MOBfontFamily,
-			[`MOB${prefixConstant}FontWeight`]: MOBfontWeight,
-			[`MOB${prefixConstant}TextTransform`]: MOBtextTransform,
-			[`MOB${prefixConstant}TextDecoration`]: MOBtextDecoration,
-			[`MOB${prefixConstant}FontSize`]: MOBfontSize,
-			[`MOB${prefixConstant}SizeUnit`]: MOBsizeUnit,
-			[`MOB${prefixConstant}LetterSpacing`]: MOBletterSpacing,
-			[`MOB${prefixConstant}LetterSpacingUnit`]: MOBletterSpacingUnit,
-			[`MOB${prefixConstant}LineHeight`]: MOBlineHeight,
-			[`MOB${prefixConstant}LineHeightUnit`]: MOBlineHeightUnit,
-		} = attributes;
-
-		return {
-			fontFamily,
-			fontWeight,
-			textTransform,
-			textDecoration,
-			fontSize,
-			sizeUnit,
-			letterSpacing,
-			letterSpacingUnit,
-			lineHeight,
-			lineHeightUnit,
-			TABfontFamily,
-			TABfontWeight,
-			TABtextTransform,
-			TABtextDecoration,
-			TABfontSize,
-			TABsizeUnit,
-			TABletterSpacing,
-			TABletterSpacingUnit,
-			TABlineHeight,
-			TABlineHeightUnit,
-			MOBfontFamily,
-			MOBfontWeight,
-			MOBtextTransform,
-			MOBtextDecoration,
-			MOBfontSize,
-			MOBsizeUnit,
-			MOBletterSpacing,
-			MOBletterSpacingUnit,
-			MOBlineHeight,
-			MOBlineHeightUnit,
-		};
+	const typoRequiredProps = {
+		attributes,
+		setAttributes,
+		resOption,
 	};
 
 	return (
@@ -357,28 +200,18 @@ function Inspector(props) {
 					/>
 				</PanelBody>
 
-				<ResPanelBody
-					title={__("Typography")}
-					initialOpen={false}
-					resRequiredProps={resRequiredProps}
-				>
-					<TypographyControl
+				<PanelBody title={__("Typography")} initialOpen={false}>
+					<TypographyDropdown
 						baseLabel="Title"
 						typographyPrefixConstant={typoPrefix_title}
-						typographyAttributes={generateTypographyAttributes(
-							typoPrefix_title
-						)}
-						resOption={resOption}
-						setAttributes={setAttributes}
+						typoRequiredProps={typoRequiredProps}
 					/>
-					<TypographyControl
+					<TypographyDropdown
 						baseLabel="Text"
 						typographyPrefixConstant={typoPrefix_text}
-						typographyAttributes={generateTypographyAttributes(typoPrefix_text)}
-						resOption={resOption}
-						setAttributes={setAttributes}
+						typoRequiredProps={typoRequiredProps}
 					/>
-				</ResPanelBody>
+				</PanelBody>
 
 				<PanelColorSettings
 					title={__("Color Settings")}
@@ -403,153 +236,18 @@ function Inspector(props) {
 					]}
 				/>
 
-				<ResPanelBody
-					title={__("Margin & Padding")}
-					initialOpen={false}
-					resRequiredProps={resRequiredProps}
-				>
-					{resOption == "desktop" && (
-						<>
-							<UnitControl
-								selectedUnit={marginUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(marginUnit) => setAttributes({ marginUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Margin")}
-								top={marginTop}
-								right={marginRight}
-								bottom={marginBottom}
-								left={marginLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										marginTop: top,
-										marginRight: right,
-										marginBottom: bottom,
-										marginLeft: left,
-									})
-								}
-							/>
-
-							<UnitControl
-								selectedUnit={paddingUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(paddingUnit) => setAttributes({ paddingUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Padding")}
-								top={paddingTop}
-								right={paddingRight}
-								bottom={paddingBottom}
-								left={paddingLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										paddingTop: top,
-										paddingRight: right,
-										paddingBottom: bottom,
-										paddingLeft: left,
-									})
-								}
-							/>
-						</>
-					)}
-					{resOption == "tab" && (
-						<>
-							<UnitControl
-								selectedUnit={TABmarginUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(TABmarginUnit) => setAttributes({ TABmarginUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Margin")}
-								top={TABmarginTop}
-								right={TABmarginRight}
-								bottom={TABmarginBottom}
-								left={TABmarginLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										TABmarginTop: top,
-										TABmarginRight: right,
-										TABmarginBottom: bottom,
-										TABmarginLeft: left,
-									})
-								}
-							/>
-
-							<UnitControl
-								selectedUnit={TABpaddingUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(TABpaddingUnit) => setAttributes({ TABpaddingUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Padding")}
-								top={TABpaddingTop}
-								right={TABpaddingRight}
-								bottom={TABpaddingBottom}
-								left={TABpaddingLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										TABpaddingTop: top,
-										TABpaddingRight: right,
-										TABpaddingBottom: bottom,
-										TABpaddingLeft: left,
-									})
-								}
-							/>
-						</>
-					)}
-					{resOption == "mobile" && (
-						<>
-							<UnitControl
-								selectedUnit={MOBmarginUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(MOBmarginUnit) => setAttributes({ MOBmarginUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Margin")}
-								top={MOBmarginTop}
-								right={MOBmarginRight}
-								bottom={MOBmarginBottom}
-								left={MOBmarginLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										MOBmarginTop: top,
-										MOBmarginRight: right,
-										MOBmarginBottom: bottom,
-										MOBmarginLeft: left,
-									})
-								}
-							/>
-
-							<UnitControl
-								selectedUnit={MOBpaddingUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(MOBpaddingUnit) => setAttributes({ MOBpaddingUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Padding")}
-								top={MOBpaddingTop}
-								right={MOBpaddingRight}
-								bottom={MOBpaddingBottom}
-								left={MOBpaddingLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										MOBpaddingTop: top,
-										MOBpaddingRight: right,
-										MOBpaddingBottom: bottom,
-										MOBpaddingLeft: left,
-									})
-								}
-							/>
-						</>
-					)}
-				</ResPanelBody>
+				<PanelBody title={__("Margin & Padding")} initialOpen={false}>
+					<ResponsiveDimensionsControl
+						resRequiredProps={resRequiredProps}
+						controlName={dimensionsMargin}
+						baseLabel="Margin"
+					/>
+					<ResponsiveDimensionsControl
+						resRequiredProps={resRequiredProps}
+						controlName={dimensionsPadding}
+						baseLabel="Padding"
+					/>
+				</PanelBody>
 
 				<PanelBody title={__("Shadow")} initialOpen={false}>
 					<ColorControl
@@ -558,41 +256,53 @@ function Inspector(props) {
 						onChange={(shadowColor) => setAttributes({ shadowColor })}
 					/>
 
-					<RangeControl
-						label={__("Horizontal Offset")}
-						value={shadowHOffset}
-						allowReset
-						onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
-						min={0}
-						max={100}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowHOffset: undefined })}
+					>
+						<RangeControl
+							label={__("Horizontal Offset")}
+							value={shadowHOffset}
+							onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
+							min={0}
+							max={100}
+						/>
+					</ResetControl>
 
-					<RangeControl
-						label={__("Vertical Offset")}
-						value={shadowVOffset}
-						allowReset
-						onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
-						min={0}
-						max={100}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowVOffset: undefined })}
+					>
+						<RangeControl
+							label={__("Vertical Offset")}
+							value={shadowVOffset}
+							onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
+							min={0}
+							max={100}
+						/>
+					</ResetControl>
 
-					<RangeControl
-						label={__("Blur")}
-						value={shadowBlur}
-						allowReset
-						onChange={(shadowBlur) => setAttributes({ shadowBlur })}
-						min={0}
-						max={20}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowBlur: undefined })}
+					>
+						<RangeControl
+							label={__("Blur")}
+							value={shadowBlur}
+							onChange={(shadowBlur) => setAttributes({ shadowBlur })}
+							min={0}
+							max={20}
+						/>
+					</ResetControl>
 
-					<RangeControl
-						label={__("Spread")}
-						value={shadowSpread}
-						allowReset
-						onChange={(shadowSpread) => setAttributes({ shadowSpread })}
-						min={0}
-						max={20}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowSpread: undefined })}
+					>
+						<RangeControl
+							label={__("Spread")}
+							value={shadowSpread}
+							onChange={(shadowSpread) => setAttributes({ shadowSpread })}
+							min={0}
+							max={20}
+						/>
+					</ResetControl>
 				</PanelBody>
 			</span>
 		</InspectorControls>
