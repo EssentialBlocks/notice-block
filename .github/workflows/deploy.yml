@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
             submodules: recursive
-            token: ${{ secrets.EB_PAT }}
+            token: ${{ secrets.GITHUB_TOKEN }}
       # Runs a single command using the runners shell
       # - name: Git Submodule Cloning
       #   run: git submodule update --init --recursive
