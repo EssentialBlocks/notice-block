@@ -16,7 +16,7 @@ const save = ({ attributes }) => {
 						className="eb-notice-title"
 						value={title}
 					/>
-					<span className="eb-notice-dismiss" />
+					<span className="eb-notice-dismiss" style={{ cursor: "pointer" }} />
 				</div>
 				<div>
 					<RichText.Content

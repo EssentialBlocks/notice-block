@@ -8,24 +8,29 @@ import {
 	ToggleControl,
 	SelectControl,
 	RangeControl,
+	Button,
 } from "@wordpress/components";
 import { useEffect } from "@wordpress/element";
 
 /**
  * Internal dependencies
  */
-import { NOTICE_TYPES, FONT_SIZE_UNITS } from "./constants";
+import { NOTICE_TYPES } from "./constants";
 
 import ColorControl from "../util/color-control";
-import UnitControl from "../util/unit-control";
-import DimensionsControl from "../util/dimensions-control";
-import TypographyDropdown from "../util/typography-control";
-import ResPanelBody from "./ResPanelBody";
+import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
+import TypographyDropdown from "../util/typography-control-v2";
+
+import {
+	dimensionsMargin,
+	dimensionsPadding,
+} from "./constants/dimensionsNames";
 
 import {
 	typoPrefix_text,
 	typoPrefix_title,
 } from "./constants/typographyPrefixConstants";
+import ResetControl from "../util/reset-control";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
@@ -44,49 +49,6 @@ function Inspector(props) {
 		shadowVOffset,
 		shadowBlur,
 		shadowSpread,
-
-		// margin padding attributes ⬇
-		marginUnit,
-
-		marginTop,
-		marginRight,
-		marginBottom,
-		marginLeft,
-
-		paddingUnit,
-
-		paddingTop,
-		paddingRight,
-		paddingBottom,
-		paddingLeft,
-
-		TABmarginUnit,
-
-		TABmarginTop,
-		TABmarginRight,
-		TABmarginBottom,
-		TABmarginLeft,
-
-		TABpaddingUnit,
-
-		TABpaddingTop,
-		TABpaddingRight,
-		TABpaddingBottom,
-		TABpaddingLeft,
-
-		MOBmarginUnit,
-
-		MOBmarginTop,
-		MOBmarginRight,
-		MOBmarginBottom,
-		MOBmarginLeft,
-
-		MOBpaddingUnit,
-
-		MOBpaddingTop,
-		MOBpaddingRight,
-		MOBpaddingBottom,
-		MOBpaddingLeft,
 	} = attributes;
 
 	const onTypeChange = (type) => {
@@ -103,9 +65,9 @@ function Inspector(props) {
 			case "info":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#2196f3",
-					titleColor: "#ffffff",
-					textColor: "#ffffff",
+					backgroundColor: "#d3d3d3",
+					titleColor: "#000000",
+					textColor: "#000000",
 				});
 				break;
 
@@ -130,9 +92,9 @@ function Inspector(props) {
 			case "default":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#d3d3d3",
-					titleColor: "#000000",
-					textColor: "#000000",
+					backgroundColor: "#2196f3",
+					titleColor: "#ffffff",
+					textColor: "#ffffff",
 				});
 				break;
 		}
@@ -201,6 +163,7 @@ function Inspector(props) {
 	const resRequiredProps = {
 		setAttributes,
 		resOption,
+		attributes,
 	};
 
 	const typoRequiredProps = {
@@ -273,153 +236,18 @@ function Inspector(props) {
 					]}
 				/>
 
-				<ResPanelBody
-					title={__("Margin & Padding")}
-					initialOpen={false}
-					resRequiredProps={resRequiredProps}
-				>
-					{resOption == "desktop" && (
-						<>
-							<UnitControl
-								selectedUnit={marginUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(marginUnit) => setAttributes({ marginUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Margin")}
-								top={marginTop}
-								right={marginRight}
-								bottom={marginBottom}
-								left={marginLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										marginTop: top,
-										marginRight: right,
-										marginBottom: bottom,
-										marginLeft: left,
-									})
-								}
-							/>
-
-							<UnitControl
-								selectedUnit={paddingUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(paddingUnit) => setAttributes({ paddingUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Padding")}
-								top={paddingTop}
-								right={paddingRight}
-								bottom={paddingBottom}
-								left={paddingLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										paddingTop: top,
-										paddingRight: right,
-										paddingBottom: bottom,
-										paddingLeft: left,
-									})
-								}
-							/>
-						</>
-					)}
-					{resOption == "tab" && (
-						<>
-							<UnitControl
-								selectedUnit={TABmarginUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(TABmarginUnit) => setAttributes({ TABmarginUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Margin")}
-								top={TABmarginTop}
-								right={TABmarginRight}
-								bottom={TABmarginBottom}
-								left={TABmarginLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										TABmarginTop: top,
-										TABmarginRight: right,
-										TABmarginBottom: bottom,
-										TABmarginLeft: left,
-									})
-								}
-							/>
-
-							<UnitControl
-								selectedUnit={TABpaddingUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(TABpaddingUnit) => setAttributes({ TABpaddingUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Padding")}
-								top={TABpaddingTop}
-								right={TABpaddingRight}
-								bottom={TABpaddingBottom}
-								left={TABpaddingLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										TABpaddingTop: top,
-										TABpaddingRight: right,
-										TABpaddingBottom: bottom,
-										TABpaddingLeft: left,
-									})
-								}
-							/>
-						</>
-					)}
-					{resOption == "mobile" && (
-						<>
-							<UnitControl
-								selectedUnit={MOBmarginUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(MOBmarginUnit) => setAttributes({ MOBmarginUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Margin")}
-								top={MOBmarginTop}
-								right={MOBmarginRight}
-								bottom={MOBmarginBottom}
-								left={MOBmarginLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										MOBmarginTop: top,
-										MOBmarginRight: right,
-										MOBmarginBottom: bottom,
-										MOBmarginLeft: left,
-									})
-								}
-							/>
-
-							<UnitControl
-								selectedUnit={MOBpaddingUnit}
-								unitTypes={FONT_SIZE_UNITS}
-								onClick={(MOBpaddingUnit) => setAttributes({ MOBpaddingUnit })}
-							/>
-
-							<DimensionsControl
-								label={__("Padding")}
-								top={MOBpaddingTop}
-								right={MOBpaddingRight}
-								bottom={MOBpaddingBottom}
-								left={MOBpaddingLeft}
-								onChange={({ top, right, bottom, left }) =>
-									setAttributes({
-										MOBpaddingTop: top,
-										MOBpaddingRight: right,
-										MOBpaddingBottom: bottom,
-										MOBpaddingLeft: left,
-									})
-								}
-							/>
-						</>
-					)}
-				</ResPanelBody>
+				<PanelBody title={__("Margin & Padding")} initialOpen={false}>
+					<ResponsiveDimensionsControl
+						resRequiredProps={resRequiredProps}
+						controlName={dimensionsMargin}
+						baseLabel="Margin"
+					/>
+					<ResponsiveDimensionsControl
+						resRequiredProps={resRequiredProps}
+						controlName={dimensionsPadding}
+						baseLabel="Padding"
+					/>
+				</PanelBody>
 
 				<PanelBody title={__("Shadow")} initialOpen={false}>
 					<ColorControl
@@ -428,41 +256,53 @@ function Inspector(props) {
 						onChange={(shadowColor) => setAttributes({ shadowColor })}
 					/>
 
-					<RangeControl
-						label={__("Horizontal Offset")}
-						value={shadowHOffset}
-						allowReset
-						onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
-						min={0}
-						max={100}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowHOffset: undefined })}
+					>
+						<RangeControl
+							label={__("Horizontal Offset")}
+							value={shadowHOffset}
+							onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
+							min={0}
+							max={100}
+						/>
+					</ResetControl>
 
-					<RangeControl
-						label={__("Vertical Offset")}
-						value={shadowVOffset}
-						allowReset
-						onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
-						min={0}
-						max={100}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowVOffset: undefined })}
+					>
+						<RangeControl
+							label={__("Vertical Offset")}
+							value={shadowVOffset}
+							onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
+							min={0}
+							max={100}
+						/>
+					</ResetControl>
 
-					<RangeControl
-						label={__("Blur")}
-						value={shadowBlur}
-						allowReset
-						onChange={(shadowBlur) => setAttributes({ shadowBlur })}
-						min={0}
-						max={20}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowBlur: undefined })}
+					>
+						<RangeControl
+							label={__("Blur")}
+							value={shadowBlur}
+							onChange={(shadowBlur) => setAttributes({ shadowBlur })}
+							min={0}
+							max={20}
+						/>
+					</ResetControl>
 
-					<RangeControl
-						label={__("Spread")}
-						value={shadowSpread}
-						allowReset
-						onChange={(shadowSpread) => setAttributes({ shadowSpread })}
-						min={0}
-						max={20}
-					/>
+					<ResetControl
+						onReset={() => setAttributes({ shadowSpread: undefined })}
+					>
+						<RangeControl
+							label={__("Spread")}
+							value={shadowSpread}
+							onChange={(shadowSpread) => setAttributes({ shadowSpread })}
+							min={0}
+							max={20}
+						/>
+					</ResetControl>
 				</PanelBody>
 			</span>
 		</InspectorControls>

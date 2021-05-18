@@ -463,6 +463,7 @@
 .eb-panel-control .components-button.eb-color-undo .dashicon {
 	font-size: 14px;
 	color: #62626f;
+	padding-left: 7px; // fix of thishttps://trello-attachments.s3.amazonaws.com/5bab5a557340da52ebeb1a8f/60896e40f9bcb94f7a144461/dc90d74c7ea7e830c034a52c5b777623/Reset_Icon.png
 }
 
 .eb-color-undo {
@@ -681,7 +682,8 @@ body.eb-res-option-mobile .editor-styles-wrapper {
 }
 
 //
-// typography control styles
+//
+// typography component styles
 .typoResButton {
 	cursor: pointer;
 	font-size: 14px;
@@ -693,8 +695,13 @@ body.eb-res-option-mobile .editor-styles-wrapper {
 	color: #6c40f7;
 }
 
+.wrap_res {
+	position: relative;
+}
+
 .resIcons {
 	position: absolute;
+	left: 80px;
 }
 
 .eb-typography-component-panel .wrap_res.forFontSize .resIcons {
@@ -728,4 +735,56 @@ body.eb-res-option-mobile .editor-styles-wrapper {
 .eb-unit-active {
 	color: #6c40f7 !important;
 	font-weight: bold;
+}
+
+// color control styles start
+.eb-color-base div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.eb-color-base .components-base-control__label {
+	flex: 10;
+	margin-right: 0px !important; /* There was no other way */
+}
+
+.eb-color-base .components-dropdown {
+	flex: 1;
+}
+
+.eb-color-ball {
+	background-image: linear-gradient(45deg, #ddd 25%, transparent 0),
+		linear-gradient(-45deg, #ddd 25%, transparent 0),
+		linear-gradient(45deg, transparent 75%, #ddd 0),
+		linear-gradient(-45deg, transparent 75%, #ddd 0);
+	background-size: 10px 10px;
+	background-position: 0 0, 0 5px, 5px -5px, -5px 0;
+	border-radius: 50%;
+}
+
+.eb-color-undo {
+	flex: 1;
+	color: gray;
+}
+
+.eb-color-undo :focus,
+.eb-color-undo :hover {
+	box-shadow: none;
+}
+
+// color control styles end
+
+// fix of this https://trello-attachments.s3.amazonaws.com/5bab5a557340da52ebeb1a8f/60896e40f9bcb94f7a144461/8ea9805e834dc68d5cc694b3cf18c4b0/Controls.png
+.eb-panel-control
+	.components-panel__body
+	.components-input-control__container
+	select.components-select-control__input {
+	line-height: 2em;
+}
+
+//
+.withResWrapperInDimension .dimention-label {
+	display: inline-block;
+	margin-right: 5px;
 }
