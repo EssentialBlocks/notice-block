@@ -80,8 +80,10 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
-= 1.0.1 =
+= 1.2.0 - 18/05/2021 =
 * Added: Dynamic asset generation for inline styles
+* Added: Responsive control
+* Improved: Controls and structure
 
 = 1.0.1 =
 * Fix: Missing js file
@@ -90,3 +92,4 @@ Yes, it will work with any standard WordPress theme.
 * Initial Release
 
 == Upgrade Notice ==
+[Major Update] Internal structure and performance improvement.
