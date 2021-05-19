@@ -3,8 +3,8 @@
 /**
  * Plugin Name:     Notice
  * Plugin URI: 		https://essential-blocks.com
- * Description:     Put Spotlight On News, Announcements & Let The Visitors Find It Easily 
- * Version:         1.0.1
+ * Description:     Put Spotlight On News, Announcements & Let The Visitors Find It Easily
+ * Version:         1.2.0
  * Author:          WPDeveloper
  * Author URI: 		https://wpdeveloper.net
  * License:         GPL-2.0-or-later
@@ -61,12 +61,13 @@ function create_block_notice_block_init()
 		filemtime("$dir/$style_css")
 	);
 
-
-	$frontend_js = "src/frontend.js";
-	wp_enqueue_script(
+	$frontend_js_path = include_once "$dir/build/frontend.asset.php";
+	$frontend_js = "build/frontend.js";
+	wp_register_script(
 		'essential-blocks-notice-frontend',
 		plugins_url($frontend_js, __FILE__),
-		array("wp-editor"),
+		array_merge( array("wp-editor"), $frontend_js_path['dependencies'] ),
+		$frontend_js_path['version'],
 		true
 	);
 
@@ -75,7 +76,7 @@ function create_block_notice_block_init()
 			'editor_script' => 'create-block-notice-block-editor',
 			'editor_style'  => 'create-block-notice-block-editor',
 			'style'         => 'create-block-notice-block',
-			'frontend_js'   => 'essential-blocks-notice-frontend',
+			'script'   => 'essential-blocks-notice-frontend',
 		));
 	}
 }
