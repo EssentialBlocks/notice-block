@@ -80,7 +80,7 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
-= 1.2.0 - 18/05/2021 =
+= 1.2.0 - 19/05/2021 =
 * Added: Dynamic asset generation for inline styles
 * Added: Responsive control
 * Improved: Controls and structure
