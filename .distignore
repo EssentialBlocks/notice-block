@@ -5,6 +5,7 @@
 .editorconfig
 .eslintignore
 .eslintrc
+.gitmodules
 .git
 .gitignore
 .github
@@ -49,3 +50,4 @@ dist/**/*.*
 src
 util
 .wordpress-org
+changes.txt
