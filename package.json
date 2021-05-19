@@ -20,8 +20,5 @@
 		"@wordpress/scripts": "^15.0.1",
 		"node-sass": "^6.0.0",
 		"postcss-loader": "^5.3.0"
-	},
-	"dependencies": {
-		"silence": "^1.1.1"
 	}
 }
