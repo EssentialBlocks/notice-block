@@ -48,3 +48,4 @@ dist/**/*.* export-ignore
 **/*.zip export-ignore
 src export-ignore
 util	export-ignore
+.wordpress-org	export-ignore

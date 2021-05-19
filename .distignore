@@ -48,3 +48,4 @@ dist/**/*.*
 **/*.zip
 src
 util
+.wordpress-org
