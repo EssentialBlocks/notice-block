@@ -166,12 +166,6 @@ function Inspector(props) {
 		attributes,
 	};
 
-	const typoRequiredProps = {
-		attributes,
-		setAttributes,
-		resOption,
-	};
-
 	return (
 		<InspectorControls key="controls">
 			<span className="eb-panel-control">
@@ -204,12 +198,12 @@ function Inspector(props) {
 					<TypographyDropdown
 						baseLabel="Title"
 						typographyPrefixConstant={typoPrefix_title}
-						typoRequiredProps={typoRequiredProps}
+						typoRequiredProps={resRequiredProps}
 					/>
 					<TypographyDropdown
 						baseLabel="Text"
 						typographyPrefixConstant={typoPrefix_text}
-						typoRequiredProps={typoRequiredProps}
+						typoRequiredProps={resRequiredProps}
 					/>
 				</PanelBody>
 
