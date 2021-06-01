@@ -1297,11 +1297,11 @@ function Inspector(props) {
   }, /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_7__["default"], {
     baseLabel: "Title",
     typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_9__["typoPrefix_title"],
-    typoRequiredProps: resRequiredProps
+    resRequiredProps: resRequiredProps
   }), /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_7__["default"], {
     baseLabel: "Text",
     typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_9__["typoPrefix_text"],
-    typoRequiredProps: resRequiredProps
+    resRequiredProps: resRequiredProps
   })), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["PanelColorSettings"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Color Settings"),
     initialOpen: false,
@@ -1481,6 +1481,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1495,13 +1501,25 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+var colorBallStyles = {
+  padding: 2,
+  borderRadius: 0,
+  background: "white",
+  border: "1px solid #ebebeb"
+};
+var colorStyles = {
+  height: 16,
+  width: 16,
+  borderRadius: "0%",
+  boxShadow: "inset 0 0 0 1px rgba(0,0,0,.1)"
+};
 
 var ColorControl = function ColorControl(_ref) {
   var label = _ref.label,
       color = _ref.color,
       onChange = _ref.onChange;
 
-  var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useState"])(color),
+  var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
       _useState2 = _slicedToArray(_useState, 2),
       bgColor = _useState2[0],
       setBgColor = _useState2[1];
@@ -1509,12 +1527,11 @@ var ColorControl = function ColorControl(_ref) {
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     onChange(bgColor);
   }, [bgColor]);
-  var colorStyles = {
-    padding: 2,
-    borderRadius: 0,
-    background: "white",
-    border: "1px solid #ebebeb"
-  };
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // console.log("----color-useEffect-fired", { color, bgColor });
+    setBgColor(color);
+  }, []); // console.log({ color, bgColor });
+
   return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["BaseControl"], {
     label: label || "",
     className: "eb-color-base"
@@ -1523,26 +1540,22 @@ var ColorControl = function ColorControl(_ref) {
       var isOpen = _ref2.isOpen,
           onToggle = _ref2.onToggle;
       return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Tooltip"], {
-        text: color || "default"
+        text: bgColor || "default"
       }, /*#__PURE__*/React.createElement("div", {
         className: "eb-color-ball",
-        style: color && colorStyles
+        style: bgColor && colorBallStyles
       }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          height: 16,
-          width: 16,
-          borderRadius: "0%",
-          boxShadow: "inset 0 0 0 1px rgba(0,0,0,.1)",
+        style: _objectSpread(_objectSpread({}, colorStyles), {}, {
           backgroundColor: bgColor
-        },
+        }),
         "aria-expanded": isOpen,
         onClick: onToggle,
-        "aria-label": color || "default"
+        "aria-label": bgColor || "default"
       })));
     },
     renderContent: function renderContent() {
       return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["ColorPicker"], {
-        color: color,
+        color: bgColor,
         onChangeComplete: function onChangeComplete(_ref3) {
           var rgb = _ref3.rgb;
           setBgColor("rgba(".concat(rgb.r, ",").concat(rgb.g, ",").concat(rgb.b, ",").concat(rgb.a, ")"));
@@ -1557,7 +1570,7 @@ var ColorControl = function ColorControl(_ref) {
       transform: "scaleX(-1) rotate(90deg)"
     },
     onClick: function onClick() {
-      return setBgColor(undefined);
+      setBgColor(undefined);
     }
   }));
 };
@@ -2317,10 +2330,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function TypographyDropdown(_ref) {
   var baseLabel = _ref.baseLabel,
       typographyPrefixConstant = _ref.typographyPrefixConstant,
-      typoRequiredProps = _ref.typoRequiredProps;
-  var attributes = typoRequiredProps.attributes,
-      setAttributes = typoRequiredProps.setAttributes,
-      resOption = typoRequiredProps.resOption;
+      resRequiredProps = _ref.resRequiredProps;
+  var attributes = resRequiredProps.attributes,
+      setAttributes = resRequiredProps.setAttributes,
+      resOption = resRequiredProps.resOption;
   var fontFamily = attributes["".concat(typographyPrefixConstant, "FontFamily")],
       fontWeight = attributes["".concat(typographyPrefixConstant, "FontWeight")],
       textTransform = attributes["".concat(typographyPrefixConstant, "TextTransform")],

@@ -198,12 +198,12 @@ function Inspector(props) {
 					<TypographyDropdown
 						baseLabel="Title"
 						typographyPrefixConstant={typoPrefix_title}
-						typoRequiredProps={resRequiredProps}
+						resRequiredProps={resRequiredProps}
 					/>
 					<TypographyDropdown
 						baseLabel="Text"
 						typographyPrefixConstant={typoPrefix_text}
-						typoRequiredProps={resRequiredProps}
+						resRequiredProps={resRequiredProps}
 					/>
 				</PanelBody>
 
