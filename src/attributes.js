@@ -3,10 +3,17 @@ import {
 	dimensionsMargin,
 	dimensionsPadding,
 } from "./constants/dimensionsNames";
+
 import {
-	generateTypographyAttributes,
 	generateDimensionsAttributes,
-} from "./helpers";
+	generateTypographyAttributes,
+	generateBackgroundAttributes,
+	generateBorderShadowAttributes,
+} from "../util/helpers";
+
+import { wrapBg } from "./constants/backgroundsConstants";
+
+import { wrpBdShadow } from "./constants/borderShadowConstants";
 
 const attributes = {
 	// the following 4 attributes is must required for responsive options and asset generation for frontend

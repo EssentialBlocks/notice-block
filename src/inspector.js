@@ -30,7 +30,23 @@ import {
 	typoPrefix_text,
 	typoPrefix_title,
 } from "./constants/typographyPrefixConstants";
+
+import {
+	softMinifyCssStrings,
+	isCssExists,
+	generateBackgroundControlStyles,
+	generateDimensionsControlStyles,
+	generateTypographyStyles,
+	generateBorderShadowStyles,
+} from "../util/helpers";
+
+import { wrapBg } from "./constants/backgroundsConstants";
+import { wrpBdShadow } from "./constants/borderShadowConstants";
+
 import ResetControl from "../util/reset-control";
+
+import BorderShadowControl from "../util/border-shadow-control";
+import BackgroundControl from "../util/background-control";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
@@ -243,60 +259,74 @@ function Inspector(props) {
 					/>
 				</PanelBody>
 
-				<PanelBody title={__("Shadow")} initialOpen={false}>
-					<ColorControl
-						label={__("Shadow Color")}
-						color={shadowColor}
-						onChange={(shadowColor) => setAttributes({ shadowColor })}
+				<PanelBody title={__("Notice Background")} initialOpen={false}>
+					<BackgroundControl
+						controlName={wrapBg}
+						resRequiredProps={resRequiredProps}
+					/>
+				</PanelBody>
+
+				<PanelBody title={__("Notice Border & Shadow")} initialOpen={false}>
+					<BorderShadowControl
+						controlName={wrpBdShadow}
+						resRequiredProps={resRequiredProps}
 					/>
 
-					<ResetControl
-						onReset={() => setAttributes({ shadowHOffset: undefined })}
-					>
-						<RangeControl
-							label={__("Horizontal Offset")}
-							value={shadowHOffset}
-							onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
-							min={0}
-							max={100}
+					<>
+						<ColorControl
+							label={__("Shadow Color")}
+							color={shadowColor}
+							onChange={(shadowColor) => setAttributes({ shadowColor })}
 						/>
-					</ResetControl>
 
-					<ResetControl
-						onReset={() => setAttributes({ shadowVOffset: undefined })}
-					>
-						<RangeControl
-							label={__("Vertical Offset")}
-							value={shadowVOffset}
-							onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
-							min={0}
-							max={100}
-						/>
-					</ResetControl>
+						<ResetControl
+							onReset={() => setAttributes({ shadowHOffset: undefined })}
+						>
+							<RangeControl
+								label={__("Horizontal Offset")}
+								value={shadowHOffset}
+								onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
+								min={0}
+								max={100}
+							/>
+						</ResetControl>
 
-					<ResetControl
-						onReset={() => setAttributes({ shadowBlur: undefined })}
-					>
-						<RangeControl
-							label={__("Blur")}
-							value={shadowBlur}
-							onChange={(shadowBlur) => setAttributes({ shadowBlur })}
-							min={0}
-							max={20}
-						/>
-					</ResetControl>
+						<ResetControl
+							onReset={() => setAttributes({ shadowVOffset: undefined })}
+						>
+							<RangeControl
+								label={__("Vertical Offset")}
+								value={shadowVOffset}
+								onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
+								min={0}
+								max={100}
+							/>
+						</ResetControl>
 
-					<ResetControl
-						onReset={() => setAttributes({ shadowSpread: undefined })}
-					>
-						<RangeControl
-							label={__("Spread")}
-							value={shadowSpread}
-							onChange={(shadowSpread) => setAttributes({ shadowSpread })}
-							min={0}
-							max={20}
-						/>
-					</ResetControl>
+						<ResetControl
+							onReset={() => setAttributes({ shadowBlur: undefined })}
+						>
+							<RangeControl
+								label={__("Blur")}
+								value={shadowBlur}
+								onChange={(shadowBlur) => setAttributes({ shadowBlur })}
+								min={0}
+								max={20}
+							/>
+						</ResetControl>
+
+						<ResetControl
+							onReset={() => setAttributes({ shadowSpread: undefined })}
+						>
+							<RangeControl
+								label={__("Spread")}
+								value={shadowSpread}
+								onChange={(shadowSpread) => setAttributes({ shadowSpread })}
+								min={0}
+								max={20}
+							/>
+						</ResetControl>
+					</>
 				</PanelBody>
 			</span>
 		</InspectorControls>
