@@ -21,12 +21,17 @@ import {
 	dimensionsPadding,
 } from "./constants/dimensionsNames";
 
+import { wrapBg } from "./constants/backgroundsConstants";
+import { wrpBdShadow } from "./constants/borderShadowConstants";
+
 import {
 	softMinifyCssStrings,
 	isCssExists,
 	generateTypographyStyles,
 	generateDimensionsControlStyles,
-} from "./helpers";
+	generateBackgroundControlStyles,
+	generateBorderShadowStyles,
+} from "../util/helpers";
 
 export default function Edit(props) {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -39,7 +44,6 @@ export default function Edit(props) {
 		dismissible,
 		title,
 		text,
-		backgroundColor,
 		titleColor,
 		textColor,
 		shadowHOffset,
@@ -161,50 +165,80 @@ export default function Edit(props) {
 		attributes,
 	});
 
+	const {
+		backgroundStylesDesktop,
+		backgroundStylesTab,
+		backgroundStylesMobile,
+		overlyStyles,
+	} = generateBackgroundControlStyles({
+		attributes,
+		controlName: wrapBg,
+	});
+
+	const {
+		styesDesktop: bdShadowStyesDesktop,
+		styesTab: bdShadowStyesTab,
+		styesMobile: bdShadowStyesMobile,
+		stylesHoverDesktop: bdShadowStylesHoverDesktop,
+		stylesHoverTab: bdShadowStylesHoverTab,
+		stylesHoverMobile: bdShadowStylesHoverMobile,
+	} = generateBorderShadowStyles({
+		controlName: wrpBdShadow,
+		attributes,
+		// noShadow: true,
+		// noBorder: true,
+	});
+
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
-	.${blockId}{
+	.eb-notice-wrapper.${blockId}{
 		${wrapperMarginStylesDesktop}
 		${wrapperPaddingStylesDesktop}
-		
-
-		background: ${backgroundColor || "#3074ff"};
-			
-		${
-			shadowColor
-				? `box-shadow: 
-					${shadowHOffset || 0}px 
-					${shadowVOffset || 0}px 
-					${shadowBlur || 0}px 
-					${shadowSpread || 0}px 
-					${shadowColor};`
-				: " "
-		}
-
-		border-radius: 5px;
+		${backgroundStylesDesktop}
+		${bdShadowStyesDesktop}
 	}
+
+	.eb-notice-wrapper.${blockId}:hover{
+		${bdShadowStylesHoverDesktop}
+	}
+
+	.eb-notice-wrapper.${blockId}:before{
+		${overlyStyles}
+	}
+
+
 	`;
 
 	const wrapperStylesTab = `
-	.${blockId}{
+	.eb-notice-wrapper.${blockId}{
 		${wrapperMarginStylesTab}
 		${wrapperPaddingStylesTab}
-		
+		${backgroundStylesTab}
+		${bdShadowStyesTab}		
+	}
+
+	.eb-notice-wrapper.${blockId}:hover{
+		${bdShadowStylesHoverTab}
 	}
 	`;
 
 	const wrapperStylesMobile = `
-	.${blockId}{
+	.eb-notice-wrapper.${blockId}{
 		${wrapperMarginStylesMobile}
 		${wrapperPaddingStylesMobile}
-		
+		${backgroundStylesMobile}
+		${bdShadowStyesMobile}
+	}
+
+	.eb-notice-wrapper.${blockId}:hover{
+		${bdShadowStylesHoverMobile}
 	}
 	`;
 
 	//
 	// titleWrapper styles css in strings ⬇
 	const titleWrapperStylesDesktop = `
-	.${blockId} .eb-notice-title-wrapper{
+	.eb-notice-wrapper.${blockId} .eb-notice-title-wrapper{
 		display: flex;
 		justify-content: space-between;
 	}	
@@ -212,47 +246,47 @@ export default function Edit(props) {
 
 	// title styles css in strings ⬇
 	const titleStylesDesktop = `
-	.${blockId} .eb-notice-title{
+	.eb-notice-wrapper.${blockId} .eb-notice-title{
 		${titleTypoStylesDesktop}		
 		color: ${titleColor || "#fff"};
 	}
 	`;
 
 	const titleStylesTab = `
-	.${blockId} .eb-notice-title{
+	.eb-notice-wrapper.${blockId} .eb-notice-title{
 		${titleTypoStylesTab}
 	}
 	`;
 
 	const titleStylesMobile = `
-	.${blockId} .eb-notice-title{
+	.eb-notice-wrapper.${blockId} .eb-notice-title{
 		${titleTypoStylesMobile}
 	}
 	`;
 
 	// text styles css in strings ⬇
 	const textStylesDesktop = `
-	.${blockId} .eb-notice-text{
+	.eb-notice-wrapper.${blockId} .eb-notice-text{
 		${textTypoStylesDesktop}
 		color: ${textColor || "#edf1f7"};
 	}
 	`;
 
 	const textStylesTab = `
-	.${blockId} .eb-notice-text{
+	.eb-notice-wrapper.${blockId} .eb-notice-text{
 		${textTypoStylesTab}
 	}
 	`;
 
 	const textStylesMobile = `
-	.${blockId} .eb-notice-text{
+	.eb-notice-wrapper.${blockId} .eb-notice-text{
 		${textTypoStylesMobile}
 	}
 	`;
 
 	// dismiss styles css in strings ⬇
 	const dismissStylesDesktop = `
-	.${blockId} .eb-notice-dismiss{
+	.eb-notice-wrapper.${blockId} .eb-notice-dismiss{
 		color: ${textColor || "#edf1f7"};
 		display: ${dismissible ? "flex" : "none"};
 	}

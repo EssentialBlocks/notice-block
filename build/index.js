@@ -1278,7 +1278,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread({
+var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({
   // the following 4 attributes is must required for responsive options and asset generation for frontend
   // responsive control attributes ⬇
   resOption: {
@@ -1295,13 +1295,7 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread({
   },
   blockMeta: {
     type: "object"
-  }
-}, Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_1__["dimensionsMargin"])), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_1__["dimensionsPadding"], {
-  top: 65,
-  bottom: 65,
-  right: 60,
-  left: 60
-})), {}, {
+  },
   // marginUnit: {
   // 	type: "string",
   // 	default: "px",
@@ -1443,23 +1437,31 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread({
   showAfterDismiss: {
     type: "boolean",
     "default": false
-  },
-  shadowColor: {
-    type: "string"
-  },
-  shadowHOffset: {
-    type: "number"
-  },
-  shadowVOffset: {
-    type: "number"
-  },
-  shadowSpread: {
-    type: "number"
-  },
-  shadowBlur: {
-    type: "number"
   }
-});
+}, Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_0__))), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_1__["dimensionsMargin"])), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_1__["dimensionsPadding"], {
+  top: 65,
+  bottom: 65,
+  right: 60,
+  left: 60
+})), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateBorderShadowAttributes"])(_constants_borderShadowConstants__WEBPACK_IMPORTED_MODULE_4__["wrpBdShadow"], {// bdrDefaults: {
+  // 	top: 0,
+  // 	bottom: 0,
+  // 	right: 0,
+  // 	left: 0,
+  // },
+  // rdsDefaults: {
+  // 	top: 0,
+  // 	bottom: 50,
+  // 	right: 500,
+  // 	left: 1000,
+  // },
+  // noShadow: true,
+  // noBorder: true,
+})), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateBackgroundAttributes"])(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_3__["wrapBg"], {
+  isBgDefaultFill: true,
+  defaultFillColor: "#3074ff" // defaultBgGradient: "linear-gradient(45deg,#7967ff,#c277f2)",
+
+}));
 
 /* harmony default export */ __webpack_exports__["default"] = (attributes);
 
@@ -1632,7 +1634,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inspector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inspector */ "./src/inspector.js");
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
 /* harmony import */ var _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./constants/dimensionsNames */ "./src/constants/dimensionsNames.js");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
+/* harmony import */ var _constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./constants/backgroundsConstants */ "./src/constants/backgroundsConstants.js");
+/* harmony import */ var _constants_borderShadowConstants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./constants/borderShadowConstants */ "./src/constants/borderShadowConstants.js");
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/helpers */ "./util/helpers/index.js");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -1653,6 +1657,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
+
 function Edit(props) {
   var attributes = props.attributes,
       setAttributes = props.setAttributes,
@@ -1664,7 +1670,6 @@ function Edit(props) {
       dismissible = attributes.dismissible,
       title = attributes.title,
       text = attributes.text,
-      backgroundColor = attributes.backgroundColor,
       titleColor = attributes.titleColor,
       textColor = attributes.textColor,
       shadowHOffset = attributes.shadowHOffset,
@@ -1752,7 +1757,7 @@ function Edit(props) {
   }); //
   // CSS/styling Codes Starts from Here
 
-  var _generateTypographySt = Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["generateTypographyStyles"])({
+  var _generateTypographySt = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["generateTypographyStyles"])({
     attributes: attributes,
     prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["typoPrefix_title"],
     defaultFontSize: 32
@@ -1761,7 +1766,7 @@ function Edit(props) {
       titleTypoStylesTab = _generateTypographySt.typoStylesTab,
       titleTypoStylesMobile = _generateTypographySt.typoStylesMobile;
 
-  var _generateTypographySt2 = Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["generateTypographyStyles"])({
+  var _generateTypographySt2 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["generateTypographyStyles"])({
     attributes: attributes,
     prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["typoPrefix_text"],
     defaultFontSize: 18
@@ -1770,7 +1775,7 @@ function Edit(props) {
       textTypoStylesTab = _generateTypographySt2.typoStylesTab,
       textTypoStylesMobile = _generateTypographySt2.typoStylesMobile;
 
-  var _generateDimensionsCo = Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["generateDimensionsControlStyles"])({
+  var _generateDimensionsCo = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["generateDimensionsControlStyles"])({
     controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_5__["dimensionsMargin"],
     styleFor: "margin",
     attributes: attributes
@@ -1779,38 +1784,60 @@ function Edit(props) {
       wrapperMarginStylesTab = _generateDimensionsCo.dimensionStylesTab,
       wrapperMarginStylesMobile = _generateDimensionsCo.dimensionStylesMobile;
 
-  var _generateDimensionsCo2 = Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["generateDimensionsControlStyles"])({
+  var _generateDimensionsCo2 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["generateDimensionsControlStyles"])({
     controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_5__["dimensionsPadding"],
     styleFor: "padding",
     attributes: attributes
   }),
       wrapperPaddingStylesDesktop = _generateDimensionsCo2.dimensionStylesDesktop,
       wrapperPaddingStylesTab = _generateDimensionsCo2.dimensionStylesTab,
-      wrapperPaddingStylesMobile = _generateDimensionsCo2.dimensionStylesMobile; // wrapper styles css in strings ⬇
+      wrapperPaddingStylesMobile = _generateDimensionsCo2.dimensionStylesMobile;
+
+  var _generateBackgroundCo = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["generateBackgroundControlStyles"])({
+    attributes: attributes,
+    controlName: _constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_6__["wrapBg"]
+  }),
+      backgroundStylesDesktop = _generateBackgroundCo.backgroundStylesDesktop,
+      backgroundStylesTab = _generateBackgroundCo.backgroundStylesTab,
+      backgroundStylesMobile = _generateBackgroundCo.backgroundStylesMobile,
+      overlyStyles = _generateBackgroundCo.overlyStyles;
+
+  var _generateBorderShadow = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["generateBorderShadowStyles"])({
+    controlName: _constants_borderShadowConstants__WEBPACK_IMPORTED_MODULE_7__["wrpBdShadow"],
+    attributes: attributes // noShadow: true,
+    // noBorder: true,
+
+  }),
+      bdShadowStyesDesktop = _generateBorderShadow.styesDesktop,
+      bdShadowStyesTab = _generateBorderShadow.styesTab,
+      bdShadowStyesMobile = _generateBorderShadow.styesMobile,
+      bdShadowStylesHoverDesktop = _generateBorderShadow.stylesHoverDesktop,
+      bdShadowStylesHoverTab = _generateBorderShadow.stylesHoverTab,
+      bdShadowStylesHoverMobile = _generateBorderShadow.stylesHoverMobile; // wrapper styles css in strings ⬇
 
 
-  var wrapperStylesDesktop = "\n\t.".concat(blockId, "{\n\t\t").concat(wrapperMarginStylesDesktop, "\n\t\t").concat(wrapperPaddingStylesDesktop, "\n\t\t\n\n\t\tbackground: ").concat(backgroundColor || "#3074ff", ";\n\t\t\t\n\t\t").concat(shadowColor ? "box-shadow: \n\t\t\t\t\t".concat(shadowHOffset || 0, "px \n\t\t\t\t\t").concat(shadowVOffset || 0, "px \n\t\t\t\t\t").concat(shadowBlur || 0, "px \n\t\t\t\t\t").concat(shadowSpread || 0, "px \n\t\t\t\t\t").concat(shadowColor, ";") : " ", "\n\n\t\tborder-radius: 5px;\n\t}\n\t");
-  var wrapperStylesTab = "\n\t.".concat(blockId, "{\n\t\t").concat(wrapperMarginStylesTab, "\n\t\t").concat(wrapperPaddingStylesTab, "\n\t\t\n\t}\n\t");
-  var wrapperStylesMobile = "\n\t.".concat(blockId, "{\n\t\t").concat(wrapperMarginStylesMobile, "\n\t\t").concat(wrapperPaddingStylesMobile, "\n\t\t\n\t}\n\t"); //
+  var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.".concat(blockId, "{\n\t\t").concat(wrapperMarginStylesDesktop, "\n\t\t").concat(wrapperPaddingStylesDesktop, "\n\t\t").concat(backgroundStylesDesktop, "\n\t\t").concat(bdShadowStyesDesktop, "\n\t}\n\n\t.eb-notice-wrapper.").concat(blockId, ":hover{\n\t\t").concat(bdShadowStylesHoverDesktop, "\n\t}\n\n\t.eb-notice-wrapper.").concat(blockId, ":before{\n\t\t").concat(overlyStyles, "\n\t}\n\n\n\t");
+  var wrapperStylesTab = "\n\t.eb-notice-wrapper.".concat(blockId, "{\n\t\t").concat(wrapperMarginStylesTab, "\n\t\t").concat(wrapperPaddingStylesTab, "\n\t\t").concat(backgroundStylesTab, "\n\t\t").concat(bdShadowStyesTab, "\t\t\n\t}\n\n\t.eb-notice-wrapper.").concat(blockId, ":hover{\n\t\t").concat(bdShadowStylesHoverTab, "\n\t}\n\t");
+  var wrapperStylesMobile = "\n\t.eb-notice-wrapper.".concat(blockId, "{\n\t\t").concat(wrapperMarginStylesMobile, "\n\t\t").concat(wrapperPaddingStylesMobile, "\n\t\t").concat(backgroundStylesMobile, "\n\t\t").concat(bdShadowStyesMobile, "\n\t}\n\n\t.eb-notice-wrapper.").concat(blockId, ":hover{\n\t\t").concat(bdShadowStylesHoverMobile, "\n\t}\n\t"); //
   // titleWrapper styles css in strings ⬇
 
-  var titleWrapperStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t"); // title styles css in strings ⬇
+  var titleWrapperStylesDesktop = "\n\t.eb-notice-wrapper.".concat(blockId, " .eb-notice-title-wrapper{\n\t\tdisplay: flex;\n\t\tjustify-content: space-between;\n\t}\t\n\t"); // title styles css in strings ⬇
 
-  var titleStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\t\t\n\t\tcolor: ").concat(titleColor || "#fff", ";\n\t}\n\t");
-  var titleStylesTab = "\n\t.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesTab, "\n\t}\n\t");
-  var titleStylesMobile = "\n\t.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t"); // text styles css in strings ⬇
+  var titleStylesDesktop = "\n\t.eb-notice-wrapper.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesDesktop, "\t\t\n\t\tcolor: ").concat(titleColor || "#fff", ";\n\t}\n\t");
+  var titleStylesTab = "\n\t.eb-notice-wrapper.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesTab, "\n\t}\n\t");
+  var titleStylesMobile = "\n\t.eb-notice-wrapper.".concat(blockId, " .eb-notice-title{\n\t\t").concat(titleTypoStylesMobile, "\n\t}\n\t"); // text styles css in strings ⬇
 
-  var textStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor || "#edf1f7", ";\n\t}\n\t");
-  var textStylesTab = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesTab, "\n\t}\n\t");
-  var textStylesMobile = "\n\t.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t"); // dismiss styles css in strings ⬇
+  var textStylesDesktop = "\n\t.eb-notice-wrapper.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesDesktop, "\n\t\tcolor: ").concat(textColor || "#edf1f7", ";\n\t}\n\t");
+  var textStylesTab = "\n\t.eb-notice-wrapper.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesTab, "\n\t}\n\t");
+  var textStylesMobile = "\n\t.eb-notice-wrapper.".concat(blockId, " .eb-notice-text{\n\t\t").concat(textTypoStylesMobile, "\n\t}\n\t"); // dismiss styles css in strings ⬇
 
-  var dismissStylesDesktop = "\n\t.".concat(blockId, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor || "#edf1f7", ";\n\t\tdisplay: ").concat(dismissible ? "flex" : "none", ";\n\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
+  var dismissStylesDesktop = "\n\t.eb-notice-wrapper.".concat(blockId, " .eb-notice-dismiss{\n\t\tcolor: ").concat(textColor || "#edf1f7", ";\n\t\tdisplay: ").concat(dismissible ? "flex" : "none", ";\n\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
 
-  var desktopAllStyles = Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])("\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t")); // all css styles for Tab in strings ⬇
+  var desktopAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["softMinifyCssStrings"])("\n\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["isCssExists"])(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " ", "\n\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["isCssExists"])(dismissStylesDesktop) ? dismissStylesDesktop : " ", "\n\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["isCssExists"])(titleStylesDesktop) ? titleStylesDesktop : " ", "\n\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["isCssExists"])(textStylesDesktop) ? textStylesDesktop : " ", "\n\t")); // all css styles for Tab in strings ⬇
 
-  var tabAllStyles = Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])("\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t")); // all css styles for Mobile in strings ⬇
+  var tabAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["softMinifyCssStrings"])("\n\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["isCssExists"])(titleStylesTab) ? titleStylesTab : " ", "\n\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["isCssExists"])(textStylesTab) ? textStylesTab : " ", "\n\t")); // all css styles for Mobile in strings ⬇
 
-  var mobileAllStyles = Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])("\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t")); // Set All Style in "blockMeta" Attribute
+  var mobileAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["softMinifyCssStrings"])("\n\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["isCssExists"])(titleStylesMobile) ? titleStylesMobile : " ", "\n\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["isCssExists"])(textStylesMobile) ? textStylesMobile : " ", "\n\t")); // Set All Style in "blockMeta" Attribute
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var styleObject = {
@@ -1828,7 +1855,7 @@ function Edit(props) {
   return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_3__["default"], props),
   /*#__PURE__*/
   //Edit view here
-  React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(desktopAllStyles, "\n\n\t\t\t\t/* mimmikcssStart */\n\n\t\t\t\t").concat(resOption === "tab" ? tabAllStyles : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? tabAllStyles + mobileAllStyles : " ", "\n\n\t\t\t\t/* mimmikcssEnd */\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\n\n\t\t\t\t\t/* tabcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t\t/* tabcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t\n\t\t\t\t\t/* mobcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t\t/* mobcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
+  React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(desktopAllStyles, "\n\n\t\t\t\t/* mimmikcssStart */\n\n\t\t\t\t").concat(resOption === "tab" ? tabAllStyles : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? tabAllStyles + mobileAllStyles : " ", "\n\n\t\t\t\t/* mimmikcssEnd */\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\n\n\t\t\t\t\t/* tabcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t\t/* tabcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t\n\t\t\t\t\t/* mobcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_8__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t\t/* mobcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
     className: "eb-notice-wrapper ".concat(blockId),
     "data-id": blockId
   }, /*#__PURE__*/React.createElement("div", {
@@ -1871,266 +1898,6 @@ function Edit(props) {
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
-
-/***/ }),
-
-/***/ "./src/helpers.js":
-/*!************************!*\
-  !*** ./src/helpers.js ***!
-  \************************/
-/*! exports provided: generateDimensionsAttributes, generateTypographyAttributes, textInsideForEdit, generateRandomNumber, hardMinifyCssStrings, softMinifyCssStrings, isCssExists, hasVal, generateTypographyStyles, generateDimensionsControlStyles */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateDimensionsAttributes", function() { return generateDimensionsAttributes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateTypographyAttributes", function() { return generateTypographyAttributes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "textInsideForEdit", function() { return textInsideForEdit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateRandomNumber", function() { return generateRandomNumber; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hardMinifyCssStrings", function() { return hardMinifyCssStrings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "softMinifyCssStrings", function() { return softMinifyCssStrings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCssExists", function() { return isCssExists; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasVal", function() { return hasVal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateTypographyStyles", function() { return generateTypographyStyles; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateDimensionsControlStyles", function() { return generateDimensionsControlStyles; });
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-// function to generate New Dimensions-Control's attributes for multiple Dimensions control based on the array of values(prefixs)
-var generateDimensionsAttributes = function generateDimensionsAttributes(controlName) {
-  var _objectSpread3;
-
-  var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var top = defaults.top,
-      right = defaults.right,
-      bottom = defaults.bottom,
-      left = defaults.left;
-  var desktopTop = top ? _defineProperty({}, "".concat(controlName, "Top"), {
-    type: "string",
-    "default": "".concat(top)
-  }) : _defineProperty({}, "".concat(controlName, "Top"), {
-    type: "string"
-  });
-  var desktopRight = right ? _defineProperty({}, "".concat(controlName, "Right"), {
-    type: "string",
-    "default": "".concat(right)
-  }) : _defineProperty({}, "".concat(controlName, "Right"), {
-    type: "string"
-  });
-  var desktopBottom = bottom ? _defineProperty({}, "".concat(controlName, "Bottom"), {
-    type: "string",
-    "default": "".concat(bottom)
-  }) : _defineProperty({}, "".concat(controlName, "Bottom"), {
-    type: "string"
-  });
-  var desktopLeft = left ? _defineProperty({}, "".concat(controlName, "Left"), {
-    type: "string",
-    "default": "".concat(left)
-  }) : _defineProperty({}, "".concat(controlName, "Left"), {
-    type: "string"
-  });
-  return _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_defineProperty({}, "".concat(controlName, "Unit"), {
-    type: "string",
-    "default": "px"
-  }), desktopTop), desktopRight), desktopBottom), desktopLeft), {}, (_objectSpread3 = {}, _defineProperty(_objectSpread3, "TAB".concat(controlName, "Unit"), {
-    type: "string",
-    "default": "px"
-  }), _defineProperty(_objectSpread3, "TAB".concat(controlName, "Top"), {
-    type: "string"
-  }), _defineProperty(_objectSpread3, "TAB".concat(controlName, "Right"), {
-    type: "string"
-  }), _defineProperty(_objectSpread3, "TAB".concat(controlName, "Bottom"), {
-    type: "string"
-  }), _defineProperty(_objectSpread3, "TAB".concat(controlName, "Left"), {
-    type: "string"
-  }), _defineProperty(_objectSpread3, "MOB".concat(controlName, "Unit"), {
-    type: "string",
-    "default": "px"
-  }), _defineProperty(_objectSpread3, "MOB".concat(controlName, "Top"), {
-    type: "string"
-  }), _defineProperty(_objectSpread3, "MOB".concat(controlName, "Right"), {
-    type: "string"
-  }), _defineProperty(_objectSpread3, "MOB".concat(controlName, "Bottom"), {
-    type: "string"
-  }), _defineProperty(_objectSpread3, "MOB".concat(controlName, "Left"), {
-    type: "string"
-  }), _objectSpread3));
-}; // function to generate typography attributes for multiple typography control based on the array of prefix
-
-var generateTypographyAttributes = function generateTypographyAttributes(prefixArray) {
-  var typoAttrs = prefixArray.reduce(function (total, current) {
-    var _result;
-
-    var result = (_result = {}, _defineProperty(_result, "".concat(current, "FontFamily"), {
-      type: "string"
-    }), _defineProperty(_result, "".concat(current, "SizeUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "".concat(current, "FontSize"), {
-      type: "number"
-    }), _defineProperty(_result, "".concat(current, "FontWeight"), {
-      type: "string"
-    }), _defineProperty(_result, "".concat(current, "TextTransform"), {
-      type: "string"
-    }), _defineProperty(_result, "".concat(current, "TextDecoration"), {
-      type: "string"
-    }), _defineProperty(_result, "".concat(current, "LetterSpacingUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "".concat(current, "LetterSpacing"), {
-      type: "number"
-    }), _defineProperty(_result, "".concat(current, "LineHeightUnit"), {
-      type: "string",
-      "default": "em"
-    }), _defineProperty(_result, "".concat(current, "LineHeight"), {
-      type: "number"
-    }), _defineProperty(_result, "TAB".concat(current, "SizeUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "TAB".concat(current, "FontSize"), {
-      type: "number"
-    }), _defineProperty(_result, "TAB".concat(current, "LetterSpacingUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "TAB".concat(current, "LetterSpacing"), {
-      type: "number"
-    }), _defineProperty(_result, "TAB".concat(current, "LineHeightUnit"), {
-      type: "string",
-      "default": "em"
-    }), _defineProperty(_result, "TAB".concat(current, "LineHeight"), {
-      type: "number"
-    }), _defineProperty(_result, "MOB".concat(current, "SizeUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "MOB".concat(current, "FontSize"), {
-      type: "number"
-    }), _defineProperty(_result, "MOB".concat(current, "LetterSpacingUnit"), {
-      type: "string",
-      "default": "px"
-    }), _defineProperty(_result, "MOB".concat(current, "LetterSpacing"), {
-      type: "number"
-    }), _defineProperty(_result, "MOB".concat(current, "LineHeightUnit"), {
-      type: "string",
-      "default": "em"
-    }), _defineProperty(_result, "MOB".concat(current, "LineHeight"), {
-      type: "number"
-    }), _result);
-    return _objectSpread(_objectSpread({}, total), result);
-  }, {}); // console.log({ typoAttrs });
-
-  return typoAttrs;
-}; // helper Functions: function 'textInsideForEdit' is for setting the innertext depending on whether separator should be shown and which separator should be shown
-
-var textInsideForEdit = function textInsideForEdit(value, isShowSeparator, separator) {
-  return isShowSeparator ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator) : value.toString();
-}; // generateRandomNumber function is for generating a random number
-
-var generateRandomNumber = function generateRandomNumber() {
-  return Math.floor(Math.random() * 1000000000);
-}; // hardMinifyCssStrings is for minifying the css which is in the style tag as a string  for view.js
-
-var hardMinifyCssStrings = function hardMinifyCssStrings(cssString) {
-  // console.log({ cssString });
-  return cssString.replace(/\s+/g, " ").replace(/(?<=\:).+(?=\;)/g, function (match) {
-    // console.log({ match, g1, offset, string });
-    return match.trim().replace(/\s+/g, "__s_p_a_c_e__");
-  }) // .replace(/\s+(?!(?:[\w\d\.\-\#]+\{))/g, "")
-  .replace(/\s+(?![\w\d\.\-\#]+\{)/g, "").replace(/\s+/g, " ").replace(/__s_p_a_c_e__/g, " ");
-}; // softMinifyCssStrings is for minifying the css which is in the style tag as a string  for view.js
-
-var softMinifyCssStrings = function softMinifyCssStrings(cssString) {
-  return cssString.replace(/\s+/g, " ");
-}; // check if css string is empty or not.
-
-var isCssExists = function isCssExists(cssString) {
-  return /.+(?=\:(?!hover)(?!focus))/.test(cssString);
-}; // check if range controller input numbers  has value
-
-var hasVal = function hasVal(val) {
-  return val || val === 0;
-}; //
-// function to generate typography styles for an element based on it's prefix
-
-var generateTypographyStyles = function generateTypographyStyles(_ref9) {
-  var prefixConstant = _ref9.prefixConstant,
-      defaultFontSize = _ref9.defaultFontSize,
-      attributes = _ref9.attributes;
-  var fontFamily = attributes["".concat(prefixConstant, "FontFamily")],
-      fontWeight = attributes["".concat(prefixConstant, "FontWeight")],
-      textTransform = attributes["".concat(prefixConstant, "TextTransform")],
-      textDecoration = attributes["".concat(prefixConstant, "TextDecoration")],
-      _attributes$ = attributes["".concat(prefixConstant, "FontSize")],
-      fontSize = _attributes$ === void 0 ? defaultFontSize : _attributes$,
-      sizeUnit = attributes["".concat(prefixConstant, "SizeUnit")],
-      letterSpacing = attributes["".concat(prefixConstant, "LetterSpacing")],
-      letterSpacingUnit = attributes["".concat(prefixConstant, "LetterSpacingUnit")],
-      lineHeight = attributes["".concat(prefixConstant, "LineHeight")],
-      lineHeightUnit = attributes["".concat(prefixConstant, "LineHeightUnit")],
-      TABsizeUnit = attributes["TAB".concat(prefixConstant, "SizeUnit")],
-      TABletterSpacingUnit = attributes["TAB".concat(prefixConstant, "LetterSpacingUnit")],
-      TABlineHeightUnit = attributes["TAB".concat(prefixConstant, "LineHeightUnit")],
-      TABfontSize = attributes["TAB".concat(prefixConstant, "FontSize")],
-      TABletterSpacing = attributes["TAB".concat(prefixConstant, "LetterSpacing")],
-      TABlineHeight = attributes["TAB".concat(prefixConstant, "LineHeight")],
-      MOBsizeUnit = attributes["MOB".concat(prefixConstant, "SizeUnit")],
-      MOBletterSpacingUnit = attributes["MOB".concat(prefixConstant, "LetterSpacingUnit")],
-      MOBlineHeightUnit = attributes["MOB".concat(prefixConstant, "LineHeightUnit")],
-      MOBfontSize = attributes["MOB".concat(prefixConstant, "FontSize")],
-      MOBletterSpacing = attributes["MOB".concat(prefixConstant, "LetterSpacing")],
-      MOBlineHeight = attributes["MOB".concat(prefixConstant, "LineHeight")];
-  var typoStylesDesktop = "\n\t\t\t".concat(fontFamily ? "font-family: ".concat(fontFamily, ";") : " ", "\n\t\t\t").concat(hasVal(fontSize) ? "font-size: ".concat(fontSize).concat(sizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(lineHeight) ? "line-height: ".concat(lineHeight).concat(lineHeightUnit, ";") : " ", "\n\t\t\t").concat(fontWeight ? "font-weight: ".concat(fontWeight, ";") : " ", "\n\t\t\t").concat(textDecoration ? "text-decoration: ".concat(textDecoration, ";") : " ", "\n\t\t\t").concat(textTransform ? "text-transform: ".concat(textTransform, ";") : " ", "\n\t\t\t").concat(hasVal(letterSpacing) ? "letter-spacing: ".concat(letterSpacing).concat(letterSpacingUnit, ";") : " ", "\n\t\t");
-  var typoStylesTab = "\n\t\t\t".concat(hasVal(TABfontSize) ? "font-size: ".concat(TABfontSize).concat(TABsizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(TABlineHeight) ? "line-height: ".concat(TABlineHeight).concat(TABlineHeightUnit, ";") : " ", "\n\t\t\t").concat(hasVal(TABletterSpacing) ? "letter-spacing: ".concat(TABletterSpacing).concat(TABletterSpacingUnit, ";") : " ", "\n\t\t");
-  var typoStylesMobile = "\n\t\t\t".concat(hasVal(MOBfontSize) ? "font-size: ".concat(MOBfontSize).concat(MOBsizeUnit, ";") : " ", "\n\t\t\t").concat(hasVal(MOBlineHeight) ? "line-height: ".concat(MOBlineHeight).concat(MOBlineHeightUnit, ";") : " ", "\n\t\t\t").concat(hasVal(MOBletterSpacing) ? "letter-spacing: ".concat(MOBletterSpacing).concat(MOBletterSpacingUnit, ";") : " ", "\n\t\t");
-  return {
-    typoStylesDesktop: typoStylesDesktop,
-    typoStylesTab: typoStylesTab,
-    typoStylesMobile: typoStylesMobile
-  };
-}; //
-// function to generate dimensions-controls styles for an element based on it's controlName(prefix)
-
-var generateDimensionsControlStyles = function generateDimensionsControlStyles(_ref10) {
-  var controlName = _ref10.controlName,
-      styleFor = _ref10.styleFor,
-      attributes = _ref10.attributes;
-  var dimensionUnit = attributes["".concat(controlName, "Unit")],
-      dimensionTop = attributes["".concat(controlName, "Top")],
-      dimensionRight = attributes["".concat(controlName, "Right")],
-      dimensionBottom = attributes["".concat(controlName, "Bottom")],
-      dimensionLeft = attributes["".concat(controlName, "Left")],
-      TABdimensionUnit = attributes["TAB".concat(controlName, "Unit")],
-      TABdimensionTop = attributes["TAB".concat(controlName, "Top")],
-      TABdimensionRight = attributes["TAB".concat(controlName, "Right")],
-      TABdimensionBottom = attributes["TAB".concat(controlName, "Bottom")],
-      TABdimensionLeft = attributes["TAB".concat(controlName, "Left")],
-      MOBdimensionUnit = attributes["MOB".concat(controlName, "Unit")],
-      MOBdimensionTop = attributes["MOB".concat(controlName, "Top")],
-      MOBdimensionRight = attributes["MOB".concat(controlName, "Right")],
-      MOBdimensionBottom = attributes["MOB".concat(controlName, "Bottom")],
-      MOBdimensionLeft = attributes["MOB".concat(controlName, "Left")];
-  var dimensionStylesDesktop = " ";
-  var dimensionStylesTab = " ";
-  var dimensionStylesMobile = " ";
-
-  if (styleFor !== "border-radius") {
-    dimensionStylesDesktop = "\n\t\t".concat(dimensionTop ? "".concat(styleFor, "-top: ").concat(parseFloat(dimensionTop)).concat(dimensionUnit, ";") : " ", "\n\t\t").concat(dimensionRight ? "".concat(styleFor, "-right: ").concat(parseFloat(dimensionRight)).concat(dimensionUnit, ";") : " ", "\n\t\t").concat(dimensionLeft ? "".concat(styleFor, "-left: ").concat(parseFloat(dimensionLeft)).concat(dimensionUnit, ";") : " ", "\n\t\t").concat(dimensionBottom ? "".concat(styleFor, "-bottom: ").concat(parseFloat(dimensionBottom)).concat(dimensionUnit, ";") : " ", "\n\t\n\t\t");
-    dimensionStylesTab = "\n\t\t\t".concat(TABdimensionTop ? "".concat(styleFor, "-top: ").concat(parseFloat(TABdimensionTop)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionRight ? "".concat(styleFor, "-right: ").concat(parseFloat(TABdimensionRight)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionLeft ? "".concat(styleFor, "-left: ").concat(parseFloat(TABdimensionLeft)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionBottom ? "".concat(styleFor, "-bottom: ").concat(parseFloat(TABdimensionBottom)).concat(TABdimensionUnit, ";") : " ", "\n\n\t\t");
-    dimensionStylesMobile = "\n\t\t\t".concat(MOBdimensionTop ? "".concat(styleFor, "-top: ").concat(parseFloat(MOBdimensionTop)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionRight ? "".concat(styleFor, "-right: ").concat(parseFloat(MOBdimensionRight)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionLeft ? "".concat(styleFor, "-left: ").concat(parseFloat(MOBdimensionLeft)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionBottom ? "".concat(styleFor, "-bottom: ").concat(parseFloat(MOBdimensionBottom)).concat(MOBdimensionUnit, ";") : " ", "\n\n\t\t");
-  } else {
-    dimensionStylesDesktop = "\n\t\t\t".concat(dimensionTop ? "border-top-left-radius: ".concat(parseFloat(dimensionTop)).concat(dimensionUnit, ";") : " ", "\n\t\t\t").concat(dimensionRight ? "border-top-right-radius: ".concat(parseFloat(dimensionRight)).concat(dimensionUnit, ";") : " ", "\n\t\t\t").concat(dimensionLeft ? "border-bottom-right-radius: ".concat(parseFloat(dimensionLeft)).concat(dimensionUnit, ";") : " ", "\n\t\t\t").concat(dimensionBottom ? "border-bottom-left-radius: ".concat(parseFloat(dimensionBottom)).concat(dimensionUnit, ";") : " ", "\n\t\n\t\t");
-    dimensionStylesTab = "\n\t\t\t".concat(TABdimensionTop ? "border-top-left-radius: ".concat(parseFloat(TABdimensionTop)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionRight ? "border-top-right-radius: ".concat(parseFloat(TABdimensionRight)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionLeft ? "border-bottom-right-radius: ".concat(parseFloat(TABdimensionLeft)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionBottom ? "border-bottom-left-radius: ".concat(parseFloat(TABdimensionBottom)).concat(TABdimensionUnit, ";") : " ", "\n\n\t\t");
-    dimensionStylesMobile = "\n\t\t\t".concat(MOBdimensionTop ? "border-top-left-radius: ".concat(parseFloat(MOBdimensionTop)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionRight ? "border-top-right-radius: ".concat(parseFloat(MOBdimensionRight)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionLeft ? "border-bottom-right-radius: ".concat(parseFloat(MOBdimensionLeft)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionBottom ? "border-bottom-left-radius: ".concat(parseFloat(MOBdimensionBottom)).concat(MOBdimensionUnit, ";") : " ", "\n\n\t\t");
-  }
-
-  return {
-    dimensionStylesDesktop: dimensionStylesDesktop,
-    dimensionStylesTab: dimensionStylesTab,
-    dimensionStylesMobile: dimensionStylesMobile
-  };
-};
 
 /***/ }),
 
@@ -2245,6 +2012,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_reset_control__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../util/reset-control */ "./util/reset-control/index.js");
 /* harmony import */ var _util_border_shadow_control__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../util/border-shadow-control */ "./util/border-shadow-control/index.js");
 /* harmony import */ var _util_background_control__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../util/background-control */ "./util/background-control/index.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /**
  * WordPress dependencies
  */
@@ -2275,7 +2044,7 @@ function Inspector(props) {
   var resOption = attributes.resOption,
       dismissible = attributes.dismissible,
       noticeType = attributes.noticeType,
-      backgroundColor = attributes.backgroundColor,
+      backgroundColor = attributes["".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor")],
       titleColor = attributes.titleColor,
       textColor = attributes.textColor,
       showAfterDismiss = attributes.showAfterDismiss,
@@ -2286,50 +2055,37 @@ function Inspector(props) {
       shadowSpread = attributes.shadowSpread;
 
   var onTypeChange = function onTypeChange(type) {
+    var _setAttributes, _setAttributes2, _setAttributes3, _setAttributes4, _setAttributes5;
+
     switch (type) {
       case "success":
-        setAttributes({
-          noticeType: type,
-          backgroundColor: "#4caf50",
-          titleColor: "#ffffff",
-          textColor: "#ffffff"
-        });
+        setAttributes((_setAttributes = {
+          noticeType: type
+        }, _defineProperty(_setAttributes, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), "#4caf50"), _defineProperty(_setAttributes, "titleColor", "#ffffff"), _defineProperty(_setAttributes, "textColor", "#ffffff"), _setAttributes));
         break;
 
       case "info":
-        setAttributes({
-          noticeType: type,
-          backgroundColor: "#d3d3d3",
-          titleColor: "#000000",
-          textColor: "#000000"
-        });
+        setAttributes((_setAttributes2 = {
+          noticeType: type
+        }, _defineProperty(_setAttributes2, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), "#d3d3d3"), _defineProperty(_setAttributes2, "titleColor", "#000000"), _defineProperty(_setAttributes2, "textColor", "#000000"), _setAttributes2));
         break;
 
       case "danger":
-        setAttributes({
-          noticeType: type,
-          backgroundColor: "#f44336",
-          titleColor: "#ffffff",
-          textColor: "#ffffff"
-        });
+        setAttributes((_setAttributes3 = {
+          noticeType: type
+        }, _defineProperty(_setAttributes3, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), "#f44336"), _defineProperty(_setAttributes3, "titleColor", "#ffffff"), _defineProperty(_setAttributes3, "textColor", "#ffffff"), _setAttributes3));
         break;
 
       case "warning":
-        setAttributes({
-          noticeType: type,
-          backgroundColor: "#ffeb3b",
-          titleColor: "#000000",
-          textColor: "#000000"
-        });
+        setAttributes((_setAttributes4 = {
+          noticeType: type
+        }, _defineProperty(_setAttributes4, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), "#ffeb3b"), _defineProperty(_setAttributes4, "titleColor", "#000000"), _defineProperty(_setAttributes4, "textColor", "#000000"), _setAttributes4));
         break;
 
       case "default":
-        setAttributes({
-          noticeType: type,
-          backgroundColor: "#2196f3",
-          titleColor: "#ffffff",
-          textColor: "#ffffff"
-        });
+        setAttributes((_setAttributes5 = {
+          noticeType: type
+        }, _defineProperty(_setAttributes5, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), "#2196f3"), _defineProperty(_setAttributes5, "titleColor", "#ffffff"), _defineProperty(_setAttributes5, "textColor", "#ffffff"), _setAttributes5));
         break;
     }
   }; // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
@@ -2430,9 +2186,7 @@ function Inspector(props) {
     colorSettings: [{
       value: backgroundColor,
       onChange: function onChange(newColor) {
-        return setAttributes({
-          backgroundColor: newColor
-        });
+        return setAttributes(_defineProperty({}, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), newColor));
       },
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Background Color")
     }, {
@@ -3520,7 +3274,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function BorderShadowControl(_ref) {
   var resRequiredProps = _ref.resRequiredProps,
-      controlName = _ref.controlName;
+      controlName = _ref.controlName,
+      noBorder = _ref.noBorder,
+      noShadow = _ref.noShadow;
   var setAttributes = resRequiredProps.setAttributes,
       attributes = resRequiredProps.attributes;
   var borderStyle = attributes["".concat(controlName, "borderStyle")],
@@ -3541,7 +3297,7 @@ function BorderShadowControl(_ref) {
       BorderType = attributes["".concat(controlName, "BorderType")],
       HborderStyle = attributes["".concat(controlName, "HborderStyle")],
       HborderColor = attributes["".concat(controlName, "HborderColor")];
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["BaseControl"], {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, noBorder !== true && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["BaseControl"], {
     id: "eb-infobox-border-hover-ptions"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["ButtonGroup"], {
     id: "eb-infobox-border-hover-ptions"
@@ -3660,7 +3416,7 @@ function BorderShadowControl(_ref) {
     resRequiredProps: resRequiredProps,
     controlName: "".concat(controlName, "HRds_"),
     baseLabel: "Border Radius"
-  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["BaseControl"], {
+  }))), noShadow !== true && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["BaseControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Box Shadow"),
     className: "eb-typography-base"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], {
@@ -3820,7 +3576,7 @@ function BorderShadowControl(_ref) {
         }
       })));
     }
-  })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["BaseControl"], {
+  }))), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["BaseControl"], {
     id: "eb-infobox-transition-time"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["TextControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Transition"),
@@ -4905,15 +4661,19 @@ var generateTypographyAttributes = function generateTypographyAttributes(prefixA
 // function to generate BorderShadow control's attributes
 
 var generateBorderShadowAttributes = function generateBorderShadowAttributes(controlName) {
-  var _objectSpread6;
+  var _objectSpread6, _shdAttrs;
 
   var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var _defaults$bdrDefaults = defaults.bdrDefaults,
       bdrDefaults = _defaults$bdrDefaults === void 0 ? {} : _defaults$bdrDefaults,
       _defaults$rdsDefaults = defaults.rdsDefaults,
-      rdsDefaults = _defaults$rdsDefaults === void 0 ? {} : _defaults$rdsDefaults;
+      rdsDefaults = _defaults$rdsDefaults === void 0 ? {} : _defaults$rdsDefaults,
+      _defaults$noBorder = defaults.noBorder,
+      noBorder = _defaults$noBorder === void 0 ? false : _defaults$noBorder,
+      _defaults$noShadow = defaults.noShadow,
+      noShadow = _defaults$noShadow === void 0 ? false : _defaults$noShadow;
 
-  var result = _objectSpread(_objectSpread(_objectSpread(_objectSpread((_objectSpread6 = {}, _defineProperty(_objectSpread6, "".concat(controlName, "BorderType"), {
+  var bdrAttrs = _objectSpread(_objectSpread(_objectSpread(_objectSpread((_objectSpread6 = {}, _defineProperty(_objectSpread6, "".concat(controlName, "BorderType"), {
     type: "string",
     "default": "normal"
   }), _defineProperty(_objectSpread6, "".concat(controlName, "borderColor"), {
@@ -4926,42 +4686,130 @@ var generateBorderShadowAttributes = function generateBorderShadowAttributes(con
   }), _defineProperty(_objectSpread6, "".concat(controlName, "HborderStyle"), {
     type: "string",
     "default": "none"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "hOffset"), {
+  }), _objectSpread6), generateDimensionsAttributes("".concat(controlName, "Bdr_"), bdrDefaults)), generateDimensionsAttributes("".concat(controlName, "Rds_"), rdsDefaults)), generateDimensionsAttributes("".concat(controlName, "HBdr_"))), generateDimensionsAttributes("".concat(controlName, "HRds_")));
+
+  var shdAttrs = (_shdAttrs = {}, _defineProperty(_shdAttrs, "".concat(controlName, "hOffset"), {
     type: "number"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "vOffset"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "vOffset"), {
     type: "number"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "blur"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "blur"), {
     type: "number"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "spread"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "spread"), {
     type: "number"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "shadowColor"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "shadowColor"), {
     type: "string"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "inset"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "inset"), {
     type: "boolean",
     "default": false
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "shadowType"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "shadowType"), {
     type: "string",
     "default": "normal"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "hoverHOffset"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "hoverHOffset"), {
     type: "number"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "hoverVOffset"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "hoverVOffset"), {
     type: "number"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "hoverBlur"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "hoverBlur"), {
     type: "number"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "hoverSpread"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "hoverSpread"), {
     type: "number"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "hoverShadowColor"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "hoverShadowColor"), {
     type: "string"
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "hoverInset"), {
+  }), _defineProperty(_shdAttrs, "".concat(controlName, "hoverInset"), {
     type: "boolean",
     "default": false
-  }), _defineProperty(_objectSpread6, "".concat(controlName, "transitionTime"), {
-    type: "string",
-    "default": "500"
-  }), _objectSpread6), generateDimensionsAttributes("".concat(controlName, "Bdr_"), bdrDefaults)), generateDimensionsAttributes("".concat(controlName, "Rds_"), rdsDefaults)), generateDimensionsAttributes("".concat(controlName, "HBdr_"))), generateDimensionsAttributes("".concat(controlName, "HRds_"))); // console.log("---generateBorderShadowAttributes:", { result });
+  }), _shdAttrs);
 
+  if (noBorder === true) {
+    return _objectSpread(_objectSpread({}, shdAttrs), {}, _defineProperty({}, "".concat(controlName, "transitionTime"), {
+      type: "string",
+      "default": "500"
+    }));
+  } else if (noShadow === true) {
+    return _objectSpread(_objectSpread({}, bdrAttrs), {}, _defineProperty({}, "".concat(controlName, "transitionTime"), {
+      type: "string",
+      "default": "500"
+    }));
+  } else {
+    return _objectSpread(_objectSpread(_objectSpread({}, bdrAttrs), shdAttrs), {}, _defineProperty({}, "".concat(controlName, "transitionTime"), {
+      type: "string",
+      "default": "500"
+    }));
+  } // const result = {
+  //   // Border Shadow attributes ⬇
+  //   // border attributes ⬇
+  //   [`${controlName}BorderType`]: {
+  //     type: "string",
+  //     default: "normal",
+  //   },
+  //   [`${controlName}borderColor`]: {
+  //     type: "string",
+  //   },
+  //   [`${controlName}borderStyle`]: {
+  //     type: "string",
+  //     default: "none",
+  //   },
+  //   [`${controlName}HborderColor`]: {
+  //     type: "string",
+  //   },
+  //   [`${controlName}HborderStyle`]: {
+  //     type: "string",
+  //     default: "none",
+  //   },
+  //   // shadow attributes  ⬇
+  //   [`${controlName}hOffset`]: {
+  //     type: "number",
+  //   },
+  //   [`${controlName}vOffset`]: {
+  //     type: "number",
+  //   },
+  //   [`${controlName}blur`]: {
+  //     type: "number",
+  //   },
+  //   [`${controlName}spread`]: {
+  //     type: "number",
+  //   },
+  //   [`${controlName}shadowColor`]: {
+  //     type: "string",
+  //   },
+  //   [`${controlName}inset`]: {
+  //     type: "boolean",
+  //     default: false,
+  //   },
+  //   [`${controlName}shadowType`]: {
+  //     type: "string",
+  //     default: "normal",
+  //   },
+  //   [`${controlName}hoverHOffset`]: {
+  //     type: "number",
+  //   },
+  //   [`${controlName}hoverVOffset`]: {
+  //     type: "number",
+  //   },
+  //   [`${controlName}hoverBlur`]: {
+  //     type: "number",
+  //   },
+  //   [`${controlName}hoverSpread`]: {
+  //     type: "number",
+  //   },
+  //   [`${controlName}hoverShadowColor`]: {
+  //     type: "string",
+  //   },
+  //   [`${controlName}hoverInset`]: {
+  //     type: "boolean",
+  //     default: false,
+  //   },
+  //   [`${controlName}transitionTime`]: {
+  //     type: "string",
+  //     default: "500",
+  //   },
+  //   ...generateDimensionsAttributes(`${controlName}Bdr_`, bdrDefaults),
+  //   ...generateDimensionsAttributes(`${controlName}Rds_`, rdsDefaults),
+  //   ...generateDimensionsAttributes(`${controlName}HBdr_`),
+  //   ...generateDimensionsAttributes(`${controlName}HRds_`),
+  // };
+  // console.log("---generateBorderShadowAttributes:", { result });
+  // return result;
 
-  return result;
 }; // helper Functions: function 'textInsideForEdit' is for setting the innertext depending on whether separator should be shown and which separator should be shown
 
 var textInsideForEdit = function textInsideForEdit(value, isShowSeparator, separator) {
@@ -5053,7 +4901,7 @@ var generateDimensionsControlStyles = function generateDimensionsControlStyles(_
   var dimensionStylesMobile = " ";
 
   if (styleFor === "border") {
-    dimensionStylesDesktop = "\n\t\t".concat(dimensionTop ? "border-top-width: ".concat(parseFloat(dimensionTop)).concat(dimensionUnit, ";") : " ", "\n\t\t").concat(dimensionRight ? "border-right-width: ".concat(parseFloat(dimensionRight)).concat(dimensionUnit, ";") : " ", "\n\t\t").concat(dimensionLeft ? "border-left-width: ".concat(parseFloat(dimensionLeft)).concat(dimensionUnit, ";") : " ", "\n\t\t").concat(dimensionBottom ? "border-bottom-width: ".concat(parseFloat(dimensionBottom)).concat(dimensionUnit, ";") : " ", "\n\t\n\t\t");
+    dimensionStylesDesktop = "\n\t\t".concat(dimensionTop ? "border-top-width: ".concat(parseFloat(dimensionTop)).concat(dimensionUnit, "; z-index:999;") : " ", "\n\t\t").concat(dimensionRight ? "border-right-width: ".concat(parseFloat(dimensionRight)).concat(dimensionUnit, ";") : " ", "\n\t\t").concat(dimensionLeft ? "border-left-width: ".concat(parseFloat(dimensionLeft)).concat(dimensionUnit, ";") : " ", "\n\t\t").concat(dimensionBottom ? "border-bottom-width: ".concat(parseFloat(dimensionBottom)).concat(dimensionUnit, ";") : " ", "\n\t\n\t\t");
     dimensionStylesTab = "\n\t\t\t".concat(TABdimensionTop ? "border-top-width: ".concat(parseFloat(TABdimensionTop)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionRight ? "border-right-width: ".concat(parseFloat(TABdimensionRight)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionLeft ? "border-left-width: ".concat(parseFloat(TABdimensionLeft)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionBottom ? "border-bottom-width: ".concat(parseFloat(TABdimensionBottom)).concat(TABdimensionUnit, ";") : " ", "\n\n\t\t");
     dimensionStylesMobile = "\n\t\t\t".concat(MOBdimensionTop ? "border-top-width: ".concat(parseFloat(MOBdimensionTop)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionRight ? "border-right-width: ".concat(parseFloat(MOBdimensionRight)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionLeft ? "border-left-width: ".concat(parseFloat(MOBdimensionLeft)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionBottom ? "border-bottom-width: ".concat(parseFloat(MOBdimensionBottom)).concat(MOBdimensionUnit, ";") : " ", "\n\n\t\t");
   } else if (styleFor === "border-radius") {
@@ -5064,7 +4912,12 @@ var generateDimensionsControlStyles = function generateDimensionsControlStyles(_
     dimensionStylesDesktop = "\n\t\t".concat(dimensionTop ? "".concat(styleFor, "-top: ").concat(parseFloat(dimensionTop)).concat(dimensionUnit, ";") : " ", "\n\t\t").concat(dimensionRight ? "".concat(styleFor, "-right: ").concat(parseFloat(dimensionRight)).concat(dimensionUnit, ";") : " ", "\n\t\t").concat(dimensionLeft ? "".concat(styleFor, "-left: ").concat(parseFloat(dimensionLeft)).concat(dimensionUnit, ";") : " ", "\n\t\t").concat(dimensionBottom ? "".concat(styleFor, "-bottom: ").concat(parseFloat(dimensionBottom)).concat(dimensionUnit, ";") : " ", "\n\t\n\t\t");
     dimensionStylesTab = "\n\t\t\t".concat(TABdimensionTop ? "".concat(styleFor, "-top: ").concat(parseFloat(TABdimensionTop)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionRight ? "".concat(styleFor, "-right: ").concat(parseFloat(TABdimensionRight)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionLeft ? "".concat(styleFor, "-left: ").concat(parseFloat(TABdimensionLeft)).concat(TABdimensionUnit, ";") : " ", "\n\t\t\t").concat(TABdimensionBottom ? "".concat(styleFor, "-bottom: ").concat(parseFloat(TABdimensionBottom)).concat(TABdimensionUnit, ";") : " ", "\n\n\t\t");
     dimensionStylesMobile = "\n\t\t\t".concat(MOBdimensionTop ? "".concat(styleFor, "-top: ").concat(parseFloat(MOBdimensionTop)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionRight ? "".concat(styleFor, "-right: ").concat(parseFloat(MOBdimensionRight)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionLeft ? "".concat(styleFor, "-left: ").concat(parseFloat(MOBdimensionLeft)).concat(MOBdimensionUnit, ";") : " ", "\n\t\t\t").concat(MOBdimensionBottom ? "".concat(styleFor, "-bottom: ").concat(parseFloat(MOBdimensionBottom)).concat(MOBdimensionUnit, ";") : " ", "\n\n\t\t");
-  }
+  } // console.log({
+  //   dimensionStylesDesktop,
+  //   // dimensionStylesTab,
+  //   // dimensionStylesMobile,
+  // });
+
 
   return {
     dimensionStylesDesktop: dimensionStylesDesktop,
@@ -5076,43 +4929,108 @@ var generateDimensionsControlStyles = function generateDimensionsControlStyles(_
 
 var generateBorderShadowStyles = function generateBorderShadowStyles(_ref13) {
   var controlName = _ref13.controlName,
-      attributes = _ref13.attributes;
+      attributes = _ref13.attributes,
+      noBorder = _ref13.noBorder,
+      noShadow = _ref13.noShadow;
+  var borderStylesDesktop = "";
+  var borderStylesTab = "";
+  var borderStylesMobile = "";
+  var radiusStylesDesktop = "";
+  var radiusStylesTab = "";
+  var radiusStylesMobile = "";
+  var HborderStylesDesktop = "";
+  var HborderStylesTab = "";
+  var HborderStylesMobile = "";
+  var HradiusStylesDesktop = "";
+  var HradiusStylesTab = "";
+  var HradiusStylesMobile = "";
 
-  var _generateDimensionsCo = generateDimensionsControlStyles({
-    controlName: "".concat(controlName, "Bdr_"),
-    styleFor: "border",
-    attributes: attributes
-  }),
-      borderStylesDesktop = _generateDimensionsCo.dimensionStylesDesktop,
-      borderStylesTab = _generateDimensionsCo.dimensionStylesTab,
-      borderStylesMobile = _generateDimensionsCo.dimensionStylesMobile;
+  if (noBorder !== true) {
+    var _generateDimensionsCo = generateDimensionsControlStyles({
+      controlName: "".concat(controlName, "Bdr_"),
+      styleFor: "border",
+      attributes: attributes
+    }),
+        F_borderStylesDesktop = _generateDimensionsCo.dimensionStylesDesktop,
+        F_borderStylesTab = _generateDimensionsCo.dimensionStylesTab,
+        F_borderStylesMobile = _generateDimensionsCo.dimensionStylesMobile;
 
-  var _generateDimensionsCo2 = generateDimensionsControlStyles({
-    controlName: "".concat(controlName, "Rds_"),
-    styleFor: "border-radius",
-    attributes: attributes
-  }),
-      radiusStylesDesktop = _generateDimensionsCo2.dimensionStylesDesktop,
-      radiusStylesTab = _generateDimensionsCo2.dimensionStylesTab,
-      radiusStylesMobile = _generateDimensionsCo2.dimensionStylesMobile;
+    var _generateDimensionsCo2 = generateDimensionsControlStyles({
+      controlName: "".concat(controlName, "Rds_"),
+      styleFor: "border-radius",
+      attributes: attributes
+    }),
+        F_radiusStylesDesktop = _generateDimensionsCo2.dimensionStylesDesktop,
+        F_radiusStylesTab = _generateDimensionsCo2.dimensionStylesTab,
+        F_radiusStylesMobile = _generateDimensionsCo2.dimensionStylesMobile;
 
-  var _generateDimensionsCo3 = generateDimensionsControlStyles({
-    controlName: "".concat(controlName, "HBdr_"),
-    styleFor: "border",
-    attributes: attributes
-  }),
-      HborderStylesDesktop = _generateDimensionsCo3.dimensionStylesDesktop,
-      HborderStylesTab = _generateDimensionsCo3.dimensionStylesTab,
-      HborderStylesMobile = _generateDimensionsCo3.dimensionStylesMobile;
+    var _generateDimensionsCo3 = generateDimensionsControlStyles({
+      controlName: "".concat(controlName, "HBdr_"),
+      styleFor: "border",
+      attributes: attributes
+    }),
+        F_HborderStylesDesktop = _generateDimensionsCo3.dimensionStylesDesktop,
+        F_HborderStylesTab = _generateDimensionsCo3.dimensionStylesTab,
+        F_HborderStylesMobile = _generateDimensionsCo3.dimensionStylesMobile;
 
-  var _generateDimensionsCo4 = generateDimensionsControlStyles({
-    controlName: "".concat(controlName, "HRds_"),
-    styleFor: "border-radius",
-    attributes: attributes
-  }),
-      HradiusStylesDesktop = _generateDimensionsCo4.dimensionStylesDesktop,
-      HradiusStylesTab = _generateDimensionsCo4.dimensionStylesTab,
-      HradiusStylesMobile = _generateDimensionsCo4.dimensionStylesMobile;
+    var _generateDimensionsCo4 = generateDimensionsControlStyles({
+      controlName: "".concat(controlName, "HRds_"),
+      styleFor: "border-radius",
+      attributes: attributes
+    }),
+        F_HradiusStylesDesktop = _generateDimensionsCo4.dimensionStylesDesktop,
+        F_HradiusStylesTab = _generateDimensionsCo4.dimensionStylesTab,
+        F_HradiusStylesMobile = _generateDimensionsCo4.dimensionStylesMobile;
+
+    borderStylesDesktop = F_borderStylesDesktop;
+    borderStylesTab = F_borderStylesTab;
+    borderStylesMobile = F_borderStylesMobile;
+    radiusStylesDesktop = F_radiusStylesDesktop;
+    radiusStylesTab = F_radiusStylesTab;
+    radiusStylesMobile = F_radiusStylesMobile;
+    HborderStylesDesktop = F_HborderStylesDesktop;
+    HborderStylesTab = F_HborderStylesTab;
+    HborderStylesMobile = F_HborderStylesMobile;
+    HradiusStylesDesktop = F_HradiusStylesDesktop;
+    HradiusStylesTab = F_HradiusStylesTab;
+    HradiusStylesMobile = F_HradiusStylesMobile;
+  } // const {
+  //   dimensionStylesDesktop: borderStylesDesktop,
+  //   dimensionStylesTab: borderStylesTab,
+  //   dimensionStylesMobile: borderStylesMobile,
+  // } = generateDimensionsControlStyles({
+  //   controlName: `${controlName}Bdr_`,
+  //   styleFor: "border",
+  //   attributes,
+  // });
+  // const {
+  //   dimensionStylesDesktop: radiusStylesDesktop,
+  //   dimensionStylesTab: radiusStylesTab,
+  //   dimensionStylesMobile: radiusStylesMobile,
+  // } = generateDimensionsControlStyles({
+  //   controlName: `${controlName}Rds_`,
+  //   styleFor: "border-radius",
+  //   attributes,
+  // });
+  // const {
+  //   dimensionStylesDesktop: HborderStylesDesktop,
+  //   dimensionStylesTab: HborderStylesTab,
+  //   dimensionStylesMobile: HborderStylesMobile,
+  // } = generateDimensionsControlStyles({
+  //   controlName: `${controlName}HBdr_`,
+  //   styleFor: "border",
+  //   attributes,
+  // });
+  // const {
+  //   dimensionStylesDesktop: HradiusStylesDesktop,
+  //   dimensionStylesTab: HradiusStylesTab,
+  //   dimensionStylesMobile: HradiusStylesMobile,
+  // } = generateDimensionsControlStyles({
+  //   controlName: `${controlName}HRds_`,
+  //   styleFor: "border-radius",
+  //   attributes,
+  // });
+
 
   var borderStyle = attributes["".concat(controlName, "borderStyle")],
       borderColor = attributes["".concat(controlName, "borderColor")],
@@ -5140,12 +5058,12 @@ var generateBorderShadowStyles = function generateBorderShadowStyles(_ref13) {
       _attributes$11 = attributes["".concat(controlName, "hoverSpread")],
       hoverSpread = _attributes$11 === void 0 ? spread : _attributes$11,
       transitionTime = attributes["".concat(controlName, "transitionTime")];
-  var styesDesktop = "\n    ".concat(borderStylesDesktop, "\n    ").concat(radiusStylesDesktop, "\n\n\n    ").concat(borderStyle !== "none" && borderColor ? "\n        ".concat(borderStylesDesktop, "\n        border-color: ").concat(borderColor, ";\n        border-style: ").concat(borderStyle, ";\n        ") : " ", "\n\n    ").concat(shadowColor ? "box-shadow: ".concat(shadowColor, " ").concat(hOffset, "px ").concat(vOffset, "px ").concat(blur, "px ").concat(spread, "px ").concat(inset ? "inset" : "", ";") : " ", "\n\n    transition: ").concat(transitionTime ? "".concat(transitionTime / 1000, "s") : ".5s", ";\n\n  ");
-  var styesTab = "  \n    ".concat(borderColor ? borderStylesTab : " ", "\n    ").concat(radiusStylesTab, "\n  ");
-  var styesMobile = "\n    ".concat(borderColor ? borderStylesMobile : " ", "\n    ").concat(radiusStylesMobile, "\n  ");
-  var stylesHoverDesktop = "\n    ".concat(hoverShadowColor ? "box-shadow: ".concat(hoverShadowColor, " ").concat(hoverHOffset, "px ").concat(hoverVOffset, "px ").concat(hoverBlur, "px ").concat(hoverSpread, "px ").concat(inset ? "inset" : " ", ";") : " ", "\n\n    ").concat(HborderStyle !== "none" ? "\n          ".concat(HborderColor !== borderColor ? "border-color: ".concat(HborderColor, ";") : " ", " \n          ").concat(HborderStyle !== borderStyle ? "border-style: ".concat(HborderStyle, ";") : " ", "\n          ").concat(HborderStylesDesktop, "\n        ") : " ", "\n\n    ").concat(HradiusStylesDesktop, "    \n\n  ");
-  var stylesHoverTab = "\n    ".concat(HborderStyle !== "none" ? HborderStylesTab : " ", "\n    ").concat(HradiusStylesTab, "  \n  ");
-  var stylesHoverMobile = "\n    ".concat(HborderStyle !== "none" ? HborderStylesMobile : " ", "\n    ").concat(HradiusStylesMobile, "  \n  ");
+  var styesDesktop = "  \n    ".concat(noBorder !== true ? "\n        ".concat(radiusStylesDesktop, "\n        ").concat(borderStyle !== "none" && borderColor ? "\n            ".concat(borderStylesDesktop, "\n            border-color: ").concat(borderColor, ";\n            border-style: ").concat(borderStyle, ";\n            ") : " ", "\n        ") : " ", "\n  \n    ").concat(noShadow !== true ? shadowColor ? "box-shadow: ".concat(shadowColor, " ").concat(hOffset, "px ").concat(vOffset, "px ").concat(blur, "px ").concat(spread, "px ").concat(inset ? "inset" : "", ";") : " " : " ", "\n\n    transition: ").concat(transitionTime ? "".concat(transitionTime / 1000, "s") : ".5s", ";\n\n  ");
+  var styesTab = "  \n  ".concat(noBorder !== true ? "\n      ".concat(borderColor ? borderStylesTab : " ", "\n      ").concat(radiusStylesTab, "\n      ") : " ", "\n    \n  ");
+  var styesMobile = "\n  ".concat(noBorder !== true ? "\n      ".concat(borderColor ? borderStylesMobile : " ", "\n      ").concat(radiusStylesMobile, "\n      ") : " ", "\n  ");
+  var stylesHoverDesktop = "\n  ".concat(noBorder !== true ? "\n      ".concat(HborderStyle !== "none" ? "\n            ".concat(HborderColor !== borderColor ? "border-color: ".concat(HborderColor, ";") : " ", " \n            ").concat(HborderStyle !== borderStyle ? "border-style: ".concat(HborderStyle, ";") : " ", "\n            ").concat(HborderStylesDesktop, "\n          ") : " ", "\n\n      ").concat(HradiusStylesDesktop, "    \n      ") : " ", "   \n   \n  ").concat(noShadow !== true ? hoverShadowColor ? "box-shadow: ".concat(hoverShadowColor, " ").concat(hoverHOffset, "px ").concat(hoverVOffset, "px ").concat(hoverBlur, "px ").concat(hoverSpread, "px ").concat(inset ? "inset" : " ", ";") : " " : " ", "\n\n  ");
+  var stylesHoverTab = "\n  ".concat(noBorder !== true ? "\n      ".concat(HborderStyle !== "none" ? HborderStylesTab : " ", "\n      ").concat(HradiusStylesTab, "  \n      ") : " ", "\n  ");
+  var stylesHoverMobile = "\n  ".concat(noBorder !== true ? "\n      ".concat(HborderStyle !== "none" ? HborderStylesMobile : " ", "\n      ").concat(HradiusStylesMobile, "\n      ") : " ", "\n   \n  ");
   return {
     styesDesktop: styesDesktop,
     styesTab: styesTab,
@@ -5209,7 +5127,7 @@ var generateBackgroundControlStyles = function generateBackgroundControlStyles(_
 }; // function to generate responsive range controller attributes for multiple range control based on the array of prefix
 
 var generateResponsiveRangeAttributes = function generateResponsiveRangeAttributes(controlName) {
-  var _objectSpread8;
+  var _objectSpread11;
 
   var defaultRange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
   var desktop = defaultRange ? _defineProperty({}, "".concat(controlName, "Range"), {
@@ -5222,17 +5140,17 @@ var generateResponsiveRangeAttributes = function generateResponsiveRangeAttribut
   var result = _objectSpread(_objectSpread(_defineProperty({}, "".concat(controlName, "Unit"), {
     type: "string",
     "default": "px"
-  }), desktop), {}, (_objectSpread8 = {}, _defineProperty(_objectSpread8, "TAB".concat(controlName, "Unit"), {
+  }), desktop), {}, (_objectSpread11 = {}, _defineProperty(_objectSpread11, "TAB".concat(controlName, "Unit"), {
     type: "string",
     "default": "px"
-  }), _defineProperty(_objectSpread8, "TAB".concat(controlName, "Range"), {
+  }), _defineProperty(_objectSpread11, "TAB".concat(controlName, "Range"), {
     type: "number"
-  }), _defineProperty(_objectSpread8, "MOB".concat(controlName, "Unit"), {
+  }), _defineProperty(_objectSpread11, "MOB".concat(controlName, "Unit"), {
     type: "string",
     "default": "px"
-  }), _defineProperty(_objectSpread8, "MOB".concat(controlName, "Range"), {
+  }), _defineProperty(_objectSpread11, "MOB".concat(controlName, "Range"), {
     type: "number"
-  }), _objectSpread8));
+  }), _objectSpread11));
 
   return _objectSpread({}, result);
 }; // function to generate responsive range control styles for an element based on it's prefix

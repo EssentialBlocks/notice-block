@@ -56,7 +56,7 @@ function Inspector(props) {
 
 		dismissible,
 		noticeType,
-		backgroundColor,
+		[`${wrapBg}backgroundColor`]: backgroundColor,
 		titleColor,
 		textColor,
 		showAfterDismiss,
@@ -72,7 +72,7 @@ function Inspector(props) {
 			case "success":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#4caf50",
+					[`${wrapBg}backgroundColor`]: "#4caf50",
 					titleColor: "#ffffff",
 					textColor: "#ffffff",
 				});
@@ -81,7 +81,7 @@ function Inspector(props) {
 			case "info":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#d3d3d3",
+					[`${wrapBg}backgroundColor`]: "#d3d3d3",
 					titleColor: "#000000",
 					textColor: "#000000",
 				});
@@ -90,7 +90,7 @@ function Inspector(props) {
 			case "danger":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#f44336",
+					[`${wrapBg}backgroundColor`]: "#f44336",
 					titleColor: "#ffffff",
 					textColor: "#ffffff",
 				});
@@ -99,7 +99,7 @@ function Inspector(props) {
 			case "warning":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#ffeb3b",
+					[`${wrapBg}backgroundColor`]: "#ffeb3b",
 					titleColor: "#000000",
 					textColor: "#000000",
 				});
@@ -108,7 +108,7 @@ function Inspector(props) {
 			case "default":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#2196f3",
+					[`${wrapBg}backgroundColor`]: "#2196f3",
 					titleColor: "#ffffff",
 					textColor: "#ffffff",
 				});
@@ -230,7 +230,7 @@ function Inspector(props) {
 						{
 							value: backgroundColor,
 							onChange: (newColor) =>
-								setAttributes({ backgroundColor: newColor }),
+								setAttributes({ [`${wrapBg}backgroundColor`]: newColor }),
 							label: __("Background Color"),
 						},
 						{

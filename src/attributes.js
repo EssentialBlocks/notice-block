@@ -12,7 +12,6 @@ import {
 } from "../util/helpers";
 
 import { wrapBg } from "./constants/backgroundsConstants";
-
 import { wrpBdShadow } from "./constants/borderShadowConstants";
 
 const attributes = {
@@ -35,17 +34,6 @@ const attributes = {
 		type: "object",
 	},
 
-	// typography attributes ⬇
-	...generateTypographyAttributes(Object.values(prefixObjs)),
-
-	// margin padding attributes ⬇
-	...generateDimensionsAttributes(dimensionsMargin),
-	...generateDimensionsAttributes(dimensionsPadding, {
-		top: 65,
-		bottom: 65,
-		right: 60,
-		left: 60,
-	}),
 	// marginUnit: {
 	// 	type: "string",
 	// 	default: "px",
@@ -200,21 +188,59 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
-	shadowColor: {
-		type: "string",
-	},
-	shadowHOffset: {
-		type: "number",
-	},
-	shadowVOffset: {
-		type: "number",
-	},
-	shadowSpread: {
-		type: "number",
-	},
-	shadowBlur: {
-		type: "number",
-	},
+
+	// shadowColor: {
+	// 	type: "string",
+	// },
+	// shadowHOffset: {
+	// 	type: "number",
+	// },
+	// shadowVOffset: {
+	// 	type: "number",
+	// },
+	// shadowSpread: {
+	// 	type: "number",
+	// },
+	// shadowBlur: {
+	// 	type: "number",
+	// },
+
+	// typography attributes ⬇
+	...generateTypographyAttributes(Object.values(prefixObjs)),
+
+	// margin padding attributes ⬇
+	...generateDimensionsAttributes(dimensionsMargin),
+	...generateDimensionsAttributes(dimensionsPadding, {
+		top: 65,
+		bottom: 65,
+		right: 60,
+		left: 60,
+	}),
+
+	// border shadow attributes ⬇
+	...generateBorderShadowAttributes(wrpBdShadow, {
+		// bdrDefaults: {
+		// 	top: 0,
+		// 	bottom: 0,
+		// 	right: 0,
+		// 	left: 0,
+		// },
+		// rdsDefaults: {
+		// 	top: 0,
+		// 	bottom: 50,
+		// 	right: 500,
+		// 	left: 1000,
+		// },
+		// noShadow: true,
+		// noBorder: true,
+	}),
+
+	// background attributes ⬇
+	...generateBackgroundAttributes(wrapBg, {
+		isBgDefaultFill: true,
+		defaultFillColor: "#3074ff",
+		// defaultBgGradient: "linear-gradient(45deg,#7967ff,#c277f2)",
+	}),
 };
 
 export default attributes;
