@@ -2001,16 +2001,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
-/* harmony import */ var _util_color_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/color-control */ "./util/color-control/index.js");
-/* harmony import */ var _util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/dimensions-control-v2 */ "./util/dimensions-control-v2/index.js");
-/* harmony import */ var _util_typography_control_v2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/typography-control-v2 */ "./util/typography-control-v2/index.js");
-/* harmony import */ var _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./constants/dimensionsNames */ "./src/constants/dimensionsNames.js");
-/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
-/* harmony import */ var _constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./constants/backgroundsConstants */ "./src/constants/backgroundsConstants.js");
-/* harmony import */ var _constants_borderShadowConstants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./constants/borderShadowConstants */ "./src/constants/borderShadowConstants.js");
-/* harmony import */ var _util_reset_control__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../util/reset-control */ "./util/reset-control/index.js");
-/* harmony import */ var _util_border_shadow_control__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../util/border-shadow-control */ "./util/border-shadow-control/index.js");
-/* harmony import */ var _util_background_control__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../util/background-control */ "./util/background-control/index.js");
+/* harmony import */ var _util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/dimensions-control-v2 */ "./util/dimensions-control-v2/index.js");
+/* harmony import */ var _util_typography_control_v2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/typography-control-v2 */ "./util/typography-control-v2/index.js");
+/* harmony import */ var _util_border_shadow_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/border-shadow-control */ "./util/border-shadow-control/index.js");
+/* harmony import */ var _util_background_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/background-control */ "./util/background-control/index.js");
+/* harmony import */ var _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./constants/dimensionsNames */ "./src/constants/dimensionsNames.js");
+/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+/* harmony import */ var _constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./constants/backgroundsConstants */ "./src/constants/backgroundsConstants.js");
+/* harmony import */ var _constants_borderShadowConstants__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./constants/borderShadowConstants */ "./src/constants/borderShadowConstants.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
@@ -2034,15 +2032,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
 function Inspector(props) {
   var attributes = props.attributes,
       setAttributes = props.setAttributes;
   var resOption = attributes.resOption,
       dismissible = attributes.dismissible,
       noticeType = attributes.noticeType,
-      backgroundColor = attributes["".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor")],
+      backgroundColor = attributes["".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor")],
       titleColor = attributes.titleColor,
       textColor = attributes.textColor,
       showAfterDismiss = attributes.showAfterDismiss,
@@ -2059,31 +2055,31 @@ function Inspector(props) {
       case "success":
         setAttributes((_setAttributes = {
           noticeType: type
-        }, _defineProperty(_setAttributes, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor"), "#4caf50"), _defineProperty(_setAttributes, "titleColor", "#ffffff"), _defineProperty(_setAttributes, "textColor", "#ffffff"), _setAttributes));
+        }, _defineProperty(_setAttributes, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), "#4caf50"), _defineProperty(_setAttributes, "titleColor", "#ffffff"), _defineProperty(_setAttributes, "textColor", "#ffffff"), _setAttributes));
         break;
 
       case "info":
         setAttributes((_setAttributes2 = {
           noticeType: type
-        }, _defineProperty(_setAttributes2, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor"), "#d3d3d3"), _defineProperty(_setAttributes2, "titleColor", "#000000"), _defineProperty(_setAttributes2, "textColor", "#000000"), _setAttributes2));
+        }, _defineProperty(_setAttributes2, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), "#d3d3d3"), _defineProperty(_setAttributes2, "titleColor", "#000000"), _defineProperty(_setAttributes2, "textColor", "#000000"), _setAttributes2));
         break;
 
       case "danger":
         setAttributes((_setAttributes3 = {
           noticeType: type
-        }, _defineProperty(_setAttributes3, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor"), "#f44336"), _defineProperty(_setAttributes3, "titleColor", "#ffffff"), _defineProperty(_setAttributes3, "textColor", "#ffffff"), _setAttributes3));
+        }, _defineProperty(_setAttributes3, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), "#f44336"), _defineProperty(_setAttributes3, "titleColor", "#ffffff"), _defineProperty(_setAttributes3, "textColor", "#ffffff"), _setAttributes3));
         break;
 
       case "warning":
         setAttributes((_setAttributes4 = {
           noticeType: type
-        }, _defineProperty(_setAttributes4, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor"), "#ffeb3b"), _defineProperty(_setAttributes4, "titleColor", "#000000"), _defineProperty(_setAttributes4, "textColor", "#000000"), _setAttributes4));
+        }, _defineProperty(_setAttributes4, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), "#ffeb3b"), _defineProperty(_setAttributes4, "titleColor", "#000000"), _defineProperty(_setAttributes4, "textColor", "#000000"), _setAttributes4));
         break;
 
       case "default":
         setAttributes((_setAttributes5 = {
           noticeType: type
-        }, _defineProperty(_setAttributes5, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor"), "#2196f3"), _defineProperty(_setAttributes5, "titleColor", "#ffffff"), _defineProperty(_setAttributes5, "textColor", "#ffffff"), _setAttributes5));
+        }, _defineProperty(_setAttributes5, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), "#2196f3"), _defineProperty(_setAttributes5, "titleColor", "#ffffff"), _defineProperty(_setAttributes5, "textColor", "#ffffff"), _setAttributes5));
         break;
     }
   }; // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
@@ -2170,13 +2166,13 @@ function Inspector(props) {
   })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Typography"),
     initialOpen: false
-  }, /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_6__["default"], {
     baseLabel: "Title",
-    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_9__["typoPrefix_title"],
+    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_title"],
     resRequiredProps: resRequiredProps
-  }), /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_6__["default"], {
     baseLabel: "Text",
-    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_9__["typoPrefix_text"],
+    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_10__["typoPrefix_text"],
     resRequiredProps: resRequiredProps
   })), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["PanelColorSettings"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Color Settings"),
@@ -2184,7 +2180,7 @@ function Inspector(props) {
     colorSettings: [{
       value: backgroundColor,
       onChange: function onChange(newColor) {
-        return setAttributes(_defineProperty({}, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor"), newColor));
+        return setAttributes(_defineProperty({}, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), newColor));
       },
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Background Color")
     }, {
@@ -2207,25 +2203,25 @@ function Inspector(props) {
   }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin & Padding"),
     initialOpen: false
-  }, /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_5__["default"], {
     resRequiredProps: resRequiredProps,
-    controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_8__["dimensionsMargin"],
+    controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_9__["dimensionsMargin"],
     baseLabel: "Margin"
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_5__["default"], {
     resRequiredProps: resRequiredProps,
-    controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_8__["dimensionsPadding"],
+    controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_9__["dimensionsPadding"],
     baseLabel: "Padding"
   })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Notice Background"),
     initialOpen: false
-  }, /*#__PURE__*/React.createElement(_util_background_control__WEBPACK_IMPORTED_MODULE_14__["default"], {
-    controlName: _constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"],
+  }, /*#__PURE__*/React.createElement(_util_background_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    controlName: _constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"],
     resRequiredProps: resRequiredProps
   })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Notice Border & Shadow"),
     initialOpen: false
-  }, /*#__PURE__*/React.createElement(_util_border_shadow_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
-    controlName: _constants_borderShadowConstants__WEBPACK_IMPORTED_MODULE_11__["wrpBdShadow"],
+  }, /*#__PURE__*/React.createElement(_util_border_shadow_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    controlName: _constants_borderShadowConstants__WEBPACK_IMPORTED_MODULE_12__["wrpBdShadow"],
     resRequiredProps: resRequiredProps
   }))));
 }

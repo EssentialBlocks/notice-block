@@ -17,9 +17,10 @@ import { useEffect } from "@wordpress/element";
  */
 import { NOTICE_TYPES } from "./constants";
 
-import ColorControl from "../util/color-control";
 import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
 import TypographyDropdown from "../util/typography-control-v2";
+import BorderShadowControl from "../util/border-shadow-control";
+import BackgroundControl from "../util/background-control";
 
 import {
 	dimensionsMargin,
@@ -33,11 +34,6 @@ import {
 
 import { wrapBg } from "./constants/backgroundsConstants";
 import { wrpBdShadow } from "./constants/borderShadowConstants";
-
-import ResetControl from "../util/reset-control";
-
-import BorderShadowControl from "../util/border-shadow-control";
-import BackgroundControl from "../util/background-control";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
