@@ -1458,9 +1458,8 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
   // noShadow: true,
   // noBorder: true,
 })), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateBackgroundAttributes"])(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_3__["wrapBg"], {
-  isBgDefaultFill: true,
-  defaultFillColor: "#3074ff" // defaultBgGradient: "linear-gradient(45deg,#7967ff,#c277f2)",
-
+  defaultFillColor: "#3074ff",
+  defaultBgGradient: "linear-gradient(45deg,#7967ff,#c277f2)"
 }));
 
 /* harmony default export */ __webpack_exports__["default"] = (attributes);
@@ -4343,10 +4342,10 @@ var generateBackgroundAttributes = function generateBackgroundAttributes(control
   var _objectSpread3;
 
   var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var isBgDefaultFill = defaults.isBgDefaultFill,
+  var isBgDefaultGradient = defaults.isBgDefaultGradient,
       defaultFillColor = defaults.defaultFillColor,
       _defaults$defaultBgGr = defaults.defaultBgGradient,
-      defaultBgGradient = _defaults$defaultBgGr === void 0 ? "linear-gradient(45deg,#7967ff,#c277f2)" : _defaults$defaultBgGr;
+      defaultBgGradient = _defaults$defaultBgGr === void 0 ? "linear-gradient(45deg,#00000000,#00000000)" : _defaults$defaultBgGr;
   var bgColorAttr = defaultFillColor ? _defineProperty({}, "".concat(controlName, "backgroundColor"), {
     type: "string",
     "default": defaultFillColor
@@ -4355,7 +4354,7 @@ var generateBackgroundAttributes = function generateBackgroundAttributes(control
   });
   return _objectSpread(_objectSpread(_defineProperty({}, "".concat(controlName, "backgroundType"), {
     type: "string",
-    "default": isBgDefaultFill === true ? "fill" : "gradient"
+    "default": isBgDefaultGradient === true ? "gradient" : "fill"
   }), bgColorAttr), {}, (_objectSpread3 = {}, _defineProperty(_objectSpread3, "".concat(controlName, "gradientColor"), {
     type: "string",
     "default": defaultBgGradient
@@ -4581,7 +4580,12 @@ var generateBorderShadowAttributes = function generateBorderShadowAttributes(con
 
   var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var _defaults$bdrDefaults = defaults.bdrDefaults,
-      bdrDefaults = _defaults$bdrDefaults === void 0 ? {} : _defaults$bdrDefaults,
+      bdrDefaults = _defaults$bdrDefaults === void 0 ? {
+    top: 1,
+    right: 1,
+    bottom: 1,
+    left: 1
+  } : _defaults$bdrDefaults,
       _defaults$rdsDefaults = defaults.rdsDefaults,
       rdsDefaults = _defaults$rdsDefaults === void 0 ? {} : _defaults$rdsDefaults,
       _defaults$noBorder = defaults.noBorder,
@@ -4949,30 +4953,31 @@ var generateBorderShadowStyles = function generateBorderShadowStyles(_ref13) {
 
 
   var borderStyle = attributes["".concat(controlName, "borderStyle")],
-      borderColor = attributes["".concat(controlName, "borderColor")],
+      _attributes$2 = attributes["".concat(controlName, "borderColor")],
+      borderColor = _attributes$2 === void 0 ? "#333333" : _attributes$2,
       HborderStyle = attributes["".concat(controlName, "HborderStyle")],
-      _attributes$2 = attributes["".concat(controlName, "HborderColor")],
-      HborderColor = _attributes$2 === void 0 ? borderColor : _attributes$2,
+      _attributes$3 = attributes["".concat(controlName, "HborderColor")],
+      HborderColor = _attributes$3 === void 0 ? borderColor : _attributes$3,
       shadowColor = attributes["".concat(controlName, "shadowColor")],
-      _attributes$3 = attributes["".concat(controlName, "hOffset")],
-      hOffset = _attributes$3 === void 0 ? 0 : _attributes$3,
-      _attributes$4 = attributes["".concat(controlName, "vOffset")],
-      vOffset = _attributes$4 === void 0 ? 0 : _attributes$4,
-      _attributes$5 = attributes["".concat(controlName, "blur")],
-      blur = _attributes$5 === void 0 ? 0 : _attributes$5,
-      _attributes$6 = attributes["".concat(controlName, "spread")],
-      spread = _attributes$6 === void 0 ? 0 : _attributes$6,
+      _attributes$4 = attributes["".concat(controlName, "hOffset")],
+      hOffset = _attributes$4 === void 0 ? 0 : _attributes$4,
+      _attributes$5 = attributes["".concat(controlName, "vOffset")],
+      vOffset = _attributes$5 === void 0 ? 0 : _attributes$5,
+      _attributes$6 = attributes["".concat(controlName, "blur")],
+      blur = _attributes$6 === void 0 ? 0 : _attributes$6,
+      _attributes$7 = attributes["".concat(controlName, "spread")],
+      spread = _attributes$7 === void 0 ? 0 : _attributes$7,
       inset = attributes["".concat(controlName, "inset")],
-      _attributes$7 = attributes["".concat(controlName, "hoverShadowColor")],
-      hoverShadowColor = _attributes$7 === void 0 ? shadowColor : _attributes$7,
-      _attributes$8 = attributes["".concat(controlName, "hoverHOffset")],
-      hoverHOffset = _attributes$8 === void 0 ? hOffset : _attributes$8,
-      _attributes$9 = attributes["".concat(controlName, "hoverVOffset")],
-      hoverVOffset = _attributes$9 === void 0 ? vOffset : _attributes$9,
-      _attributes$10 = attributes["".concat(controlName, "hoverBlur")],
-      hoverBlur = _attributes$10 === void 0 ? blur : _attributes$10,
-      _attributes$11 = attributes["".concat(controlName, "hoverSpread")],
-      hoverSpread = _attributes$11 === void 0 ? spread : _attributes$11,
+      _attributes$8 = attributes["".concat(controlName, "hoverShadowColor")],
+      hoverShadowColor = _attributes$8 === void 0 ? shadowColor : _attributes$8,
+      _attributes$9 = attributes["".concat(controlName, "hoverHOffset")],
+      hoverHOffset = _attributes$9 === void 0 ? hOffset : _attributes$9,
+      _attributes$10 = attributes["".concat(controlName, "hoverVOffset")],
+      hoverVOffset = _attributes$10 === void 0 ? vOffset : _attributes$10,
+      _attributes$11 = attributes["".concat(controlName, "hoverBlur")],
+      hoverBlur = _attributes$11 === void 0 ? blur : _attributes$11,
+      _attributes$12 = attributes["".concat(controlName, "hoverSpread")],
+      hoverSpread = _attributes$12 === void 0 ? spread : _attributes$12,
       transitionTime = attributes["".concat(controlName, "transitionTime")];
   var styesDesktop = "  \n    ".concat(noBorder !== true ? "\n        ".concat(radiusStylesDesktop, "\n        ").concat(borderStyle !== "none" && borderColor ? "\n            ".concat(borderStylesDesktop, "\n            border-color: ").concat(borderColor, ";\n            border-style: ").concat(borderStyle, ";\n            ") : " ", "\n        ") : " ", "\n  \n    ").concat(noShadow !== true ? shadowColor ? "box-shadow: ".concat(shadowColor, " ").concat(hOffset, "px ").concat(vOffset, "px ").concat(blur, "px ").concat(spread, "px ").concat(inset ? "inset" : "", ";") : " " : " ", "\n\n    transition: ").concat(transitionTime ? "".concat(transitionTime / 1000, "s") : ".5s", ";\n\n  ");
   var styesTab = "  \n  ".concat(noBorder !== true ? "\n      ".concat(borderColor ? borderStylesTab : " ", "\n      ").concat(radiusStylesTab, "\n      ") : " ", "\n    \n  ");
@@ -5007,8 +5012,8 @@ var generateBackgroundControlStyles = function generateBackgroundControlStyles(_
       bgImgcustomPosYUnit = attributes["".concat(controlName, "bgImgcustomPosYUnit")],
       bgImgAttachment = attributes["".concat(controlName, "bgImgAttachment")],
       bgImgRepeat = attributes["".concat(controlName, "bgImgRepeat")],
-      _attributes$12 = attributes["".concat(controlName, "overlyColor")],
-      overlyColor = _attributes$12 === void 0 ? "#00000080" : _attributes$12,
+      _attributes$13 = attributes["".concat(controlName, "overlyColor")],
+      overlyColor = _attributes$13 === void 0 ? "#00000080" : _attributes$13,
       overlyType = attributes["".concat(controlName, "overlyType")],
       isBgOverly = attributes["".concat(controlName, "isBgOverly")],
       overlyGradient = attributes["".concat(controlName, "overlyGradient")],

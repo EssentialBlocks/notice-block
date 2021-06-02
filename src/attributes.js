@@ -237,9 +237,8 @@ const attributes = {
 
 	// background attributes ⬇
 	...generateBackgroundAttributes(wrapBg, {
-		isBgDefaultFill: true,
 		defaultFillColor: "#3074ff",
-		// defaultBgGradient: "linear-gradient(45deg,#7967ff,#c277f2)",
+		defaultBgGradient: "linear-gradient(45deg,#7967ff,#c277f2)",
 	}),
 };
 
