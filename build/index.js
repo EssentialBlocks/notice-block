@@ -1816,7 +1816,7 @@ function Edit(props) {
       bdShadowStylesHoverMobile = _generateBorderShadow.stylesHoverMobile; // wrapper styles css in strings ⬇
 
 
-  var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.".concat(blockId, "{\n\t\t").concat(wrapperMarginStylesDesktop, "\n\t\t").concat(wrapperPaddingStylesDesktop, "\n\t\t").concat(backgroundStylesDesktop, "\n\t\t").concat(bdShadowStyesDesktop, "\n\t\toverflow: hidden;\n\t}\n\n\t.eb-notice-wrapper.").concat(blockId, ":hover{\n\t\t").concat(bdShadowStylesHoverDesktop, "\n\t}\n\n\t.eb-notice-wrapper.").concat(blockId, ":before{\n\t\t").concat(overlyStyles, "\n\t}\n\n\n\t");
+  var wrapperStylesDesktop = "\n\t.eb-notice-wrapper.".concat(blockId, "{\n\t\t").concat(wrapperMarginStylesDesktop, "\n\t\t").concat(wrapperPaddingStylesDesktop, "\n\t\t").concat(backgroundStylesDesktop, "\n\t\t").concat(bdShadowStyesDesktop, "\n\t\toverflow: hidden;\n\t\tposition: relative;\n\t}\n\n\t.eb-notice-wrapper.").concat(blockId, ":hover{\n\t\t").concat(bdShadowStylesHoverDesktop, "\n\t}\n\n\t.eb-notice-wrapper.").concat(blockId, ":before{\n\t\t").concat(overlyStyles, "\n\t}\n\n\n\t");
   var wrapperStylesTab = "\n\t.eb-notice-wrapper.".concat(blockId, "{\n\t\t").concat(wrapperMarginStylesTab, "\n\t\t").concat(wrapperPaddingStylesTab, "\n\t\t").concat(backgroundStylesTab, "\n\t\t").concat(bdShadowStyesTab, "\t\t\n\t}\n\n\t.eb-notice-wrapper.").concat(blockId, ":hover{\n\t\t").concat(bdShadowStylesHoverTab, "\n\t}\n\t");
   var wrapperStylesMobile = "\n\t.eb-notice-wrapper.".concat(blockId, "{\n\t\t").concat(wrapperMarginStylesMobile, "\n\t\t").concat(wrapperPaddingStylesMobile, "\n\t\t").concat(backgroundStylesMobile, "\n\t\t").concat(bdShadowStyesMobile, "\n\t}\n\n\t.eb-notice-wrapper.").concat(blockId, ":hover{\n\t\t").concat(bdShadowStylesHoverMobile, "\n\t}\n\t"); //
   // titleWrapper styles css in strings ⬇
@@ -2178,12 +2178,6 @@ function Inspector(props) {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Color Settings"),
     initialOpen: false,
     colorSettings: [{
-      value: backgroundColor,
-      onChange: function onChange(newColor) {
-        return setAttributes(_defineProperty({}, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_11__["wrapBg"], "backgroundColor"), newColor));
-      },
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Background Color")
-    }, {
       value: titleColor,
       onChange: function onChange(newColor) {
         return setAttributes({
@@ -2554,7 +2548,7 @@ function BackgroundControl(_ref6) {
     }
   }), resOption === "desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(WithResBtns, {
     resRequiredProps: resRequiredProps,
-    label: "position"
+    label: "Position"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
     value: bgImgPos,
     options: [{
@@ -2742,7 +2736,7 @@ function BackgroundControl(_ref6) {
     }
   })))), resOption === "tab" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(WithResBtns, {
     resRequiredProps: resRequiredProps,
-    label: "position"
+    label: "Position"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
     value: TABbgImgPos,
     options: [{
@@ -2930,7 +2924,7 @@ function BackgroundControl(_ref6) {
     }
   })))), resOption === "mobile" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(WithResBtns, {
     resRequiredProps: resRequiredProps,
-    label: "position"
+    label: "Position"
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SelectControl"], {
     value: MOBbgImgPos,
     options: [{
@@ -5036,7 +5030,7 @@ var generateBackgroundControlStyles = function generateBackgroundControlStyles(_
       MOBbgImgcustomPosY = attributes["MOB".concat(controlName, "bgImgcustomPosY")],
       MOBbgImgcustomPosYUnit = attributes["MOB".concat(controlName, "bgImgcustomPosYUnit")],
       MOBbgImgRepeat = attributes["MOB".concat(controlName, "bgImgRepeat")];
-  var backgroundStylesDesktop = "\n    background-image: ".concat(backgroundType === "image" && bgImageURL ? "url(\"".concat(bgImageURL, "\")") : backgroundType === "gradient" ? gradientColor : "none", ";\n\n    ").concat(backgroundType === "image" && bgImageURL ? "\n        ".concat(backgroundSize && backgroundSize !== "custom" ? "background-size: ".concat(backgroundSize, ";") : backgroundSize === "custom" ? "background-size: ".concat(bgImgCustomSize).concat(bgImgCustomSizeUnit, " auto;") : " ", "\n\n        ").concat(bgImgPos && bgImgPos !== "custom" ? "background-position: ".concat(bgImgPos, ";") : bgImgPos === "custom" ? "background-position: ".concat(bgImgcustomPosX).concat(bgImgcustomPosXUnit, " ").concat(bgImgcustomPosY).concat(bgImgcustomPosYUnit, ";") : " ", "\n\n        ").concat(bgImgAttachment ? "background-attachment: ".concat(bgImgAttachment, ";") : " ", "\n\n        ").concat(bgImgRepeat ? "background-repeat: ".concat(bgImgRepeat, ";") : " ", "\n\n        ") : " ", "\n  \n\t\t").concat(backgroundColor ? "background-color: ".concat(backgroundColor, ";") : " ", "\n    ").concat(isBgOverly ? "\n          z-index: 2;\n          position: relative;\n        " : " ", "\t\n\n  ");
+  var backgroundStylesDesktop = "\n    background-image: ".concat(backgroundType === "image" && bgImageURL ? "url(\"".concat(bgImageURL, "\")") : backgroundType === "gradient" ? gradientColor : "none", ";\n\n    ").concat(backgroundType === "image" && bgImageURL ? "\n        ".concat(backgroundSize && backgroundSize !== "custom" ? "background-size: ".concat(backgroundSize, ";") : backgroundSize === "custom" ? "background-size: ".concat(bgImgCustomSize).concat(bgImgCustomSizeUnit, " auto;") : " ", "\n\n        ").concat(bgImgPos && bgImgPos !== "custom" ? "background-position: ".concat(bgImgPos, ";") : bgImgPos === "custom" ? "background-position: ".concat(bgImgcustomPosX).concat(bgImgcustomPosXUnit, " ").concat(bgImgcustomPosY).concat(bgImgcustomPosYUnit, ";") : " ", "\n\n        ").concat(bgImgAttachment ? "background-attachment: ".concat(bgImgAttachment, ";") : " ", "\n\n        ").concat(bgImgRepeat ? "background-repeat: ".concat(bgImgRepeat, ";") : " ", "\n        \n        ").concat(isBgOverly ? "\n              z-index: 2;\n              position: relative;\n            " : " ", "\t\n        ") : " ", "\n  \n\t\t").concat(backgroundColor ? "background-color: ".concat(backgroundColor, ";") : " ", "\n\n  ");
   var backgroundStylesTab = "\n    ".concat(backgroundType === "image" && bgImageURL ? "\n        ".concat(TABbackgroundSize && TABbackgroundSize !== "custom" ? "background-size: ".concat(TABbackgroundSize, ";") : TABbackgroundSize === "custom" ? "background-size: ".concat(TABbgImgCustomSize).concat(TABbgImgCustomSizeUnit, " auto;") : " ", "\n\n        ").concat(TABbgImgPos && TABbgImgPos !== "custom" ? "background-position: ".concat(TABbgImgPos, ";") : TABbgImgPos === "custom" ? "background-position: ".concat(TABbgImgcustomPosX).concat(TABbgImgcustomPosXUnit, " ").concat(TABbgImgcustomPosY).concat(TABbgImgcustomPosYUnit, ";") : " ", "\n\n        ").concat(TABbgImgRepeat ? "background-repeat: ".concat(TABbgImgRepeat, ";") : " ", "\n\n        ") : " ", "\n\n    ").concat(backgroundType === "image" ? "background-attachment: scroll;" : " ", "\n\n  ");
   var backgroundStylesMobile = "\n    ".concat(backgroundType === "image" && bgImageURL ? "\n        ".concat(MOBbackgroundSize && MOBbackgroundSize !== "custom" ? "background-size: ".concat(MOBbackgroundSize, ";") : MOBbackgroundSize === "custom" ? "background-size: ".concat(MOBbgImgCustomSize).concat(MOBbgImgCustomSizeUnit, " auto;") : " ", "\n\n        ").concat(MOBbgImgPos && MOBbgImgPos !== "custom" ? "background-position: ".concat(MOBbgImgPos, ";") : MOBbgImgPos === "custom" ? "background-position: ".concat(MOBbgImgcustomPosX).concat(MOBbgImgcustomPosXUnit, " ").concat(MOBbgImgcustomPosY).concat(MOBbgImgcustomPosYUnit, ";") : " ", "\n\n        ").concat(MOBbgImgRepeat ? "background-repeat: ".concat(MOBbgImgRepeat, ";") : " ", "\n\n        ") : " ", "\n\n  ");
   var overlyStyles = "\n  \n    ".concat(backgroundType === "image" && isBgOverly ? "\n          content: \"\";\n          position: absolute;\n          top: 0;\n          bottom: 0;\n          right: 0;\n          left: 0;\n          z-index: -1;\n\n          ".concat(overlyType === "fill" ? "background-color: ".concat(overlyColor, ";") : overlyType === "gradient" ? "background-image: ".concat(overlyGradient, ";") : " ", "\n      ") : " ", "\n  \n  \n  ");

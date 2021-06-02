@@ -215,12 +215,6 @@ function Inspector(props) {
 					initialOpen={false}
 					colorSettings={[
 						{
-							value: backgroundColor,
-							onChange: (newColor) =>
-								setAttributes({ [`${wrapBg}backgroundColor`]: newColor }),
-							label: __("Background Color"),
-						},
-						{
 							value: titleColor,
 							onChange: (newColor) => setAttributes({ titleColor: newColor }),
 							label: __("Title Color"),
