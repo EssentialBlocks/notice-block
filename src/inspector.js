@@ -262,62 +262,6 @@ function Inspector(props) {
 						controlName={wrpBdShadow}
 						resRequiredProps={resRequiredProps}
 					/>
-
-					<>
-						<ColorControl
-							label={__("Shadow Color")}
-							color={shadowColor}
-							onChange={(shadowColor) => setAttributes({ shadowColor })}
-						/>
-
-						<ResetControl
-							onReset={() => setAttributes({ shadowHOffset: undefined })}
-						>
-							<RangeControl
-								label={__("Horizontal Offset")}
-								value={shadowHOffset}
-								onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
-								min={0}
-								max={100}
-							/>
-						</ResetControl>
-
-						<ResetControl
-							onReset={() => setAttributes({ shadowVOffset: undefined })}
-						>
-							<RangeControl
-								label={__("Vertical Offset")}
-								value={shadowVOffset}
-								onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
-								min={0}
-								max={100}
-							/>
-						</ResetControl>
-
-						<ResetControl
-							onReset={() => setAttributes({ shadowBlur: undefined })}
-						>
-							<RangeControl
-								label={__("Blur")}
-								value={shadowBlur}
-								onChange={(shadowBlur) => setAttributes({ shadowBlur })}
-								min={0}
-								max={20}
-							/>
-						</ResetControl>
-
-						<ResetControl
-							onReset={() => setAttributes({ shadowSpread: undefined })}
-						>
-							<RangeControl
-								label={__("Spread")}
-								value={shadowSpread}
-								onChange={(shadowSpread) => setAttributes({ shadowSpread })}
-								min={0}
-								max={20}
-							/>
-						</ResetControl>
-					</>
 				</PanelBody>
 			</span>
 		</InspectorControls>
