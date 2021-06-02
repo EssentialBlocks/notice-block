@@ -289,6 +289,23 @@ export default function Edit(props) {
 	.eb-notice-wrapper.${blockId} .eb-notice-dismiss{
 		color: ${textColor || "#edf1f7"};
 		display: ${dismissible ? "flex" : "none"};
+
+		top: 0px;
+		right: 0px;
+		width: 24px;
+		height: 24px;
+		position: absolute;
+		justify-content: center;
+	}
+	
+	.eb-notice-wrapper.${blockId} .eb-notice-dismiss:after{
+		content: "\\00d7";
+	}
+
+	.entry-content
+	> *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+		margin-left: auto;
+		margin-right: auto;
 	}
 	`;
 

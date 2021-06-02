@@ -2,20 +2,3 @@
  * The following styles get applied both on the front of your site
  * and in the editor.
  */
-.eb-notice-dismiss {
-	top: 0px;
-	right: 0px;
-	width: 24px;
-	height: 24px;
-	position: absolute;
-	justify-content: center;
-}
-.eb-notice-dismiss:after {
-	content: "\00d7";
-}
-
-.entry-content
-	> *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
-	margin-left: auto;
-	margin-right: auto;
-}
