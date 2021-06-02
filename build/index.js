@@ -2529,7 +2529,7 @@ function BackgroundControl(_ref6) {
     render: function render(_ref9) {
       var open = _ref9.open;
       return !bgImageURL && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        className: "eb-infobox-inspector-panel-img-btn components-button",
+        className: "eb-background-control-inspector-panel-img-btn components-button",
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Upload Image"),
         icon: "format-image",
         onClick: open
@@ -3118,7 +3118,7 @@ function BackgroundControl(_ref6) {
   }), isBgOverly && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["BaseControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Overly Type")
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ButtonGroup"], {
-    id: "eb-infobox-infobox-background"
+    id: "eb-background-control-new"
   }, [{
     label: "Fill",
     value: "fill"
