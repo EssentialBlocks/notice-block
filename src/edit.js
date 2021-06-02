@@ -196,6 +196,7 @@ export default function Edit(props) {
 		${wrapperPaddingStylesDesktop}
 		${backgroundStylesDesktop}
 		${bdShadowStyesDesktop}
+		overflow: hidden;
 	}
 
 	.eb-notice-wrapper.${blockId}:hover{
