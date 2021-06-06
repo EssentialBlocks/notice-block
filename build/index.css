@@ -616,6 +616,8 @@ body.eb-res-option-mobile .editor-styles-wrapper {
   font-size: 14px;
   line-height: 23px;
   width: 16px;
+  z-index: 999;
+  position: relative;
 }
 
 .typoResButton.active {
@@ -774,7 +776,7 @@ toggle-button submodule's css end
 /* 
    fix of this issue (https://prnt.sc/111gq2g) start
   */
-.eb-panel-control .components-button-group {
+.eb-panel-control .components-button-group:not(.eb-unit-control-btn-group) {
   position: relative;
   z-index: 0;
 }
