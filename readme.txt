@@ -80,6 +80,10 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+= 1.2.1 - 06/06/2021 =
+* Added: Border-control, background-control
+* Improved: Shadow-control
+
 = 1.2.0 - 19/05/2021 =
 * Added: Dynamic asset generation for inline styles
 * Added: Responsive control
