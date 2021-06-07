@@ -66,7 +66,7 @@ function create_block_notice_block_init()
 	wp_register_script(
 		'essential-blocks-notice-frontend',
 		plugins_url($frontend_js, __FILE__),
-		array_merge( array("wp-editor"), $frontend_js_path['dependencies'] ),
+		array_merge(array("wp-editor"), $frontend_js_path['dependencies']),
 		$frontend_js_path['version'],
 		true
 	);

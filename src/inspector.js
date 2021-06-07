@@ -17,9 +17,10 @@ import { useEffect } from "@wordpress/element";
  */
 import { NOTICE_TYPES } from "./constants";
 
-import ColorControl from "../util/color-control";
 import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
 import TypographyDropdown from "../util/typography-control-v2";
+import BorderShadowControl from "../util/border-shadow-control";
+import BackgroundControl from "../util/background-control";
 
 import {
 	dimensionsMargin,
@@ -30,7 +31,9 @@ import {
 	typoPrefix_text,
 	typoPrefix_title,
 } from "./constants/typographyPrefixConstants";
-import ResetControl from "../util/reset-control";
+
+import { wrapBg } from "./constants/backgroundsConstants";
+import { wrpBdShadow } from "./constants/borderShadowConstants";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
@@ -40,7 +43,7 @@ function Inspector(props) {
 
 		dismissible,
 		noticeType,
-		backgroundColor,
+		[`${wrapBg}backgroundColor`]: backgroundColor,
 		titleColor,
 		textColor,
 		showAfterDismiss,
@@ -56,7 +59,7 @@ function Inspector(props) {
 			case "success":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#4caf50",
+					[`${wrapBg}backgroundColor`]: "#4caf50",
 					titleColor: "#ffffff",
 					textColor: "#ffffff",
 				});
@@ -65,7 +68,7 @@ function Inspector(props) {
 			case "info":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#d3d3d3",
+					[`${wrapBg}backgroundColor`]: "#d3d3d3",
 					titleColor: "#000000",
 					textColor: "#000000",
 				});
@@ -74,7 +77,7 @@ function Inspector(props) {
 			case "danger":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#f44336",
+					[`${wrapBg}backgroundColor`]: "#f44336",
 					titleColor: "#ffffff",
 					textColor: "#ffffff",
 				});
@@ -83,7 +86,7 @@ function Inspector(props) {
 			case "warning":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#ffeb3b",
+					[`${wrapBg}backgroundColor`]: "#ffeb3b",
 					titleColor: "#000000",
 					textColor: "#000000",
 				});
@@ -92,7 +95,7 @@ function Inspector(props) {
 			case "default":
 				setAttributes({
 					noticeType: type,
-					backgroundColor: "#2196f3",
+					[`${wrapBg}backgroundColor`]: "#2196f3",
 					titleColor: "#ffffff",
 					textColor: "#ffffff",
 				});
@@ -212,12 +215,6 @@ function Inspector(props) {
 					initialOpen={false}
 					colorSettings={[
 						{
-							value: backgroundColor,
-							onChange: (newColor) =>
-								setAttributes({ backgroundColor: newColor }),
-							label: __("Background Color"),
-						},
-						{
 							value: titleColor,
 							onChange: (newColor) => setAttributes({ titleColor: newColor }),
 							label: __("Title Color"),
@@ -243,60 +240,18 @@ function Inspector(props) {
 					/>
 				</PanelBody>
 
-				<PanelBody title={__("Shadow")} initialOpen={false}>
-					<ColorControl
-						label={__("Shadow Color")}
-						color={shadowColor}
-						onChange={(shadowColor) => setAttributes({ shadowColor })}
+				<PanelBody title={__("Notice Background")} initialOpen={false}>
+					<BackgroundControl
+						controlName={wrapBg}
+						resRequiredProps={resRequiredProps}
 					/>
+				</PanelBody>
 
-					<ResetControl
-						onReset={() => setAttributes({ shadowHOffset: undefined })}
-					>
-						<RangeControl
-							label={__("Horizontal Offset")}
-							value={shadowHOffset}
-							onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
-							min={0}
-							max={100}
-						/>
-					</ResetControl>
-
-					<ResetControl
-						onReset={() => setAttributes({ shadowVOffset: undefined })}
-					>
-						<RangeControl
-							label={__("Vertical Offset")}
-							value={shadowVOffset}
-							onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
-							min={0}
-							max={100}
-						/>
-					</ResetControl>
-
-					<ResetControl
-						onReset={() => setAttributes({ shadowBlur: undefined })}
-					>
-						<RangeControl
-							label={__("Blur")}
-							value={shadowBlur}
-							onChange={(shadowBlur) => setAttributes({ shadowBlur })}
-							min={0}
-							max={20}
-						/>
-					</ResetControl>
-
-					<ResetControl
-						onReset={() => setAttributes({ shadowSpread: undefined })}
-					>
-						<RangeControl
-							label={__("Spread")}
-							value={shadowSpread}
-							onChange={(shadowSpread) => setAttributes({ shadowSpread })}
-							min={0}
-							max={20}
-						/>
-					</ResetControl>
+				<PanelBody title={__("Notice Border & Shadow")} initialOpen={false}>
+					<BorderShadowControl
+						controlName={wrpBdShadow}
+						resRequiredProps={resRequiredProps}
+					/>
 				</PanelBody>
 			</span>
 		</InspectorControls>
