@@ -81,7 +81,7 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
-= 1.2.2 - 06/06/2021 =
+= 1.2.2 - 07/06/2021 =
 * Added: Border-control, background-control
 * Improved: Shadow-control
 * Fixed: Fixed issue with block.json
