@@ -4115,7 +4115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _color_control__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../color-control */ "./util/color-control/index.js");
 /* harmony import */ var _reset_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reset-control */ "./util/reset-control/index.js");
 /* harmony import */ var _dimensions_control_v2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dimensions-control-v2 */ "./util/dimensions-control-v2/index.js");
-/* harmony import */ var _typography_control_v2_Icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../typography-control-v2/Icon */ "./util/typography-control-v2/Icon.js");
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../icons */ "./util/icons.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
@@ -4317,7 +4317,7 @@ function BorderShadowControl(_ref) {
         isSmall: true,
         onClick: onToggle,
         "aria-expanded": isOpen
-      }, /*#__PURE__*/React.createElement(_typography_control_v2_Icon__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      }, /*#__PURE__*/React.createElement(_icons__WEBPACK_IMPORTED_MODULE_3__["TypographyIcon"], null));
     },
     renderContent: function renderContent() {
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
@@ -4891,6 +4891,225 @@ function ResponsiveDimensionsControl(_ref) {
     }
   })));
 }
+
+/***/ }),
+
+/***/ "./util/fontPicker/constants.js":
+/*!**************************************!*\
+  !*** ./util/fontPicker/constants.js ***!
+  \**************************************/
+/*! exports provided: FONTS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FONTS", function() { return FONTS; });
+var FONTS = {
+  "Abril Fatface": {
+    weight: ["400"]
+  },
+  Anton: {
+    weight: ["400"]
+  },
+  Arvo: {
+    weight: ["400", "700"]
+  },
+  Asap: {
+    weight: ["400", "500", "600", "700"]
+  },
+  "Barlow Condensed": {
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  },
+  Barlow: {
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  },
+  "Cormorant Garamond": {
+    weight: ["300", "400", "500", "600", "700"]
+  },
+  Faustina: {
+    weight: ["400", "500", "600", "700"]
+  },
+  "Fira Sans": {
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  },
+  "IBM Plex Sans": {
+    weight: ["100", "200", "300", "400", "500", "600", "700"]
+  },
+  Inconsolata: {
+    weight: ["400", "700"]
+  },
+  Heebo: {
+    weight: ["100", "300", "400", "500", "700", "800", "900"]
+  },
+  Karla: {
+    weight: ["400", "700"]
+  },
+  Lato: {
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  },
+  Lora: {
+    weight: ["400", "700"]
+  },
+  Merriweather: {
+    weight: ["300", "400", "500", "600", "700", "800", "900"]
+  },
+  Montserrat: {
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  },
+  "Noto Sans": {
+    weight: ["400", "700"]
+  },
+  "Noto Serif": {
+    weight: ["400", "700"]
+  },
+  "Open Sans": {
+    weight: ["300", "400", "500", "600", "700", "800"]
+  },
+  Oswald: {
+    weight: ["200", "300", "400", "500", "600", "700"]
+  },
+  "Playfair Display": {
+    weight: ["400", "700", "900"]
+  },
+  "PT Serif": {
+    weight: ["400", "700"]
+  },
+  Roboto: {
+    weight: ["100", "300", "400", "500", "700", "900"]
+  },
+  Rubik: {
+    weight: ["300", "400", "500", "700", "900"]
+  },
+  Tajawal: {
+    weight: ["200", "300", "400", "500", "700", "800", "900"]
+  },
+  Ubuntu: {
+    weight: ["300", "400", "500", "700"]
+  },
+  Yrsa: {
+    weight: ["300", "400", "500", "600", "700"]
+  }
+};
+
+/***/ }),
+
+/***/ "./util/fontPicker/index.js":
+/*!**********************************!*\
+  !*** ./util/fontPicker/index.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./util/fontPicker/constants.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var withInstanceId = wp.compose.withInstanceId;
+var BaseControl = wp.components.BaseControl;
+/**
+ * Internal dependencies
+ */
+
+
+
+function FontFamilyPicker(_ref) {
+  var label = _ref.label,
+      value = _ref.value,
+      help = _ref.help,
+      instanceId = _ref.instanceId,
+      onChange = _ref.onChange,
+      className = _ref.className,
+      props = _objectWithoutProperties(_ref, ["label", "value", "help", "instanceId", "onChange", "className"]);
+
+  var id = "inspector-eb-font-family-".concat(instanceId);
+  var fonts = [{
+    value: "",
+    label: __("Default")
+  }, {
+    value: "Arial",
+    label: "Arial"
+  }, {
+    value: "Helvetica",
+    label: "Helvetica"
+  }, {
+    value: "Times New Roman",
+    label: "Times New Roman"
+  }, {
+    value: "Georgia",
+    label: "Georgia"
+  }]; //Add Google Fonts
+
+  Object.keys(_constants__WEBPACK_IMPORTED_MODULE_0__["FONTS"]).map(function (k) {
+    fonts.push({
+      value: k,
+      label: k
+    });
+  });
+
+  var onChangeValue = function onChangeValue(event) {
+    var meta = wp.data.select("core/editor").getEditedPostAttribute("meta");
+    var ba = "";
+    var googleFontsAttr = ":100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic";
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+
+    if (typeof meta !== "undefined" && typeof meta._eb_attr !== "undefined") {
+      ba = meta._eb_attr;
+    }
+
+    if (ba.length > 0) {
+      //Load fonts on the header
+      if (!ba.includes(event.target.value)) {
+        link.href = "https://fonts.googleapis.com/css?family=" + event.target.value.replace(/ /g, "+") + googleFontsAttr;
+        document.head.appendChild(link);
+      }
+
+      ba = ba.replace("," + event.target.value, "");
+      ba = ba + "," + event.target.value;
+    } else {
+      link.href = "https://fonts.googleapis.com/css?family=" + event.target.value.replace(/ /g, "+") + googleFontsAttr;
+      document.head.appendChild(link);
+      ba = event.target.value;
+    } //Save values to metadata
+
+
+    wp.data.dispatch("core/editor").editPost({
+      meta: {
+        _eb_attr: ba
+      }
+    });
+    onChange(event.target.value);
+  };
+
+  return /*#__PURE__*/React.createElement(BaseControl, {
+    label: label,
+    id: id,
+    help: help,
+    className: className
+  }, /*#__PURE__*/React.createElement("select", _extends({
+    id: id,
+    className: "components-select-control__input",
+    onChange: onChangeValue,
+    "aria-describedby": !!help ? "".concat(id, "__help") : undefined
+  }, props), fonts.map(function (option, index) {
+    return /*#__PURE__*/React.createElement("option", {
+      key: "".concat(option.label, "-").concat(option.value, "-").concat(index),
+      value: option.value,
+      selected: value === option.value ? "selected" : ""
+    }, option.label);
+  })));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (withInstanceId(FontFamilyPicker));
 
 /***/ }),
 
@@ -6855,6 +7074,8 @@ var generateTypographyAttributes = function generateTypographyAttributes(prefixA
       type: "number"
     }), _defineProperty(_result, "".concat(current, "FontWeight"), {
       type: "string"
+    }), _defineProperty(_result, "".concat(current, "FontStyle"), {
+      type: "string"
     }), _defineProperty(_result, "".concat(current, "TextTransform"), {
       type: "string"
     }), _defineProperty(_result, "".concat(current, "TextDecoration"), {
@@ -6912,6 +7133,7 @@ var generateTypographyStyles = function generateTypographyStyles(_ref) {
       attributes = _ref.attributes;
   var fontFamily = attributes["".concat(prefixConstant, "FontFamily")],
       fontWeight = attributes["".concat(prefixConstant, "FontWeight")],
+      fontStyle = attributes["".concat(prefixConstant, "FontStyle")],
       textTransform = attributes["".concat(prefixConstant, "TextTransform")],
       textDecoration = attributes["".concat(prefixConstant, "TextDecoration")],
       _attributes$ = attributes["".concat(prefixConstant, "FontSize")],
@@ -6933,7 +7155,7 @@ var generateTypographyStyles = function generateTypographyStyles(_ref) {
       MOBfontSize = attributes["MOB".concat(prefixConstant, "FontSize")],
       MOBletterSpacing = attributes["MOB".concat(prefixConstant, "LetterSpacing")],
       MOBlineHeight = attributes["MOB".concat(prefixConstant, "LineHeight")];
-  var typoStylesDesktop = "\n              ".concat(fontFamily ? "font-family: ".concat(fontFamily, ";") : " ", "\n              ").concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(fontSize) ? "font-size: ".concat(fontSize).concat(sizeUnit, ";") : " ", "\n              ").concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(lineHeight) ? "line-height: ".concat(lineHeight).concat(lineHeightUnit, ";") : " ", "\n              ").concat(fontWeight ? "font-weight: ".concat(fontWeight, ";") : " ", "\n              ").concat(textDecoration ? "text-decoration: ".concat(textDecoration, ";") : " ", "\n              ").concat(textTransform ? "text-transform: ".concat(textTransform, ";") : " ", "\n              ").concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(letterSpacing) ? "letter-spacing: ".concat(letterSpacing).concat(letterSpacingUnit, ";") : " ", "\n          ");
+  var typoStylesDesktop = "\n              ".concat(fontFamily ? "font-family: ".concat(fontFamily, ";") : " ", "\n              ").concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(fontSize) ? "font-size: ".concat(fontSize).concat(sizeUnit, ";") : " ", "\n              ").concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(lineHeight) ? "line-height: ".concat(lineHeight).concat(lineHeightUnit, ";") : " ", "\n              ").concat(fontWeight ? "font-weight: ".concat(fontWeight, ";") : " ", "\n              ").concat(fontStyle ? "font-style: ".concat(fontStyle, ";") : " ", "\n              ").concat(textDecoration ? "text-decoration: ".concat(textDecoration, ";") : " ", "\n              ").concat(textTransform ? "text-transform: ".concat(textTransform, ";") : " ", "\n              ").concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(letterSpacing) ? "letter-spacing: ".concat(letterSpacing).concat(letterSpacingUnit, ";") : " ", "\n          ");
   var typoStylesTab = "\n              ".concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(TABfontSize) ? "font-size: ".concat(TABfontSize).concat(TABsizeUnit, ";") : " ", "\n              ").concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(TABlineHeight) ? "line-height: ".concat(TABlineHeight).concat(TABlineHeightUnit, ";") : " ", "\n              ").concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(TABletterSpacing) ? "letter-spacing: ".concat(TABletterSpacing).concat(TABletterSpacingUnit, ";") : " ", "\n          ");
   var typoStylesMobile = "\n              ".concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(MOBfontSize) ? "font-size: ".concat(MOBfontSize).concat(MOBsizeUnit, ";") : " ", "\n              ").concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(MOBlineHeight) ? "line-height: ".concat(MOBlineHeight).concat(MOBlineHeightUnit, ";") : " ", "\n              ").concat(Object(_hasVal__WEBPACK_IMPORTED_MODULE_0__["hasVal"])(MOBletterSpacing) ? "letter-spacing: ".concat(MOBletterSpacing).concat(MOBletterSpacingUnit, ";") : " ", "\n          ");
   return {
@@ -9829,310 +10051,22 @@ var ToggleButton = function ToggleButton(_ref) {
 
 /***/ }),
 
-/***/ "./util/typography-control-v2/FontPicker.js":
-/*!**************************************************!*\
-  !*** ./util/typography-control-v2/FontPicker.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./util/typography-control-v2/constants.js");
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-/**
- * Internal dependencies
- */
-
-/**
- * WordPress dependencies
- */
-
-var __ = wp.i18n.__;
-var withInstanceId = wp.compose.withInstanceId;
-var BaseControl = wp.components.BaseControl;
-
-function FontFamilyPicker(_ref) {
-  var label = _ref.label,
-      value = _ref.value,
-      help = _ref.help,
-      instanceId = _ref.instanceId,
-      onChange = _ref.onChange,
-      className = _ref.className,
-      props = _objectWithoutProperties(_ref, ["label", "value", "help", "instanceId", "onChange", "className"]);
-
-  var id = "inspector-eb-font-family-".concat(instanceId);
-  var fonts = [{
-    value: "",
-    label: __("Default")
-  }, {
-    value: "Arial",
-    label: "Arial"
-  }, {
-    value: "Helvetica",
-    label: "Helvetica"
-  }, {
-    value: "Times New Roman",
-    label: "Times New Roman"
-  }, {
-    value: "Georgia",
-    label: "Georgia"
-  }]; //Add Google Fonts
-
-  Object.keys(_constants__WEBPACK_IMPORTED_MODULE_0__["FONTS"]).map(function (k) {
-    fonts.push({
-      value: k,
-      label: k
-    });
-  });
-
-  var onChangeValue = function onChangeValue(event) {
-    var meta = wp.data.select("core/editor").getEditedPostAttribute("meta");
-    var ba = "";
-    var googleFontsAttr = ":100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic";
-    var link = document.createElement("link");
-    link.rel = "stylesheet";
-
-    if (typeof meta !== "undefined" && typeof meta._eb_attr !== "undefined") {
-      ba = meta._eb_attr;
-    }
-
-    if (ba.length > 0) {
-      //Load fonts on the header
-      if (!ba.includes(event.target.value)) {
-        link.href = "https://fonts.googleapis.com/css?family=" + event.target.value.replace(/ /g, "+") + googleFontsAttr;
-        document.head.appendChild(link);
-      }
-
-      ba = ba.replace("," + event.target.value, "");
-      ba = ba + "," + event.target.value;
-    } else {
-      link.href = "https://fonts.googleapis.com/css?family=" + event.target.value.replace(/ /g, "+") + googleFontsAttr;
-      document.head.appendChild(link);
-      ba = event.target.value;
-    } //Save values to metadata
-
-
-    wp.data.dispatch("core/editor").editPost({
-      meta: {
-        _eb_attr: ba
-      }
-    });
-    onChange(event.target.value);
-  };
-
-  return /*#__PURE__*/React.createElement(BaseControl, {
-    label: label,
-    id: id,
-    help: help,
-    className: className
-  }, /*#__PURE__*/React.createElement("select", _extends({
-    id: id,
-    className: "components-select-control__input",
-    onChange: onChangeValue,
-    "aria-describedby": !!help ? "".concat(id, "__help") : undefined
-  }, props), fonts.map(function (option, index) {
-    return /*#__PURE__*/React.createElement("option", {
-      key: "".concat(option.label, "-").concat(option.value, "-").concat(index),
-      value: option.value,
-      selected: value === option.value ? "selected" : ""
-    }, option.label);
-  })));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (withInstanceId(FontFamilyPicker));
-
-/***/ }),
-
-/***/ "./util/typography-control-v2/Icon.js":
-/*!********************************************!*\
-  !*** ./util/typography-control-v2/Icon.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var TypographyIcon = function TypographyIcon() {
-  return /*#__PURE__*/React.createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    x: "0",
-    y: "0",
-    enableBackground: "new 0 0 512 512",
-    version: "1.1",
-    viewBox: "0 0 512 512",
-    xmlSpace: "preserve",
-    style: {
-      width: 14
-    }
-  }, /*#__PURE__*/React.createElement("path", {
-    d: "M92.6 431.3c5.1 0 6.1-.5 10.7-1.5l91.9-18.4c9.7-2.5 19.4-7.1 27.1-14.8L444.9 174c34.2-34.2 34.2-92.9 0-127.1L426 27c-34.2-34.2-93.4-34.2-127.6 0L75.8 250.1c-7.2 7.1-12.3 17.4-14.8 27.1l-19.4 92.9c-2.5 17.4 2.6 34.2 14.8 46.5 9.7 9.6 24 14.7 36.2 14.7zM110 286.9L332.6 63.8c14.8-14.8 41.9-14.8 56.2 0l19.4 19.4c17.4 17.4 17.4 41.9 0 58.7L186.1 365l-94.4 15.8 18.3-93.9zm0 0M442.8 463H66.1c-14.8 0-24.5 9.7-24.5 24.5S53.9 512 66.1 512h374.7c14.8 0 27.1-9.7 27.1-24.5-.6-14.8-12.8-24.5-25.1-24.5zm0 0",
-    className: "eb-typography-icon"
-  }));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (TypographyIcon);
-
-/***/ }),
-
-/***/ "./util/typography-control-v2/WithResButtons.js":
-/*!******************************************************!*\
-  !*** ./util/typography-control-v2/WithResButtons.js ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WithResButtons; });
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers */ "./util/helpers/index.js");
-var dispatch = wp.data.dispatch;
-
-function WithResButtons(_ref) {
-  var className = _ref.className,
-      children = _ref.children,
-      resOption = _ref.resOption,
-      setAttributes = _ref.setAttributes;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "wrap_res ".concat(className || " ")
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "resIcons"
-  }, /*#__PURE__*/React.createElement("span", {
-    onClick: function onClick() {
-      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleDesktopBtnClick"])({
-        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
-        setAttributes: setAttributes
-      });
-    },
-    "class": "typoResButton dashicons dashicons-desktop ".concat(resOption === "Desktop" ? "active" : " ")
-  }), /*#__PURE__*/React.createElement("span", {
-    onClick: function onClick() {
-      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleTabBtnClick"])({
-        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
-        setAttributes: setAttributes
-      });
-    },
-    "class": "typoResButton dashicons dashicons-tablet ".concat(resOption === "Tablet" ? "active" : " ")
-  }), /*#__PURE__*/React.createElement("span", {
-    onClick: function onClick() {
-      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["handleMobileBtnClick"])({
-        setPreviewDeviceType: dispatch("core/edit-post").__experimentalSetPreviewDeviceType,
-        setAttributes: setAttributes
-      });
-    },
-    "class": "typoResButton dashicons dashicons-smartphone ".concat(resOption === "Mobile" ? "active" : " ")
-  })), children);
-}
-
-/***/ }),
-
 /***/ "./util/typography-control-v2/constants.js":
 /*!*************************************************!*\
   !*** ./util/typography-control-v2/constants.js ***!
   \*************************************************/
-/*! exports provided: FONTS, sizeUnitTypes, optionsFontWeights, optionsTextTransforms, optionsTextDecorations, optionsLhLsp */
+/*! exports provided: sizeUnitTypes, optionsFontWeights, optionsTextTransforms, optionsTextDecorations, optionsFontStyles, optionsLhLsp */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FONTS", function() { return FONTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sizeUnitTypes", function() { return sizeUnitTypes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "optionsFontWeights", function() { return optionsFontWeights; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "optionsTextTransforms", function() { return optionsTextTransforms; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "optionsTextDecorations", function() { return optionsTextDecorations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "optionsFontStyles", function() { return optionsFontStyles; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "optionsLhLsp", function() { return optionsLhLsp; });
 var __ = wp.i18n.__;
-var FONTS = {
-  "Abril Fatface": {
-    weight: ["400"]
-  },
-  Anton: {
-    weight: ["400"]
-  },
-  Arvo: {
-    weight: ["400", "700"]
-  },
-  Asap: {
-    weight: ["400", "500", "600", "700"]
-  },
-  "Barlow Condensed": {
-    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
-  },
-  Barlow: {
-    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
-  },
-  "Cormorant Garamond": {
-    weight: ["300", "400", "500", "600", "700"]
-  },
-  Faustina: {
-    weight: ["400", "500", "600", "700"]
-  },
-  "Fira Sans": {
-    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
-  },
-  "IBM Plex Sans": {
-    weight: ["100", "200", "300", "400", "500", "600", "700"]
-  },
-  Inconsolata: {
-    weight: ["400", "700"]
-  },
-  Heebo: {
-    weight: ["100", "300", "400", "500", "700", "800", "900"]
-  },
-  Karla: {
-    weight: ["400", "700"]
-  },
-  Lato: {
-    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
-  },
-  Lora: {
-    weight: ["400", "700"]
-  },
-  Merriweather: {
-    weight: ["300", "400", "500", "600", "700", "800", "900"]
-  },
-  Montserrat: {
-    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
-  },
-  "Noto Sans": {
-    weight: ["400", "700"]
-  },
-  "Noto Serif": {
-    weight: ["400", "700"]
-  },
-  "Open Sans": {
-    weight: ["300", "400", "500", "600", "700", "800"]
-  },
-  Oswald: {
-    weight: ["200", "300", "400", "500", "600", "700"]
-  },
-  "Playfair Display": {
-    weight: ["400", "700", "900"]
-  },
-  "PT Serif": {
-    weight: ["400", "700"]
-  },
-  Roboto: {
-    weight: ["100", "300", "400", "500", "700", "900"]
-  },
-  Rubik: {
-    weight: ["300", "400", "500", "700", "900"]
-  },
-  Tajawal: {
-    weight: ["200", "300", "400", "500", "700", "800", "900"]
-  },
-  Ubuntu: {
-    weight: ["300", "400", "500", "700"]
-  },
-  Yrsa: {
-    weight: ["300", "400", "500", "600", "700"]
-  }
-};
 var sizeUnitTypes = [{
   label: "px",
   value: "px"
@@ -10145,7 +10079,7 @@ var sizeUnitTypes = [{
 }];
 var optionsFontWeights = [{
   label: __("Default"),
-  value: ""
+  value: undefined
 }, {
   label: __("100"),
   value: "100"
@@ -10176,7 +10110,7 @@ var optionsFontWeights = [{
 }];
 var optionsTextTransforms = [{
   label: __("Default"),
-  value: ""
+  value: undefined
 }, {
   label: __("None"),
   value: "none"
@@ -10192,7 +10126,7 @@ var optionsTextTransforms = [{
 }];
 var optionsTextDecorations = [{
   label: __("Default"),
-  value: ""
+  value: undefined
 }, {
   label: __("None"),
   value: "initial"
@@ -10208,6 +10142,19 @@ var optionsTextDecorations = [{
 }, {
   label: __("Underline Oveline"),
   value: "underline overline"
+}];
+var optionsFontStyles = [{
+  label: __("Default"),
+  value: undefined
+}, {
+  label: __("Normal"),
+  value: "normal"
+}, {
+  label: __("Italic"),
+  value: "italic"
+}, {
+  label: __("Oblique"),
+  value: "oblique"
 }];
 var optionsLhLsp = [{
   label: "px",
@@ -10228,10 +10175,10 @@ var optionsLhLsp = [{
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _unit_control__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./unit-control */ "./util/typography-control-v2/unit-control.js");
-/* harmony import */ var _FontPicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FontPicker */ "./util/typography-control-v2/FontPicker.js");
-/* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Icon */ "./util/typography-control-v2/Icon.js");
-/* harmony import */ var _WithResButtons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WithResButtons */ "./util/typography-control-v2/WithResButtons.js");
+/* harmony import */ var _unit_control__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../unit-control */ "./util/unit-control/index.js");
+/* harmony import */ var _fontPicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../fontPicker */ "./util/fontPicker/index.js");
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../icons */ "./util/icons.js");
+/* harmony import */ var _withResButtons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../withResButtons */ "./util/withResButtons/index.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants */ "./util/typography-control-v2/constants.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -10257,6 +10204,7 @@ function TypographyDropdown(_ref) {
       resOption = resRequiredProps.resOption;
   var fontFamily = attributes["".concat(typographyPrefixConstant, "FontFamily")],
       fontWeight = attributes["".concat(typographyPrefixConstant, "FontWeight")],
+      fontStyle = attributes["".concat(typographyPrefixConstant, "FontStyle")],
       textTransform = attributes["".concat(typographyPrefixConstant, "TextTransform")],
       textDecoration = attributes["".concat(typographyPrefixConstant, "TextDecoration")],
       fontSize = attributes["".concat(typographyPrefixConstant, "FontSize")],
@@ -10291,7 +10239,7 @@ function TypographyDropdown(_ref) {
         isSmall: true,
         onClick: onToggle,
         "aria-expanded": isOpen
-      }, /*#__PURE__*/React.createElement(_Icon__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      }, /*#__PURE__*/React.createElement(_icons__WEBPACK_IMPORTED_MODULE_2__["TypographyIcon"], null));
     },
     renderContent: function renderContent() {
       return /*#__PURE__*/React.createElement("div", {
@@ -10299,16 +10247,15 @@ function TypographyDropdown(_ref) {
         style: {
           padding: "0.2rem"
         }
-      }, /*#__PURE__*/React.createElement(_FontPicker__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, /*#__PURE__*/React.createElement(_fontPicker__WEBPACK_IMPORTED_MODULE_1__["default"], {
         label: __("Font Family"),
         value: fontFamily,
         onChange: function onChange(FontFamily) {
           setAttributes(_defineProperty({}, "".concat(typographyPrefixConstant, "FontFamily"), FontFamily));
         }
-      }), /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/React.createElement(_withResButtons__WEBPACK_IMPORTED_MODULE_3__["default"], {
         className: "forFontSize",
-        resOption: resOption,
-        setAttributes: setAttributes
+        resRequiredProps: resRequiredProps
       }, resOption === "Desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: sizeUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["sizeUnitTypes"],
@@ -10362,6 +10309,13 @@ function TypographyDropdown(_ref) {
           return setAttributes(_defineProperty({}, "".concat(typographyPrefixConstant, "FontWeight"), FontWeight));
         }
       }), /*#__PURE__*/React.createElement(SelectControl, {
+        label: __("Font Style"),
+        value: fontStyle,
+        options: _constants__WEBPACK_IMPORTED_MODULE_4__["optionsFontStyles"],
+        onChange: function onChange(fontStyle) {
+          return setAttributes(_defineProperty({}, "".concat(typographyPrefixConstant, "FontStyle"), fontStyle));
+        }
+      }), /*#__PURE__*/React.createElement(SelectControl, {
         label: __("Text Transform"),
         value: textTransform,
         options: _constants__WEBPACK_IMPORTED_MODULE_4__["optionsTextTransforms"],
@@ -10375,10 +10329,9 @@ function TypographyDropdown(_ref) {
         onChange: function onChange(TextDecoration) {
           return setAttributes(_defineProperty({}, "".concat(typographyPrefixConstant, "TextDecoration"), TextDecoration));
         }
-      }), /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/React.createElement(_withResButtons__WEBPACK_IMPORTED_MODULE_3__["default"], {
         className: "forLetterSpacing",
-        resOption: resOption,
-        setAttributes: setAttributes
+        resRequiredProps: resRequiredProps
       }, resOption === "Desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: letterSpacingUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["optionsLhLsp"],
@@ -10424,10 +10377,9 @@ function TypographyDropdown(_ref) {
         min: 0,
         max: MOBletterSpacingUnit === "em" ? 10 : 100,
         step: MOBletterSpacingUnit === "em" ? 0.1 : 1
-      }))), /*#__PURE__*/React.createElement(_WithResButtons__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }))), /*#__PURE__*/React.createElement(_withResButtons__WEBPACK_IMPORTED_MODULE_3__["default"], {
         className: "forLineHeight",
-        resOption: resOption,
-        setAttributes: setAttributes
+        resRequiredProps: resRequiredProps
       }, resOption === "Desktop" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_unit_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         selectedUnit: lineHeightUnit,
         unitTypes: _constants__WEBPACK_IMPORTED_MODULE_4__["optionsLhLsp"],
@@ -10479,44 +10431,6 @@ function TypographyDropdown(_ref) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (TypographyDropdown);
-
-/***/ }),
-
-/***/ "./util/typography-control-v2/unit-control.js":
-/*!****************************************************!*\
-  !*** ./util/typography-control-v2/unit-control.js ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * WordPress dependencies
- */
-var _wp$components = wp.components,
-    ButtonGroup = _wp$components.ButtonGroup,
-    Button = _wp$components.Button;
-
-var UnitControl = function UnitControl(_ref) {
-  var selectedUnit = _ref.selectedUnit,
-      unitTypes = _ref.unitTypes,
-      _onClick = _ref.onClick;
-  return /*#__PURE__*/React.createElement(ButtonGroup, {
-    className: "eb-unit-control-btn-group"
-  }, unitTypes.map(function (unit) {
-    return /*#__PURE__*/React.createElement(Button, {
-      className: "eb-unit-control-btn ".concat(unit.value === selectedUnit && "eb-unit-active"),
-      isSmall: true,
-      isPrimary: unit.value === selectedUnit,
-      onClick: function onClick() {
-        return _onClick(unit.value);
-      }
-    }, unit.label);
-  }));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (UnitControl);
 
 /***/ }),
 
