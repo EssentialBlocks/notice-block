@@ -706,12 +706,12 @@ var example = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./save */ "./src/save.js");
-/* harmony import */ var _util_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/icons */ "./util/icons.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../block.json */ "./block.json");
-var _block_json__WEBPACK_IMPORTED_MODULE_3___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../block.json */ "./block.json", 1);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/save.js");
+/* harmony import */ var _util_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/icons */ "./util/icons.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../block.json */ "./block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../block.json */ "./block.json", 1);
 /* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./attributes */ "./src/attributes.js");
 /* harmony import */ var _example__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./example */ "./src/example.js");
 /**
@@ -730,18 +730,18 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 
-var name = _block_json__WEBPACK_IMPORTED_MODULE_3__.name,
-    category = _block_json__WEBPACK_IMPORTED_MODULE_3__.category;
+var name = _block_json__WEBPACK_IMPORTED_MODULE_4__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_4__.category;
 registerBlockType(name, {
   apiVersion: 2,
-  title: __("Notice", "essential-blocks"),
-  icon: _util_icons__WEBPACK_IMPORTED_MODULE_2__["NoticeIcon"],
+  title: __("Notice", "block"),
+  icon: _util_icons__WEBPACK_IMPORTED_MODULE_3__["NoticeIcon"],
   description: __("Put Spotlight On News, Announcements & Let The Visitors Find It Easily", "block"),
   category: category,
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_5__["default"],
   keywords: [__("EB notice", "essential-blocks"), __("notice", "essential-blocks"), __("alert ", "essential-blocks")],
-  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_1__["default"],
+  edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"],
   example: _example__WEBPACK_IMPORTED_MODULE_6__["default"]
 });
 
