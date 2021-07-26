@@ -1,14 +1,15 @@
 /**
  * WordPress dependencies
  */
-import { useBlockProps, RichText } from "@wordpress/block-editor";
-import { useEffect } from "@wordpress/element";
+const { useBlockProps, RichText } = wp.blockEditor;
+const { useEffect } = wp.element;
 
-import "./editor.scss";
+const { select } = wp.data;
 
 /**
  * Internal depenencies
  */
+import "./editor.scss";
 import Inspector from "./inspector";
 
 import {
@@ -31,6 +32,8 @@ import {
 	generateDimensionsControlStyles,
 	generateBackgroundControlStyles,
 	generateBorderShadowStyles,
+	mimmikCssForPreviewBtnClick,
+	duplicateBlockIdFix,
 } from "../util/helpers";
 
 export default function Edit(props) {
@@ -46,28 +49,13 @@ export default function Edit(props) {
 		text,
 		titleColor,
 		textColor,
-		shadowHOffset,
-		shadowVOffset,
-		shadowBlur,
-		shadowSpread,
-		shadowColor,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
 	useEffect(() => {
-		const bodyClasses = document.body.className;
-
-		if (!/eb\-res\-option\-/i.test(bodyClasses)) {
-			document.body.classList.add("eb-res-option-desktop");
-			setAttributes({
-				resOption: "desktop",
-			});
-		} else {
-			const resOption = bodyClasses
-				.match(/eb-res-option-[^\s]+/g)[0]
-				.split("-")[3];
-			setAttributes({ resOption });
-		}
+		setAttributes({
+			resOption: select("core/edit-post").__experimentalGetPreviewDeviceType(),
+		});
 	}, []);
 
 	// this useEffect is for creating a unique id for each block's unique className by a random unique number
@@ -75,47 +63,21 @@ export default function Edit(props) {
 		// const current_block_id = attributes.blockId;
 
 		const BLOCK_PREFIX = "eb-notice";
-		const unique_id =
-			BLOCK_PREFIX + "-" + Math.random().toString(36).substr(2, 7);
+		duplicateBlockIdFix({
+			BLOCK_PREFIX,
+			blockId,
+			setAttributes,
+			select,
+			clientId,
+		});
+	}, []);
 
-		/**
-		 * Define and Generate Unique Block ID
-		 */
-		if (!blockId) {
-			setAttributes({ blockId: unique_id });
-		}
-
-		/**
-		 * Assign New Unique ID when duplicate BlockId found
-		 * Mostly happens when User Duplicate a Block
-		 */
-		const all_blocks = wp.data.select("core/block-editor").getBlocks();
-
-		// console.log({ all_blocks });
-
-		let duplicateFound = false;
-		const fixDuplicateBlockId = (blocks) => {
-			if (duplicateFound) return;
-			for (const item of blocks) {
-				const { innerBlocks } = item;
-				if (item.attributes.blockId === blockId) {
-					if (item.clientId !== clientId) {
-						setAttributes({ blockId: unique_id });
-						// console.log("found a duplicate");
-						duplicateFound = true;
-						return;
-					} else if (innerBlocks.length > 0) {
-						fixDuplicateBlockId(innerBlocks);
-					}
-				} else if (innerBlocks.length > 0) {
-					fixDuplicateBlockId(innerBlocks);
-				}
-			}
-		};
-
-		fixDuplicateBlockId(all_blocks);
-
-		// console.log({ blockId });
+	// this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
+	useEffect(() => {
+		mimmikCssForPreviewBtnClick({
+			domObj: document,
+			select,
+		});
 	}, []);
 
 	const blockProps = useBlockProps({
@@ -167,9 +129,17 @@ export default function Edit(props) {
 
 	const {
 		backgroundStylesDesktop,
+		hoverBackgroundStylesDesktop,
 		backgroundStylesTab,
+		hoverBackgroundStylesTab,
 		backgroundStylesMobile,
-		overlyStyles,
+		hoverBackgroundStylesMobile,
+		overlayStylesDesktop,
+		hoverOverlayStylesDesktop,
+		overlayStylesTab,
+		hoverOverlayStylesTab,
+		overlayStylesMobile,
+		hoverOverlayStylesMobile,
 	} = generateBackgroundControlStyles({
 		attributes,
 		controlName: wrapBg,
@@ -191,6 +161,11 @@ export default function Edit(props) {
 
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
+
+	.eb-notice-wrapper.${blockId} > * {
+		position: relative;
+	}	
+
 	.eb-notice-wrapper.${blockId}{
 		${wrapperMarginStylesDesktop}
 		${wrapperPaddingStylesDesktop}
@@ -201,13 +176,17 @@ export default function Edit(props) {
 	}
 
 	.eb-notice-wrapper.${blockId}:hover{
+		${hoverBackgroundStylesDesktop}
 		${bdShadowStylesHoverDesktop}
 	}
 
 	.eb-notice-wrapper.${blockId}:before{
-		${overlyStyles}
+		${overlayStylesDesktop}
 	}
 
+	.eb-notice-wrapper.${blockId}:hover:before{
+		${hoverOverlayStylesDesktop}
+	}
 
 	`;
 
@@ -220,8 +199,18 @@ export default function Edit(props) {
 	}
 
 	.eb-notice-wrapper.${blockId}:hover{
+		${hoverBackgroundStylesTab}
 		${bdShadowStylesHoverTab}
 	}
+
+	.eb-notice-wrapper.${blockId}:before{
+		${overlayStylesTab}
+	}
+
+	.eb-notice-wrapper.${blockId}:hover:before{
+		${hoverOverlayStylesTab}
+	}
+
 	`;
 
 	const wrapperStylesMobile = `
@@ -233,7 +222,16 @@ export default function Edit(props) {
 	}
 
 	.eb-notice-wrapper.${blockId}:hover{
+		${hoverBackgroundStylesMobile}
 		${bdShadowStylesHoverMobile}
+	}
+
+	.eb-notice-wrapper.${blockId}:before{
+		${overlayStylesMobile}
+	}
+
+	.eb-notice-wrapper.${blockId}:hover:before{
+		${hoverOverlayStylesMobile}
 	}
 	`;
 
@@ -299,7 +297,7 @@ export default function Edit(props) {
 		position: absolute;
 		justify-content: center;
 	}
-	
+
 	.eb-notice-wrapper.${blockId} .eb-notice-dismiss:after{
 		content: "\\00d7";
 	}
@@ -309,6 +307,7 @@ export default function Edit(props) {
 		margin-left: auto;
 		margin-right: auto;
 	}
+
 	`;
 
 	// all css styles for large screen width (desktop/laptop) in strings ⬇
@@ -357,8 +356,8 @@ export default function Edit(props) {
 
 				/* mimmikcssStart */
 
-				${resOption === "tab" ? tabAllStyles : " "}
-				${resOption === "mobile" ? tabAllStyles + mobileAllStyles : " "}
+				${resOption === "Tablet" ? tabAllStyles : " "}
+				${resOption === "Mobile" ? tabAllStyles + mobileAllStyles : " "}
 
 				/* mimmikcssEnd */
 
@@ -389,9 +388,8 @@ export default function Edit(props) {
 						placeholder="Add Title..."
 						keepPlaceholderOnFocus
 					/>
-					<span className="eb-notice-dismiss" />
 				</div>
-
+				<span className="eb-notice-dismiss" />
 				<div>
 					<RichText
 						className="eb-notice-text"

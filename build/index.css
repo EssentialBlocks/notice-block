@@ -1,21 +1,6 @@
 /**
  * The following styles get applied inside the editor only.
-
  */
-.wp-block-create-block-notice {
-  border: 1px dotted #f00;
-}
-
-/* 
-//
-//
-//
-// copied from common.css of EB
-// starts
-//
-//
-//
-// */
 /* Common styles for all blocks */
 .eb-panel-control .components-button-group.eb-unit-control-btn-group .components-button .eb-category-icon {
   margin-left: 8px;
@@ -63,44 +48,48 @@
 .eb-panel-control .components-base-control__label {
   color: #5f5f5f;
   line-height: 20px !important;
-  margin-bottom: 0 !important;
+  margin-bottom: 5px !important;
 }
 
 .eb-panel-control button.components-panel__body-toggle:focus {
-  box-shadow: inset 0 0 0 2px #6c40f7;
+  box-shadow: inset 0 0 0 2px #551ef7;
 }
 
 /* Unit control styles */
 .eb-panel-control .eb-unit-control-btn:hover {
-  color: #6c40f7;
+  color: #551ef7;
 }
 
 .eb-panel-control .eb-unit-control-btn:focus {
-  box-shadow: 0 0 0 1px #6c40f7;
+  box-shadow: 0 0 0 1px #551ef7;
 }
 
 .eb-panel-control .input-wrapper input:focus {
-  box-shadow: 0 0 0 1px #6c40f7;
+  box-shadow: 0 0 0 1px #551ef7;
 }
 
 /* Toggle button style */
 .eb-panel-control .is-checked .components-form-toggle__track {
-  background-color: #6c40f7 !important;
+  background-color: #551ef7 !important;
 }
 
 .eb-panel-control input[type=checkbox]:focus {
-  box-shadow: 0 0 0 1px #6c40f7;
+  box-shadow: 0 0 0 1px #551ef7;
 }
 
 /* Radio button style */
 .eb-panel-control .components-radio-control__input[type=radio]:checked {
-  background-color: #6c40f7;
+  background-color: #551ef7;
 }
 
 /* Select control style */
+.wp-core-ui .eb-panel-control select.components-select-control__input {
+  line-height: 1.4;
+}
+
 .wp-core-ui .eb-panel-control select.components-select-control__input option:hover {
   color: white;
-  background: #6c40f7 !important;
+  background: #551ef7 !important;
 }
 
 /* Avatar icon style */
@@ -164,6 +153,7 @@
 .eb-panel-control .components-base-control .drag-helper .eb-accordion-sortable-item .drag-handle,
 .eb-panel-control .components-base-control .drag-helper .eb-accordion-sortable-item {
   border-color: #ebebeb !important;
+  padding: 8px 10px;
 }
 
 .eb-panel-control .components-base-control .drag-helper .eb-accordion-sortable-item .drag-handle {
@@ -227,9 +217,9 @@
 .eb-panel-control .is-tertiary:focus:not(:disabled),
 .eb-panel-control .is-primary:hover:not(:disabled),
 .eb-panel-control .is-primary:focus:not(:disabled) {
-  background-color: #6c40f7;
+  background-color: #551ef7;
   color: #fff;
-  box-shadow: inset 0 0 0 1px #6c40f7 !important;
+  box-shadow: inset 0 0 0 1px #551ef7 !important;
 }
 
 .eb-panel-control .components-button-group.eb-unit-control-btn-group {
@@ -247,6 +237,14 @@
 
 .eb-panel-control .components-button-group.eb-unit-control-btn-group .components-button.is-primary {
   box-shadow: none !important;
+}
+
+.eb-panel-control .responsiveRangeControllerWrapper .eb-unit-control-btn-group {
+  display: block;
+}
+
+.eb-panel-control .responsiveRangeControllerWrapper .eb-unit-control-btn-group .eb-unit-control-btn {
+  display: inline-block;
 }
 
 .eb-panel-control .components-panel__body .dimention-container .dimention-label {
@@ -361,10 +359,15 @@
 }
 
 .eb-panel-control .components-range-control__slider + span {
-  background-color: #f8f8f8;
+  background-color: #e5e5ed;
   border: none;
   outline: none;
   box-shadow: none;
+}
+
+.eb-panel-control .components-range-control__track {
+  margin-left: -8px;
+  background-color: #b4b4cb;
 }
 
 .eb-panel-control .components-range-control__track + span {
@@ -382,7 +385,7 @@
 
 .eb-panel-control .components-range-control__root .components-input-control {
   margin-left: 8px !important;
-  width: 50px !important;
+  width: 70px !important;
 }
 
 .eb-panel-control .components-input-control__input {
@@ -400,13 +403,16 @@
   height: 26px !important;
   min-height: 26px !important;
   line-height: 26px;
+  text-align: center !important;
+  padding: 0 10px !important;
+  width: auto !important;
+  max-width: 100%;
 }
 
 /* Color undo button style */
 .eb-panel-control .components-button.eb-color-undo .dashicon {
   font-size: 14px;
   color: #62626f;
-  padding-left: 7px;
 }
 
 .eb-color-undo {
@@ -456,10 +462,6 @@
   width: 25px !important;
 }
 
-.eb-panel-control .components-range-control__track {
-  margin-left: -8px;
-}
-
 .eb-userinfo-container > p {
   margin: 0 !important;
 }
@@ -474,77 +476,6 @@
 //
 //
 // */
-/* 
-//
-	dimensionControl's css (margin-padding panel) starts
-// 
-*/
-.input-wrapper {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-}
-
-.linked-btn {
-  width: 40px;
-  height: 30px;
-  border-radius: 5px;
-  margin-left: 8px;
-  padding-left: 12px;
-}
-
-.dimention-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1em;
-}
-
-.dimention-label {
-  margin-bottom: 4px;
-  margin-right: 100px;
-}
-
-.dimentions-input-label {
-  font-size: 0.75em;
-  text-align: center;
-}
-
-.input-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.input-container .input-wrapper:first-child input {
-  border-width: 1px;
-  border-radius: 4px 0px 0px 4px;
-}
-.input-container .input-wrapper input {
-  min-height: 24px;
-  height: 24px;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  border-width: 1px 1px 1px 0px;
-  border-color: #8d96a0;
-  border-style: solid;
-  border-radius: 0;
-  width: 100%;
-}
-.input-container .input-wrapper:nth-child(5) input {
-  border-radius: 0px 4px 4px 0px;
-}
-.input-container .input-wrapper button {
-  margin-left: 0px;
-  border-radius: 0px 4px 4px 0px;
-  border: 1px solid #8d96a0;
-  border-left: none;
-}
-
-/* 
-//
-	dimensionControl's css (margin-padding panel) ends
-// 
-*/
 .eb-resButtons {
   display: flex;
   justify-content: space-between;
@@ -554,12 +485,12 @@
 }
 
 button.eb-res-btn {
-  background: #6c40f733;
-  border: 1px solid #6c40f733;
+  background: #551ef733;
+  border: 1px solid #551ef733;
   border-radius: 3px;
   padding: 5px 0;
   flex: 1;
-  color: #6c40f7;
+  color: #551ef7;
   font-weight: 600;
   letter-spacing: 0.2px;
   cursor: pointer;
@@ -568,12 +499,12 @@ button.eb-res-btn {
 
 button.eb-res-btn:hover,
 button.eb-res-btn.active {
-  box-shadow: #6c40f799 0px 0px 5px 0px;
+  box-shadow: #551ef799 0px 0px 5px 0px;
 }
 
 button.eb-res-btn.active {
-  background: #6c40f7;
-  border: 1px solid #6c40f7;
+  background: #551ef7;
+  border: 1px solid #551ef7;
   color: #fff;
 }
 
@@ -581,47 +512,28 @@ button.eb-res-btn:focus {
   outline: none;
 }
 
-.edit-post-visual-editor.editor-styles-wrapper {
-  margin: auto;
-  width: 100%;
-}
-
 .eb-typography-component-panel {
   min-width: 220px;
   padding: 1rem;
 }
 
-/* 
-* making the edit page respond to the responsive width
-*/
-.editor-styles-wrapper {
-  margin: auto;
-  transition: 0.5s;
-}
-
-body.eb-res-option-desktop .editor-styles-wrapper {
-  max-width: 100%;
-}
-
-body.eb-res-option-tab .editor-styles-wrapper {
-  max-width: 768px;
-}
-
-body.eb-res-option-mobile .editor-styles-wrapper {
-  max-width: 480px;
-}
-
 .typoResButton {
   cursor: pointer;
-  font-size: 14px;
-  line-height: 23px;
-  width: 16px;
-  z-index: 999;
+  font-size: 11px;
+  line-height: 18px;
+  width: 18px;
+  height: 18px;
   position: relative;
+  z-index: 999;
+  background-color: #e8e8e8;
+  color: #5f5f5f;
+  margin: 0px 8px 5px 0px;
+  text-align: center;
+  border-radius: 3px;
 }
 
 .typoResButton.active {
-  color: #6c40f7;
+  color: #551ef7;
 }
 
 .wrap_res {
@@ -645,27 +557,88 @@ body.eb-res-option-mobile .editor-styles-wrapper {
   left: 83px;
 }
 
-.eb-unit-control-btn-group {
-  margin: 0px 0px -20px 0px;
-  text-align: right;
-  display: block;
+/* 
+   fix of this issue (https://prnt.sc/111gq2g) start
+  */
+.eb-panel-control .components-button:not(.eb-unit-control-btn-group) {
+  position: relative;
+  z-index: 0;
 }
 
-.eb-unit-control-btn {
-  color: black;
-  background: transparent !important;
-  outline: none !important;
-  box-shadow: none !important;
-  border: none !important;
-  text-shadow: none !important;
+/* 
+fix of this issue (https://prnt.sc/111gq2g) end
+*/
+.eb-typography-base div {
+  display: flex;
+  justify-content: space-between;
 }
 
-.eb-unit-active {
-  color: #6c40f7 !important;
-  font-weight: bold;
+.components-button.has-icon .dashicon.dashicons-format-image {
+  margin: 0;
 }
 
-.eb-color-base div {
+.eb-panel-control .wrap_res.for-icon-size .resIcons {
+  left: 60px;
+}
+
+.eb-panel-control .wrap_res.for-head-img-height .resIcons,
+.eb-panel-control .wrap_res.for-head-img-width .resIcons,
+.eb-panel-control .wrap_res.for-number-size .resIcons {
+  left: 85px;
+}
+
+.eb-panel-control .eb-color-undo .dashicon {
+  margin: 0;
+}
+
+.eb-background-control-inspector-panel-img-btn {
+  height: 100px;
+  width: 100%;
+  background-color: #e3e3e3;
+}
+
+.eb-panel-control .components-button {
+  text-transform: capitalize;
+}
+
+.eb-panel-control .newWithResWrapper .eb-range-controller-container .eb-range-reset-button {
+  margin-top: 0;
+}
+
+.resLabel {
+  padding-right: 5px;
+}
+
+.resBtns {
+  padding-bottom: 5px;
+}
+
+/* 
+unit (px,em,%) anchors not grabbing on hover fix start
+*/
+.eb-panel-control .components-button-group.eb-unit-control-btn-group .components-button {
+  position: relative;
+  z-index: 1111;
+  font-size: 10px;
+}
+
+/* 
+unit (px,em,%) anchors not grabbing on hover fix end
+*/
+/* 
+fixing typography control showing smaller width  start
+*/
+.eb-panel-control {
+  min-width: 220px;
+}
+
+/* 
+fixing typography control showing smaller width  end
+*/
+/* 
+color-control submodules css start
+*/
+.eb-color-base > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -698,21 +671,171 @@ body.eb-res-option-mobile .editor-styles-wrapper {
   box-shadow: none;
 }
 
-.eb-panel-control .components-panel__body .components-input-control__container select.components-select-control__input {
-  line-height: 2em;
+/* 
+color-control submodules css end
+*/
+/* 
+dimensions-control submodules css start
+*/
+.input-wrapper {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
 }
 
-.withResWrapperInDimension .dimention-label {
+.linked-btn {
+  width: 40px;
+  height: 30px;
+  border-radius: 5px;
+  margin-left: 8px;
+  padding-left: 12px;
+}
+
+.dimention-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.dimention-label {
+  margin-bottom: 4px;
+  margin-right: 10px;
   display: inline-block;
-  margin-right: 5px;
 }
 
-.eb-background-control-inspector-panel-img-btn {
-  height: 100px;
+.dimentions-input-label {
+  font-size: 0.75em;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input-container .input-wrapper:first-child input {
+  border-width: 1px;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.input-container .input-wrapper input {
+  min-height: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border-width: 1px 1px 1px 0px;
+  border-color: #8d96a0;
+  border-style: solid;
+  border-radius: 0;
   width: 100%;
-  background-color: #e3e3e3;
 }
 
+.input-container .input-wrapper:nth-child(5) input {
+  border-radius: 0px 4px 4px 0px;
+}
+
+.input-container .input-wrapper button {
+  margin-left: 0px;
+  border-radius: 0px 4px 4px 0px;
+  border: 1px solid #8d96a0;
+  border-left: none;
+}
+
+/* 
+dimensions-control submodules css end
+*/
+/* 
+image-avatar submodule's css start
+*/
+.image-avatar {
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 8px;
+  padding: 2px;
+}
+
+.image-avatar-delete {
+  background-color: blue;
+}
+
+.image-avatar-delete:hover {
+  background-color: red;
+}
+
+/* 
+image-avatar submodule's css end
+*/
+/* 
+social-profiles css start
+*/
+.profile-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid;
+  line-height: 2.5em;
+}
+
+.profile-icon-container {
+  font-size: 14px;
+  padding-right: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+  width: 90%;
+  flex: 10;
+}
+
+.selected-profile-icon {
+  margin-left: 5px;
+}
+
+.link-form-wrapper {
+  margin-top: 10px;
+}
+
+.social-link-input {
+  margin-bottom: 10px;
+}
+
+.profile-icon-wrapper {
+  height: 1em;
+  width: 1em;
+  padding: 1em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.drag-helper {
+  z-index: 100;
+  list-style: none;
+}
+
+.profile-wrapper .drag-handle {
+  flex: 2 1 0% !important;
+  background: darkgrey;
+  border-right: 1px solid;
+  cursor: move;
+  color: #ffffff;
+  align-items: center;
+  display: flex !important;
+  justify-content: center;
+}
+
+.eb-social-delete-icon:hover {
+  cursor: pointer;
+}
+
+/* 
+social-profiles css end
+*/
 /* 
 toggle-button submodule's css start
 */
@@ -774,15 +897,118 @@ toggle-button submodule's css start
 toggle-button submodule's css end
 */
 /* 
-   fix of this issue (https://prnt.sc/111gq2g) start
-  */
-.eb-panel-control .components-button-group:not(.eb-unit-control-btn-group) {
-  position: relative;
-  z-index: 0;
+typography-control submodule's css start
+*/
+.eb-typography-wrapper {
+  padding: 15px;
+}
+
+.components-eb-typography-dropdown {
+  padding: 0 !important;
 }
 
 /* 
-fix of this issue (https://prnt.sc/111gq2g) end
+typography-control submodule's css end
 */
+/* 
+unit-control submodule's css start
+*/
+.eb-unit-control-btn-group {
+  margin: 0px 0px -20px 0px;
+  text-align: right;
+  display: block;
+}
+
+.eb-unit-control-btn {
+  color: black;
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  text-shadow: none !important;
+}
+
+.eb-unit-active {
+  color: #551ef7 !important;
+  font-weight: bold;
+}
+
+/* 
+unit-control submodule's css end
+*/
+/* responsive-range-control submodule's css start */
+.eb-component-wrapper {
+  display: flex;
+}
+
+.eb-component-wrapper .components-base-control.components-range-control {
+  flex-grow: 1;
+}
+
+.eb-component-wrapper .eb-range-reset-button {
+  height: 26px;
+  width: 20px;
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.eb-component-wrapper .eb-range-reset-button .dashicon {
+  font-size: 14px;
+  color: #62626f;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scaleX(-1) rotate(90deg);
+}
+
+.responsive-btn-label {
+  margin-right: 8px;
+}
+
+/* responsive-range-control submodule's css end */
+/* EB Settings Tab Panel Control */
+.eb-panel-control {
+  background-color: #f7f7f7;
+}
+.eb-panel-control .eb-parent-tab-panel .components-tab-panel__tabs {
+  background-color: #fff;
+}
+.eb-panel-control .eb-parent-tab-panel .components-tab-panel__tabs .eb-tab {
+  font-size: 1.1em;
+  background-color: #fff;
+  border-right: 1px solid #fff;
+  border-top: 3px solid transparent;
+}
+.eb-panel-control .eb-parent-tab-panel .components-tab-panel__tabs .eb-tab.active-tab {
+  background-color: #f7f7f7;
+  border-color: #cebeff !important;
+}
+.eb-panel-control .eb-parent-tab-panel .components-tab-panel__tabs .eb-tab:not(:first-child) {
+  border-left: 1px solid #fff;
+}
+.eb-panel-control .eb-parent-tab-panel .components-tab-panel__tabs .eb-tab:hover {
+  color: #551ef7;
+}
+.eb-panel-control .eb-parent-tab-panel .components-tab-panel__tabs .eb-tab:focus {
+  box-shadow: unset;
+}
+.eb-panel-control .eb-parent-tab-panel .components-panel__body.eb-subpanel {
+  border: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.eb-panel-control .eb-parent-tab-panel .components-panel__body-title {
+  background-color: #e8e8e8;
+}
+.eb-panel-control .eb-parent-tab-panel .eb-subpanel .components-panel__body-title {
+  margin-left: 0;
+  margin-right: 0;
+}
 
 /*# sourceMappingURL=index.css.map*/

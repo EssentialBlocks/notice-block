@@ -1,7 +1,6 @@
-import { PanelBody } from "@wordpress/components";
+const { PanelBody } = wp.components;
 
 function ResPanelBody(props) {
-	// console.log("----------ResPanelBody", { props });
 	const { title, initialOpen, children, resRequiredProps } = props;
 	const { resOption, setAttributes } = resRequiredProps;
 
@@ -38,7 +37,7 @@ function ResPanelBody(props) {
 				<div className="eb-resButtons">
 					<button
 						className={`eb-res-btn eb-res-btn-desktop ${
-							resOption == "desktop" && "active"
+							resOption == "Desktop" && "active"
 						}`}
 						onClick={handleDesktopBtnClick}
 					>
@@ -47,7 +46,7 @@ function ResPanelBody(props) {
 					</button>
 					<button
 						className={`eb-res-btn eb-res-btn-tab ${
-							resOption == "tab" && "active"
+							resOption == "Tablet" && "active"
 						}`}
 						onClick={handleTabBtnClick}
 					>
@@ -56,7 +55,7 @@ function ResPanelBody(props) {
 					</button>
 					<button
 						className={`eb-res-btn eb-res-btn-mobile ${
-							resOption == "mobile" && "active"
+							resOption == "Mobile" && "active"
 						}`}
 						onClick={handleMobileBtnClick}
 					>

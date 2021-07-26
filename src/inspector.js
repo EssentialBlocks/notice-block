@@ -1,20 +1,21 @@
 /**
  * WordPress dependencies
  */
-import { __ } from "@wordpress/i18n";
-import { InspectorControls, PanelColorSettings } from "@wordpress/block-editor";
-import {
-	PanelBody,
-	ToggleControl,
-	SelectControl,
-	RangeControl,
-	Button,
-} from "@wordpress/components";
-import { useEffect } from "@wordpress/element";
+const { __ } = wp.i18n;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const { PanelBody, ToggleControl, SelectControl, RangeControl } = wp.components;
+const { useEffect } = wp.element;
+
+const { select } = wp.data;
 
 /**
  * Internal dependencies
  */
+import {
+	mimmikCssForResBtns,
+	mimmikCssOnPreviewBtnClickWhileBlockSelected,
+} from "../util/helpers";
+
 import { NOTICE_TYPES } from "./constants";
 
 import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
@@ -105,63 +106,30 @@ function Inspector(props) {
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
 	useEffect(() => {
-		const bodyClasses = document.body.className;
-		// console.log("----log from inspector useEffect with empty []", {
-		// 	bodyClasses,
-		// });
-
-		if (!/eb\-res\-option\-/i.test(bodyClasses)) {
-			document.body.classList.add("eb-res-option-desktop");
-			setAttributes({
-				resOption: "desktop",
-			});
-		} else {
-			const resOption = bodyClasses
-				.match(/eb-res-option-[^\s]+/g)[0]
-				.split("-")[3];
-			setAttributes({ resOption });
-		}
+		setAttributes({
+			resOption: select("core/edit-post").__experimentalGetPreviewDeviceType(),
+		});
 	}, []);
 
 	// this useEffect is for mimmiking css for all the eb blocks on resOption changing
 	useEffect(() => {
-		const allEbBlocksWrapper = document.querySelectorAll(
-			".eb-guten-block-main-parent-wrapper:not(.is-selected) > style"
-		);
-		// console.log("---inspector", { allEbBlocksWrapper });
-		if (allEbBlocksWrapper.length < 1) return;
-		allEbBlocksWrapper.forEach((styleTag) => {
-			const cssStrings = styleTag.textContent;
-			const minCss = cssStrings.replace(/\s+/g, " ");
-			const regexCssMimmikSpace = /(?<=mimmikcssStart\s\*\/).+(?=\/\*\smimmikcssEnd)/i;
-			let newCssStrings = " ";
-			if (resOption === "tab") {
-				const tabCssStrings = (minCss.match(
-					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
-				) || [" "])[0];
-				// console.log({ tabCssStrings });
-				newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
-			} else if (resOption === "mobile") {
-				const tabCssStrings = (minCss.match(
-					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
-				) || [" "])[0];
-
-				const mobCssStrings = (minCss.match(
-					/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i
-				) || [" "])[0];
-
-				// console.log({ tabCssStrings, mobCssStrings });
-
-				newCssStrings = minCss.replace(
-					regexCssMimmikSpace,
-					`${tabCssStrings} ${mobCssStrings}`
-				);
-			} else {
-				newCssStrings = minCss.replace(regexCssMimmikSpace, " ");
-			}
-			styleTag.textContent = newCssStrings;
+		mimmikCssForResBtns({
+			domObj: document,
+			resOption,
 		});
 	}, [resOption]);
+
+	// this useEffect is to mimmik css for responsive preview in the editor page when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
+	useEffect(() => {
+		const cleanUp = mimmikCssOnPreviewBtnClickWhileBlockSelected({
+			domObj: document,
+			select,
+			setAttributes,
+		});
+		return () => {
+			cleanUp();
+		};
+	}, []);
 
 	const resRequiredProps = {
 		setAttributes,
@@ -240,14 +208,14 @@ function Inspector(props) {
 					/>
 				</PanelBody>
 
-				<PanelBody title={__("Notice Background")} initialOpen={false}>
+				<PanelBody title={__("Background")} initialOpen={false}>
 					<BackgroundControl
 						controlName={wrapBg}
 						resRequiredProps={resRequiredProps}
 					/>
 				</PanelBody>
 
-				<PanelBody title={__("Notice Border & Shadow")} initialOpen={false}>
+				<PanelBody title={__("Border & Shadow")} initialOpen={false}>
 					<BorderShadowControl
 						controlName={wrpBdShadow}
 						resRequiredProps={resRequiredProps}

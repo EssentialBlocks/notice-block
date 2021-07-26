@@ -1,4 +1,4 @@
-import { RichText, useBlockProps } from "@wordpress/block-editor";
+const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = ({ attributes }) => {
 	const { blockId, showAfterDismiss, title, text } = attributes;
@@ -16,8 +16,8 @@ const save = ({ attributes }) => {
 						className="eb-notice-title"
 						value={title}
 					/>
-					<span className="eb-notice-dismiss" style={{ cursor: "pointer" }} />
 				</div>
+				<span className="eb-notice-dismiss" style={{ cursor: "pointer" }} />
 				<div>
 					<RichText.Content
 						tagName="div"
