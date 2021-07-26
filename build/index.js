@@ -756,35 +756,37 @@ registerBlockType(name, {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/helpers */ "./util/helpers/index.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
-/* harmony import */ var _util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/dimensions-control-v2 */ "./util/dimensions-control-v2/index.js");
-/* harmony import */ var _util_typography_control_v2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/typography-control-v2 */ "./util/typography-control-v2/index.js");
-/* harmony import */ var _util_border_shadow_control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/border-shadow-control */ "./util/border-shadow-control/index.js");
-/* harmony import */ var _util_background_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/background-control */ "./util/background-control/index.js");
-/* harmony import */ var _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./constants/dimensionsNames */ "./src/constants/dimensionsNames.js");
-/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
-/* harmony import */ var _constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./constants/backgroundsConstants */ "./src/constants/backgroundsConstants.js");
-/* harmony import */ var _constants_borderShadowConstants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./constants/borderShadowConstants */ "./src/constants/borderShadowConstants.js");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./attributes */ "./src/attributes.js");
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/helpers */ "./util/helpers/index.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
+/* harmony import */ var _util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/dimensions-control-v2 */ "./util/dimensions-control-v2/index.js");
+/* harmony import */ var _util_typography_control_v2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/typography-control-v2 */ "./util/typography-control-v2/index.js");
+/* harmony import */ var _util_border_shadow_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/border-shadow-control */ "./util/border-shadow-control/index.js");
+/* harmony import */ var _util_color_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/color-control */ "./util/color-control/index.js");
+/* harmony import */ var _util_background_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/background-control */ "./util/background-control/index.js");
+/* harmony import */ var _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./constants/dimensionsNames */ "./src/constants/dimensionsNames.js");
+/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+/* harmony import */ var _constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./constants/backgroundsConstants */ "./src/constants/backgroundsConstants.js");
+/* harmony import */ var _constants_borderShadowConstants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./constants/borderShadowConstants */ "./src/constants/borderShadowConstants.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
  * WordPress dependencies
  */
 var __ = wp.i18n.__;
-var _wp$blockEditor = wp.blockEditor,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    PanelColorSettings = _wp$blockEditor.PanelColorSettings;
+var InspectorControls = wp.blockEditor.InspectorControls;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     ToggleControl = _wp$components.ToggleControl,
     SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl;
+    TabPanel = _wp$components.TabPanel;
 var useEffect = wp.element.useEffect;
 var select = wp.data.select;
 /**
  * Internal dependencies
  */
+
+
 
 
 
@@ -803,15 +805,9 @@ function Inspector(props) {
   var resOption = attributes.resOption,
       dismissible = attributes.dismissible,
       noticeType = attributes.noticeType,
-      backgroundColor = attributes["".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_8__["wrapBg"], "backgroundColor")],
       titleColor = attributes.titleColor,
       textColor = attributes.textColor,
-      showAfterDismiss = attributes.showAfterDismiss,
-      shadowColor = attributes.shadowColor,
-      shadowHOffset = attributes.shadowHOffset,
-      shadowVOffset = attributes.shadowVOffset,
-      shadowBlur = attributes.shadowBlur,
-      shadowSpread = attributes.shadowSpread;
+      showAfterDismiss = attributes.showAfterDismiss;
 
   var onTypeChange = function onTypeChange(type) {
     var _setAttributes, _setAttributes2, _setAttributes3, _setAttributes4, _setAttributes5;
@@ -820,31 +816,31 @@ function Inspector(props) {
       case "success":
         setAttributes((_setAttributes = {
           noticeType: type
-        }, _defineProperty(_setAttributes, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_8__["wrapBg"], "backgroundColor"), "#4caf50"), _defineProperty(_setAttributes, "titleColor", "#ffffff"), _defineProperty(_setAttributes, "textColor", "#ffffff"), _setAttributes));
+        }, _defineProperty(_setAttributes, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor"), "#4caf50"), _defineProperty(_setAttributes, "titleColor", "#ffffff"), _defineProperty(_setAttributes, "textColor", "#ffffff"), _setAttributes));
         break;
 
       case "info":
         setAttributes((_setAttributes2 = {
           noticeType: type
-        }, _defineProperty(_setAttributes2, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_8__["wrapBg"], "backgroundColor"), "#d3d3d3"), _defineProperty(_setAttributes2, "titleColor", "#000000"), _defineProperty(_setAttributes2, "textColor", "#000000"), _setAttributes2));
+        }, _defineProperty(_setAttributes2, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor"), "#d3d3d3"), _defineProperty(_setAttributes2, "titleColor", "#000000"), _defineProperty(_setAttributes2, "textColor", "#000000"), _setAttributes2));
         break;
 
       case "danger":
         setAttributes((_setAttributes3 = {
           noticeType: type
-        }, _defineProperty(_setAttributes3, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_8__["wrapBg"], "backgroundColor"), "#f44336"), _defineProperty(_setAttributes3, "titleColor", "#ffffff"), _defineProperty(_setAttributes3, "textColor", "#ffffff"), _setAttributes3));
+        }, _defineProperty(_setAttributes3, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor"), "#f44336"), _defineProperty(_setAttributes3, "titleColor", "#ffffff"), _defineProperty(_setAttributes3, "textColor", "#ffffff"), _setAttributes3));
         break;
 
       case "warning":
         setAttributes((_setAttributes4 = {
           noticeType: type
-        }, _defineProperty(_setAttributes4, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_8__["wrapBg"], "backgroundColor"), "#ffeb3b"), _defineProperty(_setAttributes4, "titleColor", "#000000"), _defineProperty(_setAttributes4, "textColor", "#000000"), _setAttributes4));
+        }, _defineProperty(_setAttributes4, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor"), "#ffeb3b"), _defineProperty(_setAttributes4, "titleColor", "#000000"), _defineProperty(_setAttributes4, "textColor", "#000000"), _setAttributes4));
         break;
 
       case "default":
         setAttributes((_setAttributes5 = {
           noticeType: type
-        }, _defineProperty(_setAttributes5, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_8__["wrapBg"], "backgroundColor"), "#2196f3"), _defineProperty(_setAttributes5, "titleColor", "#ffffff"), _defineProperty(_setAttributes5, "textColor", "#ffffff"), _setAttributes5));
+        }, _defineProperty(_setAttributes5, "".concat(_constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"], "backgroundColor"), "#2196f3"), _defineProperty(_setAttributes5, "titleColor", "#ffffff"), _defineProperty(_setAttributes5, "textColor", "#ffffff"), _setAttributes5));
         break;
     }
   }; // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
@@ -857,14 +853,14 @@ function Inspector(props) {
   }, []); // this useEffect is for mimmiking css for all the eb blocks on resOption changing
 
   useEffect(function () {
-    Object(_util_helpers__WEBPACK_IMPORTED_MODULE_0__["mimmikCssForResBtns"])({
+    Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["mimmikCssForResBtns"])({
       domObj: document,
       resOption: resOption
     });
   }, [resOption]); // this useEffect is to mimmik css for responsive preview in the editor page when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
 
   useEffect(function () {
-    var cleanUp = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_0__["mimmikCssOnPreviewBtnClickWhileBlockSelected"])({
+    var cleanUp = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["mimmikCssOnPreviewBtnClickWhileBlockSelected"])({
       domObj: document,
       select: select,
       setAttributes: setAttributes
@@ -876,92 +872,110 @@ function Inspector(props) {
   var resRequiredProps = {
     setAttributes: setAttributes,
     resOption: resOption,
-    attributes: attributes
+    attributes: attributes,
+    objAttributes: _attributes__WEBPACK_IMPORTED_MODULE_0__["default"]
   };
   return /*#__PURE__*/React.createElement(InspectorControls, {
     key: "controls"
-  }, /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: "eb-panel-control"
-  }, /*#__PURE__*/React.createElement(PanelBody, {
-    title: __("Notice Settings")
-  }, /*#__PURE__*/React.createElement(ToggleControl, {
-    label: __("Dismissible"),
-    checked: dismissible,
-    onChange: function onChange() {
-      return setAttributes({
-        dismissible: !dismissible
-      });
-    }
-  }), /*#__PURE__*/React.createElement(ToggleControl, {
-    label: __("Show After Dismiss"),
-    checked: showAfterDismiss,
-    onChange: function onChange() {
-      return setAttributes({
-        showAfterDismiss: !showAfterDismiss
-      });
-    }
-  }), /*#__PURE__*/React.createElement(SelectControl, {
-    label: __("Type"),
-    value: noticeType,
-    options: _constants__WEBPACK_IMPORTED_MODULE_1__["NOTICE_TYPES"],
-    onChange: function onChange(type) {
-      return onTypeChange(type);
-    }
-  })), /*#__PURE__*/React.createElement(PanelBody, {
-    title: __("Typography"),
-    initialOpen: false
-  }, /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    baseLabel: "Title",
-    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_7__["typoPrefix_title"],
-    resRequiredProps: resRequiredProps
-  }), /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    baseLabel: "Text",
-    typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_7__["typoPrefix_text"],
-    resRequiredProps: resRequiredProps
-  })), /*#__PURE__*/React.createElement(PanelColorSettings, {
-    title: __("Color Settings"),
-    initialOpen: false,
-    colorSettings: [{
-      value: titleColor,
-      onChange: function onChange(newColor) {
-        return setAttributes({
-          titleColor: newColor
-        });
-      },
-      label: __("Title Color")
+  }, /*#__PURE__*/React.createElement(TabPanel, {
+    className: "eb-parent-tab-panel",
+    activeClass: "active-tab" // onSelect={onSelect}
+    ,
+    tabs: [{
+      name: "general",
+      title: "General",
+      className: "eb-tab general"
     }, {
-      value: textColor,
-      onChange: function onChange(newColor) {
-        return setAttributes({
-          textColor: newColor
-        });
-      },
-      label: __("Text Color")
+      name: "styles",
+      title: "Styles",
+      className: "eb-tab styles"
+    }, {
+      name: "advance",
+      title: "Advance",
+      className: "eb-tab advance"
     }]
-  }), /*#__PURE__*/React.createElement(PanelBody, {
-    title: __("Margin & Padding"),
-    initialOpen: false
-  }, /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    resRequiredProps: resRequiredProps,
-    controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_6__["dimensionsMargin"],
-    baseLabel: "Margin"
-  }), /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    resRequiredProps: resRequiredProps,
-    controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_6__["dimensionsPadding"],
-    baseLabel: "Padding"
-  })), /*#__PURE__*/React.createElement(PanelBody, {
-    title: __("Background"),
-    initialOpen: false
-  }, /*#__PURE__*/React.createElement(_util_background_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    controlName: _constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_8__["wrapBg"],
-    resRequiredProps: resRequiredProps
-  })), /*#__PURE__*/React.createElement(PanelBody, {
-    title: __("Border & Shadow"),
-    initialOpen: false
-  }, /*#__PURE__*/React.createElement(_util_border_shadow_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    controlName: _constants_borderShadowConstants__WEBPACK_IMPORTED_MODULE_9__["wrpBdShadow"],
-    resRequiredProps: resRequiredProps
-  }))));
+  }, function (tab) {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "eb-tab-controls" + tab.name
+    }, tab.name === "general" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PanelBody, {
+      title: __("Notice Settings")
+    }, /*#__PURE__*/React.createElement(ToggleControl, {
+      label: __("Dismissible"),
+      checked: dismissible,
+      onChange: function onChange() {
+        return setAttributes({
+          dismissible: !dismissible
+        });
+      }
+    }), /*#__PURE__*/React.createElement(ToggleControl, {
+      label: __("Show After Dismiss"),
+      checked: showAfterDismiss,
+      onChange: function onChange() {
+        return setAttributes({
+          showAfterDismiss: !showAfterDismiss
+        });
+      }
+    }), /*#__PURE__*/React.createElement(SelectControl, {
+      label: __("Type"),
+      value: noticeType,
+      options: _constants__WEBPACK_IMPORTED_MODULE_2__["NOTICE_TYPES"],
+      onChange: function onChange(type) {
+        return onTypeChange(type);
+      }
+    }))), tab.name === "styles" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PanelBody, {
+      title: __("Title")
+    }, /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      baseLabel: "typography",
+      typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_9__["typoPrefix_title"],
+      resRequiredProps: resRequiredProps
+    }), /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Color"),
+      color: titleColor,
+      onChange: function onChange(titleColor) {
+        return setAttributes({
+          titleColor: titleColor
+        });
+      }
+    })), /*#__PURE__*/React.createElement(PanelBody, {
+      title: __("text")
+    }, /*#__PURE__*/React.createElement(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      baseLabel: "typography",
+      typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_9__["typoPrefix_text"],
+      resRequiredProps: resRequiredProps
+    }), /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Color"),
+      color: textColor,
+      onChange: function onChange(textColor) {
+        return setAttributes({
+          textColor: textColor
+        });
+      }
+    }))), tab.name === "advance" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PanelBody, {
+      title: __("Margin & Padding")
+    }, /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      resRequiredProps: resRequiredProps,
+      controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_8__["dimensionsMargin"],
+      baseLabel: "Margin"
+    }), /*#__PURE__*/React.createElement(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      resRequiredProps: resRequiredProps,
+      controlName: _constants_dimensionsNames__WEBPACK_IMPORTED_MODULE_8__["dimensionsPadding"],
+      baseLabel: "Padding"
+    })), /*#__PURE__*/React.createElement(PanelBody, {
+      title: __("Background"),
+      initialOpen: false
+    }, /*#__PURE__*/React.createElement(_util_background_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      controlName: _constants_backgroundsConstants__WEBPACK_IMPORTED_MODULE_10__["wrapBg"],
+      resRequiredProps: resRequiredProps
+    })), /*#__PURE__*/React.createElement(PanelBody, {
+      title: __("Border & Shadow"),
+      initialOpen: false
+    }, /*#__PURE__*/React.createElement(_util_border_shadow_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      controlName: _constants_borderShadowConstants__WEBPACK_IMPORTED_MODULE_11__["wrpBdShadow"],
+      resRequiredProps: resRequiredProps
+    }))));
+  })));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Inspector);
