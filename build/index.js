@@ -6999,7 +6999,9 @@ var generateResponsiveRangeAttributes = function generateResponsiveRangeAttribut
 
   var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var defaultRange = defaults.defaultRange,
-      noUnits = defaults.noUnits;
+      noUnits = defaults.noUnits,
+      _defaults$defaultUnit = defaults.defaultUnit,
+      defaultUnit = _defaults$defaultUnit === void 0 ? "px" : _defaults$defaultUnit;
   var desktop = defaultRange ? _defineProperty({}, "".concat(controlName, "Range"), {
     type: "number",
     "default": defaultRange
@@ -7008,7 +7010,7 @@ var generateResponsiveRangeAttributes = function generateResponsiveRangeAttribut
   });
   var units = noUnits === true ? {} : (_ref3 = {}, _defineProperty(_ref3, "".concat(controlName, "Unit"), {
     type: "string",
-    "default": "px"
+    "default": defaultUnit
   }), _defineProperty(_ref3, "TAB".concat(controlName, "Unit"), {
     type: "string",
     "default": "px"
@@ -10093,7 +10095,7 @@ var sizeUnitTypes = [{
 }];
 var optionsFontWeights = [{
   label: __("Default"),
-  value: undefined
+  value: ""
 }, {
   label: __("100"),
   value: "100"
@@ -10124,7 +10126,7 @@ var optionsFontWeights = [{
 }];
 var optionsTextTransforms = [{
   label: __("Default"),
-  value: undefined
+  value: ""
 }, {
   label: __("None"),
   value: "none"
@@ -10140,7 +10142,7 @@ var optionsTextTransforms = [{
 }];
 var optionsTextDecorations = [{
   label: __("Default"),
-  value: undefined
+  value: ""
 }, {
   label: __("None"),
   value: "initial"
@@ -10159,7 +10161,7 @@ var optionsTextDecorations = [{
 }];
 var optionsFontStyles = [{
   label: __("Default"),
-  value: undefined
+  value: ""
 }, {
   label: __("Normal"),
   value: "normal"
