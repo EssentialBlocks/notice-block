@@ -4384,7 +4384,7 @@ function BorderShadowControl(_ref) {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hOffset"), hOffset));
         },
         min: 0,
-        max: 20
+        max: 200
       })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "vOffset"), undefined));
@@ -4396,7 +4396,7 @@ function BorderShadowControl(_ref) {
           return setAttributes(_defineProperty({}, "".concat(controlName, "vOffset"), vOffset));
         },
         min: 0,
-        max: 20
+        max: 200
       })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "blur"), undefined));
@@ -4408,7 +4408,7 @@ function BorderShadowControl(_ref) {
           return setAttributes(_defineProperty({}, "".concat(controlName, "blur"), blur));
         },
         min: 0,
-        max: 20
+        max: 200
       })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "spread"), undefined));
@@ -4420,7 +4420,7 @@ function BorderShadowControl(_ref) {
           return setAttributes(_defineProperty({}, "".concat(controlName, "spread"), spread));
         },
         min: 0,
-        max: 20
+        max: 200
       }))), shadowType === "hover" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_color_control__WEBPACK_IMPORTED_MODULE_0__["default"], {
         label: __("Hover Shadow Color"),
         color: hoverShadowColor,
@@ -4438,7 +4438,7 @@ function BorderShadowControl(_ref) {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverHOffset"), hoverHOffset));
         },
         min: 0,
-        max: 20
+        max: 200
       })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverVOffset"), undefined));
@@ -4450,7 +4450,7 @@ function BorderShadowControl(_ref) {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverVOffset"), hoverVOffset));
         },
         min: 0,
-        max: 20
+        max: 200
       })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverBlur"), undefined));
@@ -4462,7 +4462,7 @@ function BorderShadowControl(_ref) {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverBlur"), hoverBlur));
         },
         min: 0,
-        max: 20
+        max: 200
       })), /*#__PURE__*/React.createElement(_reset_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
         onReset: function onReset() {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverSpread"), undefined));
@@ -4474,7 +4474,7 @@ function BorderShadowControl(_ref) {
           return setAttributes(_defineProperty({}, "".concat(controlName, "hoverSpread"), hoverSpread));
         },
         min: 0,
-        max: 20
+        max: 200
       })), /*#__PURE__*/React.createElement(RangeControl, {
         label: __("Shadow Transition"),
         value: shadowTransition,
