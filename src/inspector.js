@@ -1,25 +1,30 @@
 /**
  * WordPress dependencies
  */
-import { __ } from "@wordpress/i18n";
-import { InspectorControls, PanelColorSettings } from "@wordpress/block-editor";
-import {
-	PanelBody,
-	ToggleControl,
-	SelectControl,
-	RangeControl,
-	Button,
-} from "@wordpress/components";
-import { useEffect } from "@wordpress/element";
+const { __ } = wp.i18n;
+const { InspectorControls } = wp.blockEditor;
+const { PanelBody, ToggleControl, SelectControl, TabPanel } = wp.components;
+const { useEffect } = wp.element;
+
+const { select } = wp.data;
 
 /**
  * Internal dependencies
  */
+
+import objAttributes from "./attributes";
+
+import {
+	mimmikCssForResBtns,
+	mimmikCssOnPreviewBtnClickWhileBlockSelected,
+} from "../util/helpers";
+
 import { NOTICE_TYPES } from "./constants";
 
 import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
 import TypographyDropdown from "../util/typography-control-v2";
 import BorderShadowControl from "../util/border-shadow-control";
+import ColorControl from "../util/color-control";
 import BackgroundControl from "../util/background-control";
 
 import {
@@ -43,15 +48,9 @@ function Inspector(props) {
 
 		dismissible,
 		noticeType,
-		[`${wrapBg}backgroundColor`]: backgroundColor,
 		titleColor,
 		textColor,
 		showAfterDismiss,
-		shadowColor,
-		shadowHOffset,
-		shadowVOffset,
-		shadowBlur,
-		shadowSpread,
 	} = attributes;
 
 	const onTypeChange = (type) => {
@@ -105,155 +104,160 @@ function Inspector(props) {
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
 	useEffect(() => {
-		const bodyClasses = document.body.className;
-		// console.log("----log from inspector useEffect with empty []", {
-		// 	bodyClasses,
-		// });
-
-		if (!/eb\-res\-option\-/i.test(bodyClasses)) {
-			document.body.classList.add("eb-res-option-desktop");
-			setAttributes({
-				resOption: "desktop",
-			});
-		} else {
-			const resOption = bodyClasses
-				.match(/eb-res-option-[^\s]+/g)[0]
-				.split("-")[3];
-			setAttributes({ resOption });
-		}
+		setAttributes({
+			resOption: select("core/edit-post").__experimentalGetPreviewDeviceType(),
+		});
 	}, []);
 
 	// this useEffect is for mimmiking css for all the eb blocks on resOption changing
 	useEffect(() => {
-		const allEbBlocksWrapper = document.querySelectorAll(
-			".eb-guten-block-main-parent-wrapper:not(.is-selected) > style"
-		);
-		// console.log("---inspector", { allEbBlocksWrapper });
-		if (allEbBlocksWrapper.length < 1) return;
-		allEbBlocksWrapper.forEach((styleTag) => {
-			const cssStrings = styleTag.textContent;
-			const minCss = cssStrings.replace(/\s+/g, " ");
-			const regexCssMimmikSpace = /(?<=mimmikcssStart\s\*\/).+(?=\/\*\smimmikcssEnd)/i;
-			let newCssStrings = " ";
-			if (resOption === "tab") {
-				const tabCssStrings = (minCss.match(
-					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
-				) || [" "])[0];
-				// console.log({ tabCssStrings });
-				newCssStrings = minCss.replace(regexCssMimmikSpace, tabCssStrings);
-			} else if (resOption === "mobile") {
-				const tabCssStrings = (minCss.match(
-					/(?<=tabcssStart\s\*\/).+(?=\/\*\stabcssEnd)/i
-				) || [" "])[0];
-
-				const mobCssStrings = (minCss.match(
-					/(?<=mobcssStart\s\*\/).+(?=\/\*\smobcssEnd)/i
-				) || [" "])[0];
-
-				// console.log({ tabCssStrings, mobCssStrings });
-
-				newCssStrings = minCss.replace(
-					regexCssMimmikSpace,
-					`${tabCssStrings} ${mobCssStrings}`
-				);
-			} else {
-				newCssStrings = minCss.replace(regexCssMimmikSpace, " ");
-			}
-			styleTag.textContent = newCssStrings;
+		mimmikCssForResBtns({
+			domObj: document,
+			resOption,
 		});
 	}, [resOption]);
+
+	// this useEffect is to mimmik css for responsive preview in the editor page when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
+	useEffect(() => {
+		const cleanUp = mimmikCssOnPreviewBtnClickWhileBlockSelected({
+			domObj: document,
+			select,
+			setAttributes,
+		});
+		return () => {
+			cleanUp();
+		};
+	}, []);
 
 	const resRequiredProps = {
 		setAttributes,
 		resOption,
 		attributes,
+		objAttributes,
 	};
 
 	return (
 		<InspectorControls key="controls">
-			<span className="eb-panel-control">
-				<PanelBody title={__("Notice Settings")}>
-					<ToggleControl
-						label={__("Dismissible")}
-						checked={dismissible}
-						onChange={() => setAttributes({ dismissible: !dismissible })}
-					/>
-
-					<ToggleControl
-						label={__("Show After Dismiss")}
-						checked={showAfterDismiss}
-						onChange={() =>
-							setAttributes({
-								showAfterDismiss: !showAfterDismiss,
-							})
-						}
-					/>
-
-					<SelectControl
-						label={__("Type")}
-						value={noticeType}
-						options={NOTICE_TYPES}
-						onChange={(type) => onTypeChange(type)}
-					/>
-				</PanelBody>
-
-				<PanelBody title={__("Typography")} initialOpen={false}>
-					<TypographyDropdown
-						baseLabel="Title"
-						typographyPrefixConstant={typoPrefix_title}
-						resRequiredProps={resRequiredProps}
-					/>
-					<TypographyDropdown
-						baseLabel="Text"
-						typographyPrefixConstant={typoPrefix_text}
-						resRequiredProps={resRequiredProps}
-					/>
-				</PanelBody>
-
-				<PanelColorSettings
-					title={__("Color Settings")}
-					initialOpen={false}
-					colorSettings={[
+			<div className="eb-panel-control">
+				<TabPanel
+					className="eb-parent-tab-panel"
+					activeClass="active-tab"
+					// onSelect={onSelect}
+					tabs={[
 						{
-							value: titleColor,
-							onChange: (newColor) => setAttributes({ titleColor: newColor }),
-							label: __("Title Color"),
+							name: "general",
+							title: "General",
+							className: "eb-tab general",
 						},
 						{
-							value: textColor,
-							onChange: (newColor) => setAttributes({ textColor: newColor }),
-							label: __("Text Color"),
+							name: "styles",
+							title: "Styles",
+							className: "eb-tab styles",
+						},
+						{
+							name: "advance",
+							title: "Advance",
+							className: "eb-tab advance",
 						},
 					]}
-				/>
+				>
+					{(tab) => (
+						<div className={"eb-tab-controls" + tab.name}>
+							{tab.name === "general" && (
+								<>
+									<PanelBody title={__("Notice Settings")}>
+										<ToggleControl
+											label={__("Dismissible")}
+											checked={dismissible}
+											onChange={() =>
+												setAttributes({ dismissible: !dismissible })
+											}
+										/>
 
-				<PanelBody title={__("Margin & Padding")} initialOpen={false}>
-					<ResponsiveDimensionsControl
-						resRequiredProps={resRequiredProps}
-						controlName={dimensionsMargin}
-						baseLabel="Margin"
-					/>
-					<ResponsiveDimensionsControl
-						resRequiredProps={resRequiredProps}
-						controlName={dimensionsPadding}
-						baseLabel="Padding"
-					/>
-				</PanelBody>
+										<ToggleControl
+											label={__("Show After Dismiss")}
+											checked={showAfterDismiss}
+											onChange={() =>
+												setAttributes({
+													showAfterDismiss: !showAfterDismiss,
+												})
+											}
+										/>
 
-				<PanelBody title={__("Notice Background")} initialOpen={false}>
-					<BackgroundControl
-						controlName={wrapBg}
-						resRequiredProps={resRequiredProps}
-					/>
-				</PanelBody>
+										<SelectControl
+											label={__("Type")}
+											value={noticeType}
+											options={NOTICE_TYPES}
+											onChange={(type) => onTypeChange(type)}
+										/>
+									</PanelBody>
+								</>
+							)}
+							{tab.name === "styles" && (
+								<>
+									<PanelBody title={__("Title")}>
+										<TypographyDropdown
+											baseLabel="typography"
+											typographyPrefixConstant={typoPrefix_title}
+											resRequiredProps={resRequiredProps}
+										/>
 
-				<PanelBody title={__("Notice Border & Shadow")} initialOpen={false}>
-					<BorderShadowControl
-						controlName={wrpBdShadow}
-						resRequiredProps={resRequiredProps}
-					/>
-				</PanelBody>
-			</span>
+										<ColorControl
+											label={__("Color")}
+											color={titleColor}
+											onChange={(titleColor) => setAttributes({ titleColor })}
+										/>
+									</PanelBody>
+
+									<PanelBody title={__("text")}>
+										<TypographyDropdown
+											baseLabel="typography"
+											typographyPrefixConstant={typoPrefix_text}
+											resRequiredProps={resRequiredProps}
+										/>
+
+										<ColorControl
+											label={__("Color")}
+											color={textColor}
+											onChange={(textColor) => setAttributes({ textColor })}
+										/>
+									</PanelBody>
+								</>
+							)}
+							{tab.name === "advance" && (
+								<>
+									<PanelBody title={__("Margin & Padding")}>
+										<ResponsiveDimensionsControl
+											resRequiredProps={resRequiredProps}
+											controlName={dimensionsMargin}
+											baseLabel="Margin"
+										/>
+										<ResponsiveDimensionsControl
+											resRequiredProps={resRequiredProps}
+											controlName={dimensionsPadding}
+											baseLabel="Padding"
+										/>
+									</PanelBody>
+
+									<PanelBody title={__("Background")} initialOpen={false}>
+										<BackgroundControl
+											controlName={wrapBg}
+											resRequiredProps={resRequiredProps}
+										/>
+									</PanelBody>
+
+									<PanelBody title={__("Border & Shadow")} initialOpen={false}>
+										<BorderShadowControl
+											controlName={wrpBdShadow}
+											resRequiredProps={resRequiredProps}
+										/>
+									</PanelBody>
+								</>
+							)}
+						</div>
+					)}
+				</TabPanel>
+			</div>
 		</InspectorControls>
 	);
 }

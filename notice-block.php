@@ -35,13 +35,19 @@ function create_block_notice_block_init()
 			'You need to run `npm start` or `npm run build` for the "create-block/notice" block first.'
 		);
 	}
+
 	$index_js     = 'build/index.js';
-	$script_asset = require($script_asset_path);
 	wp_register_script(
 		'create-block-notice-block-editor',
 		plugins_url($index_js, __FILE__),
-		$script_asset['dependencies'],
-		$script_asset['version']
+		array(
+			'wp-blocks',
+			'wp-i18n',
+			'wp-element',
+			'wp-block-editor',
+			'wp-editor',
+		),
+		filemtime("$dir/$index_js")
 	);
 
 
@@ -53,30 +59,26 @@ function create_block_notice_block_init()
 		filemtime("$dir/$editor_css")
 	);
 
-	$style_css = 'build/style-index.css';
-	wp_register_style(
-		'create-block-notice-block',
-		plugins_url($style_css, __FILE__),
-		array(),
-		filemtime("$dir/$style_css")
-	);
-
-	$frontend_js_path = include_once "$dir/build/frontend.asset.php";
-	$frontend_js = "build/frontend.js";
+	$frontend_js = 'build/frontend.js';
 	wp_register_script(
 		'essential-blocks-notice-frontend',
 		plugins_url($frontend_js, __FILE__),
-		array_merge(array("wp-editor"), $frontend_js_path['dependencies']),
-		$frontend_js_path['version'],
+		array("jquery", "wp-editor"),
+		filemtime("$dir/$frontend_js"),
 		true
 	);
+
 
 	if (!WP_Block_Type_Registry::get_instance()->is_registered('essential-blocks/notice')) {
 		register_block_type('notice-block/notice', array(
 			'editor_script' => 'create-block-notice-block-editor',
 			'editor_style'  => 'create-block-notice-block-editor',
-			'style'         => 'create-block-notice-block',
-			'script'   => 'essential-blocks-notice-frontend',
+			'render_callback' => function ($attribs, $content) {
+				if (!is_admin()) {
+					wp_enqueue_script('essential-blocks-notice-frontend');
+				}
+				return $content;
+			}
 		));
 	}
 }
