@@ -1,9 +1,9 @@
 === Notice Block ===
-Contributors: wpdevteam, re_enter_rupok, Asif2BD, alam789
+Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, priyomukul, jamilbd07
 Tags: block, blocks, notice, notice box, alert box, warning, highlight, announcement, alert, gutenberg, gutenberg blocks
-Requires at least: 5.0
-Tested up to: 5.5
-Stable tag: 1.0.1
+Requires at least: 5.6
+Tested up to: 5.8
+Stable tag: 1.2.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -20,7 +20,7 @@ Using this **Notice** plugin, you can highlight your news, announcement etc. & g
 **Dedicated Support:** We’ve an extraordinary support team ready to help you. Ask your questions in the support forum, we’ll get back to you immediately.
 
 
-## 🚀 BACKED BY A TRUSTED TEAM ## 
+## 🚀 BACKED BY A TRUSTED TEAM ##
 
 This Block is brought to you by [WPDeveloper](https://wpdeveloper.net), the team behind the most popular elements library [Essential Addons for Elementor](https://wordpress.org/plugins/essential-addons-for-elementor-lite/) (used by almost 700,000 happy users from 180+ countries).
 
@@ -37,7 +37,7 @@ This Block is brought to you by [WPDeveloper](https://wpdeveloper.net), the team
 
 🤝 Join our [Facebook Community](https://www.facebook.com/groups/wpdeveloper.net/) & get connected with expert web creators like yourself.
 
-🧡 LOVED Countdown Block? Rate us on [WordPress Repository](https://wordpress.org/support/plugin/notice-block/reviews/#new-post)
+🧡 LOVED Notice Block? Rate us on [WordPress Repository](https://wordpress.org/support/plugin/notice-block/reviews/#new-post)
 
 🔥 GET FREEBIES FOR YOUR WORDPRESS SITE
 
@@ -61,7 +61,7 @@ Consider checking out our other WordPress solutions & boost your WordPress websi
 
 = Modern Way: =
 1. Go to the WordPress Block/Gutenberg Editor
-2. Search For "Notice Block". 
+2. Search For "Notice Block".
 3. Install in 1-click
 
 = Old Way: =
@@ -81,6 +81,23 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
+= 1.2.3 - 23/08/2021 =
+* Improved: Controls with latest version
+* Improved: Security for asset generation
+
+= 1.2.2 - 07/06/2021 =
+* Added: Border-control, background-control
+* Improved: Shadow-control
+* Fixed: Fixed issue with block.json
+
+= 1.2.1 - 19/05/2021 =
+* Hotfix: Typography control issue
+
+= 1.2.0 - 19/05/2021 =
+* Added: Dynamic asset generation for inline styles
+* Added: Responsive control
+* Improved: Controls and structure
+
 = 1.0.1 =
 * Fix: Missing js file
 
@@ -88,3 +105,4 @@ Yes, it will work with any standard WordPress theme.
 * Initial Release
 
 == Upgrade Notice ==
+[Minor Update] Bugfix and stability.

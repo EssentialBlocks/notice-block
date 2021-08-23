@@ -1,475 +1,265 @@
 /**
  * WordPress dependencies
  */
-import { __ } from "@wordpress/i18n";
-import { Component } from "@wordpress/element";
-import { InspectorControls, PanelColorSettings } from "@wordpress/block-editor";
-import {
-	PanelBody,
-	ToggleControl,
-	SelectControl,
-	RangeControl,
-	BaseControl,
-	Button,
-	Dropdown,
-} from "@wordpress/components";
+const { __ } = wp.i18n;
+const { InspectorControls } = wp.blockEditor;
+const { PanelBody, ToggleControl, SelectControl, TabPanel } = wp.components;
+const { useEffect } = wp.element;
+
+const { select } = wp.data;
 
 /**
  * Internal dependencies
  */
-import {
-	NOTICE_TYPES,
-	FONT_WEIGHTS,
-	TEXT_TRANSFORM,
-	TEXT_DECORATION,
-} from "./constants";
-import UnitControl from "../util/unit-control";
-import FontPicker from "../util/typography-control/FontPicker";
-import ColorControl from "../util/color-control";
 
-class Inspector extends Component {
-	onTypeChange = (type) => {
+import objAttributes from "./attributes";
+
+import {
+	mimmikCssForResBtns,
+	mimmikCssOnPreviewBtnClickWhileBlockSelected,
+} from "../util/helpers";
+
+import { NOTICE_TYPES } from "./constants";
+
+import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
+import TypographyDropdown from "../util/typography-control-v2";
+import BorderShadowControl from "../util/border-shadow-control";
+import ColorControl from "../util/color-control";
+import BackgroundControl from "../util/background-control";
+
+import {
+	dimensionsMargin,
+	dimensionsPadding,
+} from "./constants/dimensionsNames";
+
+import {
+	typoPrefix_text,
+	typoPrefix_title,
+} from "./constants/typographyPrefixConstants";
+
+import { wrapBg } from "./constants/backgroundsConstants";
+import { wrpBdShadow } from "./constants/borderShadowConstants";
+
+function Inspector(props) {
+	const { attributes, setAttributes } = props;
+	const {
+		// responsive control attributes ⬇
+		resOption,
+
+		dismissible,
+		noticeType,
+		titleColor,
+		textColor,
+		showAfterDismiss,
+	} = attributes;
+
+	const onTypeChange = (type) => {
 		switch (type) {
 			case "success":
-				this.props.setAttributes({
+				setAttributes({
 					noticeType: type,
-					backgroundColor: "#4caf50",
+					[`${wrapBg}backgroundColor`]: "#4caf50",
 					titleColor: "#ffffff",
 					textColor: "#ffffff",
 				});
 				break;
 
 			case "info":
-				this.props.setAttributes({
+				setAttributes({
 					noticeType: type,
-					backgroundColor: "#2196f3",
-					titleColor: "#ffffff",
-					textColor: "#ffffff",
+					[`${wrapBg}backgroundColor`]: "#d3d3d3",
+					titleColor: "#000000",
+					textColor: "#000000",
 				});
 				break;
 
 			case "danger":
-				this.props.setAttributes({
+				setAttributes({
 					noticeType: type,
-					backgroundColor: "#f44336",
+					[`${wrapBg}backgroundColor`]: "#f44336",
 					titleColor: "#ffffff",
 					textColor: "#ffffff",
 				});
 				break;
 
 			case "warning":
-				this.props.setAttributes({
+				setAttributes({
 					noticeType: type,
-					backgroundColor: "#ffeb3b",
+					[`${wrapBg}backgroundColor`]: "#ffeb3b",
 					titleColor: "#000000",
 					textColor: "#000000",
 				});
 				break;
 
 			case "default":
-				this.props.setAttributes({
+				setAttributes({
 					noticeType: type,
-					backgroundColor: "#d3d3d3",
-					titleColor: "#000000",
-					textColor: "#000000",
+					[`${wrapBg}backgroundColor`]: "#2196f3",
+					titleColor: "#ffffff",
+					textColor: "#ffffff",
 				});
 				break;
 		}
 	};
-	render = () => {
-		const { attributes, setAttributes } = this.props;
-		const {
-			dismissible,
-			noticeType,
-			titleFontSize,
-			textFontSize,
-			backgroundColor,
-			titleColor,
-			textColor,
-			showAfterDismiss,
-			shadowColor,
-			shadowHOffset,
-			shadowVOffset,
-			shadowBlur,
-			shadowSpread,
-			titleSizeUnit,
-			textSizeUnit,
-			titleFontFamily,
-			titleFontWeight,
-			titleTextTransform,
-			titleTextDecoration,
-			titleLineHeight,
-			titleLineHeightUnit,
-			titleLetterSpacing,
-			titleLetterSpacingUnit,
-			textFontFamily,
-			textFontWeight,
-			textTextTransform,
-			textTextDecoration,
-			textLineHeight,
-			textLineHeightUnit,
-			textLetterSpacing,
-			textLetterSpacingUnit,
-		} = attributes;
 
-		const TITLE_SIZE_STEP = titleSizeUnit === "em" ? 0.1 : 1;
-		const TITLE_SIZE_MAX = titleSizeUnit === "em" ? 10 : 100;
+	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
+	useEffect(() => {
+		setAttributes({
+			resOption: select("core/edit-post").__experimentalGetPreviewDeviceType(),
+		});
+	}, []);
 
-		const TITLE_LINE_HEIGHT_STEP = titleLineHeightUnit === "em" ? 0.1 : 1;
-		const TITLE_LINE_HEIGHT_MAX = titleLineHeightUnit === "em" ? 10 : 100;
+	// this useEffect is for mimmiking css for all the eb blocks on resOption changing
+	useEffect(() => {
+		mimmikCssForResBtns({
+			domObj: document,
+			resOption,
+		});
+	}, [resOption]);
 
-		const TITLE_SPACING_STEP = titleLetterSpacingUnit === "em" ? 0.1 : 1;
-		const TITLE_SPACING_MAX = titleLetterSpacingUnit === "em" ? 10 : 100;
+	// this useEffect is to mimmik css for responsive preview in the editor page when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
+	useEffect(() => {
+		const cleanUp = mimmikCssOnPreviewBtnClickWhileBlockSelected({
+			domObj: document,
+			select,
+			setAttributes,
+		});
+		return () => {
+			cleanUp();
+		};
+	}, []);
 
-		const TEXT_SIZE_STEP = textSizeUnit === "em" ? 0.1 : 1;
-		const TEXT_SIZE_MAX = textSizeUnit === "em" ? 10 : 100;
+	const resRequiredProps = {
+		setAttributes,
+		resOption,
+		attributes,
+		objAttributes,
+	};
 
-		const TEXT_LINE_HEIGHT_STEP = textLineHeightUnit === "em" ? 0.1 : 1;
-		const TEXT_LINE_HEIGHT_MAX = textLineHeightUnit === "em" ? 10 : 100;
-
-		const TEXT_SPACING_STEP = textLetterSpacingUnit === "em" ? 0.1 : 1;
-		const TEXT_SPACING_MAX = textLetterSpacingUnit === "em" ? 10 : 100;
-
-		return (
-			<InspectorControls key="controls">
-				<PanelBody title={__("Notice Settings")}>
-					<ToggleControl
-						label={__("Dismissible")}
-						checked={dismissible}
-						onChange={() => setAttributes({ dismissible: !dismissible })}
-					/>
-
-					<ToggleControl
-						label={__("Show After Dismiss")}
-						checked={showAfterDismiss}
-						onChange={() =>
-							setAttributes({
-								showAfterDismiss: !showAfterDismiss,
-							})
-						}
-					/>
-
-					<SelectControl
-						label={__("Type")}
-						value={noticeType}
-						options={NOTICE_TYPES}
-						onChange={(type) => this.onTypeChange(type)}
-					/>
-
-					<BaseControl
-						label={__("Title Typography")}
-						className="eb-typography-base"
-					>
-						<Dropdown
-							className="eb-typography-dropdown"
-							contentClassName="my-popover-content-classname"
-							position="bottom right"
-							renderToggle={({ isOpen, onToggle }) => (
-								<Button
-									isSmall
-									onClick={onToggle}
-									aria-expanded={isOpen}
-									icon="edit"
-								></Button>
-							)}
-							renderContent={() => (
-								<div style={{ padding: "1rem" }}>
-									<FontPicker
-										label={__("Font Family")}
-										value={titleFontFamily}
-										onChange={(titleFontFamily) =>
-											setAttributes({ titleFontFamily })
-										}
-									/>
-
-									<UnitControl
-										selectedUnit={titleSizeUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "%", value: "%" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(titleSizeUnit) =>
-											setAttributes({ titleSizeUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Font Size")}
-										value={titleFontSize}
-										onChange={(titleFontSize) =>
-											setAttributes({ titleFontSize })
-										}
-										step={TITLE_SIZE_STEP}
-										min={0}
-										max={TITLE_SIZE_MAX}
-									/>
-
-									<SelectControl
-										label={__("Font Weight")}
-										value={titleFontWeight}
-										options={FONT_WEIGHTS}
-										onChange={(titleFontWeight) =>
-											setAttributes({ titleFontWeight })
-										}
-									/>
-
-									<SelectControl
-										label={__("Text Transform")}
-										value={titleTextTransform}
-										options={TEXT_TRANSFORM}
-										onChange={(titleTextTransform) =>
-											setAttributes({ titleTextTransform })
-										}
-									/>
-
-									<SelectControl
-										label={__("Text Decoration")}
-										value={titleTextDecoration}
-										options={TEXT_DECORATION}
-										onChange={(titleTextDecoration) =>
-											setAttributes({ titleTextDecoration })
-										}
-									/>
-
-									<UnitControl
-										selectedUnit={titleLetterSpacingUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(titleLetterSpacingUnit) =>
-											setAttributes({ titleLetterSpacingUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Letter Spacing")}
-										value={titleLetterSpacing}
-										onChange={(titleLetterSpacing) =>
-											setAttributes({ titleLetterSpacing })
-										}
-										min={0}
-										max={TITLE_SPACING_MAX}
-										step={TITLE_SPACING_STEP}
-									/>
-
-									<UnitControl
-										selectedUnit={titleLineHeightUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(titleLineHeightUnit) =>
-											setAttributes({ titleLineHeightUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Line Height")}
-										value={titleLineHeight}
-										onChange={(titleLineHeight) =>
-											setAttributes({ titleLineHeight })
-										}
-										min={0}
-										max={TITLE_LINE_HEIGHT_MAX}
-										step={TITLE_LINE_HEIGHT_STEP}
-									/>
-								</div>
-							)}
-						/>
-					</BaseControl>
-
-					<BaseControl
-						label={__("Text Typography")}
-						className="eb-typography-base"
-					>
-						<Dropdown
-							className="eb-typography-dropdown"
-							contentClassName="my-popover-content-classname"
-							position="bottom right"
-							renderToggle={({ isOpen, onToggle }) => (
-								<Button
-									isSmall
-									onClick={onToggle}
-									aria-expanded={isOpen}
-									icon="edit"
-								></Button>
-							)}
-							renderContent={() => (
-								<div style={{ padding: "1rem" }}>
-									<FontPicker
-										label={__("Font Family")}
-										value={textFontFamily}
-										onChange={(textFontFamily) =>
-											setAttributes({ textFontFamily })
-										}
-									/>
-
-									<UnitControl
-										selectedUnit={textSizeUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "%", value: "%" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(textSizeUnit) => setAttributes({ textSizeUnit })}
-									/>
-
-									<RangeControl
-										label={__("Font Size")}
-										value={textFontSize}
-										onChange={(textFontSize) => setAttributes({ textFontSize })}
-										step={TEXT_SIZE_STEP}
-										min={0}
-										max={TEXT_SIZE_MAX}
-									/>
-
-									<SelectControl
-										label={__("Font Weight")}
-										value={textFontWeight}
-										options={FONT_WEIGHTS}
-										onChange={(textFontWeight) =>
-											setAttributes({ textFontWeight })
-										}
-									/>
-
-									<SelectControl
-										label={__("Text Transform")}
-										value={textTextTransform}
-										options={TEXT_TRANSFORM}
-										onChange={(textTextTransform) =>
-											setAttributes({ textTextTransform })
-										}
-									/>
-
-									<SelectControl
-										label={__("Text Decoration")}
-										value={textTextDecoration}
-										options={TEXT_DECORATION}
-										onChange={(textTextDecoration) =>
-											setAttributes({ textTextDecoration })
-										}
-									/>
-
-									<UnitControl
-										selectedUnit={textLetterSpacingUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(textLetterSpacingUnit) =>
-											setAttributes({ textLetterSpacingUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Letter Spacing")}
-										value={textLetterSpacing}
-										onChange={(textLetterSpacing) =>
-											setAttributes({ textLetterSpacing })
-										}
-										min={0}
-										max={TEXT_SPACING_MAX}
-										step={TEXT_SPACING_STEP}
-									/>
-
-									<UnitControl
-										selectedUnit={textLineHeightUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(textLineHeightUnit) =>
-											setAttributes({ textLineHeightUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Line Height")}
-										value={textLineHeight}
-										onChange={(textLineHeight) =>
-											setAttributes({ textLineHeight })
-										}
-										min={0}
-										max={TEXT_LINE_HEIGHT_MAX}
-										step={TEXT_LINE_HEIGHT_STEP}
-									/>
-								</div>
-							)}
-						/>
-					</BaseControl>
-				</PanelBody>
-
-				<PanelColorSettings
-					title={__("Color Settings")}
-					initialOpen={false}
-					colorSettings={[
+	return (
+		<InspectorControls key="controls">
+			<div className="eb-panel-control">
+				<TabPanel
+					className="eb-parent-tab-panel"
+					activeClass="active-tab"
+					// onSelect={onSelect}
+					tabs={[
 						{
-							value: backgroundColor,
-							onChange: (newColor) =>
-								setAttributes({ backgroundColor: newColor }),
-							label: __("Background Color"),
+							name: "general",
+							title: "General",
+							className: "eb-tab general",
 						},
 						{
-							value: titleColor,
-							onChange: (newColor) => setAttributes({ titleColor: newColor }),
-							label: __("Title Color"),
+							name: "styles",
+							title: "Styles",
+							className: "eb-tab styles",
 						},
 						{
-							value: textColor,
-							onChange: (newColor) => setAttributes({ textColor: newColor }),
-							label: __("Text Color"),
+							name: "advance",
+							title: "Advance",
+							className: "eb-tab advance",
 						},
 					]}
-				/>
+				>
+					{(tab) => (
+						<div className={"eb-tab-controls" + tab.name}>
+							{tab.name === "general" && (
+								<>
+									<PanelBody title={__("Notice Settings")}>
+										<ToggleControl
+											label={__("Dismissible")}
+											checked={dismissible}
+											onChange={() =>
+												setAttributes({ dismissible: !dismissible })
+											}
+										/>
 
-				<PanelBody title={__("Shadow")} initialOpen={false}>
-					<ColorControl
-						label={__("Shadow Color")}
-						color={shadowColor}
-						onChange={(shadowColor) => setAttributes({ shadowColor })}
-					/>
+										<ToggleControl
+											label={__("Show After Dismiss")}
+											checked={showAfterDismiss}
+											onChange={() =>
+												setAttributes({
+													showAfterDismiss: !showAfterDismiss,
+												})
+											}
+										/>
 
-					<RangeControl
-						label={__("Horizontal Offset")}
-						value={shadowHOffset}
-						allowReset
-						onChange={(shadowHOffset) => setAttributes({ shadowHOffset })}
-						min={0}
-						max={100}
-					/>
+										<SelectControl
+											label={__("Type")}
+											value={noticeType}
+											options={NOTICE_TYPES}
+											onChange={(type) => onTypeChange(type)}
+										/>
+									</PanelBody>
+								</>
+							)}
+							{tab.name === "styles" && (
+								<>
+									<PanelBody title={__("Title")}>
+										<TypographyDropdown
+											baseLabel="typography"
+											typographyPrefixConstant={typoPrefix_title}
+											resRequiredProps={resRequiredProps}
+										/>
 
-					<RangeControl
-						label={__("Vertical Offset")}
-						value={shadowVOffset}
-						allowReset
-						onChange={(shadowVOffset) => setAttributes({ shadowVOffset })}
-						min={0}
-						max={100}
-					/>
+										<ColorControl
+											label={__("Color")}
+											color={titleColor}
+											onChange={(titleColor) => setAttributes({ titleColor })}
+										/>
+									</PanelBody>
 
-					<RangeControl
-						label={__("Blur")}
-						value={shadowBlur}
-						allowReset
-						onChange={(shadowBlur) => setAttributes({ shadowBlur })}
-						min={0}
-						max={20}
-					/>
+									<PanelBody title={__("text")}>
+										<TypographyDropdown
+											baseLabel="typography"
+											typographyPrefixConstant={typoPrefix_text}
+											resRequiredProps={resRequiredProps}
+										/>
 
-					<RangeControl
-						label={__("Spread")}
-						value={shadowSpread}
-						allowReset
-						onChange={(shadowSpread) => setAttributes({ shadowSpread })}
-						min={0}
-						max={20}
-					/>
-				</PanelBody>
-			</InspectorControls>
-		);
-	};
+										<ColorControl
+											label={__("Color")}
+											color={textColor}
+											onChange={(textColor) => setAttributes({ textColor })}
+										/>
+									</PanelBody>
+								</>
+							)}
+							{tab.name === "advance" && (
+								<>
+									<PanelBody title={__("Margin & Padding")}>
+										<ResponsiveDimensionsControl
+											resRequiredProps={resRequiredProps}
+											controlName={dimensionsMargin}
+											baseLabel="Margin"
+										/>
+										<ResponsiveDimensionsControl
+											resRequiredProps={resRequiredProps}
+											controlName={dimensionsPadding}
+											baseLabel="Padding"
+										/>
+									</PanelBody>
+
+									<PanelBody title={__("Background")} initialOpen={false}>
+										<BackgroundControl
+											controlName={wrapBg}
+											resRequiredProps={resRequiredProps}
+										/>
+									</PanelBody>
+
+									<PanelBody title={__("Border & Shadow")} initialOpen={false}>
+										<BorderShadowControl
+											controlName={wrpBdShadow}
+											resRequiredProps={resRequiredProps}
+										/>
+									</PanelBody>
+								</>
+							)}
+						</div>
+					)}
+				</TabPanel>
+			</div>
+		</InspectorControls>
+	);
 }
 
 export default Inspector;

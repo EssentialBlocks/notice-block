@@ -1,4 +1,39 @@
+import * as prefixObjs from "./constants/typographyPrefixConstants";
+import {
+	dimensionsMargin,
+	dimensionsPadding,
+} from "./constants/dimensionsNames";
+
+import {
+	generateDimensionsAttributes,
+	generateTypographyAttributes,
+	generateBackgroundAttributes,
+	generateBorderShadowAttributes,
+} from "../util/helpers";
+
+import { wrapBg } from "./constants/backgroundsConstants";
+import { wrpBdShadow } from "./constants/borderShadowConstants";
+
 const attributes = {
+	// the following 4 attributes is must required for responsive options and asset generation for frontend
+	// responsive control attributes ⬇
+	resOption: {
+		type: "string",
+		default: "Desktop",
+	},
+
+	// blockId attribute for making unique className and other uniqueness
+	blockId: {
+		type: "string",
+	},
+	blockRoot: {
+		type: "string",
+		default: "essential_block",
+	},
+	blockMeta: {
+		type: "object",
+	},
+
 	dismissible: {
 		type: "boolean",
 		default: false,
@@ -41,83 +76,43 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
-	shadowColor: {
-		type: "string",
-	},
-	shadowHOffset: {
-		type: "number",
-	},
-	shadowVOffset: {
-		type: "number",
-	},
-	shadowSpread: {
-		type: "number",
-	},
-	shadowBlur: {
-		type: "number",
-	},
-	titleSizeUnit: {
-		type: "string",
-		default: "px",
-	},
-	textSizeUnit: {
-		type: "string",
-		default: "px",
-	},
-	titleFontFamily: {
-		type: "string",
-	},
-	titleFontWeight: {
-		type: "string",
-		default: "normal",
-	},
-	titleTextTransform: {
-		type: "string",
-	},
-	titleTextDecoration: {
-		type: "string",
-	},
-	titleLetterSpacing: {
-		type: "number",
-	},
-	titleLetterSpacingUnit: {
-		type: "string",
-		default: "px",
-	},
-	titleLineHeight: {
-		type: "number",
-	},
-	titleLineHeightUnit: {
-		type: "string",
-		default: "px",
-	},
-	textFontFamily: {
-		type: "string",
-	},
-	textFontWeight: {
-		type: "string",
-		default: "normal",
-	},
-	textTextTransform: {
-		type: "string",
-	},
-	textTextDecoration: {
-		type: "string",
-	},
-	textLetterSpacing: {
-		type: "number",
-	},
-	textLetterSpacingUnit: {
-		type: "string",
-		default: "px",
-	},
-	textLineHeight: {
-		type: "number",
-	},
-	textLineHeightUnit: {
-		type: "string",
-		default: "px",
-	},
+
+	// typography attributes ⬇
+	...generateTypographyAttributes(Object.values(prefixObjs)),
+
+	// margin padding attributes ⬇
+	...generateDimensionsAttributes(dimensionsMargin),
+	...generateDimensionsAttributes(dimensionsPadding, {
+		top: 65,
+		bottom: 65,
+		right: 60,
+		left: 60,
+		isLinked: false,
+	}),
+
+	// border shadow attributes ⬇
+	...generateBorderShadowAttributes(wrpBdShadow, {
+		// bdrDefaults: {
+		// 	top: 0,
+		// 	bottom: 0,
+		// 	right: 0,
+		// 	left: 0,
+		// },
+		// rdsDefaults: {
+		// 	top: 0,
+		// 	bottom: 50,
+		// 	right: 500,
+		// 	left: 1000,
+		// },
+		// noShadow: true,
+		// noBorder: true,
+	}),
+
+	// background attributes ⬇
+	...generateBackgroundAttributes(wrapBg, {
+		defaultFillColor: "#3074ff",
+		defaultBgGradient: "linear-gradient(45deg,#7967ff,#c277f2)",
+	}),
 };
 
 export default attributes;

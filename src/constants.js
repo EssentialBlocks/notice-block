@@ -1,11 +1,11 @@
 const { __ } = wp.i18n;
 
 export const NOTICE_TYPES = [
+	{ label: __("Default"), value: "default" },
 	{ label: __("Success"), value: "success" },
 	{ label: __("Info"), value: "info" },
 	{ label: __("Warning"), value: "warning" },
 	{ label: __("Danger"), value: "danger" },
-	{ label: __("Default"), value: "default" },
 ];
 
 export const TEXT_TRANSFORM = [
@@ -28,4 +28,10 @@ export const TEXT_DECORATION = [
 	{ label: __("Line Through"), value: "line-through" },
 	{ label: __("Underline"), value: "underline" },
 	{ label: __("Underline Oveline"), value: "underline overline" },
+];
+
+export const FONT_SIZE_UNITS = [
+	{ label: "px", value: "px" },
+	{ label: "em", value: "em" },
+	{ label: "%", value: "%" },
 ];
