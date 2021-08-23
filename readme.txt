@@ -37,7 +37,7 @@ This Block is brought to you by [WPDeveloper](https://wpdeveloper.net), the team
 
 🤝 Join our [Facebook Community](https://www.facebook.com/groups/wpdeveloper.net/) & get connected with expert web creators like yourself.
 
-🧡 LOVED Countdown Block? Rate us on [WordPress Repository](https://wordpress.org/support/plugin/notice-block/reviews/#new-post)
+🧡 LOVED Notice Block? Rate us on [WordPress Repository](https://wordpress.org/support/plugin/notice-block/reviews/#new-post)
 
 🔥 GET FREEBIES FOR YOUR WORDPRESS SITE
 
@@ -81,7 +81,7 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
-= 1.2.3 - 19/08/2021 =
+= 1.2.3 - 23/08/2021 =
 * Improved: Controls with latest version
 * Improved: Security for asset generation
 
@@ -105,4 +105,4 @@ Yes, it will work with any standard WordPress theme.
 * Initial Release
 
 == Upgrade Notice ==
-[Major Update] Internal structure and performance improvement.
+[Minor Update] Bugfix and stability.
