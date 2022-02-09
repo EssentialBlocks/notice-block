@@ -81,6 +81,12 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
+= 1.2.4 - (dev) =
+* Added: Wide width & full width support
+* Added: Background & overlay transition option
+* Added: Support for full site editing & wp5.9
+* Improved: Controls and structure.
+
 = 1.2.3 - 23/08/2021 =
 * Improved: Controls with latest version
 * Improved: Security for asset generation
