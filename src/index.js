@@ -1,34 +1,24 @@
 /**
  * WordPress dependeincies
  */
-const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+import { __ } from "@wordpress/i18n";
+import { registerBlockType } from "@wordpress/blocks";
 
 /**
  * Internal dependencies
  */
-import "./style.scss";
-
 import Edit from "./edit";
 import Save from "./save";
-import { NoticeIcon } from "../util/icons";
+import { NoticeIcon } from "./icon";
 
 import metadata from "../block.json";
+import "./style.scss";
 import attributes from "./attributes";
-
 import example from "./example";
+const { ebConditionalRegisterBlockType } = EBNoticeControls;
 
-const { name, category } = metadata;
-
-registerBlockType(name, {
-	apiVersion: 2,
-	title: __("Notice", "block"),
+ebConditionalRegisterBlockType(metadata, {
 	icon: NoticeIcon,
-	description: __(
-		"Put Spotlight On News, Announcements & Let The Visitors Find It Easily",
-		"block"
-	),
-	category,
 	attributes,
 	keywords: [
 		__("EB notice", "essential-blocks"),
