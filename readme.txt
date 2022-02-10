@@ -3,7 +3,7 @@ Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, priyomukul, jamilbd07
 Tags: block, blocks, notice, notice box, alert box, warning, highlight, announcement, alert, gutenberg, gutenberg blocks
 Requires at least: 5.6
 Tested up to: 5.9
-Stable tag: 1.2.4
+Stable tag: 1.3.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,10 +81,10 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
-= 1.2.4 - (dev) =
+= 1.3.0 - 10/02/2022 =
 * Added: Wide width & full width support
 * Added: Background & overlay transition option
-* Added: Support for full site editing & wp5.9
+* Added: Support for full site editing & WordPress 5.9
 * Improved: Controls and structure.
 
 = 1.2.3 - 23/08/2021 =
