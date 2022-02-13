@@ -1,33 +1,33 @@
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
 
 export const NOTICE_TYPES = [
-	{ label: __("Default"), value: "default" },
-	{ label: __("Success"), value: "success" },
-	{ label: __("Info"), value: "info" },
-	{ label: __("Warning"), value: "warning" },
-	{ label: __("Danger"), value: "danger" },
+	{ label: __("Default", "essential-blocks"), value: "default" },
+	{ label: __("Success", "essential-blocks"), value: "success" },
+	{ label: __("Info", "essential-blocks"), value: "info" },
+	{ label: __("Warning", "essential-blocks"), value: "warning" },
+	{ label: __("Danger", "essential-blocks"), value: "danger" },
 ];
 
 export const TEXT_TRANSFORM = [
-	{ label: __("None"), value: "none" },
-	{ label: __("Lowercase"), value: "lowercase" },
-	{ label: __("Capitalize"), value: "capitalize" },
-	{ label: __("Uppercase"), value: "uppercase" },
+	{ label: __("None", "essential-blocks"), value: "none" },
+	{ label: __("Lowercase", "essential-blocks"), value: "lowercase" },
+	{ label: __("Capitalize", "essential-blocks"), value: "capitalize" },
+	{ label: __("Uppercase", "essential-blocks"), value: "uppercase" },
 ];
 
 export const FONT_WEIGHTS = [
-	{ label: __("Lighter"), value: "lighter" },
-	{ label: __("Normal"), value: "normal" },
-	{ label: __("Bold"), value: "bold" },
-	{ label: __("Bolder"), value: "bolder" },
+	{ label: __("Lighter", "essential-blocks"), value: "lighter" },
+	{ label: __("Normal", "essential-blocks"), value: "normal" },
+	{ label: __("Bold", "essential-blocks"), value: "bold" },
+	{ label: __("Bolder", "essential-blocks"), value: "bolder" },
 ];
 
 export const TEXT_DECORATION = [
-	{ label: __("Initial"), value: "initial" },
-	{ label: __("Overline"), value: "overline" },
-	{ label: __("Line Through"), value: "line-through" },
-	{ label: __("Underline"), value: "underline" },
-	{ label: __("Underline Oveline"), value: "underline overline" },
+	{ label: __("Initial", "essential-blocks"), value: "initial" },
+	{ label: __("Overline", "essential-blocks"), value: "overline" },
+	{ label: __("Line Through", "essential-blocks"), value: "line-through" },
+	{ label: __("Underline", "essential-blocks"), value: "underline" },
+	{ label: __("Underline Oveline", "essential-blocks"), value: "underline overline" },
 ];
 
 export const FONT_SIZE_UNITS = [

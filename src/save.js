@@ -1,4 +1,4 @@
-const { RichText, useBlockProps } = wp.blockEditor;
+import { RichText, useBlockProps } from "@wordpress/block-editor";
 
 const save = ({ attributes }) => {
 	const { blockId, showAfterDismiss, title, text } = attributes;

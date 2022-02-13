@@ -4,7 +4,7 @@
 	"description": "Example block written with ESNext standard and JSX support – build step required.",
 	"author": "WPDeveloper",
 	"license": "GPL-2.0-or-later",
-	"main": "build/index.js",
+	"main": "Gruntfile.js",
 	"scripts": {
 		"build": "set NODE_ENV=production && wp-scripts build",
 		"format:js": "wp-scripts format-js",
@@ -14,11 +14,9 @@
 		"packages-update": "wp-scripts packages-update"
 	},
 	"devDependencies": {
-		"@wordpress/block-editor": "^5.3.3",
-		"@wordpress/blocks": "^8.0.3",
-		"@wordpress/i18n": "^3.20.0",
-		"@wordpress/scripts": "^15.0.1",
-		"node-sass": "^6.0.0",
-		"postcss-loader": "^5.3.0"
+		"@wordpress/blocks": "^11.1.5",
+		"@wordpress/scripts": "^19.2.2",
+		"@wordpress/block-editor": "^8.0.12",
+		"@wordpress/i18n": "^4.2.4"
 	}
 }

@@ -4,12 +4,20 @@ import {
 	dimensionsPadding,
 } from "./constants/dimensionsNames";
 
-import {
+// import {
+// 	generateDimensionsAttributes,
+// 	generateTypographyAttributes,
+// 	generateBackgroundAttributes,
+// 	generateBorderShadowAttributes,
+// } from "../../../util/helpers";
+
+const {
+	//
 	generateDimensionsAttributes,
 	generateTypographyAttributes,
 	generateBackgroundAttributes,
 	generateBorderShadowAttributes,
-} from "../util/helpers";
+} = window.EBNoticeControls;
 
 import { wrapBg } from "./constants/backgroundsConstants";
 import { wrpBdShadow } from "./constants/borderShadowConstants";

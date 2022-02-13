@@ -1,15 +1,15 @@
 /**
  * WordPress dependencies
  */
-const { useBlockProps, RichText } = wp.blockEditor;
-const { useEffect } = wp.element;
-
-const { select } = wp.data;
+import { useBlockProps, RichText } from "@wordpress/block-editor";
+import { useEffect } from "@wordpress/element";
+import { select } from "@wordpress/data";
 
 /**
  * Internal depenencies
  */
-import "./editor.scss";
+ import classnames from "classnames";
+
 import Inspector from "./inspector";
 
 import {
@@ -25,19 +25,35 @@ import {
 import { wrapBg } from "./constants/backgroundsConstants";
 import { wrpBdShadow } from "./constants/borderShadowConstants";
 
-import {
+// import {
+// 	softMinifyCssStrings,
+// 	generateTypographyStyles,
+// 	generateDimensionsControlStyles,
+// 	generateBackgroundControlStyles,
+// 	generateBorderShadowStyles,
+// 	mimmikCssForPreviewBtnClick,
+// 	duplicateBlockIdFix,
+// } from "../../../util/helpers";
+
+const {
+	//
 	softMinifyCssStrings,
-	isCssExists,
 	generateTypographyStyles,
 	generateDimensionsControlStyles,
 	generateBackgroundControlStyles,
 	generateBorderShadowStyles,
-	mimmikCssForPreviewBtnClick,
+	// mimmikCssForPreviewBtnClick,
 	duplicateBlockIdFix,
-} from "../util/helpers";
+} = window.EBNoticeControls;
+
+const editorStoreForGettingPreivew =
+	eb_style_handler.editor_type === "edit-site"
+		? "core/edit-site"
+		: "core/edit-post";
+
 
 export default function Edit(props) {
-	const { attributes, setAttributes, clientId, isSelected } = props;
+	const { attributes, setAttributes, className, clientId, isSelected } = props;
 	const {
 		blockId,
 		blockMeta,
@@ -54,7 +70,7 @@ export default function Edit(props) {
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
 	useEffect(() => {
 		setAttributes({
-			resOption: select("core/edit-post").__experimentalGetPreviewDeviceType(),
+			resOption: select(editorStoreForGettingPreivew).__experimentalGetPreviewDeviceType(),
 		});
 	}, []);
 
@@ -72,16 +88,16 @@ export default function Edit(props) {
 		});
 	}, []);
 
-	// this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
-	useEffect(() => {
-		mimmikCssForPreviewBtnClick({
-			domObj: document,
-			select,
-		});
-	}, []);
+	// // this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
+	// useEffect(() => {
+	// 	mimmikCssForPreviewBtnClick({
+	// 		domObj: document,
+	// 		select,
+	// 	});
+	// }, []);
 
 	const blockProps = useBlockProps({
-		className: `eb-guten-block-main-parent-wrapper`,
+		className: classnames(className, `eb-guten-block-main-parent-wrapper`),
 	});
 
 	//
@@ -140,6 +156,8 @@ export default function Edit(props) {
 		hoverOverlayStylesTab,
 		overlayStylesMobile,
 		hoverOverlayStylesMobile,
+		bgTransitionStyle,
+		ovlTransitionStyle,
 	} = generateBackgroundControlStyles({
 		attributes,
 		controlName: wrapBg,
@@ -152,6 +170,7 @@ export default function Edit(props) {
 		stylesHoverDesktop: bdShadowStylesHoverDesktop,
 		stylesHoverTab: bdShadowStylesHoverTab,
 		stylesHoverMobile: bdShadowStylesHoverMobile,
+		transitionStyle: bdShadowTransitionStyle,
 	} = generateBorderShadowStyles({
 		controlName: wrpBdShadow,
 		attributes,
@@ -171,17 +190,20 @@ export default function Edit(props) {
 		${wrapperPaddingStylesDesktop}
 		${backgroundStylesDesktop}
 		${bdShadowStyesDesktop}
+		transition:${bgTransitionStyle}, ${bdShadowTransitionStyle};
 		overflow: hidden;
 		position: relative;
+		
 	}
-
+	
 	.eb-notice-wrapper.${blockId}:hover{
 		${hoverBackgroundStylesDesktop}
 		${bdShadowStylesHoverDesktop}
 	}
-
+	
 	.eb-notice-wrapper.${blockId}:before{
 		${overlayStylesDesktop}
+		transition:${ovlTransitionStyle};
 	}
 
 	.eb-notice-wrapper.${blockId}:hover:before{
@@ -312,25 +334,25 @@ export default function Edit(props) {
 
 	// all css styles for large screen width (desktop/laptop) in strings ⬇
 	const desktopAllStyles = softMinifyCssStrings(`
-		${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
-		${isCssExists(titleWrapperStylesDesktop) ? titleWrapperStylesDesktop : " "}
-		${isCssExists(dismissStylesDesktop) ? dismissStylesDesktop : " "}
-		${isCssExists(titleStylesDesktop) ? titleStylesDesktop : " "}
-		${isCssExists(textStylesDesktop) ? textStylesDesktop : " "}
+		${wrapperStylesDesktop}
+		${titleWrapperStylesDesktop}
+		${dismissStylesDesktop}
+		${titleStylesDesktop}
+		${textStylesDesktop}
 	`);
 
 	// all css styles for Tab in strings ⬇
 	const tabAllStyles = softMinifyCssStrings(`
-		${isCssExists(wrapperStylesTab) ? wrapperStylesTab : " "}
-		${isCssExists(titleStylesTab) ? titleStylesTab : " "}
-		${isCssExists(textStylesTab) ? textStylesTab : " "}
+		${wrapperStylesTab}
+		${titleStylesTab}
+		${textStylesTab}
 	`);
 
 	// all css styles for Mobile in strings ⬇
 	const mobileAllStyles = softMinifyCssStrings(`
-		${isCssExists(wrapperStylesMobile) ? wrapperStylesMobile : " "}
-		${isCssExists(titleStylesMobile) ? titleStylesMobile : " "}
-		${isCssExists(textStylesMobile) ? textStylesMobile : " "}
+		${wrapperStylesMobile}
+		${titleStylesMobile}
+		${textStylesMobile}
 	`);
 
 	// Set All Style in "blockMeta" Attribute

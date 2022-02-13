@@ -1,31 +1,46 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { InspectorControls } = wp.blockEditor;
-const { PanelBody, ToggleControl, SelectControl, TabPanel } = wp.components;
-const { useEffect } = wp.element;
-
-const { select } = wp.data;
+import { __ } from "@wordpress/i18n";
+import { useEffect } from "@wordpress/element";
+import { InspectorControls } from "@wordpress/block-editor";
+import { PanelBody, ToggleControl, SelectControl, TabPanel } from "@wordpress/components";
+import { select } from "@wordpress/data";
 
 /**
  * Internal dependencies
  */
 
 import objAttributes from "./attributes";
-
-import {
-	mimmikCssForResBtns,
-	mimmikCssOnPreviewBtnClickWhileBlockSelected,
-} from "../util/helpers";
-
 import { NOTICE_TYPES } from "./constants";
 
-import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
-import TypographyDropdown from "../util/typography-control-v2";
-import BorderShadowControl from "../util/border-shadow-control";
-import ColorControl from "../util/color-control";
-import BackgroundControl from "../util/background-control";
+// import {
+// 	mimmikCssForResBtns,
+// 	mimmikCssOnPreviewBtnClickWhileBlockSelected,
+// } from "../../../util/helpers";
+
+// import ResponsiveDimensionsControl from "../../../util/dimensions-control-v2";
+// import TypographyDropdown from "../../../util/typography-control-v2";
+// import BorderShadowControl from "../../../util/border-shadow-control";
+// import ColorControl from "../../../util/color-control";
+// import BackgroundControl from "../../../util/background-control";
+
+const {
+	// mimmikCssForResBtns,
+	// mimmikCssOnPreviewBtnClickWhileBlockSelected,
+
+	//
+	ResponsiveDimensionsControl,
+	TypographyDropdown,
+	BorderShadowControl,
+	ColorControl,
+	BackgroundControl,
+} = window.EBNoticeControls;
+
+const editorStoreForGettingPreivew =
+	eb_style_handler.editor_type === "edit-site"
+		? "core/edit-site"
+		: "core/edit-post";
 
 import {
 	dimensionsMargin,
@@ -105,29 +120,29 @@ function Inspector(props) {
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
 	useEffect(() => {
 		setAttributes({
-			resOption: select("core/edit-post").__experimentalGetPreviewDeviceType(),
+			resOption: select(editorStoreForGettingPreivew).__experimentalGetPreviewDeviceType(),
 		});
 	}, []);
 
-	// this useEffect is for mimmiking css for all the eb blocks on resOption changing
-	useEffect(() => {
-		mimmikCssForResBtns({
-			domObj: document,
-			resOption,
-		});
-	}, [resOption]);
+	// // this useEffect is for mimmiking css for all the eb blocks on resOption changing
+	// useEffect(() => {
+	// 	mimmikCssForResBtns({
+	// 		domObj: document,
+	// 		resOption,
+	// 	});
+	// }, [resOption]);
 
-	// this useEffect is to mimmik css for responsive preview in the editor page when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
-	useEffect(() => {
-		const cleanUp = mimmikCssOnPreviewBtnClickWhileBlockSelected({
-			domObj: document,
-			select,
-			setAttributes,
-		});
-		return () => {
-			cleanUp();
-		};
-	}, []);
+	// // this useEffect is to mimmik css for responsive preview in the editor page when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
+	// useEffect(() => {
+	// 	const cleanUp = mimmikCssOnPreviewBtnClickWhileBlockSelected({
+	// 		domObj: document,
+	// 		select,
+	// 		setAttributes,
+	// 	});
+	// 	return () => {
+	// 		cleanUp();
+	// 	};
+	// }, []);
 
 	const resRequiredProps = {
 		setAttributes,
@@ -151,12 +166,12 @@ function Inspector(props) {
 						},
 						{
 							name: "styles",
-							title: "Styles",
+							title: "Style",
 							className: "eb-tab styles",
 						},
 						{
 							name: "advance",
-							title: "Advance",
+							title: "Advanced",
 							className: "eb-tab advance",
 						},
 					]}
@@ -165,9 +180,9 @@ function Inspector(props) {
 						<div className={"eb-tab-controls" + tab.name}>
 							{tab.name === "general" && (
 								<>
-									<PanelBody title={__("Notice Settings")}>
+									<PanelBody title={__("Notice Settings", "essential-blocks")}>
 										<ToggleControl
-											label={__("Dismissible")}
+											label={__("Dismissible", "essential-blocks")}
 											checked={dismissible}
 											onChange={() =>
 												setAttributes({ dismissible: !dismissible })
@@ -175,7 +190,7 @@ function Inspector(props) {
 										/>
 
 										<ToggleControl
-											label={__("Show After Dismiss")}
+											label={__("Show After Dismiss", "essential-blocks")}
 											checked={showAfterDismiss}
 											onChange={() =>
 												setAttributes({
@@ -185,7 +200,7 @@ function Inspector(props) {
 										/>
 
 										<SelectControl
-											label={__("Type")}
+											label={__("Type", "essential-blocks")}
 											value={noticeType}
 											options={NOTICE_TYPES}
 											onChange={(type) => onTypeChange(type)}
@@ -195,29 +210,29 @@ function Inspector(props) {
 							)}
 							{tab.name === "styles" && (
 								<>
-									<PanelBody title={__("Title")}>
+									<PanelBody title={__("Title", "essential-blocks")}>
 										<TypographyDropdown
-											baseLabel="typography"
+											baseLabel="Typography"
 											typographyPrefixConstant={typoPrefix_title}
 											resRequiredProps={resRequiredProps}
 										/>
 
 										<ColorControl
-											label={__("Color")}
+											label={__("Color", "essential-blocks")}
 											color={titleColor}
 											onChange={(titleColor) => setAttributes({ titleColor })}
 										/>
 									</PanelBody>
 
-									<PanelBody title={__("text")}>
+									<PanelBody title={__("text", "essential-blocks")}>
 										<TypographyDropdown
-											baseLabel="typography"
+											baseLabel="Typography"
 											typographyPrefixConstant={typoPrefix_text}
 											resRequiredProps={resRequiredProps}
 										/>
 
 										<ColorControl
-											label={__("Color")}
+											label={__("Color", "essential-blocks")}
 											color={textColor}
 											onChange={(textColor) => setAttributes({ textColor })}
 										/>
@@ -239,7 +254,7 @@ function Inspector(props) {
 										/>
 									</PanelBody>
 
-									<PanelBody title={__("Background")} initialOpen={false}>
+									<PanelBody title={__("Background", "essential-blocks")} initialOpen={false}>
 										<BackgroundControl
 											controlName={wrapBg}
 											resRequiredProps={resRequiredProps}
