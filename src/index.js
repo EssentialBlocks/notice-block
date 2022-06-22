@@ -10,11 +10,12 @@ import { registerBlockType } from "@wordpress/blocks";
 import Edit from "./edit";
 import Save from "./save";
 import { NoticeIcon } from "./icon";
+import "./style.scss";
 
 import metadata from "../block.json";
-import "./style.scss";
 import attributes from "./attributes";
 import example from "./example";
+import deprecated from "./deprecated";
 const { ebConditionalRegisterBlockType } = EBNoticeControls;
 
 ebConditionalRegisterBlockType(metadata, {
@@ -28,4 +29,5 @@ ebConditionalRegisterBlockType(metadata, {
 	edit: Edit,
 	save: Save,
 	example: example,
+	deprecated,
 });

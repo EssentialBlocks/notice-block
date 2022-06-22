@@ -47,6 +47,7 @@ function create_block_notice_block_init()
 		'wp-element',
 		'wp-block-editor',
 		'notice-block-controls-util',
+		'essential-blocks-eb-animation'
 	));
 
 	$index_js     = NOTICE_BLOCK_ADMIN_URL . 'dist/index.js';
@@ -58,39 +59,40 @@ function create_block_notice_block_init()
 		true
 	);
 
-
-	$frontend_js = NOTICE_BLOCK_ADMIN_URL . 'dist/frontend/index.js';
+	$load_animation_js = NOTICE_BLOCK_ADMIN_URL . 'assets/js/eb-animation-load.js';
 	wp_register_script(
-		'essential-blocks-notice-frontend',
-		$frontend_js,
+		'essential-blocks-eb-animation',
+		$load_animation_js,
 		array(),
 		NOTICE_BLOCK_VERSION,
 		true
 	);
 
-	//
-	//
-	$controls_dependencies = require NOTICE_BLOCK_ADMIN_PATH . '/dist/controls.asset.php';
+	$animate_css = NOTICE_BLOCK_ADMIN_URL . 'assets/css/animate.min.css';
+	wp_register_style(
+		'essential-blocks-animation',
+		$animate_css,
+		array(),
+		NOTICE_BLOCK_VERSION
+	);
 
+
+	$frontend_js = NOTICE_BLOCK_ADMIN_URL . 'dist/frontend/index.js';
 	wp_register_script(
-		"notice-block-controls-util",
-		NOTICE_BLOCK_ADMIN_URL . '/dist/controls.js',
-		array_merge($controls_dependencies['dependencies'], array("essential-blocks-edit-post")),
-		$controls_dependencies['version'],
+		'essential-blocks-notice-frontend',
+		$frontend_js,
+		array('essential-blocks-eb-animation'),
+		NOTICE_BLOCK_VERSION,
 		true
 	);
 
-	wp_localize_script('notice-block-controls-util', 'EssentialBlocksLocalize', array(
-		'eb_wp_version' => (float) get_bloginfo('version'),
-		'rest_rootURL' => get_rest_url(),
-	));
-
+	$style_css     = NOTICE_BLOCK_ADMIN_URL . 'dist/style.css';
 	wp_register_style(
 		'notice-block-editor-css',
-		NOTICE_BLOCK_ADMIN_URL . '/dist/controls.css',
-		array(),
-		$controls_dependencies['version'],
-		'all'
+		$style_css,
+		array('essential-blocks-animation'),
+		NOTICE_BLOCK_VERSION,
+		"all"
 	);
 
 	if (!WP_Block_Type_Registry::get_instance()->is_registered('essential-blocks/number-counter')) {
@@ -101,6 +103,7 @@ function create_block_notice_block_init()
 				'editor_style' 	=> 'notice-block-editor-css',
 				'render_callback' => function ($attributes, $content) {
 					if (!is_admin()) {
+						wp_enqueue_style('notice-block-editor-css');
 						wp_enqueue_script('essential-blocks-notice-frontend');
 					}
 					return $content;
