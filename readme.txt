@@ -2,8 +2,8 @@
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, priyomukul, jamilbd07, hztyfoon
 Tags: block, blocks, notice, notice box, alert box, warning, highlight, announcement, alert, gutenberg, gutenberg blocks
 Requires at least: 5.6
-Tested up to: 5.9
-Stable tag: 1.3.1
+Tested up to: 6.0
+Stable tag: 1.3.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,6 +80,11 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+
+= 1.3.2 - dev =
+* Added: Animation, Custom Css and responsive options
+* Added: Converted style-handler to php for working perfectly with Reusable blocks and FSE
+* Improved: Controls & structure
 
 = 1.3.1 - 13/02/2022 =
 * Fixed: Frontend js file not enqueued
