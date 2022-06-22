@@ -1,5 +1,5 @@
 === Notice Block ===
-Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, priyomukul, jamilbd07, hztyfoon
+Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, priyomukul, jamilbd07, hztyfoon, fencermonir
 Tags: block, blocks, notice, notice box, alert box, warning, highlight, announcement, alert, gutenberg, gutenberg blocks
 Requires at least: 5.6
 Tested up to: 6.0
