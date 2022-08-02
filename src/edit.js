@@ -8,7 +8,7 @@ import { select } from "@wordpress/data";
 /**
  * Internal depenencies
  */
- import classnames from "classnames";
+import classnames from "classnames";
 
 import Inspector from "./inspector";
 
@@ -25,16 +25,6 @@ import {
 import { wrapBg } from "./constants/backgroundsConstants";
 import { wrpBdShadow } from "./constants/borderShadowConstants";
 
-// import {
-// 	softMinifyCssStrings,
-// 	generateTypographyStyles,
-// 	generateDimensionsControlStyles,
-// 	generateBackgroundControlStyles,
-// 	generateBorderShadowStyles,
-// 	mimmikCssForPreviewBtnClick,
-// 	duplicateBlockIdFix,
-// } from "../../../util/helpers";
-
 const {
 	//
 	softMinifyCssStrings,
@@ -47,10 +37,9 @@ const {
 } = window.EBNoticeControls;
 
 const editorStoreForGettingPreivew =
-	eb_style_handler.editor_type === "edit-site"
+	eb_conditional_localize.editor_type === "edit-site"
 		? "core/edit-site"
 		: "core/edit-post";
-
 
 export default function Edit(props) {
 	const { attributes, setAttributes, className, clientId, isSelected } = props;
@@ -65,12 +54,15 @@ export default function Edit(props) {
 		text,
 		titleColor,
 		textColor,
+		classHook,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
 	useEffect(() => {
 		setAttributes({
-			resOption: select(editorStoreForGettingPreivew).__experimentalGetPreviewDeviceType(),
+			resOption: select(
+				editorStoreForGettingPreivew
+			).__experimentalGetPreviewDeviceType(),
 		});
 	}, []);
 
@@ -87,14 +79,6 @@ export default function Edit(props) {
 			clientId,
 		});
 	}, []);
-
-	// // this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
-	// useEffect(() => {
-	// 	mimmikCssForPreviewBtnClick({
-	// 		domObj: document,
-	// 		select,
-	// 	});
-	// }, []);
 
 	const blockProps = useBlockProps({
 		className: classnames(className, `eb-guten-block-main-parent-wrapper`),
@@ -367,13 +351,12 @@ export default function Edit(props) {
 		}
 	}, [attributes]);
 
-	return [
-		isSelected && <Inspector {...props} />,
-
-		//Edit view here
-		<div {...blockProps}>
-			<style>
-				{`
+	return (
+		<>
+			{isSelected && <Inspector {...props} />}
+			<div {...blockProps}>
+				<style>
+					{`
 				${desktopAllStyles}
 
 				/* mimmikcssStart */
@@ -399,29 +382,30 @@ export default function Edit(props) {
 				
 				}
 				`}
-			</style>
+				</style>
 
-			<div className={`eb-notice-wrapper ${blockId}`} data-id={blockId}>
-				<div className="eb-notice-title-wrapper">
-					<RichText
-						className="eb-notice-title"
-						value={title}
-						onChange={(newTitle) => setAttributes({ title: newTitle })}
-						placeholder="Add Title..."
-						keepPlaceholderOnFocus
-					/>
-				</div>
-				<span className="eb-notice-dismiss" />
-				<div>
-					<RichText
-						className="eb-notice-text"
-						value={text}
-						onChange={(newText) => setAttributes({ text: newText })}
-						placeholder="Add Text..."
-						keepPlaceholderOnFocus
-					/>
+				<div className={`eb-parent-wrapper eb-parent-${blockId} ${classHook}`}>
+					<div className={`eb-notice-wrapper ${blockId}`} data-id={blockId}>
+						<div className="eb-notice-title-wrapper">
+							<RichText
+								className="eb-notice-title"
+								value={title}
+								onChange={(newTitle) => setAttributes({ title: newTitle })}
+								placeholder="Add Title..."
+							/>
+						</div>
+						<span className="eb-notice-dismiss" />
+						<div>
+							<RichText
+								className="eb-notice-text"
+								value={text}
+								onChange={(newText) => setAttributes({ text: newText })}
+								placeholder="Add Text..."
+							/>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>,
-	];
+		</>
+	);
 }

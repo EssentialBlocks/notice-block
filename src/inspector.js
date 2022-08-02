@@ -14,31 +14,17 @@ import { select } from "@wordpress/data";
 import objAttributes from "./attributes";
 import { NOTICE_TYPES } from "./constants";
 
-// import {
-// 	mimmikCssForResBtns,
-// 	mimmikCssOnPreviewBtnClickWhileBlockSelected,
-// } from "../../../util/helpers";
-
-// import ResponsiveDimensionsControl from "../../../util/dimensions-control-v2";
-// import TypographyDropdown from "../../../util/typography-control-v2";
-// import BorderShadowControl from "../../../util/border-shadow-control";
-// import ColorControl from "../../../util/color-control";
-// import BackgroundControl from "../../../util/background-control";
-
 const {
-	// mimmikCssForResBtns,
-	// mimmikCssOnPreviewBtnClickWhileBlockSelected,
-
-	//
 	ResponsiveDimensionsControl,
 	TypographyDropdown,
 	BorderShadowControl,
 	ColorControl,
 	BackgroundControl,
+	AdvancedControls,
 } = window.EBNoticeControls;
 
 const editorStoreForGettingPreivew =
-	eb_style_handler.editor_type === "edit-site"
+	eb_conditional_localize.editor_type === "edit-site"
 		? "core/edit-site"
 		: "core/edit-post";
 
@@ -267,6 +253,8 @@ function Inspector(props) {
 											resRequiredProps={resRequiredProps}
 										/>
 									</PanelBody>
+
+									<AdvancedControls attributes={attributes} setAttributes={setAttributes} />
 								</>
 							)}
 						</div>
