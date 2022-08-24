@@ -10,7 +10,6 @@ import { registerBlockType } from "@wordpress/blocks";
 import Edit from "./edit";
 import Save from "./save";
 import { NoticeIcon } from "./icon";
-import "./style.scss";
 
 import metadata from "../block.json";
 import attributes from "./attributes";
