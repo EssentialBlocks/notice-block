@@ -36,11 +36,6 @@ const {
 	duplicateBlockIdFix,
 } = window.EBNoticeControls;
 
-const editorStoreForGettingPreivew =
-	eb_conditional_localize.editor_type === "edit-site"
-		? "core/edit-site"
-		: "core/edit-post";
-
 export default function Edit(props) {
 	const { attributes, setAttributes, className, clientId, isSelected } = props;
 	const {
@@ -56,15 +51,6 @@ export default function Edit(props) {
 		textColor,
 		classHook,
 	} = attributes;
-
-	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
-	useEffect(() => {
-		setAttributes({
-			resOption: select(
-				editorStoreForGettingPreivew
-			).__experimentalGetPreviewDeviceType(),
-		});
-	}, []);
 
 	// this useEffect is for creating a unique id for each block's unique className by a random unique number
 	useEffect(() => {
@@ -392,6 +378,7 @@ export default function Edit(props) {
 								value={title}
 								onChange={(newTitle) => setAttributes({ title: newTitle })}
 								placeholder="Add Title..."
+								keepPlaceholderOnFocus
 							/>
 						</div>
 						<span className="eb-notice-dismiss" />
@@ -401,6 +388,7 @@ export default function Edit(props) {
 								value={text}
 								onChange={(newText) => setAttributes({ text: newText })}
 								placeholder="Add Text..."
+								keepPlaceholderOnFocus
 							/>
 						</div>
 					</div>
