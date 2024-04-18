@@ -6,7 +6,9 @@
 	"description": "Put Spotlight On News, Announcements & Let The Visitors Find It Easily",
 	"textdomain": "notice-block",
 	"supports": {
-		"align": ["wide", "full"]
-	},
-	"editorScript": "file:./dist/index.js"
+		"align": [
+			"wide",
+			"full"
+		]
+	}
 }

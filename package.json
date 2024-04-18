@@ -14,9 +14,10 @@
 		"packages-update": "wp-scripts packages-update"
 	},
 	"devDependencies": {
-		"@wordpress/blocks": "^11.1.5",
-		"@wordpress/scripts": "^19.2.2",
+		"@babel/plugin-transform-class-properties": "^7.24.1",
 		"@wordpress/block-editor": "^8.0.12",
-		"@wordpress/i18n": "^4.2.4"
+		"@wordpress/blocks": "^11.1.5",
+		"@wordpress/i18n": "^4.2.4",
+		"@wordpress/scripts": "^19.2.2"
 	}
 }

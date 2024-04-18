@@ -1,5 +1,5 @@
 //Export All Controls
-import "../controls/src/backend-css";
+import "../controls/src/backend.scss";
 
 //Export All Controls
 export { default as ResponsiveDimensionsControl } from "../controls/src/controls/dimensions-control-v2";
@@ -7,9 +7,11 @@ export { default as TypographyDropdown } from "../controls/src/controls/typograp
 export { default as ColorControl } from "../controls/src/controls/color-control";
 export { default as BorderShadowControl } from "../controls/src/controls/border-shadow-control";
 export { default as BackgroundControl } from "../controls/src/controls/background-control";
+export { EBIconPicker, EBDisplayIcon } from "../controls/src/controls/icon-picker";
 
 import "../controls/src/group-controls";
 export { default as AdvancedControls } from "../controls/src/group-controls/components/advanced-controls";
+
 
 //Export Helper Functions
 export {
@@ -26,4 +28,7 @@ export {
 	generateBorderShadowStyles,
 	generateTypographyStyles,
 	ebConditionalRegisterBlockType,
+	generateResponsiveAlignAttributes,
+	generateResponsiveAlignStyles,
+	StyleComponent
 } from "../controls/src/helpers";

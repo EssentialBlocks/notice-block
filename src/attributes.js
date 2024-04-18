@@ -17,10 +17,12 @@ const {
 	generateTypographyAttributes,
 	generateBackgroundAttributes,
 	generateBorderShadowAttributes,
+	generateResponsiveAlignAttributes,
 } = window.EBNoticeControls;
 
 import { wrapBg } from "./constants/backgroundsConstants";
 import { wrpBdShadow } from "./constants/borderShadowConstants";
+import { NOTICE_ALIGNMENT } from "./constants";
 
 const attributes = {
 	// the following 4 attributes is must required for responsive options and asset generation for frontend
@@ -120,6 +122,11 @@ const attributes = {
 	...generateBackgroundAttributes(wrapBg, {
 		defaultFillColor: "#3074ff",
 		defaultBgGradient: "linear-gradient(45deg,#7967ff,#c277f2)",
+	}),
+	...generateResponsiveAlignAttributes(NOTICE_ALIGNMENT, {
+		defaultAlign: "left",
+		defaultTabAlign: "left",
+		defaultMobileAlign: "left",
 	}),
 };
 
