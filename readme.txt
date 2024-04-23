@@ -81,7 +81,7 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
-= 1.3.5 - 21/04/2024 -
+= 1.3.5 - 23/04/2024 -
 * Fixed: compatibility support with WordPress 6.5 version
 * Improved: controls
 
