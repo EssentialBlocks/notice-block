@@ -46,12 +46,12 @@ class Notice_Block_Helper
          */
         if ($pagenow == 'post-new.php' || $pagenow == 'post.php' || $pagenow == 'site-editor.php' || ($pagenow == 'themes.php' && !empty($_SERVER['QUERY_STRING']) && str_contains($_SERVER['QUERY_STRING'], 'gutenberg-edit-site'))) {
 
-            $controls_dependencies = include_once NOTICE_BLOCK_ADMIN_PATH . '/dist/controls.asset.php';
+            $controls_dependencies = include_once NOTICE_BLOCK_ADMIN_PATH . '/dist/modules.asset.php';
 
             wp_register_script(
                 "notice-block-controls-util",
-                NOTICE_BLOCK_ADMIN_URL . 'dist/controls.js',
-                $controls_dependencies['dependencies'],
+                NOTICE_BLOCK_ADMIN_URL . 'dist/modules.js',
+				array_merge($controls_dependencies['dependencies'], ['lodash']),
                 $controls_dependencies['version'],
                 true
             );
@@ -73,7 +73,7 @@ class Notice_Block_Helper
 
             wp_enqueue_style(
                 'essential-blocks-editor-css',
-                NOTICE_BLOCK_ADMIN_URL . 'dist/controls.css',
+                NOTICE_BLOCK_ADMIN_URL . 'dist/modules.css',
                 array(),
                 $controls_dependencies['version'],
                 'all'
