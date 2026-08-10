@@ -1,9 +1,10 @@
 === Notice Block ===
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, priyomukul, jamilbd07, hztyfoon, fencermonir
 Tags: block, blocks, notice, notice box, alert box, warning, highlight, announcement, alert, gutenberg, gutenberg blocks
-Requires at least: 5.6
-Tested up to: 6.5
-Stable tag: 1.3.5
+Requires at least: 6.0
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable tag: 1.5.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,6 +81,17 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+
+= 1.5.0 - 10/08/2026 =
+* Fixed: Block styles not loading on the frontend
+* Fixed: Tablet and mobile styles not applying in the block editor preview
+* Fixed: Block failing to register when Essential Blocks was active
+* Fixed: Missing stylesheet request in the editor and on the frontend
+* Improved: Compatibility with PHP 7.4 through PHP 8.5
+* Improved: Compatibility with WordPress 6.0 through WordPress 7.0
+* Fixed: Fatal error when the bundled style-handler library was missing
+* Fixed: PHP 8 TypeError when the font meta was stored as a non-string value
+* Improved: Sanitization of admin request data
 
 = 1.3.5 - 23/04/2024 -
 * Fixed: compatibility support with WordPress 6.5 version
