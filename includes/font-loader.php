@@ -47,7 +47,9 @@ class Notice_Font_Loader
 
             $fonts = get_post_meta($post->ID, '_eb_attr', true);
 
-            if (!empty($fonts)) {
+            // The meta can legitimately come back as a non-string (array/serialized);
+            // explode() would throw a TypeError on PHP 8 in that case.
+            if (is_string($fonts) && !empty($fonts)) {
 
                 $fonts = array_unique(explode(',', $fonts));
 

@@ -1,53 +1,89 @@
-# A set of files you probably don't want in your WordPress.org distribution
-.babelrc
-.deployignore
-.distignore
-.editorconfig
-.eslintignore
-.eslintrc
-.gitmodules
-.git
+# A set of files you probably don't want in your WordPress.org distribution.
+#
+# Each line is turned into a `zip --exclude */<line>` pattern by
+# `wp dist-archive`. Directories are written as `name/*` so they match whether
+# or not the directory happens to exist at build time.
+
+# --- Version control ---
+.git/*
+# In a submodule, `.git` is a FILE (a gitdir pointer), not a directory, so the
+# rule above does not catch it. A bare `.git` line is rewritten to `.git/*` by
+# dist-archive because the plugin root's own .git IS a directory — hence the
+# explicit nested form, which matches lib/style-handler/.git and controls/.git.
+*/.git
 .gitignore
-.github
 .gitattributes
+.gitmodules
+.github/*
 .gitlab-ci.yml
-.travis.yml
+
+# --- Editor / OS ---
+.editorconfig
 .DS_Store
 Thumbs.db
-behat.yml
-bitbucket-pipelines.yml
-bin
-.circleci/config.yml
-composer.json
-composer.lock
-dependencies.yml
+
+# --- Build tooling config ---
+.babelrc
+.babelrc.js
+babel.config.js
+webpack.config.js
 Gruntfile.js
+gulpfile.js
+postcss.config.js
+
+# --- Lint / format config ---
+.eslintignore
+.eslintrc
+.eslintrc.js
+.eslintcache
+.prettierrc
+.stylelintrc
+.phpcs.xml
+.phpcs.xml.dist
+phpcs.xml
+phpcs.xml.dist
+
+# --- Package manifests & lockfiles ---
 package.json
 package-lock.json
+yarn.lock
+pnpm-lock.yaml
+composer.json
+composer.lock
+node_modules/*
+vendor/*
+
+# --- Source: compiled into dist/ at build time, not needed at runtime ---
+src/*
+config/*
+controls/*
+util/*
+
+# --- Sourcemaps (never needed in production) ---
+*.map
+
+# --- Tests & CI ---
+tests/*
+bin/*
+behat.yml
 phpunit.xml
 phpunit.xml.dist
 multisite.xml
 multisite.xml.dist
-.phpcs.xml
-phpcs.xml
-.phpcs.xml.dist
-phpcs.xml.dist
-README.md
-webpack.config.js
+.travis.yml
+bitbucket-pipelines.yml
+.circleci/*
+dependencies.yml
 wp-cli.local.yml
-yarn.lock
-tests
-vendor
-node_modules
+.deployignore
+.distignore
+
+# --- Repo docs & wp.org listing assets (not part of the plugin) ---
+*.md
+.wordpress-org/*
+changes.txt
+
+# --- Archives & dumps ---
 *.sql
 *.tar.gz
 *.zip
-gulpfile.js
-.git
-node_modules/**/*.*
-dist/*.*.map
-**/*.zip
-src
-util
-.wordpress-org
-changes.txt
