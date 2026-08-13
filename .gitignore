@@ -23,10 +23,14 @@ node_modules/
 # Output of 'npm pack'
 *.tgz
 
+# Output of 'npm run dist'
+*.zip
+
 # dotenv environment variables file
 .env
 
 .DS_Store
-package-lock.json
+# package-lock.json is intentionally tracked: CI runs `npm ci`, which requires a
+# committed lockfile and makes dependency resolution reproducible.
 yarn.lock
 changes.txt
