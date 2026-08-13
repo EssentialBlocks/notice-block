@@ -5,6 +5,9 @@
 	"author": "WPDeveloper",
 	"license": "GPL-2.0-or-later",
 	"main": "Gruntfile.js",
+	"engines": {
+		"node": ">=20.19.0"
+	},
 	"scripts": {
 		"build": "set NODE_ENV=production && wp-scripts build",
 		"format:js": "wp-scripts format-js",
@@ -15,9 +18,12 @@
 	},
 	"devDependencies": {
 		"@babel/plugin-transform-class-properties": "^7.24.1",
+		"@babel/preset-env": "^7.16.0",
+		"@babel/preset-react": "^7.16.0",
 		"@wordpress/block-editor": "^8.0.12",
 		"@wordpress/blocks": "^11.1.5",
 		"@wordpress/i18n": "^4.2.4",
-		"@wordpress/scripts": "^19.2.2"
+		"@wordpress/scripts": "^19.2.2",
+		"mini-css-extract-plugin": "^2.5.0"
 	}
 }
