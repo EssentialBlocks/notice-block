@@ -59,7 +59,7 @@ if (file_exists(__DIR__ . '/lib/style-handler/style-handler.php')) {
 		printf(
 			'<div class="notice notice-error"><p><strong>%1$s</strong> %2$s</p></div>',
 			esc_html__('Notice Block:', 'notice-block'),
-			esc_html__('the bundled style-handler library is missing, so the block will render without any styling on the frontend. Run "git submodule update --init --recursive" in the plugin directory, or reinstall the plugin from a complete build.', 'notice-block')
+			esc_html__('the bundled style-handler library is missing, so the block will render without any styling on the frontend. This is a git submodule, not a compiled asset. If you are running from a git checkout, run "git submodule update --init --recursive" in the plugin directory. If this is an installed release, reinstall the complete package.', 'notice-block')
 		);
 	});
 }
