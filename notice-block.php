@@ -138,7 +138,9 @@ function create_block_notice_block_init()
 	wp_register_style(
 		'notice-block-editor-css',
 		$style_css,
-		array('essential-blocks-animation'),
+		// Icons are Dashicons (Font Awesome is disabled for this plugin). Core only
+		// loads them on the frontend for logged-in users and not in the editor canvas.
+		array('essential-blocks-animation', 'dashicons'),
 		NOTICE_BLOCK_VERSION,
 		"all"
 	);
