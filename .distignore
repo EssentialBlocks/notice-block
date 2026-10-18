@@ -87,3 +87,7 @@ changes.txt
 *.sql
 *.tar.gz
 *.zip
+
+# --- Dead build output (never registered or enqueued) ---
+dist/frontend.js
+dist/frontend.asset.php
