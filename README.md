@@ -1,5 +1,5 @@
 # Notice Block #
-**Contributors:** [wpdevteam](https://profiles.wordpress.org/wpdevteam/), [re_enter_rupok](https://profiles.wordpress.org/re_enter_rupok/), [asif2bd](https://profiles.wordpress.org/asif2bd/), [rahat89](https://profiles.wordpress.org/rahat89/), [priyomukul](https://profiles.wordpress.org/priyomukul/), [jamilbd07](https://profiles.wordpress.org/jamilbd07/), [hztyfoon](https://profiles.wordpress.org/hztyfoon/), [fencermonir](https://profiles.wordpress.org/fencermonir/)  
+**Contributors:** [wpdevteam](https://profiles.wordpress.org/wpdevteam/), [re_enter_rupok](https://profiles.wordpress.org/re_enter_rupok/), [asif2bd](https://profiles.wordpress.org/asif2bd/), [rahat89](https://profiles.wordpress.org/rahat89/), [priyomukul](https://profiles.wordpress.org/priyomukul/)  
 **Tags:** block, blocks, notice, notice box, alert box, warning, highlight, announcement, alert, gutenberg, gutenberg blocks  
 **Requires at least:** 6.0  
 **Tested up to:** 7.0.3  
