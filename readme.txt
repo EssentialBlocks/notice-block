@@ -83,9 +83,8 @@ Yes, it will work with any standard WordPress theme.
 == Changelog ==
 
 = 1.4.1 - 26/10/2026 =
-* Security: Hardened block style generation
-* Removed: Unused `_eb_attr` and `eb_css` post meta registration, which exposed the meta in the REST API
-* Fixed: A missing build file now shows an admin notice instead of a fatal error
+* Improved: Security enhancements
+* Few minor bug fixes & improvements
 
 = 1.4.0 - 13/08/2026 =
 * Fixed: PHP 8.0–8.5 compatibility issues
