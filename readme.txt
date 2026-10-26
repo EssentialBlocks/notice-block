@@ -4,7 +4,7 @@ Tags: block, blocks, notice, notice box, alert box, warning, highlight, announce
 Requires at least: 6.0
 Tested up to: 7.0.3
 Requires PHP: 7.4
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,6 +81,11 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+
+= 1.4.1 - 26/10/2026 =
+* Security: Hardened block style generation
+* Removed: Unused `_eb_attr` and `eb_css` post meta registration, which exposed the meta in the REST API
+* Fixed: A missing build file now shows an admin notice instead of a fatal error
 
 = 1.4.0 - 13/08/2026 =
 * Fixed: PHP 8.0–8.5 compatibility issues

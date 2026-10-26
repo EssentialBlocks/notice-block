@@ -4,7 +4,7 @@
  * Plugin Name:     Notice
  * Plugin URI: 		https://essential-blocks.com
  * Description:     Put Spotlight On News, Announcements & Let The Visitors Find It Easily
- * Version:         1.4.0
+ * Version:         1.4.1
  * Author:          WPDeveloper
  * Author URI: 		https://wpdeveloper.net
  * License:         GPL-2.0-or-later
@@ -29,7 +29,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!defined('NOTICE_BLOCK_VERSION')) {
-	define('NOTICE_BLOCK_VERSION', "1.4.0");
+	define('NOTICE_BLOCK_VERSION', "1.4.1");
 }
 if (!defined('NOTICE_BLOCK_ADMIN_URL')) {
 	define('NOTICE_BLOCK_ADMIN_URL', plugin_dir_url(__FILE__));
