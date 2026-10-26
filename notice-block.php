@@ -39,7 +39,6 @@ if (!defined('NOTICE_BLOCK_ADMIN_PATH')) {
 }
 
 require_once __DIR__ . '/includes/font-loader.php';
-require_once __DIR__ . '/includes/post-meta.php';
 require_once __DIR__ . '/includes/helpers.php';
 
 /**
@@ -69,9 +68,17 @@ function create_block_notice_block_init()
 
 	$script_asset_path = NOTICE_BLOCK_ADMIN_PATH . "/dist/index.asset.php";
 	if (!file_exists($script_asset_path)) {
-		throw new Error(
-			'You need to run `npm start` or `npm run build` for the "notice-block/notice" block first.'
-		);
+		// Missing build output must not fatal the whole site on `init`.
+		add_action('admin_notices', function () {
+			if (!current_user_can('activate_plugins')) {
+				return;
+			}
+			printf(
+				'<div class="notice notice-error"><p>%s</p></div>',
+				esc_html__('Notice Block: build output is missing. Run `npm install && npm run build` in the plugin directory.', 'notice-block')
+			);
+		});
+		return;
 	}
 	$script_asset = require($script_asset_path);
 	if (!is_array($script_asset)) {
