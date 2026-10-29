@@ -1,6 +1,9 @@
 import { __ } from "@wordpress/i18n";
 
 export const NOTICE_ALIGNMENT = "textAlign";
+export const MEDIA_ALIGNMENT = "mediaAlign";
+export const TITLE_ALIGNMENT = "titleAlign";
+export const DESC_ALIGNMENT = "descAlign";
 
 export const NOTICE_TYPES = [
     { label: __("Default", "essential-blocks"), value: "default" },
@@ -43,6 +46,28 @@ export const FONT_SIZE_UNITS = [
 
 export const TEXT_ALIGN = [
     { label: __("Left", "essential-blocks"), value: "left" },
-    { label: __("Right", "essential-blocks"), value: "right" },
     { label: __("Center", "essential-blocks"), value: "center" },
+    { label: __("Right", "essential-blocks"), value: "right" },
+];
+
+export const MEDIA_TYPES = [
+    { label: __("None", "essential-blocks"), value: "none" },
+    { label: __("Icon", "essential-blocks"), value: "icon" },
+    { label: __("Image", "essential-blocks"), value: "image" },
+    { label: __("Video", "essential-blocks"), value: "video" },
+];
+
+export const MEDIA_POSITIONS = [
+    { label: __("Left of title", "essential-blocks"), value: "left" },
+    { label: __("Right of title", "essential-blocks"), value: "right" },
+    { label: __("Above title", "essential-blocks"), value: "top" },
+];
+
+export const NOTICE_WIDTH = "noticeWidth";
+
+export const NOTICE_BOX_ALIGNS = [
+    { label: __("Default", "essential-blocks"), value: "" },
+    { label: __("Left", "essential-blocks"), value: "left" },
+    { label: __("Center", "essential-blocks"), value: "center" },
+    { label: __("Right", "essential-blocks"), value: "right" },
 ];

@@ -1,47 +1,76 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+function initNotices() {
 	let notices = document.querySelectorAll(".eb-notice-wrapper");
 
 	for (let i = 0; i < notices.length; i++) {
-		let dismissButton = notices[i].querySelector(".eb-notice-dismiss");
+		let notice = notices[i];
+		let dismissButton = notice.querySelector(".eb-notice-dismiss");
 
-		// Return if there is no dismiss button
+		// Skip notices without a dismiss button, the rest still need setup
 		if (!dismissButton) {
-			return;
+			continue;
 		}
 
-		notices[i].style.position = "relative";
+		notice.style.position = "relative";
 		dismissButton.style.position = "absolute";
 		dismissButton.style.right = "0px";
 		dismissButton.style.top = "0px";
 
+		// Make the dismiss control usable with keyboard and screen readers.
+		// Done here rather than in save() so existing notices keep their markup.
+		dismissButton.setAttribute("role", "button");
+		dismissButton.setAttribute("tabindex", "0");
+		dismissButton.setAttribute("aria-label", "Dismiss notice");
+
 		// Hide notice if it's already closed
-		let noticeId = notices[i].getAttribute("data-id");
-		let showAgain = notices[i].getAttribute("data-show-again");
-		let alreadyHidden = localStorage.getItem(
-			`eb-notice-hidden-${noticeId}`
-		);
+		let noticeId = notice.getAttribute("data-id");
+		let showAgain = notice.getAttribute("data-show-again");
+		let alreadyHidden = readStorage(`eb-notice-hidden-${noticeId}`);
 
 		showAgain === "true" && showNoticeAgain(noticeId);
-		showAgain === "false" &&
-			alreadyHidden === "1" &&
-			removeNotice(notices[i]);
+		if (showAgain === "false" && alreadyHidden === "1") {
+			removeNotice(notice);
+			continue;
+		}
 
-		// Add click listener
-		(function(i) {
-			dismissButton.addEventListener("click", function() {
-				onButtonClick(notices[i]);
-			});
-		})(i);
+		dismissButton.addEventListener("click", function() {
+			onButtonClick(notice);
+		});
+		dismissButton.addEventListener("keydown", function(event) {
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+				onButtonClick(notice);
+			}
+		});
 	}
-});
+}
+
+// The script is loaded in the footer, so DOMContentLoaded may already have fired
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", initNotices);
+} else {
+	initNotices();
+}
+
+// localStorage can throw (private mode, blocked site data); the notice should
+// still work, it just won't be remembered.
+function readStorage(key) {
+	try {
+		return window.localStorage.getItem(key);
+	} catch (e) {
+		return null;
+	}
+}
 
 function hidePermanently(noticeId) {
-	localStorage.setItem(`eb-notice-hidden-${noticeId}`, "1");
+	try {
+		window.localStorage.setItem(`eb-notice-hidden-${noticeId}`, "1");
+	} catch (e) {}
 }
 
 function showNoticeAgain(noticeId) {
-	localStorage.hasOwnProperty(`eb-notice-hidden-${noticeId}`) &&
-		localStorage.removeItem(`eb-notice-hidden-${noticeId}`);
+	try {
+		window.localStorage.removeItem(`eb-notice-hidden-${noticeId}`);
+	} catch (e) {}
 }
 
 function removeNotice(notice) {

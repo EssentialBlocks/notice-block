@@ -18,11 +18,18 @@ const {
 	generateBackgroundAttributes,
 	generateBorderShadowAttributes,
 	generateResponsiveAlignAttributes,
+	generateResponsiveRangeAttributes,
 } = window.EBNoticeControls;
 
 import { wrapBg } from "./constants/backgroundsConstants";
 import { wrpBdShadow } from "./constants/borderShadowConstants";
-import { NOTICE_ALIGNMENT } from "./constants";
+import {
+	NOTICE_ALIGNMENT,
+	MEDIA_ALIGNMENT,
+	TITLE_ALIGNMENT,
+	DESC_ALIGNMENT,
+	NOTICE_WIDTH,
+} from "./constants";
 
 const attributes = {
 	// the following 4 attributes is must required for responsive options and asset generation for frontend
@@ -60,13 +67,13 @@ const attributes = {
 	},
 	title: {
 		type: "string",
-		source: "text",
+		source: "html",
 		selector: ".eb-notice-title",
 		default: "Save 20%",
 	},
 	text: {
 		type: "string",
-		source: "text",
+		source: "html",
 		selector: ".eb-notice-text",
 		default: "Free shipping on all orders",
 	},
@@ -85,6 +92,51 @@ const attributes = {
 	showAfterDismiss: {
 		type: "boolean",
 		default: false,
+	},
+
+	// icon / image attributes ⬇
+	mediaType: {
+		type: "string",
+		default: "none",
+	},
+	mediaIcon: {
+		type: "string",
+		default: "dashicons-megaphone",
+	},
+	mediaImageUrl: {
+		type: "string",
+	},
+	mediaImageId: {
+		type: "number",
+	},
+	mediaImageAlt: {
+		type: "string",
+		default: "",
+	},
+	mediaVideoUrl: {
+		type: "string",
+	},
+	mediaVideoId: {
+		type: "number",
+	},
+	mediaPosition: {
+		type: "string",
+		default: "left",
+	},
+	mediaSize: {
+		type: "number",
+		default: 32,
+	},
+	mediaGap: {
+		type: "number",
+		default: 12,
+	},
+	mediaColor: {
+		type: "string",
+	},
+	mediaRadius: {
+		type: "number",
+		default: 0,
 	},
 
 	// typography attributes ⬇
@@ -128,6 +180,17 @@ const attributes = {
 		defaultTabAlign: "left",
 		defaultMobileAlign: "left",
 	}),
+
+	// per-element alignment overrides, no default so they inherit "Text Align" ⬇
+	// custom width of the notice box (empty = full width, as before)
+	...generateResponsiveRangeAttributes(NOTICE_WIDTH, { defaultUnit: "%" }),
+	noticeBoxAlign: {
+		type: "string",
+		default: "",
+	},
+	...generateResponsiveAlignAttributes(MEDIA_ALIGNMENT),
+	...generateResponsiveAlignAttributes(TITLE_ALIGNMENT),
+	...generateResponsiveAlignAttributes(DESC_ALIGNMENT),
 };
 
 export default attributes;
