@@ -16,6 +16,7 @@ import {
 } from "@wordpress/components";
 import { select } from "@wordpress/data";
 import WidthControl from "./width-control";
+import { toPlainText, fromPlainText } from "./plain-text";
 
 /**
  * Internal dependencies
@@ -177,9 +178,11 @@ function Inspector(props) {
                                                 "Title Text",
                                                 "essential-blocks"
                                             )}
-                                            value={title}
-                                            onChange={(title) =>
-                                                setAttributes({ title })
+                                            value={toPlainText(title)}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    title: fromPlainText(value),
+                                                })
                                             }
                                         />
                                     </PanelBody>
@@ -191,10 +194,15 @@ function Inspector(props) {
                                                 "Description Text",
                                                 "essential-blocks"
                                             )}
-                                            value={text}
+                                            value={toPlainText(text)}
                                             rows={4}
-                                            onChange={(text) =>
-                                                setAttributes({ text })
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    text: fromPlainText(
+                                                        value,
+                                                        true
+                                                    ),
+                                                })
                                             }
                                         />
                                     </PanelBody>
