@@ -34,3 +34,5 @@ node_modules/
 # committed lockfile and makes dependency resolution reproducible.
 yarn.lock
 changes.txt
+# Source maps
+*.map
