@@ -67,13 +67,13 @@ const attributes = {
 	},
 	title: {
 		type: "string",
-		source: "text",
+		source: "html",
 		selector: ".eb-notice-title",
 		default: "Save 20%",
 	},
 	text: {
 		type: "string",
-		source: "text",
+		source: "html",
 		selector: ".eb-notice-text",
 		default: "Free shipping on all orders",
 	},
