@@ -97,7 +97,7 @@ class Notice_Block_Helper
             }
 
             wp_enqueue_style(
-                'essential-blocks-editor-css',
+                'notice-block-controls-css',
                 NOTICE_BLOCK_ADMIN_URL . 'dist/modules.css',
                 array(),
                 $controls_version,
@@ -111,7 +111,7 @@ class Notice_Block_Helper
                 wp_enqueue_style(
                     'essential-blocks-editor-style-modules-css',
                     NOTICE_BLOCK_ADMIN_URL . 'dist/style-modules.css',
-                    array('essential-blocks-editor-css'),
+                    array('notice-block-controls-css'),
                     $controls_version,
                     'all'
                 );

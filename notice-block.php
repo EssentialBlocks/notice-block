@@ -154,28 +154,36 @@ function create_block_notice_block_init()
 	// provides *this* block. The name checked here used to be
 	// `essential-blocks/number-counter`, copy-pasted from a sibling plugin,
 	// which suppressed the Notice block whenever an unrelated block was present.
-	if (!WP_Block_Type_Registry::get_instance()->is_registered('essential-blocks/notice')) {
-		register_block_type(
-			Notice_Block_Helper::get_block_register_path("notice-block/notice", NOTICE_BLOCK_ADMIN_PATH),
-			array(
-				'editor_script' => 'create-block-notice-block-editor',
-				'editor_style' 	=> 'notice-block-editor-css',
-				'render_callback' => function ($attributes, $content) {
-					if (!is_admin()) {
-						wp_enqueue_style('notice-block-editor-css');
-						wp_enqueue_script('essential-blocks-notice-frontend');
+	$eb_has_block = WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/notice' );
+	$block_args   = array(
+		'editor_script' => 'create-block-notice-block-editor',
+		'editor_style' 	=> 'notice-block-editor-css',
+		'render_callback' => function ($attributes, $content) {
+			if (!is_admin()) {
+				wp_enqueue_style('notice-block-editor-css');
+				wp_enqueue_script('essential-blocks-notice-frontend');
 
-						// Icons are Dashicons (Font Awesome is disabled for this plugin).
-						// Core only loads them on the frontend for logged-in users.
-						if (isset($attributes['mediaType']) && 'icon' === $attributes['mediaType']) {
-							wp_enqueue_style('dashicons');
-						}
-					}
-					return $content;
+				// Icons are Dashicons (Font Awesome is disabled for this plugin).
+				// Core only loads them on the frontend for logged-in users.
+				if (isset($attributes['mediaType']) && 'icon' === $attributes['mediaType']) {
+					wp_enqueue_style('dashicons');
 				}
-			)
-		);
+			}
+			return $content;
+		}
+	);
+
+	// Essential Blocks has its own version of this block under another name. Posts saved
+	// with this one still need its render callback and front-end assets, so keep it
+	// registered, but leave out the editor bundle, which can't run beside Essential Blocks.
+	if ( $eb_has_block ) {
+		unset( $block_args['editor_script'], $block_args['editor_style'] );
 	}
+
+	register_block_type(
+		Notice_Block_Helper::get_block_register_path("notice-block/notice", NOTICE_BLOCK_ADMIN_PATH),
+		$block_args
+	);
 }
 
 add_action('init', 'create_block_notice_block_init');
