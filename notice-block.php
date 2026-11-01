@@ -145,9 +145,7 @@ function create_block_notice_block_init()
 	wp_register_style(
 		'notice-block-editor-css',
 		$style_css,
-		// Icons are Dashicons (Font Awesome is disabled for this plugin). Core only
-		// loads them on the frontend for logged-in users and not in the editor canvas.
-		array('essential-blocks-animation', 'dashicons'),
+		array('essential-blocks-animation'),
 		NOTICE_BLOCK_VERSION,
 		"all"
 	);
@@ -156,22 +154,36 @@ function create_block_notice_block_init()
 	// provides *this* block. The name checked here used to be
 	// `essential-blocks/number-counter`, copy-pasted from a sibling plugin,
 	// which suppressed the Notice block whenever an unrelated block was present.
-	if (!WP_Block_Type_Registry::get_instance()->is_registered('essential-blocks/notice')) {
-		register_block_type(
-			Notice_Block_Helper::get_block_register_path("notice-block/notice", NOTICE_BLOCK_ADMIN_PATH),
-			array(
-				'editor_script' => 'create-block-notice-block-editor',
-				'editor_style' 	=> 'notice-block-editor-css',
-				'render_callback' => function ($attributes, $content) {
-					if (!is_admin()) {
-						wp_enqueue_style('notice-block-editor-css');
-						wp_enqueue_script('essential-blocks-notice-frontend');
-					}
-					return $content;
+	$eb_has_block = WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/notice' );
+	$block_args   = array(
+		'editor_script' => 'create-block-notice-block-editor',
+		'editor_style' 	=> 'notice-block-editor-css',
+		'render_callback' => function ($attributes, $content) {
+			if (!is_admin()) {
+				wp_enqueue_style('notice-block-editor-css');
+				wp_enqueue_script('essential-blocks-notice-frontend');
+
+				// Icons are Dashicons (Font Awesome is disabled for this plugin).
+				// Core only loads them on the frontend for logged-in users.
+				if (isset($attributes['mediaType']) && 'icon' === $attributes['mediaType']) {
+					wp_enqueue_style('dashicons');
 				}
-			)
-		);
+			}
+			return $content;
+		}
+	);
+
+	// Essential Blocks has its own version of this block under another name. Posts saved
+	// with this one still need its render callback and front-end assets, so keep it
+	// registered, but leave out the editor bundle, which can't run beside Essential Blocks.
+	if ( $eb_has_block ) {
+		unset( $block_args['editor_script'], $block_args['editor_style'] );
 	}
+
+	register_block_type(
+		Notice_Block_Helper::get_block_register_path("notice-block/notice", NOTICE_BLOCK_ADMIN_PATH),
+		$block_args
+	);
 }
 
 add_action('init', 'create_block_notice_block_init');
@@ -187,7 +199,33 @@ function notice_block_icon_selected_style() {
 		'eb-block-icon-selected',
 		plugins_url( 'assets/css/block-icon-selected.css', __FILE__ ),
 		[],
-		'1.0.0'
+		NOTICE_BLOCK_VERSION
 	);
 }
 add_action( 'enqueue_block_editor_assets', 'notice_block_icon_selected_style' );
+
+/**
+ * Let Essential Blocks' animation assets win on the front end when it is active.
+ *
+ * Both plugins register these handles and the first registration wins. This
+ * plugin's loader doesn't set `window.ebAnimationLoaded`, so Essential Blocks'
+ * failsafe would reveal every animated block without playing it. Essential Blocks
+ * registers its own at priority 20 and handles the same `.eb___animated` classes.
+ */
+function notice_block_use_essential_blocks_animation() {
+    if ( defined( 'ESSENTIAL_BLOCKS_VERSION' ) ) {
+        wp_deregister_script( 'essential-blocks-eb-animation' );
+        wp_deregister_style( 'essential-blocks-animation' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'notice_block_use_essential_blocks_animation', 19 );
+
+/**
+ * Dashicons aren't loaded in the editor canvas by default, and any Notice can pick an icon there.
+ */
+function notice_block_editor_dashicons() {
+	if ( is_admin() ) {
+		wp_enqueue_style( 'dashicons' );
+	}
+}
+add_action( 'enqueue_block_assets', 'notice_block_editor_dashicons' );
