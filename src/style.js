@@ -407,12 +407,6 @@ export default function Style(props) {
 		content: "\\00d7";
 	}
 
-	.entry-content
-	> *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
-		margin-left: auto;
-		margin-right: auto;
-	}
-
 	`;
 
     // all css styles for large screen width (desktop/laptop) in strings ⬇

@@ -85,53 +85,29 @@ function Inspector(props) {
         noticeBoxAlign,
     } = attributes;
 
+    // Background / title / text colours applied by each notice type.
+    const TYPE_PRESETS = {
+        default: { bg: "#3074ff", title: "#ffffff", text: "#ffffff" },
+        success: { bg: "#4caf50", title: "#ffffff", text: "#ffffff" },
+        info: { bg: "#d3d3d3", title: "#000000", text: "#000000" },
+        warning: { bg: "#ffeb3b", title: "#000000", text: "#000000" },
+        danger: { bg: "#f44336", title: "#ffffff", text: "#ffffff" },
+    };
+
     const onTypeChange = (type) => {
-        switch (type) {
-            case "success":
-                setAttributes({
-                    noticeType: type,
-                    [`${wrapBg}backgroundColor`]: "#4caf50",
-                    titleColor: "#ffffff",
-                    textColor: "#ffffff",
-                });
-                break;
-
-            case "info":
-                setAttributes({
-                    noticeType: type,
-                    [`${wrapBg}backgroundColor`]: "#d3d3d3",
-                    titleColor: "#000000",
-                    textColor: "#000000",
-                });
-                break;
-
-            case "danger":
-                setAttributes({
-                    noticeType: type,
-                    [`${wrapBg}backgroundColor`]: "#f44336",
-                    titleColor: "#ffffff",
-                    textColor: "#ffffff",
-                });
-                break;
-
-            case "warning":
-                setAttributes({
-                    noticeType: type,
-                    [`${wrapBg}backgroundColor`]: "#ffeb3b",
-                    titleColor: "#000000",
-                    textColor: "#000000",
-                });
-                break;
-
-            case "default":
-                setAttributes({
-                    noticeType: type,
-                    [`${wrapBg}backgroundColor`]: "#2196f3",
-                    titleColor: "#ffffff",
-                    textColor: "#ffffff",
-                });
-                break;
+        const preset = TYPE_PRESETS[type];
+        if (!preset) {
+            return;
         }
+        setAttributes({
+            noticeType: type,
+            // The preset is a solid colour, so switch a gradient/image
+            // background back to classic or the change would not show.
+            [`${wrapBg}backgroundType`]: "classic",
+            [`${wrapBg}backgroundColor`]: preset.bg,
+            titleColor: preset.title,
+            textColor: preset.text,
+        });
     };
 
     const resRequiredProps = {

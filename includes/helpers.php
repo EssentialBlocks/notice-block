@@ -96,8 +96,12 @@ class Notice_Block_Helper
                 ));
             }
 
+            // Handles are prefixed with this plugin's slug. The shared
+            // `essential-blocks-editor-css` name is also used by sibling EB
+            // plugins, and whichever registered first won, so this plugin's
+            // controls CSS was silently replaced by another plugin's build.
             wp_enqueue_style(
-                'essential-blocks-editor-css',
+                'notice-block-editor-modules-css',
                 NOTICE_BLOCK_ADMIN_URL . 'dist/modules.css',
                 array(),
                 $controls_version,
@@ -109,9 +113,9 @@ class Notice_Block_Helper
             // grid collapses into one broken line.
             if (file_exists(NOTICE_BLOCK_ADMIN_PATH . '/dist/style-modules.css')) {
                 wp_enqueue_style(
-                    'essential-blocks-editor-style-modules-css',
+                    'notice-block-editor-style-modules-css',
                     NOTICE_BLOCK_ADMIN_URL . 'dist/style-modules.css',
-                    array('essential-blocks-editor-css'),
+                    array('notice-block-editor-modules-css'),
                     $controls_version,
                     'all'
                 );
