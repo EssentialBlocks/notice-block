@@ -93,6 +93,14 @@ No fonts are requested from Google when only system fonts are used.
 
 == Changelog ==
 
+= 1.4.2 - 02/11/2026 =
+* Improved: Security enhancements
+* Fixed: Existing Notice blocks stopped working on the front end when Essential Blocks is active
+* Fixed: Animated blocks appeared without playing their animation when Essential Blocks is active
+* Fixed: Editor sidebar controls conflicting with other plugins' styles
+* Fixed: Missing Shake, Light Speed In and Light Speed Out animations
+* Improved: Load front-end Dashicons only when a Notice uses an icon
+
 = 1.4.1 - 26/10/2026 =
 * Improved: Security enhancements
 * Few minor bug fixes & improvements
