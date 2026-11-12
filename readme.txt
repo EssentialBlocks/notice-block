@@ -4,7 +4,7 @@ Tags: block, blocks, notice, notice box, alert box, warning, highlight, announce
 Requires at least: 6.0
 Tested up to: 7.0.3
 Requires PHP: 7.4
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -93,13 +93,13 @@ No fonts are requested from Google when only system fonts are used.
 
 == Changelog ==
 
-= 1.4.2 - 02/11/2026 =
+= 1.4.2 - 12/11/2026 =
+* Added: Icon, image & video media option
+* Added: Width & alignment controls
+* Fixed: Frontend conflict with Essential Blocks
+* Fixed: Dismiss button issue
 * Improved: Security enhancements
-* Fixed: Existing Notice blocks stopped working on the front end when Essential Blocks is active
-* Fixed: Animated blocks appeared without playing their animation when Essential Blocks is active
-* Fixed: Editor sidebar controls conflicting with other plugins' styles
-* Fixed: Missing Shake, Light Speed In and Light Speed Out animations
-* Improved: Load front-end Dashicons only when a Notice uses an icon
+* Few minor bug fixes & improvements
 
 = 1.4.1 - 26/10/2026 =
 * Improved: Security enhancements
