@@ -10,7 +10,13 @@ import {
 
 import { wrapBg } from "./constants/backgroundsConstants";
 import { wrpBdShadow } from "./constants/borderShadowConstants";
-import { NOTICE_ALIGNMENT } from "./constants";
+import {
+    NOTICE_ALIGNMENT,
+    MEDIA_ALIGNMENT,
+    TITLE_ALIGNMENT,
+    DESC_ALIGNMENT,
+    NOTICE_WIDTH,
+} from "./constants";
 
 const {
     //
@@ -20,6 +26,7 @@ const {
     generateBackgroundControlStyles,
     generateBorderShadowStyles,
     generateResponsiveAlignStyles,
+    generateResponsiveRangeStyles,
     StyleComponent
 } = window.EBNoticeControls;
 
@@ -37,6 +44,12 @@ export default function Style(props) {
         titleColor,
         textColor,
         classHook,
+        mediaPosition,
+        mediaSize = 32,
+        mediaGap = 12,
+        mediaColor,
+        mediaRadius = 0,
+        noticeBoxAlign,
     } = attributes;
 
     //
@@ -127,6 +140,26 @@ export default function Style(props) {
         // noBorder: true,
     });
 
+    const {
+        rangeStylesDesktop: noticeWidthDesktop,
+        rangeStylesTab: noticeWidthTab,
+        rangeStylesMobile: noticeWidthMobile,
+    } = generateResponsiveRangeStyles({
+        controlName: NOTICE_WIDTH,
+        property: "width",
+        attributes,
+    });
+
+    // horizontal position of the box, useful once a custom width is set
+    const boxAlignStyles =
+        noticeBoxAlign === "center"
+            ? "margin-left: auto; margin-right: auto;"
+            : noticeBoxAlign === "right"
+            ? "margin-left: auto; margin-right: 0;"
+            : noticeBoxAlign === "left"
+            ? "margin-left: 0; margin-right: auto;"
+            : "";
+
     // wrapper styles css in strings ⬇
     const wrapperStylesDesktop = `
 
@@ -143,6 +176,9 @@ export default function Style(props) {
 		overflow: hidden;
 		position: relative;
 		${noticeAlignDesktop}
+		${noticeWidthDesktop}
+		${(noticeWidthDesktop || noticeWidthTab || noticeWidthMobile) ? "max-width: 100%; box-sizing: border-box;" : ""}
+		${boxAlignStyles}
 	}
 
 	.eb-notice-wrapper.${blockId}:hover{
@@ -168,6 +204,7 @@ export default function Style(props) {
 		${backgroundStylesTab}
 		${bdShadowStyesTab}
 		${noticeAlignTab}
+		${noticeWidthTab}
 	}
 
 	.eb-notice-wrapper.${blockId}:hover{
@@ -192,6 +229,7 @@ export default function Style(props) {
 		${backgroundStylesMobile}
 		${bdShadowStyesMobile}
 		${noticeAlignMobile}
+		${noticeWidthMobile}
 	}
 
 	.eb-notice-wrapper.${blockId}:hover{
@@ -215,6 +253,100 @@ export default function Style(props) {
 		// display: flex;
 		justify-content: space-between;
 	}
+	`;
+
+    // icon / image styles css in strings ⬇
+    const mediaFlexDirection =
+        mediaPosition === "right"
+            ? "row-reverse"
+            : mediaPosition === "top"
+            ? "column"
+            : "row";
+
+    // Alignment for media / title / text. Each one falls back to the overall
+    // "Text Align" when it has no value of its own, and tablet/mobile fall back
+    // to the larger screen, the same way the CSS cascade would.
+    const ALIGN_TO_FLEX = { left: "flex-start", center: "center", right: "flex-end" };
+    const FLIPPED = { left: "right", center: "center", right: "left" };
+    const pick = (...vals) => vals.find(Boolean);
+    const devicesOf = (name) => ({
+        desktop: attributes[name],
+        tab: attributes[`TAB${name}`],
+        mobile: attributes[`MOB${name}`],
+    });
+    const resolveAlign = (own, wrap) => ({
+        desktop: pick(own.desktop, wrap.desktop),
+        tab: pick(own.tab, own.desktop) || pick(wrap.tab, wrap.desktop),
+        mobile:
+            pick(own.mobile, own.tab, own.desktop) ||
+            pick(wrap.mobile, wrap.tab, wrap.desktop),
+    });
+    const wrapAlign = devicesOf(NOTICE_ALIGNMENT);
+    const mediaAlignEff = resolveAlign(devicesOf(MEDIA_ALIGNMENT), wrapAlign);
+    const titleAlignEff = resolveAlign(devicesOf(TITLE_ALIGNMENT), wrapAlign);
+    const descAlignEff = resolveAlign(devicesOf(DESC_ALIGNMENT), wrapAlign);
+
+    const isMediaRow = mediaPosition !== "top";
+    const isMediaReversed = mediaPosition === "right";
+    const alignStyles = (device) => {
+        const title = titleAlignEff[device];
+        const desc = descAlignEff[device];
+        const media = mediaAlignEff[device];
+        // beside the title: media + title move together, following the title alignment
+        const rowJustify = title
+            ? ALIGN_TO_FLEX[isMediaReversed ? FLIPPED[title] : title]
+            : "";
+        // above the title: media has its own alignment
+        const mediaSelf = media ? ALIGN_TO_FLEX[media] : "";
+        return `
+	${title ? `.eb-notice-wrapper.${blockId} .eb-notice-title{ text-align: ${title}; }` : ""}
+	${desc ? `.eb-notice-wrapper.${blockId} .eb-notice-text{ text-align: ${desc}; }` : ""}
+	${isMediaRow && rowJustify ? `.eb-notice-wrapper.${blockId} .eb-notice-title-wrapper.eb-notice-has-media{ justify-content: ${rowJustify}; }` : ""}
+	${!isMediaRow && mediaSelf ? `.eb-notice-wrapper.${blockId} .eb-notice-media{ align-self: ${mediaSelf}; }` : ""}
+	`;
+    };
+
+    const mediaStylesDesktop = `
+	.eb-notice-wrapper.${blockId} .eb-notice-title-wrapper.eb-notice-has-media{
+		display: flex;
+		flex-direction: ${mediaFlexDirection};
+		align-items: ${isMediaRow ? "center" : "stretch"};
+		gap: ${mediaGap}px;
+	}
+
+	.eb-notice-wrapper.${blockId} .eb-notice-media{
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		line-height: 1;
+	}
+
+	.eb-notice-wrapper.${blockId} .eb-notice-icon{
+		color: ${mediaColor || titleColor || "#fff"};
+	}
+
+	.eb-notice-wrapper.${blockId} .eb-notice-icon i{
+		font-size: ${mediaSize}px;
+		width: ${mediaSize}px;
+		height: ${mediaSize}px;
+		line-height: ${mediaSize}px;
+	}
+
+	.eb-notice-wrapper.${blockId} .eb-notice-icon i:before{
+		font-size: ${mediaSize}px;
+		line-height: ${mediaSize}px;
+	}
+
+	.eb-notice-wrapper.${blockId} .eb-notice-image img,
+	.eb-notice-wrapper.${blockId} .eb-notice-video video{
+		width: ${mediaSize}px;
+		height: ${mediaSize}px;
+		object-fit: cover;
+		border-radius: ${mediaRadius}px;
+		display: block;
+	}
+	${alignStyles("desktop")}
 	`;
 
     // title styles css in strings ⬇
@@ -287,6 +419,7 @@ export default function Style(props) {
     const desktopAllStyles = softMinifyCssStrings(`
 		${wrapperStylesDesktop}
 		${titleWrapperStylesDesktop}
+		${mediaStylesDesktop}
 		${dismissStylesDesktop}
 		${titleStylesDesktop}
 		${textStylesDesktop}
@@ -295,6 +428,7 @@ export default function Style(props) {
     // all css styles for Tab in strings ⬇
     const tabAllStyles = softMinifyCssStrings(`
 		${wrapperStylesTab}
+		${alignStyles("tab")}
 		${titleStylesTab}
 		${textStylesTab}
 	`);
@@ -302,6 +436,7 @@ export default function Style(props) {
     // all css styles for Mobile in strings ⬇
     const mobileAllStyles = softMinifyCssStrings(`
 		${wrapperStylesMobile}
+		${alignStyles("mobile")}
 		${titleStylesMobile}
 		${textStylesMobile}
 	`);
