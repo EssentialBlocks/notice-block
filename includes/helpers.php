@@ -97,12 +97,25 @@ class Notice_Block_Helper
             }
 
             wp_enqueue_style(
-                'essential-blocks-editor-css',
+                'notice-block-controls-css',
                 NOTICE_BLOCK_ADMIN_URL . 'dist/modules.css',
                 array(),
                 $controls_version,
                 'all'
             );
+
+            // The icon picker's popup styles (.wip-icon-area, .wip-iconpicker-popup,
+            // tabs) are emitted to a separate stylesheet. Without it the icon
+            // grid collapses into one broken line.
+            if (file_exists(NOTICE_BLOCK_ADMIN_PATH . '/dist/style-modules.css')) {
+                wp_enqueue_style(
+                    'essential-blocks-editor-style-modules-css',
+                    NOTICE_BLOCK_ADMIN_URL . 'dist/style-modules.css',
+                    array('notice-block-controls-css'),
+                    $controls_version,
+                    'all'
+                );
+            }
         }
     }
 

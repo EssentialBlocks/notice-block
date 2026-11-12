@@ -4,7 +4,7 @@ Tags: block, blocks, notice, notice box, alert box, warning, highlight, announce
 Requires at least: 6.0
 Tested up to: 7.0.3
 Requires PHP: 7.4
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,10 +77,29 @@ Consider checking out our other WordPress solutions & boost your WordPress websi
 
 Yes, it will work with any standard WordPress theme.
 
+== External services ==
+
+This plugin can connect to the following third-party service:
+
+**Google Fonts (fonts.googleapis.com)**
+* What it is used for: loading the web fonts a block uses when you pick a Google font in the block's typography settings.
+* When data is sent: only on pages where a block uses a Google font. The visitor's browser requests the font stylesheet from Google, which sends the visitor's IP address and browser details (such as user agent) to Google.
+* Service provider: Google LLC. [Terms of Service](https://policies.google.com/terms) | [Privacy Policy](https://policies.google.com/privacy)
+
+No fonts are requested from Google when only system fonts are used.
+
 == Screenshots ==
 
 
 == Changelog ==
+
+= 1.4.2 - 12/11/2026 =
+* Added: Icon, image & video media option
+* Added: Width & alignment controls
+* Fixed: Frontend conflict with Essential Blocks
+* Fixed: Dismiss button issue
+* Improved: Security enhancements
+* Few minor bug fixes & improvements
 
 = 1.4.1 - 26/10/2026 =
 * Improved: Security enhancements

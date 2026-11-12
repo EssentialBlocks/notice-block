@@ -1,4 +1,6 @@
 import { RichText, useBlockProps } from "@wordpress/block-editor";
+import classnames from "classnames";
+import { NoticeMedia, hasMedia } from "./media";
 
 const save = ({ attributes }) => {
 	const {
@@ -17,7 +19,12 @@ const save = ({ attributes }) => {
 					data-id={blockId}
 					data-show-again={showAfterDismiss}
 				>
-					<div className="eb-notice-title-wrapper">
+					<div
+						className={classnames("eb-notice-title-wrapper", {
+							"eb-notice-has-media": hasMedia(attributes),
+						})}
+					>
+						<NoticeMedia attributes={attributes} />
 						<RichText.Content
 							tagName="div"
 							className="eb-notice-title"

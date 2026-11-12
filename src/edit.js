@@ -13,6 +13,7 @@ import classnames from "classnames";
 import Inspector from "./inspector";
 
 import Style from "./style";
+import { NoticeMedia, hasMedia } from "./media";
 
 const {
 	duplicateBlockIdFix,
@@ -67,7 +68,12 @@ export default function Edit(props) {
 						className={`eb-notice-wrapper ${blockId}`}
 						data-id={blockId}
 					>
-						<div className="eb-notice-title-wrapper">
+						<div
+							className={classnames("eb-notice-title-wrapper", {
+								"eb-notice-has-media": hasMedia(attributes),
+							})}
+						>
+							<NoticeMedia attributes={attributes} />
 							<RichText
 								className="eb-notice-title"
 								value={title}
