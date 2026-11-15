@@ -4,7 +4,7 @@ Tags: block, blocks, notice, notice box, alert box, warning, highlight, announce
 Requires at least: 6.0
 Tested up to: 7.0.3
 Requires PHP: 7.4
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -92,6 +92,11 @@ No fonts are requested from Google when only system fonts are used.
 
 
 == Changelog ==
+
+= 1.4.3 - 15/11/2026 =
+* Fixed: Unsaved changes issue in editor
+* Improved: Security enhancements
+* Few minor bug fixes & improvements
 
 = 1.4.2 - 12/11/2026 =
 * Added: Icon, image & video media option
