@@ -93,13 +93,15 @@ No fonts are requested from Google when only system fonts are used.
 
 == Changelog ==
 
-= 1.4.2 - 12/11/2026 =
-* Added: Icon, image & video media option
-* Added: Width & alignment controls
-* Fixed: Frontend conflict with Essential Blocks
-* Fixed: Dismiss button issue
+= 1.4.2 - 02/11/2026 =
+* Added: Media option to show an icon, image or video in a notice
+* Added: Width and overall alignment controls
 * Improved: Security enhancements
-* Few minor bug fixes & improvements
+* Fixed: Existing Notice blocks stopped working on the front end when Essential Blocks is active
+* Fixed: Animated blocks appeared without playing their animation when Essential Blocks is active
+* Fixed: Editor sidebar controls conflicting with other plugins' styles
+* Fixed: Notices saved with the Shake, Light Speed In or Light Speed Out animation did not animate
+* Improved: Load front-end Dashicons only when a Notice uses an icon
 
 = 1.4.1 - 26/10/2026 =
 * Improved: Security enhancements
